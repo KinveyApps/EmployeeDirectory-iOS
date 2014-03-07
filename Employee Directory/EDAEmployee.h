@@ -22,5 +22,6 @@
 @property (nonatomic) NSString *email;
 @property (nonatomic) NSString *supervisor;
 @property (nonatomic) NSString *hierarchy;
+@property (nonatomic) NSString *entityID;
 
 @end

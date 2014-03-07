@@ -13,18 +13,21 @@
 #pragma mark - Kinvey
 
 - (NSDictionary *)hostToKinveyPropertyMapping {
-    return @{ @"username": @keypath(self.username),
-              @"firstName": @keypath(self.firstName),
-              @"lastName": @keypath(self.lastName),
-              @"title": @keypath(self.title),
-              @"division": @keypath(self.division),
-              @"department": @keypath(self.department),
-              @"group": @keypath(self.group),
-              @"workPhone": @keypath(self.workPhone),
-              @"cellPhone": @keypath(self.cellPhone),
-              @"email": @keypath(self.email),
-              @"supervisor": @keypath(self.supervisor),
-              @"hierarchy": @keypath(self.hierarchy) };
+    NSLog(@"%@", @keypath(self, username));
+    
+    return @{ @keypath(self, username): @"username",
+               @keypath(self, firstName): @"firstName",
+               @keypath(self, lastName): @"lastName",
+               @keypath(self, title): @"title",
+               @keypath(self, division): @"division",
+               @keypath(self, department): @"department",
+               @keypath(self, group): @"group",
+               @keypath(self, workPhone): @"workPhone",
+               @keypath(self, cellPhone): @"cellPhone",
+               @keypath(self, email): @"email",
+               @keypath(self, supervisor): @"supervisor",
+               @keypath(self, hierarchy): @"hierarchy",
+               @keypath(self, entityID): KCSEntityKeyId };
 }
 
 @end
