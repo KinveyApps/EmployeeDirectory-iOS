@@ -26,6 +26,7 @@
     if (self) {
         _viewModel = [[EDALoginViewModel alloc] init];
         
+        self.title = @"Log In";
         self.edgesForExtendedLayout = UIRectEdgeNone;
         self.navigationItem.rightBarButtonItem = [self loginBarButtonItem];
     }
@@ -45,10 +46,14 @@
     RAC(self.viewModel, password) = self.view.passwordTextField.rac_textSignal;
     RAC(self.viewModel, username) = self.view.usernameTextField.rac_textSignal;
     
+    @weakify(self);
+    
     [[self.viewModel.loginCommand.executionSignals
         flatten]
-        subscribeNext:^(id x) {
-            NSLog(@"logged in");
+        subscribeNext:^(KCSUser *user) {
+            @strongify(self);
+            
+            [self dismissViewControllerAnimated:YES completion:NULL];
         }];
     
     [self rac_liftSelector:@selector(handleError:) withSignals:self.viewModel.loginCommand.errors, nil];
