@@ -30,4 +30,15 @@
                @keypath(self, entityID): KCSEntityKeyId };
 }
 
+- (BOOL)isEqual:(id)object {
+    if ([object isKindOfClass:[EDAEmployee class]] == NO) return NO;
+    
+    EDAEmployee *employee = object;
+    return [self.entityID isEqualToString:employee.entityID];
+}
+
+- (NSUInteger)hash {
+    return self.entityID.hash;
+}
+
 @end
