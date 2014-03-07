@@ -14,4 +14,8 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import <KinveyKit/KinveyKit.h>
+    #import <ReactiveCocoa/ReactiveCocoa.h>
+    #import <ReactiveCocoa/RACEXTScope.h>
+    #import <ReactiveCocoa/RACEXTKeyPathCoding.h>
+    #import <EPSStaticTableViewController/EPSStaticTableViewController.h>
 #endif
