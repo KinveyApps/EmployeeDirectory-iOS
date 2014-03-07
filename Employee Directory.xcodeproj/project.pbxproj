@@ -14,7 +14,6 @@
 		D043A7A018CA1D870095F581 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D043A79E18CA1D870095F581 /* InfoPlist.strings */; };
 		D043A7A218CA1D870095F581 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7A118CA1D870095F581 /* main.m */; };
 		D043A7A618CA1D870095F581 /* EDAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7A518CA1D870095F581 /* EDAAppDelegate.m */; };
-		D043A7A918CA1D870095F581 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D043A7A718CA1D870095F581 /* Main.storyboard */; };
 		D043A7AC18CA1D870095F581 /* EDAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7AB18CA1D870095F581 /* EDAViewController.m */; };
 		D043A7AE18CA1D870095F581 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D043A7AD18CA1D870095F581 /* Images.xcassets */; };
 		D043A7B518CA1D870095F581 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A7B418CA1D870095F581 /* XCTest.framework */; };
@@ -30,6 +29,8 @@
 		D043A7D518CA1F8A0095F581 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A7D418CA1F8A0095F581 /* Security.framework */; };
 		D043A7D718CA1F8F0095F581 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A7D618CA1F8F0095F581 /* Social.framework */; };
 		D043A7D918CA1F930095F581 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A7D818CA1F930095F581 /* SystemConfiguration.framework */; };
+		D043A7DC18CA236F0095F581 /* BLAPaneController.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7DB18CA236F0095F581 /* BLAPaneController.m */; };
+		D043A7DF18CA239D0095F581 /* EDAMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7DE18CA239D0095F581 /* EDAMenuViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +56,6 @@
 		D043A7A318CA1D870095F581 /* Employee Directory-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Employee Directory-Prefix.pch"; sourceTree = "<group>"; };
 		D043A7A418CA1D870095F581 /* EDAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EDAAppDelegate.h; sourceTree = "<group>"; };
 		D043A7A518CA1D870095F581 /* EDAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EDAAppDelegate.m; sourceTree = "<group>"; };
-		D043A7A818CA1D870095F581 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D043A7AA18CA1D870095F581 /* EDAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EDAViewController.h; sourceTree = "<group>"; };
 		D043A7AB18CA1D870095F581 /* EDAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EDAViewController.m; sourceTree = "<group>"; };
 		D043A7AD18CA1D870095F581 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -72,6 +72,10 @@
 		D043A7D418CA1F8A0095F581 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D043A7D618CA1F8F0095F581 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		D043A7D818CA1F930095F581 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D043A7DA18CA236F0095F581 /* BLAPaneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLAPaneController.h; sourceTree = "<group>"; };
+		D043A7DB18CA236F0095F581 /* BLAPaneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLAPaneController.m; sourceTree = "<group>"; };
+		D043A7DD18CA239D0095F581 /* EDAMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAMenuViewController.h; sourceTree = "<group>"; };
+		D043A7DE18CA239D0095F581 /* EDAMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAMenuViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,11 +156,14 @@
 			children = (
 				D043A7A418CA1D870095F581 /* EDAAppDelegate.h */,
 				D043A7A518CA1D870095F581 /* EDAAppDelegate.m */,
-				D043A7A718CA1D870095F581 /* Main.storyboard */,
 				D043A7AA18CA1D870095F581 /* EDAViewController.h */,
 				D043A7AB18CA1D870095F581 /* EDAViewController.m */,
+				D043A7DA18CA236F0095F581 /* BLAPaneController.h */,
+				D043A7DB18CA236F0095F581 /* BLAPaneController.m */,
 				D043A7AD18CA1D870095F581 /* Images.xcassets */,
 				D043A79C18CA1D870095F581 /* Supporting Files */,
+				D043A7DD18CA239D0095F581 /* EDAMenuViewController.h */,
+				D043A7DE18CA239D0095F581 /* EDAMenuViewController.m */,
 			);
 			path = "Employee Directory";
 			sourceTree = "<group>";
@@ -271,7 +278,6 @@
 			files = (
 				D043A7AE18CA1D870095F581 /* Images.xcassets in Resources */,
 				D043A7A018CA1D870095F581 /* InfoPlist.strings in Resources */,
-				D043A7A918CA1D870095F581 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,8 +330,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D043A7AC18CA1D870095F581 /* EDAViewController.m in Sources */,
+				D043A7DC18CA236F0095F581 /* BLAPaneController.m in Sources */,
 				D043A7A218CA1D870095F581 /* main.m in Sources */,
 				D043A7A618CA1D870095F581 /* EDAAppDelegate.m in Sources */,
+				D043A7DF18CA239D0095F581 /* EDAMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,14 +362,6 @@
 				D043A79F18CA1D870095F581 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		D043A7A718CA1D870095F581 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D043A7A818CA1D870095F581 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		D043A7BD18CA1D870095F581 /* InfoPlist.strings */ = {
