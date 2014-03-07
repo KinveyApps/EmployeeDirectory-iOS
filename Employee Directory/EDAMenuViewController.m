@@ -8,6 +8,8 @@
 
 #import "EDAMenuViewController.h"
 
+#import "EDASidebarCell.h"
+
 NSString * const EDAMenuViewControllerIdentifierYourInfo = @"Your Info";
 NSString * const EDAMenuViewControllerIdentifierDirectory = @"Directory";
 NSString * const EDAMenuViewControllerIdentifierTeamMessaging = @"Team Messaging";
@@ -21,7 +23,10 @@ NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
 @implementation EDAMenuViewController
 
 - (void)viewDidLoad {
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:NSStringFromClass([UITableViewCell class])];
+    [self.tableView registerClass:[EDASidebarCell class] forCellReuseIdentifier:NSStringFromClass([EDASidebarCell class])];
+    
+    self.tableView.backgroundColor = [UIColor colorWithRed:0.129 green:0.145 blue:0.157 alpha:1.000];
+	self.tableView.separatorColor = [UIColor colorWithRed:0.196 green:0.200 blue:0.212 alpha:1.000];
     
     @weakify(self);
     
@@ -51,7 +56,7 @@ NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
 }
 
 - (UITableViewCell *)cellForIdentifier:(NSString *)identifier withTableView:(UITableView *)tableView {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UITableViewCell class])];
+    EDASidebarCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([EDASidebarCell class])];
     
     NSString *title;
     if ([identifier isEqualToString:EDAMenuViewControllerIdentifierAbout]) {
