@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15D799E218CA20A500BF116D /* EDALoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799E118CA20A500BF116D /* EDALoginViewController.m */; };
+		15D799E518CA20D400BF116D /* EDALoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799E418CA20D400BF116D /* EDALoginView.m */; };
+		15D799E918CA2DFC00BF116D /* EDALoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799E818CA2DFC00BF116D /* EDALoginModel.m */; };
 		84AFBA2E64C449BA8D7C730F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4432DA4CC140E7ACE15E20 /* libPods.a */; };
 		D043A79618CA1D870095F581 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79518CA1D870095F581 /* Foundation.framework */; };
 		D043A79818CA1D870095F581 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79718CA1D870095F581 /* CoreGraphics.framework */; };
@@ -43,6 +46,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15D799E018CA20A500BF116D /* EDALoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDALoginViewController.h; path = "Employee Directory/EDALoginViewController.h"; sourceTree = "<group>"; };
+		15D799E118CA20A500BF116D /* EDALoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDALoginViewController.m; path = "Employee Directory/EDALoginViewController.m"; sourceTree = "<group>"; };
+		15D799E318CA20D400BF116D /* EDALoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDALoginView.h; path = "Employee Directory/EDALoginView.h"; sourceTree = "<group>"; };
+		15D799E418CA20D400BF116D /* EDALoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDALoginView.m; path = "Employee Directory/EDALoginView.m"; sourceTree = "<group>"; };
+		15D799E718CA2DFC00BF116D /* EDALoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDALoginModel.h; path = "Employee Directory/EDALoginModel.h"; sourceTree = "<group>"; };
+		15D799E818CA2DFC00BF116D /* EDALoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDALoginModel.m; path = "Employee Directory/EDALoginModel.m"; sourceTree = "<group>"; };
 		4B4432DA4CC140E7ACE15E20 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		86DEC729436F499C87A944EF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		D043A79218CA1D870095F581 /* Employee Directory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Employee Directory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +116,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15D799E618CA20F500BF116D /* LoginScreen */ = {
+			isa = PBXGroup;
+			children = (
+				15D799E318CA20D400BF116D /* EDALoginView.h */,
+				15D799E418CA20D400BF116D /* EDALoginView.m */,
+				15D799E018CA20A500BF116D /* EDALoginViewController.h */,
+				15D799E118CA20A500BF116D /* EDALoginViewController.m */,
+				15D799E718CA2DFC00BF116D /* EDALoginModel.h */,
+				15D799E818CA2DFC00BF116D /* EDALoginModel.m */,
+			);
+			name = LoginScreen;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		D043A78918CA1D870095F581 = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +173,7 @@
 		D043A79B18CA1D870095F581 /* Employee Directory */ = {
 			isa = PBXGroup;
 			children = (
+				15D799E618CA20F500BF116D /* LoginScreen */,
 				D043A7A418CA1D870095F581 /* EDAAppDelegate.h */,
 				D043A7A518CA1D870095F581 /* EDAAppDelegate.m */,
 				D043A7A718CA1D870095F581 /* Main.storyboard */,
@@ -323,7 +347,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15D799E918CA2DFC00BF116D /* EDALoginModel.m in Sources */,
 				D043A7AC18CA1D870095F581 /* EDAViewController.m in Sources */,
+				15D799E518CA20D400BF116D /* EDALoginView.m in Sources */,
+				15D799E218CA20A500BF116D /* EDALoginViewController.m in Sources */,
 				D043A7A218CA1D870095F581 /* main.m in Sources */,
 				D043A7A618CA1D870095F581 /* EDAAppDelegate.m in Sources */,
 			);

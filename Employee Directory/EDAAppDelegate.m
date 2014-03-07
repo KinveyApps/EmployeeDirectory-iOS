@@ -7,11 +7,15 @@
 //
 
 #import "EDAAppDelegate.h"
+#import "EDALoginViewController.h"
 
 @implementation EDAAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    EDALoginViewController *viewsController = [[EDALoginViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewsController];
+    self.window.rootViewController = navigationController;
     // Override point for customization after application launch.
     return YES;
 }
