@@ -10,6 +10,7 @@
 
 #import "BLAPaneController.h"
 #import "EDAMenuViewController.h"
+#import "EDALoginViewController.h"
 
 @implementation EDAAppDelegate
 
@@ -31,3 +32,4 @@
 }
 
 @end
+
