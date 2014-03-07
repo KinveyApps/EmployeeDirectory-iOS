@@ -32,6 +32,7 @@
 		D043A7DC18CA236F0095F581 /* BLAPaneController.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7DB18CA236F0095F581 /* BLAPaneController.m */; };
 		D043A7DF18CA239D0095F581 /* EDAMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7DE18CA239D0095F581 /* EDAMenuViewController.m */; };
 		D043A7E318CA29A40095F581 /* EDASidebarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7E218CA29A40095F581 /* EDASidebarCell.m */; };
+		D043A7E618CA2BEB0095F581 /* EDAEmployee.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7E518CA2BEB0095F581 /* EDAEmployee.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,8 @@
 		D043A7DE18CA239D0095F581 /* EDAMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAMenuViewController.m; sourceTree = "<group>"; };
 		D043A7E118CA29A40095F581 /* EDASidebarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDASidebarCell.h; sourceTree = "<group>"; };
 		D043A7E218CA29A40095F581 /* EDASidebarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDASidebarCell.m; sourceTree = "<group>"; };
+		D043A7E418CA2BEB0095F581 /* EDAEmployee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAEmployee.h; sourceTree = "<group>"; };
+		D043A7E518CA2BEB0095F581 /* EDAEmployee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAEmployee.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +169,8 @@
 				D043A7DB18CA236F0095F581 /* BLAPaneController.m */,
 				D043A7AD18CA1D870095F581 /* Images.xcassets */,
 				D043A79C18CA1D870095F581 /* Supporting Files */,
+				D043A7E418CA2BEB0095F581 /* EDAEmployee.h */,
+				D043A7E518CA2BEB0095F581 /* EDAEmployee.m */,
 			);
 			path = "Employee Directory";
 			sourceTree = "<group>";
@@ -343,6 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D043A7AC18CA1D870095F581 /* EDAViewController.m in Sources */,
+				D043A7E618CA2BEB0095F581 /* EDAEmployee.m in Sources */,
 				D043A7DC18CA236F0095F581 /* BLAPaneController.m in Sources */,
 				D043A7A218CA1D870095F581 /* main.m in Sources */,
 				D043A7A618CA1D870095F581 /* EDAAppDelegate.m in Sources */,
