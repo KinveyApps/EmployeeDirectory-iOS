@@ -10,8 +10,6 @@
 		15D799E218CA20A500BF116D /* EDALoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799E118CA20A500BF116D /* EDALoginViewController.m */; };
 		15D799E518CA20D400BF116D /* EDALoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799E418CA20D400BF116D /* EDALoginView.m */; };
 		15D799E918CA2DFC00BF116D /* EDALoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799E818CA2DFC00BF116D /* EDALoginModel.m */; };
-		15D799EE18CA32AD00BF116D /* EDAMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799EA18CA32AD00BF116D /* EDAMenuViewController.m */; };
-		15D799EF18CA32AD00BF116D /* EDASidebarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799EB18CA32AD00BF116D /* EDASidebarCell.m */; };
 		84AFBA2E64C449BA8D7C730F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4432DA4CC140E7ACE15E20 /* libPods.a */; };
 		D043A79618CA1D870095F581 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79518CA1D870095F581 /* Foundation.framework */; };
 		D043A79818CA1D870095F581 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79718CA1D870095F581 /* CoreGraphics.framework */; };
@@ -19,6 +17,7 @@
 		D043A7A018CA1D870095F581 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D043A79E18CA1D870095F581 /* InfoPlist.strings */; };
 		D043A7A218CA1D870095F581 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7A118CA1D870095F581 /* main.m */; };
 		D043A7A618CA1D870095F581 /* EDAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7A518CA1D870095F581 /* EDAAppDelegate.m */; };
+		D043A7A918CA1D870095F581 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D043A7A718CA1D870095F581 /* Main.storyboard */; };
 		D043A7AC18CA1D870095F581 /* EDAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7AB18CA1D870095F581 /* EDAViewController.m */; };
 		D043A7AE18CA1D870095F581 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D043A7AD18CA1D870095F581 /* Images.xcassets */; };
 		D043A7B518CA1D870095F581 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A7B418CA1D870095F581 /* XCTest.framework */; };
@@ -34,7 +33,6 @@
 		D043A7D518CA1F8A0095F581 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A7D418CA1F8A0095F581 /* Security.framework */; };
 		D043A7D718CA1F8F0095F581 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A7D618CA1F8F0095F581 /* Social.framework */; };
 		D043A7D918CA1F930095F581 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A7D818CA1F930095F581 /* SystemConfiguration.framework */; };
-		D043A7DC18CA236F0095F581 /* BLAPaneController.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7DB18CA236F0095F581 /* BLAPaneController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,10 +52,6 @@
 		15D799E418CA20D400BF116D /* EDALoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDALoginView.m; path = "Employee Directory/EDALoginView.m"; sourceTree = "<group>"; };
 		15D799E718CA2DFC00BF116D /* EDALoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDALoginModel.h; path = "Employee Directory/EDALoginModel.h"; sourceTree = "<group>"; };
 		15D799E818CA2DFC00BF116D /* EDALoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDALoginModel.m; path = "Employee Directory/EDALoginModel.m"; sourceTree = "<group>"; };
-		15D799EA18CA32AD00BF116D /* EDAMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAMenuViewController.m; sourceTree = "<group>"; };
-		15D799EB18CA32AD00BF116D /* EDASidebarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDASidebarCell.m; sourceTree = "<group>"; };
-		15D799EC18CA32AD00BF116D /* EDASidebarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDASidebarCell.h; sourceTree = "<group>"; };
-		15D799ED18CA32AD00BF116D /* EDAMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAMenuViewController.h; sourceTree = "<group>"; };
 		4B4432DA4CC140E7ACE15E20 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		86DEC729436F499C87A944EF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		D043A79218CA1D870095F581 /* Employee Directory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Employee Directory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +64,7 @@
 		D043A7A318CA1D870095F581 /* Employee Directory-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Employee Directory-Prefix.pch"; sourceTree = "<group>"; };
 		D043A7A418CA1D870095F581 /* EDAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EDAAppDelegate.h; sourceTree = "<group>"; };
 		D043A7A518CA1D870095F581 /* EDAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EDAAppDelegate.m; sourceTree = "<group>"; };
+		D043A7A818CA1D870095F581 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D043A7AA18CA1D870095F581 /* EDAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EDAViewController.h; sourceTree = "<group>"; };
 		D043A7AB18CA1D870095F581 /* EDAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EDAViewController.m; sourceTree = "<group>"; };
 		D043A7AD18CA1D870095F581 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -86,8 +81,6 @@
 		D043A7D418CA1F8A0095F581 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D043A7D618CA1F8F0095F581 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		D043A7D818CA1F930095F581 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		D043A7DA18CA236F0095F581 /* BLAPaneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLAPaneController.h; sourceTree = "<group>"; };
-		D043A7DB18CA236F0095F581 /* BLAPaneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLAPaneController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,17 +130,6 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		15D799F018CA32BE00BF116D /* Menu */ = {
-			isa = PBXGroup;
-			children = (
-				15D799ED18CA32AD00BF116D /* EDAMenuViewController.h */,
-				15D799EA18CA32AD00BF116D /* EDAMenuViewController.m */,
-				15D799EC18CA32AD00BF116D /* EDASidebarCell.h */,
-				15D799EB18CA32AD00BF116D /* EDASidebarCell.m */,
-			);
-			name = Menu;
-			sourceTree = "<group>";
-		};
 		D043A78918CA1D870095F581 = {
 			isa = PBXGroup;
 			children = (
@@ -191,12 +173,10 @@
 		D043A79B18CA1D870095F581 /* Employee Directory */ = {
 			isa = PBXGroup;
 			children = (
-				15D799F018CA32BE00BF116D /* Menu */,
 				15D799E618CA20F500BF116D /* LoginScreen */,
-				D043A7DA18CA236F0095F581 /* BLAPaneController.h */,
-				D043A7DB18CA236F0095F581 /* BLAPaneController.m */,
 				D043A7A418CA1D870095F581 /* EDAAppDelegate.h */,
 				D043A7A518CA1D870095F581 /* EDAAppDelegate.m */,
+				D043A7A718CA1D870095F581 /* Main.storyboard */,
 				D043A7AA18CA1D870095F581 /* EDAViewController.h */,
 				D043A7AB18CA1D870095F581 /* EDAViewController.m */,
 				D043A7AD18CA1D870095F581 /* Images.xcassets */,
@@ -315,6 +295,7 @@
 			files = (
 				D043A7AE18CA1D870095F581 /* Images.xcassets in Resources */,
 				D043A7A018CA1D870095F581 /* InfoPlist.strings in Resources */,
+				D043A7A918CA1D870095F581 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,12 +347,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15D799EE18CA32AD00BF116D /* EDAMenuViewController.m in Sources */,
 				15D799E918CA2DFC00BF116D /* EDALoginModel.m in Sources */,
-				15D799EF18CA32AD00BF116D /* EDASidebarCell.m in Sources */,
 				D043A7AC18CA1D870095F581 /* EDAViewController.m in Sources */,
 				15D799E518CA20D400BF116D /* EDALoginView.m in Sources */,
-				D043A7DC18CA236F0095F581 /* BLAPaneController.m in Sources */,
 				15D799E218CA20A500BF116D /* EDALoginViewController.m in Sources */,
 				D043A7A218CA1D870095F581 /* main.m in Sources */,
 				D043A7A618CA1D870095F581 /* EDAAppDelegate.m in Sources */,
@@ -403,6 +381,14 @@
 				D043A79F18CA1D870095F581 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D043A7A718CA1D870095F581 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D043A7A818CA1D870095F581 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		D043A7BD18CA1D870095F581 /* InfoPlist.strings */ = {

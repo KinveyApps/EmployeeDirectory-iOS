@@ -7,6 +7,7 @@
 //
 
 #import "EDAAppDelegate.h"
+#import "EDALoginViewController.h"
 
 #import "BLAPaneController.h"
 #import "EDAMenuViewController.h"
@@ -15,6 +16,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+<<<<<<< HEAD
+    EDALoginViewController *viewsController = [[EDALoginViewController alloc] init];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewsController];
+    self.window.rootViewController = navigationController;
+    // Override point for customization after application launch.
+=======
     // Set up window
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];
@@ -27,8 +34,8 @@
     // Set up Kinvey
     (void) [[KCSClient sharedClient] initializeKinveyServiceForAppKey:@"kid_eTXG5Nytxq" withAppSecret:@"1512b102e63d4c44931f99d960685cdc" usingOptions:nil];
     
+>>>>>>> master
     return YES;
 }
 
 @end
-
