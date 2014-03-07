@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface EDALoginModel : NSObject
+@interface EDALoginViewModel : NSObject
 
 @property (nonatomic) NSString *username;
 @property (nonatomic) NSString *password;
-@property (nonatomic) RACCommand *loginCommand;
+@property (readonly, nonatomic) RACCommand *loginCommand;
 
 @end

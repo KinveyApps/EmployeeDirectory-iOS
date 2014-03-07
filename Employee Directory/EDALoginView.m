@@ -34,12 +34,16 @@
     self.usernameTextField.translatesAutoresizingMaskIntoConstraints = NO;
     self.usernameTextField.borderStyle = UITextBorderStyleRoundedRect;
     self.usernameTextField.placeholder = @"username";
+    self.usernameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.usernameTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     [self addSubview:self.usernameTextField];
     
     self.passwordTextField = [UITextField new];
     self.passwordTextField.translatesAutoresizingMaskIntoConstraints = NO;
     self.passwordTextField.borderStyle = UITextBorderStyleRoundedRect;
     self.passwordTextField.placeholder = @"password";
+    self.passwordTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+    self.usernameTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     [self addSubview:self.passwordTextField];
     
     NSDictionary *views = @{ @"usernameTextField": self.usernameTextField,
