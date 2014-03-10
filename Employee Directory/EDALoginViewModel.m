@@ -29,6 +29,8 @@
         return [KCSUser rac_loginWithUsername:self.username password:self.password];
     }];
     
+    RAC(self, acceptInput) = [self.loginCommand.executing not];
+    
     return self;
 }
 

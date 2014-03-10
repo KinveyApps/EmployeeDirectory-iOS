@@ -12,6 +12,8 @@
 
 @property (nonatomic) NSString *username;
 @property (nonatomic) NSString *password;
+@property (nonatomic) BOOL acceptInput;
+
 @property (readonly, nonatomic) RACCommand *loginCommand;
 
 @end

@@ -46,6 +46,9 @@
     RAC(self.viewModel, password) = self.view.passwordTextField.rac_textSignal;
     RAC(self.viewModel, username) = self.view.usernameTextField.rac_textSignal;
     
+    RAC(self.view.usernameTextField, enabled) = RACObserve(self.viewModel, acceptInput);
+    RAC(self.view.passwordTextField, enabled) = RACObserve(self.viewModel, acceptInput);
+    
     @weakify(self);
     
     [[self.viewModel.loginCommand.executionSignals
