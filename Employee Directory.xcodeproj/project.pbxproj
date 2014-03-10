@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		15D799E218CA20A500BF116D /* EDALoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799E118CA20A500BF116D /* EDALoginViewController.m */; };
 		15D799E518CA20D400BF116D /* EDALoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799E418CA20D400BF116D /* EDALoginView.m */; };
-		15D799E918CA2DFC00BF116D /* EDALoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799E818CA2DFC00BF116D /* EDALoginModel.m */; };
+		15D799E918CA2DFC00BF116D /* EDALoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799E818CA2DFC00BF116D /* EDALoginViewModel.m */; };
 		15D799EE18CA32AD00BF116D /* EDAMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799EA18CA32AD00BF116D /* EDAMenuViewController.m */; };
 		15D799EF18CA32AD00BF116D /* EDASidebarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799EB18CA32AD00BF116D /* EDASidebarCell.m */; };
 		15D799F318CA41E400BF116D /* EDADirectoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799F218CA41E400BF116D /* EDADirectoryViewController.m */; };
@@ -39,6 +39,10 @@
 		D043A7D718CA1F8F0095F581 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A7D618CA1F8F0095F581 /* Social.framework */; };
 		D043A7D918CA1F930095F581 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A7D818CA1F930095F581 /* SystemConfiguration.framework */; };
 		D043A7DC18CA236F0095F581 /* BLAPaneController.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7DB18CA236F0095F581 /* BLAPaneController.m */; };
+		D043A7E618CA2BEB0095F581 /* EDAEmployee.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7E518CA2BEB0095F581 /* EDAEmployee.m */; };
+		D043A7E918CA3B880095F581 /* KCSUser+RAC.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7E818CA3B880095F581 /* KCSUser+RAC.m */; };
+		D043A7EC18CA40D10095F581 /* EDAEmployee+API.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7EB18CA40D10095F581 /* EDAEmployee+API.m */; };
+		D043A7EF18CA41420095F581 /* KCSAppdataStore+RAC.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7EE18CA41420095F581 /* KCSAppdataStore+RAC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,8 +60,8 @@
 		15D799E118CA20A500BF116D /* EDALoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDALoginViewController.m; path = "Employee Directory/EDALoginViewController.m"; sourceTree = "<group>"; };
 		15D799E318CA20D400BF116D /* EDALoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDALoginView.h; path = "Employee Directory/EDALoginView.h"; sourceTree = "<group>"; };
 		15D799E418CA20D400BF116D /* EDALoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDALoginView.m; path = "Employee Directory/EDALoginView.m"; sourceTree = "<group>"; };
-		15D799E718CA2DFC00BF116D /* EDALoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDALoginModel.h; path = "Employee Directory/EDALoginModel.h"; sourceTree = "<group>"; };
-		15D799E818CA2DFC00BF116D /* EDALoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDALoginModel.m; path = "Employee Directory/EDALoginModel.m"; sourceTree = "<group>"; };
+		15D799E718CA2DFC00BF116D /* EDALoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDALoginViewModel.h; path = "Employee Directory/EDALoginViewModel.h"; sourceTree = "<group>"; };
+		15D799E818CA2DFC00BF116D /* EDALoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDALoginViewModel.m; path = "Employee Directory/EDALoginViewModel.m"; sourceTree = "<group>"; };
 		15D799EA18CA32AD00BF116D /* EDAMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAMenuViewController.m; sourceTree = "<group>"; };
 		15D799EB18CA32AD00BF116D /* EDASidebarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDASidebarCell.m; sourceTree = "<group>"; };
 		15D799EC18CA32AD00BF116D /* EDASidebarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDASidebarCell.h; sourceTree = "<group>"; };
@@ -100,6 +104,14 @@
 		D043A7D818CA1F930095F581 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D043A7DA18CA236F0095F581 /* BLAPaneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLAPaneController.h; sourceTree = "<group>"; };
 		D043A7DB18CA236F0095F581 /* BLAPaneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLAPaneController.m; sourceTree = "<group>"; };
+		D043A7E418CA2BEB0095F581 /* EDAEmployee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAEmployee.h; sourceTree = "<group>"; };
+		D043A7E518CA2BEB0095F581 /* EDAEmployee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAEmployee.m; sourceTree = "<group>"; };
+		D043A7E718CA3B880095F581 /* KCSUser+RAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KCSUser+RAC.h"; sourceTree = "<group>"; };
+		D043A7E818CA3B880095F581 /* KCSUser+RAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KCSUser+RAC.m"; sourceTree = "<group>"; };
+		D043A7EA18CA40D10095F581 /* EDAEmployee+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EDAEmployee+API.h"; sourceTree = "<group>"; };
+		D043A7EB18CA40D10095F581 /* EDAEmployee+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EDAEmployee+API.m"; sourceTree = "<group>"; };
+		D043A7ED18CA41420095F581 /* KCSAppdataStore+RAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KCSAppdataStore+RAC.h"; sourceTree = "<group>"; };
+		D043A7EE18CA41420095F581 /* KCSAppdataStore+RAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KCSAppdataStore+RAC.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,8 +154,8 @@
 				15D799E418CA20D400BF116D /* EDALoginView.m */,
 				15D799E018CA20A500BF116D /* EDALoginViewController.h */,
 				15D799E118CA20A500BF116D /* EDALoginViewController.m */,
-				15D799E718CA2DFC00BF116D /* EDALoginModel.h */,
-				15D799E818CA2DFC00BF116D /* EDALoginModel.m */,
+				15D799E718CA2DFC00BF116D /* EDALoginViewModel.h */,
+				15D799E818CA2DFC00BF116D /* EDALoginViewModel.m */,
 			);
 			name = LoginScreen;
 			path = ..;
@@ -169,7 +181,10 @@
 				D043A79318CA1D870095F581 /* Products */,
 				86DEC729436F499C87A944EF /* Pods.xcconfig */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
+			usesTabs = 0;
 		};
 		D043A79318CA1D870095F581 /* Products */ = {
 			isa = PBXGroup;
@@ -221,6 +236,14 @@
 				D043A7AB18CA1D870095F581 /* EDAViewController.m */,
 				D043A7AD18CA1D870095F581 /* Images.xcassets */,
 				D043A79C18CA1D870095F581 /* Supporting Files */,
+				D043A7E418CA2BEB0095F581 /* EDAEmployee.h */,
+				D043A7E518CA2BEB0095F581 /* EDAEmployee.m */,
+				D043A7E718CA3B880095F581 /* KCSUser+RAC.h */,
+				D043A7E818CA3B880095F581 /* KCSUser+RAC.m */,
+				D043A7EA18CA40D10095F581 /* EDAEmployee+API.h */,
+				D043A7EB18CA40D10095F581 /* EDAEmployee+API.m */,
+				D043A7ED18CA41420095F581 /* KCSAppdataStore+RAC.h */,
+				D043A7EE18CA41420095F581 /* KCSAppdataStore+RAC.m */,
 			);
 			path = "Employee Directory";
 			sourceTree = "<group>";
@@ -392,10 +415,16 @@
 				15D799E918CA2DFC00BF116D /* EDALoginModel.m in Sources */,
 				15D799EF18CA32AD00BF116D /* EDASidebarCell.m in Sources */,
 				15D799F318CA41E400BF116D /* EDADirectoryViewController.m in Sources */,
+				15D799E918CA2DFC00BF116D /* EDALoginViewModel.m in Sources */,
+				15D799EF18CA32AD00BF116D /* EDASidebarCell.m in Sources */,
+				D043A7EC18CA40D10095F581 /* EDAEmployee+API.m in Sources */,
 				D043A7AC18CA1D870095F581 /* EDAViewController.m in Sources */,
+				D043A7E618CA2BEB0095F581 /* EDAEmployee.m in Sources */,
 				15D799E518CA20D400BF116D /* EDALoginView.m in Sources */,
+				D043A7E918CA3B880095F581 /* KCSUser+RAC.m in Sources */,
 				D043A7DC18CA236F0095F581 /* BLAPaneController.m in Sources */,
 				15D799F618CA476F00BF116D /* EDADirectoryViewModel.m in Sources */,
+				D043A7EF18CA41420095F581 /* KCSAppdataStore+RAC.m in Sources */,
 				15D799E218CA20A500BF116D /* EDALoginViewController.m in Sources */,
 				D043A7A218CA1D870095F581 /* main.m in Sources */,
 				D043A7A618CA1D870095F581 /* EDAAppDelegate.m in Sources */,
@@ -451,10 +480,12 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -468,10 +499,20 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
@@ -490,10 +531,12 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -501,10 +544,20 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				SDKROOT = iphoneos;
@@ -542,6 +595,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Employee Directory/Employee Directory-Prefix.pch";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "Employee Directory/Employee Directory-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

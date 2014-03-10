@@ -9,6 +9,7 @@
 #import "EDAMenuViewController.h"
 
 #import "EDASidebarCell.h"
+#import "EDALoginViewController.h"
 
 NSString * const EDAMenuViewControllerIdentifierYourInfo = @"Your Info";
 NSString * const EDAMenuViewControllerIdentifierDirectory = @"Directory";
@@ -36,10 +37,43 @@ NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
             
             RACTupleUnpack(NSString *identifier, UITableView *tableView) = arguments;
             
-            // Do something for `identifier`
-            
             NSIndexPath *indexPath = [self indexPathForIdentifier:identifier];
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        }];
+    
+    RACSignal *selectedIdentifierSignal = [[self rac_signalForSelector:@selector(didSelectRowWithIdentifier:withTableView:)]
+        // Reduce the signal to send only the identifier
+        reduceEach:^NSString *(NSString *identifier, UITableView *tableView){
+            return identifier;
+        }];
+    
+    [selectedIdentifierSignal subscribeNext:^(NSString *identifier) {
+        @strongify(self);
+        
+        if ([identifier isEqualToString:EDAMenuViewControllerIdentifierLogOut]) {
+            [self logOut];
+        }
+    }];
+}
+
+#pragma mark - Actions
+
+- (void)logOut {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Are you sure you want to log out?" message:nil delegate:nil cancelButtonTitle:@"Cancel" otherButtonTitles:@"Log Out", nil];
+    [alertView show];
+    
+    @weakify(self);
+    
+    [[alertView.rac_buttonClickedSignal
+        filter:^BOOL(NSNumber *button) {
+            return button.integerValue == 1;
+        }]
+        subscribeNext:^(id x) {
+            @strongify(self);
+            
+            [[KCSUser activeUser] logout];
+            
+            [self presentViewController:[[UINavigationController alloc] initWithRootViewController:[EDALoginViewController new]] animated:YES completion:NULL];
         }];
 }
 

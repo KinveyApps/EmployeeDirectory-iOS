@@ -8,12 +8,12 @@
 
 #import "EDALoginViewController.h"
 
-#import "EDALoginModel.h"
+#import "EDALoginViewModel.h"
 #import "EDALoginView.h"
 
 @interface EDALoginViewController ()
 
-@property (nonatomic) EDALoginModel *viewModel;
+@property (nonatomic) EDALoginViewModel *viewModel;
 @property (nonatomic) EDALoginView *view;
 
 @end
@@ -24,8 +24,9 @@
 {
     self = [super init];
     if (self) {
-        _viewModel = [[EDALoginModel alloc] init];
+        _viewModel = [[EDALoginViewModel alloc] init];
         
+        self.title = @"Log In";
         self.edgesForExtendedLayout = UIRectEdgeNone;
         self.navigationItem.rightBarButtonItem = [self loginBarButtonItem];
     }
@@ -40,15 +41,36 @@
 {
     [super viewDidLoad];
     
+    [self.view.usernameTextField becomeFirstResponder];
+    
     RAC(self.viewModel, password) = self.view.passwordTextField.rac_textSignal;
     RAC(self.viewModel, username) = self.view.usernameTextField.rac_textSignal;
+    
+    RAC(self.view.usernameTextField, enabled) = RACObserve(self.viewModel, acceptInput);
+    RAC(self.view.passwordTextField, enabled) = RACObserve(self.viewModel, acceptInput);
+    
+    @weakify(self);
+    
+    [[self.viewModel.loginCommand.executionSignals
+        flatten]
+        subscribeNext:^(KCSUser *user) {
+            @strongify(self);
+            
+            [self dismissViewControllerAnimated:YES completion:NULL];
+        }];
+    
+    [self rac_liftSelector:@selector(handleError:) withSignals:self.viewModel.loginCommand.errors, nil];
 }
 
 - (UIBarButtonItem *)loginBarButtonItem {
-    UIBarButtonItem *loginItem = [[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStylePlain target:nil action:nil];
+    UIBarButtonItem *loginItem = [[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStyleDone target:nil action:nil];
     loginItem.rac_command = self.viewModel.loginCommand;
     
     return loginItem;
+}
+
+- (void)handleError:(NSError *)error {
+    [[[UIAlertView alloc] initWithTitle:error.localizedDescription message:error.localizedFailureReason delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
 }
 
 @end
