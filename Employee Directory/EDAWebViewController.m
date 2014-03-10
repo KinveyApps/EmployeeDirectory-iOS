@@ -22,7 +22,7 @@
     self = [super init];
     if (self) {
         _URL = URL;
-        _shouldLoadURLSignal = [[[self rac_signalForSelector:@selector(webView:shouldStartLoadWithRequest:navigationType:) fromProtocol:@protocol(UIWebViewDelegate)]
+        RACSignal *shouldLoadSignal = [[[self rac_signalForSelector:@selector(webView:shouldStartLoadWithRequest:navigationType:) fromProtocol:@protocol(UIWebViewDelegate)]
             reduceEach:^NSURL *(UIWebView *webView, NSURLRequest *request, NSNumber *navigationType){
                 return request.URL;
             }]
@@ -30,6 +30,15 @@
                 BOOL equal = [URL.absoluteString isEqual:aURL.absoluteString];
                 return equal == NO;
             }];
+        RACSignal *errorSignal = [[[self rac_signalForSelector:@selector(webView:didFailLoadWithError:) fromProtocol:@protocol(UIWebViewDelegate)]
+            reduceEach:^NSError *(UIWebView *webView, NSError *error){
+                return error;
+            }]
+            flattenMap:^RACStream *(NSError *error) {
+                return [RACSignal error:error];
+            }];
+        
+        _shouldLoadURLSignal = [RACSignal merge:@[ shouldLoadSignal, errorSignal ]];
     }
     return self;
 }
@@ -44,6 +53,10 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     return YES;
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    
 }
 
 @end
