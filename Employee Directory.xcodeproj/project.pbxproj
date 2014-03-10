@@ -23,7 +23,6 @@
 		D043A7A018CA1D870095F581 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D043A79E18CA1D870095F581 /* InfoPlist.strings */; };
 		D043A7A218CA1D870095F581 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7A118CA1D870095F581 /* main.m */; };
 		D043A7A618CA1D870095F581 /* EDAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7A518CA1D870095F581 /* EDAAppDelegate.m */; };
-		D043A7AC18CA1D870095F581 /* EDAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7AB18CA1D870095F581 /* EDAViewController.m */; };
 		D043A7AE18CA1D870095F581 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D043A7AD18CA1D870095F581 /* Images.xcassets */; };
 		D043A7B518CA1D870095F581 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A7B418CA1D870095F581 /* XCTest.framework */; };
 		D043A7B618CA1D870095F581 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79518CA1D870095F581 /* Foundation.framework */; };
@@ -88,8 +87,6 @@
 		D043A7A318CA1D870095F581 /* Employee Directory-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Employee Directory-Prefix.pch"; sourceTree = "<group>"; };
 		D043A7A418CA1D870095F581 /* EDAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EDAAppDelegate.h; sourceTree = "<group>"; };
 		D043A7A518CA1D870095F581 /* EDAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EDAAppDelegate.m; sourceTree = "<group>"; };
-		D043A7AA18CA1D870095F581 /* EDAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EDAViewController.h; sourceTree = "<group>"; };
-		D043A7AB18CA1D870095F581 /* EDAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EDAViewController.m; sourceTree = "<group>"; };
 		D043A7AD18CA1D870095F581 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D043A7B318CA1D870095F581 /* Employee DirectoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Employee DirectoryTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D043A7B418CA1D870095F581 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -224,36 +221,12 @@
 		D043A79B18CA1D870095F581 /* Employee Directory */ = {
 			isa = PBXGroup;
 			children = (
-				15D799F718CA4E3A00BF116D /* EDADirectoryCellViewModel.h */,
-				15D799F818CA4E3A00BF116D /* EDADirectoryCellViewModel.m */,
-				15D799F418CA476F00BF116D /* EDADirectoryViewModel.h */,
-				15D799F518CA476F00BF116D /* EDADirectoryViewModel.m */,
-				15D799FA18CA524200BF116D /* EDADirectoryCell.h */,
-				15D799FB18CA524200BF116D /* EDADirectoryCell.m */,
-				15D799F118CA41E400BF116D /* EDADirectoryViewController.h */,
-				15D799F218CA41E400BF116D /* EDADirectoryViewController.m */,
-				15D799F018CA32BE00BF116D /* Menu */,
-				15D799E618CA20F500BF116D /* LoginScreen */,
-				D043A7DA18CA236F0095F581 /* BLAPaneController.h */,
-				D043A7DB18CA236F0095F581 /* BLAPaneController.m */,
+				D09AFF9F18CE28030015C400 /* Model */,
+				D09AFFA018CE28180015C400 /* View Controllers */,
 				D043A7A418CA1D870095F581 /* EDAAppDelegate.h */,
 				D043A7A518CA1D870095F581 /* EDAAppDelegate.m */,
-				D043A7AA18CA1D870095F581 /* EDAViewController.h */,
-				D043A7AB18CA1D870095F581 /* EDAViewController.m */,
 				D043A7AD18CA1D870095F581 /* Images.xcassets */,
 				D043A79C18CA1D870095F581 /* Supporting Files */,
-				D043A7E418CA2BEB0095F581 /* EDAEmployee.h */,
-				D043A7E518CA2BEB0095F581 /* EDAEmployee.m */,
-				D043A7E718CA3B880095F581 /* KCSUser+RAC.h */,
-				D043A7E818CA3B880095F581 /* KCSUser+RAC.m */,
-				D043A7EA18CA40D10095F581 /* EDAEmployee+API.h */,
-				D043A7EB18CA40D10095F581 /* EDAEmployee+API.m */,
-				D043A7ED18CA41420095F581 /* KCSAppdataStore+RAC.h */,
-				D043A7EE18CA41420095F581 /* KCSAppdataStore+RAC.m */,
-				D09AFF9718CDFBE90015C400 /* EDALinkedInManager.h */,
-				D09AFF9818CDFBE90015C400 /* EDALinkedInManager.m */,
-				D09AFF9A18CDFF340015C400 /* EDAWebViewController.h */,
-				D09AFF9B18CDFF340015C400 /* EDAWebViewController.m */,
 			);
 			path = "Employee Directory";
 			sourceTree = "<group>";
@@ -285,6 +258,60 @@
 				D043A7BD18CA1D870095F581 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D09AFF9D18CE27E60015C400 /* Directory */ = {
+			isa = PBXGroup;
+			children = (
+				15D799FA18CA524200BF116D /* EDADirectoryCell.h */,
+				15D799FB18CA524200BF116D /* EDADirectoryCell.m */,
+				15D799F718CA4E3A00BF116D /* EDADirectoryCellViewModel.h */,
+				15D799F818CA4E3A00BF116D /* EDADirectoryCellViewModel.m */,
+				15D799F118CA41E400BF116D /* EDADirectoryViewController.h */,
+				15D799F218CA41E400BF116D /* EDADirectoryViewController.m */,
+				15D799F418CA476F00BF116D /* EDADirectoryViewModel.h */,
+				15D799F518CA476F00BF116D /* EDADirectoryViewModel.m */,
+			);
+			name = Directory;
+			sourceTree = "<group>";
+		};
+		D09AFF9E18CE27F60015C400 /* Kinvey Categories */ = {
+			isa = PBXGroup;
+			children = (
+				D043A7E718CA3B880095F581 /* KCSUser+RAC.h */,
+				D043A7E818CA3B880095F581 /* KCSUser+RAC.m */,
+				D043A7ED18CA41420095F581 /* KCSAppdataStore+RAC.h */,
+				D043A7EE18CA41420095F581 /* KCSAppdataStore+RAC.m */,
+			);
+			name = "Kinvey Categories";
+			sourceTree = "<group>";
+		};
+		D09AFF9F18CE28030015C400 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D09AFF9718CDFBE90015C400 /* EDALinkedInManager.h */,
+				D09AFF9818CDFBE90015C400 /* EDALinkedInManager.m */,
+				D09AFF9E18CE27F60015C400 /* Kinvey Categories */,
+				D043A7E418CA2BEB0095F581 /* EDAEmployee.h */,
+				D043A7E518CA2BEB0095F581 /* EDAEmployee.m */,
+				D043A7EA18CA40D10095F581 /* EDAEmployee+API.h */,
+				D043A7EB18CA40D10095F581 /* EDAEmployee+API.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		D09AFFA018CE28180015C400 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D09AFF9D18CE27E60015C400 /* Directory */,
+				15D799F018CA32BE00BF116D /* Menu */,
+				15D799E618CA20F500BF116D /* LoginScreen */,
+				D043A7DA18CA236F0095F581 /* BLAPaneController.h */,
+				D043A7DB18CA236F0095F581 /* BLAPaneController.m */,
+				D09AFF9A18CDFF340015C400 /* EDAWebViewController.h */,
+				D09AFF9B18CDFF340015C400 /* EDAWebViewController.m */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -424,7 +451,6 @@
 				15D799F918CA4E3A00BF116D /* EDADirectoryCellViewModel.m in Sources */,
 				15D799F318CA41E400BF116D /* EDADirectoryViewController.m in Sources */,
 				D043A7EC18CA40D10095F581 /* EDAEmployee+API.m in Sources */,
-				D043A7AC18CA1D870095F581 /* EDAViewController.m in Sources */,
 				D043A7E618CA2BEB0095F581 /* EDAEmployee.m in Sources */,
 				D09AFF9C18CDFF340015C400 /* EDAWebViewController.m in Sources */,
 				15D799E518CA20D400BF116D /* EDALoginView.m in Sources */,
