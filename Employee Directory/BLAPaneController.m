@@ -10,20 +10,17 @@
 
 NSTimeInterval const kSidebarTransitionDuration = 0.25;
 
-@interface BLAPaneController () {
-	UIViewController *_rootViewController;
-	UIViewController *_sidebarViewController;
-	
-	UIView *_shadowView;
-	UIView *_containerView;
-	
-	BOOL _sidebarVisible;
-	
-	UIPanGestureRecognizer *_gestureRecognizer;
-	CGRect _currentRootBaseFrame;
-	BOOL _rootViewIsBeingSlid;
-	UITapGestureRecognizer *_tapRecognizer;
-}
+@interface BLAPaneController ()
+
+@property (nonatomic) UIViewController *rootViewController;
+@property (nonatomic) UIViewController *sidebarViewController;
+@property (nonatomic) UIView *shadowView;
+@property (nonatomic) UIView *containerView;
+@property (nonatomic) BOOL sidebarVisible;
+@property (nonatomic) UIPanGestureRecognizer *gestureRecognizer;
+@property (nonatomic) CGRect currentRootBaseFrame;
+@property (nonatomic) BOOL rootViewIsBeingSLid;
+@property (nonatomic) UITapGestureRecognizer *tapRecognizer;
 
 - (void)addShadowToView:(UIView *)view;
 - (void)addSidebarToView;
@@ -39,8 +36,6 @@ NSTimeInterval const kSidebarTransitionDuration = 0.25;
 @end
 
 @implementation BLAPaneController
-
-@synthesize sidebarWidthWhenVisible = _sidebarWidthWhenVisible;
 
 - (id)initWithRootViewController:(UIViewController *)rootViewController sidebarViewController:(UIViewController *)sidebarViewController {
 	self = [super init];
@@ -60,36 +55,28 @@ NSTimeInterval const kSidebarTransitionDuration = 0.25;
 #pragma mark - Accessors
 
 - (NSArray *)viewControllers {
-	if (!_rootViewController) return [NSArray array];
+	if (self.rootViewController == nil) return @[];
 	
-	return [NSArray arrayWithObject:_rootViewController];
-}
-
-- (BOOL)isSidebarVisible {
-	return _sidebarVisible;
+	return [NSArray arrayWithObject:self.rootViewController];
 }
 
 #pragma mark - Public Methods
 
-- (UIViewController *)sidebarViewController {
-	return _sidebarViewController;
-}
-
 - (UIViewController *)topViewController {
-	return _rootViewController;
+	return self.rootViewController;
 }
 
 - (UIViewController *)visibleViewController {
-	return _rootViewController;
+    return self.rootViewController;
 }
 
 - (void)showSidebar:(BOOL)showSidebar animated:(BOOL)animated {
-	if (_sidebarVisible == showSidebar) {
+	if (self.sidebarVisible == showSidebar) {
 		[self showSidebar:!showSidebar animated:animated];
 		return;
 	}
 	
-	_sidebarVisible = showSidebar;
+	self.sidebarVisible = showSidebar;
 
 	NSTimeInterval duration = 0;
 	if (animated) duration = kSidebarTransitionDuration;
@@ -100,11 +87,11 @@ NSTimeInterval const kSidebarTransitionDuration = 0.25;
 	void (^completion)(BOOL);
 	
 	if (showSidebar) {
-		CGRect rootFrame = _containerView.frame;
+		CGRect rootFrame = self.containerView.frame;
 		rootFrame.origin.x = self.sidebarWidthWhenVisible;
 		
 		animation = ^{
-			_containerView.frame = rootFrame;
+			self.containerView.frame = rootFrame;
 		};
 		
 		completion = ^(BOOL finished){
@@ -114,17 +101,17 @@ NSTimeInterval const kSidebarTransitionDuration = 0.25;
 		
 		[self addSidebarToView];
 		
-		_tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedRootViewController:)];
-		[_rootViewController.view addGestureRecognizer:_tapRecognizer];
+		self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedRootViewController:)];
+		[self.rootViewController.view addGestureRecognizer:self.tapRecognizer];
 	}
 	else {
-		[_sidebarViewController willMoveToParentViewController:nil];
+		[self.sidebarViewController willMoveToParentViewController:nil];
 		
-		CGRect rootFrame = _containerView.frame;
+		CGRect rootFrame = self.containerView.frame;
 		rootFrame.origin.x = 0;
 		
 		animation = ^{
-			_containerView.frame = rootFrame;
+			self.containerView.frame = rootFrame;
 		};
 
 		completion = ^(BOOL finished){
@@ -133,8 +120,8 @@ NSTimeInterval const kSidebarTransitionDuration = 0.25;
 		
 		animationCurve = UIViewAnimationOptionCurveEaseInOut;
 		
-		[_rootViewController.view removeGestureRecognizer:_tapRecognizer];
-		_tapRecognizer = nil;
+		[self.rootViewController.view removeGestureRecognizer:self.tapRecognizer];
+		self.tapRecognizer = nil;
 	}
 	
 	if (animated) {
@@ -151,29 +138,29 @@ NSTimeInterval const kSidebarTransitionDuration = 0.25;
 }
 
 - (void)presentNewRootViewController:(UIViewController *)viewController {
-	[_rootViewController willMoveToParentViewController:nil];
+	[self.rootViewController willMoveToParentViewController:nil];
 	
 	[self addChildViewController:viewController];
 	
-	CGRect frame = _rootViewController.view.frame;
+	CGRect frame = self.rootViewController.view.frame;
 	viewController.view.frame = frame;
 	[self addShadowToView:viewController.view];
 	
-	UIViewController *oldRootViewController = _rootViewController;
-	_rootViewController = viewController;
+	UIViewController *oldRootViewController = self.rootViewController;
+	self.rootViewController = viewController;
 	
 	[self transitionFromViewController:oldRootViewController 
-					  toViewController:_rootViewController
+					  toViewController:self.rootViewController
 							  duration:0
 							   options:UIViewAnimationOptionTransitionCrossDissolve
 							animations:^{
 								[oldRootViewController.view removeFromSuperview];
 								
-								[_containerView addSubview:_rootViewController.view];
+								[self.containerView addSubview:self.rootViewController.view];
 							} 
 							completion:^(BOOL finished){
 								[oldRootViewController removeFromParentViewController];
-								[_rootViewController didMoveToParentViewController:self];
+								[self.rootViewController didMoveToParentViewController:self];
 								
 								if (self.sidebarVisible == YES) {
 									[self showSidebar:NO animated:YES];
@@ -196,21 +183,17 @@ NSTimeInterval const kSidebarTransitionDuration = 0.25;
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
-	_containerView = [[UIView alloc] initWithFrame:self.view.bounds];
-	[self.view addSubview:_containerView];
+	self.containerView = [[UIView alloc] initWithFrame:self.view.bounds];
+	[self.view addSubview:self.containerView];
 
-	CGRect initialRootFrame = _containerView.bounds;
+	CGRect initialRootFrame = self.containerView.bounds;
 	
-	_rootViewController.view.frame = initialRootFrame;
-	[_containerView addSubview:_rootViewController.view];
+	self.rootViewController.view.frame = initialRootFrame;
+	[self.containerView addSubview:self.rootViewController.view];
 	
-	[self addShadowToView:_rootViewController.view];
+	[self addShadowToView:self.rootViewController.view];
 	
-	[_rootViewController didMoveToParentViewController:self];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
-	return toInterfaceOrientation == UIInterfaceOrientationPortrait;
+	[self.rootViewController didMoveToParentViewController:self];
 }
 
 #pragma mark - Private Methods
@@ -220,9 +203,9 @@ NSTimeInterval const kSidebarTransitionDuration = 0.25;
 	shadowFrame.size.width = 10;
 	shadowFrame.origin.x = -shadowFrame.size.width;
 	
-	_shadowView = [[UIImageView alloc] initWithImage:[self defaultShadowImage]];
-	_shadowView.frame = shadowFrame;
-	[view addSubview:_shadowView];
+	self.shadowView = [[UIImageView alloc] initWithImage:[self defaultShadowImage]];
+	self.shadowView.frame = shadowFrame;
+	[view addSubview:self.shadowView];
 }
 
 - (void)tappedRootViewController:(UIGestureRecognizer *)gestureRecognizer {
@@ -230,70 +213,69 @@ NSTimeInterval const kSidebarTransitionDuration = 0.25;
 }
 
 - (void)addSidebarToView {
-	[self addChildViewController:_sidebarViewController];
+	[self addChildViewController:self.sidebarViewController];
 	
 	CGRect sidebarFrame;
 	sidebarFrame.origin = CGPointZero;
 	sidebarFrame.size.width = self.sidebarWidthWhenVisible;
 	sidebarFrame.size.height = self.view.bounds.size.height;
 	
-	UIView *sidebarView = _sidebarViewController.view;
+	UIView *sidebarView = self.sidebarViewController.view;
 	sidebarView.frame = sidebarFrame;
 
 	[self.view addSubview:sidebarView];
 	[self.view sendSubviewToBack:sidebarView];
 
-	[_sidebarViewController didMoveToParentViewController:self];
+	[self.sidebarViewController didMoveToParentViewController:self];
 	
-	_sidebarVisible = YES;
+	self.sidebarVisible = YES;
 }
 
 - (void)removeSidebarFromView {
-	UIView *sidebarView = _sidebarViewController.view;
+	UIView *sidebarView = self.sidebarViewController.view;
 
 	[sidebarView removeFromSuperview];
-	[_sidebarViewController removeFromParentViewController];
+	[self.sidebarViewController removeFromParentViewController];
 	
-	_sidebarVisible = NO;
+	self.sidebarVisible = NO;
 }
 
 - (void)addShowSidebarGestureRecognizer {
-	_gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
-	[self.view addGestureRecognizer:_gestureRecognizer];
+	self.gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
+	[self.view addGestureRecognizer:self.gestureRecognizer];
 }
 
 - (void)handlePanGesture:(UIPanGestureRecognizer *)gestureRecognizer {
-	if (!_rootViewIsBeingSlid) {
-		_currentRootBaseFrame = _rootViewController.view.frame;
+	if (!self.rootViewIsBeingSLid) {
+		self.currentRootBaseFrame = self.rootViewController.view.frame;
 	}
 	
-	if (!_sidebarVisible) {
+	if (!self.sidebarVisible) {
 		[self addSidebarToView];
 	}
 	
 	CGPoint translation = [gestureRecognizer translationInView:self.view];
 	
-	if (_currentRootBaseFrame.origin.x + translation.x > self.sidebarWidthWhenVisible) translation.x = self.sidebarWidthWhenVisible - _currentRootBaseFrame.origin.x;
-	if (_currentRootBaseFrame.origin.x + translation.x < 0) translation.x = 0 - _currentRootBaseFrame.origin.x;
+	if (self.currentRootBaseFrame.origin.x + translation.x > self.sidebarWidthWhenVisible) translation.x = self.sidebarWidthWhenVisible - self.currentRootBaseFrame.origin.x;
+	if (self.currentRootBaseFrame.origin.x + translation.x < 0) translation.x = 0 - self.currentRootBaseFrame.origin.x;
 	
-	CGRect rootViewFrame = _currentRootBaseFrame;
+	CGRect rootViewFrame = self.currentRootBaseFrame;
 	rootViewFrame.origin.x += translation.x;
 	
 	[UIView animateWithDuration:0.01 
 						  delay:0 
 						options:UIViewAnimationOptionCurveLinear
 					 animations:^{
-						_rootViewController.view.frame = rootViewFrame;						 
+						self.rootViewController.view.frame = rootViewFrame;
 					 } completion:^(BOOL finished){}];
 	
-	_rootViewIsBeingSlid = YES;
-	NSLog(@"%f, %f %i", translation.x, translation.y, gestureRecognizer.state);
+	self.rootViewIsBeingSLid = YES;
 	
 	if (gestureRecognizer.state == UIGestureRecognizerStateEnded || gestureRecognizer.state == UIGestureRecognizerStateCancelled || gestureRecognizer.state == UIGestureRecognizerStateFailed) {
 		CGFloat distanceToHiddenSidebar = rootViewFrame.origin.x - 0;
 		CGFloat distanceToVisibleSidebar = self.sidebarWidthWhenVisible - rootViewFrame.origin.x;
 		
-		CGRect newRootViewFrame = _currentRootBaseFrame;
+		CGRect newRootViewFrame = self.currentRootBaseFrame;
 		
 		if (distanceToHiddenSidebar < distanceToVisibleSidebar) {
 			newRootViewFrame.origin.x = 0;
@@ -306,9 +288,9 @@ NSTimeInterval const kSidebarTransitionDuration = 0.25;
 							  delay:0 
 							options:UIViewAnimationOptionCurveEaseOut
 						 animations:^{
-							 _rootViewController.view.frame = newRootViewFrame; 
+							 self.rootViewController.view.frame = newRootViewFrame;
 						 } completion:^(BOOL finished){
-							 _rootViewIsBeingSlid = NO;
+							 self.rootViewIsBeingSLid = NO;
 							 if (newRootViewFrame.origin.x == 0) {
 								 [self removeSidebarFromView];
 							 }
