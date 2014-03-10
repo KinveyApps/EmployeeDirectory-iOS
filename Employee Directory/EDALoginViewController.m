@@ -10,6 +10,7 @@
 
 #import "EDALoginViewModel.h"
 #import "EDALoginView.h"
+#import "EDALinkedInManager.h"
 
 @interface EDALoginViewController ()
 
@@ -24,7 +25,7 @@
 {
     self = [super init];
     if (self) {
-        _viewModel = [[EDALoginViewModel alloc] init];
+        _viewModel = [[EDALoginViewModel alloc] initWithViewController:self];
         
         self.title = @"Log In";
         self.edgesForExtendedLayout = UIRectEdgeNone;

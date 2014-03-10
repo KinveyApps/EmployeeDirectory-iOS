@@ -16,4 +16,6 @@
 
 @property (readonly, nonatomic) RACCommand *loginCommand;
 
+- (id)initWithViewController:(UIViewController *)viewController; // A view controller is needed to present the LinkedIn authorization view
+
 @end
