@@ -8,8 +8,10 @@
 
 #import "EDAMenuViewController.h"
 
-#import "EDASidebarCell.h"
+#import "BLAPaneController.h"
+#import "EDADirectoryViewController.h"
 #import "EDALoginViewController.h"
+#import "EDASidebarCell.h"
 
 NSString * const EDAMenuViewControllerIdentifierYourInfo = @"Your Info";
 NSString * const EDAMenuViewControllerIdentifierDirectory = @"Directory";
@@ -98,6 +100,9 @@ NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
     }
     else if ([identifier isEqualToString:EDAMenuViewControllerIdentifierDirectory]) {
         title = @"Directory";
+        EDADirectoryViewController *viewController = [[EDADirectoryViewController alloc] init];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+        [self.paneController presentNewRootViewController:navigationController];
     }
     else if ([identifier isEqualToString:EDAMenuViewControllerIdentifierLogOut]) {
         title = @"Log Out";

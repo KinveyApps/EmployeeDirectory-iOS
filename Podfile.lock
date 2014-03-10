@@ -18,6 +18,8 @@ PODS:
   - AFNetworking/UIKit (2.2.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - EPSReactiveTableViewController (1.1.0):
+    - ReactiveCocoa (~> 2.2.4)
   - EPSStaticTableViewController (1.0.1)
   - ReactiveCocoa (2.2.4):
     - ReactiveCocoa/Core
@@ -28,11 +30,13 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.2)
+  - EPSReactiveTableViewController
   - EPSStaticTableViewController
   - ReactiveCocoa (~> 2.2)
 
 SPEC CHECKSUMS:
   AFNetworking: e8cfd8f3fe3bfe19124a0cc63f4d45752d892a56
+  EPSReactiveTableViewController: 16fcb2c7e6714d6ef3d0d3b2d260c1a36f6464d2
   EPSStaticTableViewController: 9dbcf8fb92834ccbd28439a250e44633159df60b
   ReactiveCocoa: 953a45dda30674fe704d1d9c77cc874141742f47
 

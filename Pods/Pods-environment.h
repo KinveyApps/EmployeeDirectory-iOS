@@ -48,6 +48,12 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 2
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 0
 
+// EPSReactiveTableViewController
+#define COCOAPODS_POD_AVAILABLE_EPSReactiveTableViewController
+#define COCOAPODS_VERSION_MAJOR_EPSReactiveTableViewController 1
+#define COCOAPODS_VERSION_MINOR_EPSReactiveTableViewController 1
+#define COCOAPODS_VERSION_PATCH_EPSReactiveTableViewController 0
+
 // EPSStaticTableViewController
 #define COCOAPODS_POD_AVAILABLE_EPSStaticTableViewController
 #define COCOAPODS_VERSION_MAJOR_EPSStaticTableViewController 1

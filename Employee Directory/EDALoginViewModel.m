@@ -8,25 +8,37 @@
 
 #import "EDALoginViewModel.h"
 
+#import "EDALinkedInManager.h"
+
 @interface EDALoginViewModel ()
 
+@property (weak, nonatomic) UIViewController *viewController;
 @property (readwrite, nonatomic) RACCommand *loginCommand;
 
 @end
 
 @implementation EDALoginViewModel
 
-- (id)init {
+- (id)initWithViewController:(UIViewController *)viewController {
     self = [super init];
     if (self == nil) return nil;
 
+    _viewController = viewController;
+    
+    @weakify(self);
+    
     RACSignal *enabled = [RACSignal
         combineLatest:@[ RACObserve(self, username), RACObserve(self, password) ]
         reduce:^NSNumber *(NSString *username, NSString *password){
             return @(username.length > 0 && password.length > 0);
         }];
     _loginCommand = [[RACCommand alloc] initWithEnabled:enabled signalBlock:^RACSignal *(id input) {
-        return [KCSUser rac_loginWithUsername:self.username password:self.password];
+        @strongify(self);
+        
+        return [[KCSUser rac_loginWithUsername:self.username password:self.password]
+            flattenMap:^RACStream *(KCSUser *user) {
+                return [[EDALinkedInManager sharedManager] authorizeWithLinkedInWithRootViewController:self.viewController];
+            }];
     }];
     
     RAC(self, acceptInput) = [self.loginCommand.executing not];

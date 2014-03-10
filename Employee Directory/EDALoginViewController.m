@@ -10,6 +10,7 @@
 
 #import "EDALoginViewModel.h"
 #import "EDALoginView.h"
+#import "EDALinkedInManager.h"
 
 @interface EDALoginViewController ()
 
@@ -24,9 +25,8 @@
 {
     self = [super init];
     if (self) {
-        _viewModel = [[EDALoginViewModel alloc] init];
-        
-        self.title = @"Log In";
+        _viewModel = [[EDALoginViewModel alloc] initWithViewController:self];
+        self.title = @"Employee Directory";
         self.edgesForExtendedLayout = UIRectEdgeNone;
         self.navigationItem.rightBarButtonItem = [self loginBarButtonItem];
     }
@@ -63,7 +63,7 @@
 }
 
 - (UIBarButtonItem *)loginBarButtonItem {
-    UIBarButtonItem *loginItem = [[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStyleDone target:nil action:nil];
+    UIBarButtonItem *loginItem = [[UIBarButtonItem alloc] initWithTitle:@"Log In" style:UIBarButtonItemStyleDone target:nil action:nil];
     loginItem.rac_command = self.viewModel.loginCommand;
     
     return loginItem;
