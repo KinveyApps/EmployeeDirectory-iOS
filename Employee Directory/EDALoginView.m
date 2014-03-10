@@ -43,7 +43,8 @@
     self.passwordTextField.borderStyle = UITextBorderStyleRoundedRect;
     self.passwordTextField.placeholder = @"password";
     self.passwordTextField.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.usernameTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    self.passwordTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    self.passwordTextField.secureTextEntry = YES;
     [self addSubview:self.passwordTextField];
     
     NSDictionary *views = @{ @"usernameTextField": self.usernameTextField,
