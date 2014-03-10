@@ -9,6 +9,7 @@
 #import "EDADirectoryViewModel.h"
 
 #import "EDADirectoryCellViewModel.h"
+#import "EDAEmployee+API.h"
 
 @implementation EDADirectoryViewModel
 
@@ -16,12 +17,11 @@
 {
     self = [super init];
     if (self) {
-        EDADirectoryCellViewModel *cellViewModel1 = [EDADirectoryCellViewModel new];
-        EDADirectoryCellViewModel *cellViewModel2 = [EDADirectoryCellViewModel new];
-        EDADirectoryCellViewModel *cellViewModel3 = [EDADirectoryCellViewModel new];
-        
-        self.employees = @[ cellViewModel1, cellViewModel2, cellViewModel3 ];
-
+        RAC(self, employees) = [[EDAEmployee allEmployees] map:^NSArray*(NSArray* employees) {
+            return [[employees.rac_sequence map:^EDADirectoryCellViewModel*(EDAEmployee* employee) {
+                return [[EDADirectoryCellViewModel alloc] initWithEmployee:employee];
+            }] array];
+        }];
     }
     return self;
 }
