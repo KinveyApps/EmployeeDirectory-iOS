@@ -11,6 +11,7 @@
 #import "BLAPaneController.h"
 #import "EDAMenuViewController.h"
 #import "EDALoginViewController.h"
+#import "EDAEmployeeDetailViewController.h"
 
 @implementation EDAAppDelegate
 
@@ -20,8 +21,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];
     
+    EDAEmployeeDetailViewController *viewController = [[EDAEmployeeDetailViewController alloc] init];
     BLAPaneController *paneController = [[BLAPaneController alloc] initWithRootViewController:[UIViewController new] sidebarViewController:[EDAMenuViewController new]];
-    self.window.rootViewController = paneController;
+    self.window.rootViewController = viewController;
     [paneController showSidebar:YES animated:NO];
     
     [paneController presentViewController:[[UINavigationController alloc] initWithRootViewController:[EDALoginViewController new]] animated:NO completion:NULL];
