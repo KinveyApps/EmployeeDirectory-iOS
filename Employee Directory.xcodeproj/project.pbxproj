@@ -12,6 +12,10 @@
 		15D799E918CA2DFC00BF116D /* EDALoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799E818CA2DFC00BF116D /* EDALoginModel.m */; };
 		15D799EE18CA32AD00BF116D /* EDAMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799EA18CA32AD00BF116D /* EDAMenuViewController.m */; };
 		15D799EF18CA32AD00BF116D /* EDASidebarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799EB18CA32AD00BF116D /* EDASidebarCell.m */; };
+		15D799F318CA41E400BF116D /* EDADirectoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799F218CA41E400BF116D /* EDADirectoryViewController.m */; };
+		15D799F618CA476F00BF116D /* EDADirectoryViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799F518CA476F00BF116D /* EDADirectoryViewModel.m */; };
+		15D799F918CA4E3A00BF116D /* EDADirectoryCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799F818CA4E3A00BF116D /* EDADirectoryCellViewModel.m */; };
+		15D799FC18CA524200BF116D /* EDADirectoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799FB18CA524200BF116D /* EDADirectoryCell.m */; };
 		84AFBA2E64C449BA8D7C730F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4432DA4CC140E7ACE15E20 /* libPods.a */; };
 		D043A79618CA1D870095F581 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79518CA1D870095F581 /* Foundation.framework */; };
 		D043A79818CA1D870095F581 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79718CA1D870095F581 /* CoreGraphics.framework */; };
@@ -58,6 +62,14 @@
 		15D799EB18CA32AD00BF116D /* EDASidebarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDASidebarCell.m; sourceTree = "<group>"; };
 		15D799EC18CA32AD00BF116D /* EDASidebarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDASidebarCell.h; sourceTree = "<group>"; };
 		15D799ED18CA32AD00BF116D /* EDAMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAMenuViewController.h; sourceTree = "<group>"; };
+		15D799F118CA41E400BF116D /* EDADirectoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDADirectoryViewController.h; sourceTree = "<group>"; };
+		15D799F218CA41E400BF116D /* EDADirectoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDADirectoryViewController.m; sourceTree = "<group>"; };
+		15D799F418CA476F00BF116D /* EDADirectoryViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDADirectoryViewModel.h; sourceTree = "<group>"; };
+		15D799F518CA476F00BF116D /* EDADirectoryViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDADirectoryViewModel.m; sourceTree = "<group>"; };
+		15D799F718CA4E3A00BF116D /* EDADirectoryCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDADirectoryCellViewModel.h; sourceTree = "<group>"; };
+		15D799F818CA4E3A00BF116D /* EDADirectoryCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDADirectoryCellViewModel.m; sourceTree = "<group>"; };
+		15D799FA18CA524200BF116D /* EDADirectoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDADirectoryCell.h; sourceTree = "<group>"; };
+		15D799FB18CA524200BF116D /* EDADirectoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDADirectoryCell.m; sourceTree = "<group>"; };
 		4B4432DA4CC140E7ACE15E20 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		86DEC729436F499C87A944EF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		D043A79218CA1D870095F581 /* Employee Directory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Employee Directory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -191,6 +203,14 @@
 		D043A79B18CA1D870095F581 /* Employee Directory */ = {
 			isa = PBXGroup;
 			children = (
+				15D799F718CA4E3A00BF116D /* EDADirectoryCellViewModel.h */,
+				15D799F818CA4E3A00BF116D /* EDADirectoryCellViewModel.m */,
+				15D799F418CA476F00BF116D /* EDADirectoryViewModel.h */,
+				15D799F518CA476F00BF116D /* EDADirectoryViewModel.m */,
+				15D799FA18CA524200BF116D /* EDADirectoryCell.h */,
+				15D799FB18CA524200BF116D /* EDADirectoryCell.m */,
+				15D799F118CA41E400BF116D /* EDADirectoryViewController.h */,
+				15D799F218CA41E400BF116D /* EDADirectoryViewController.m */,
 				15D799F018CA32BE00BF116D /* Menu */,
 				15D799E618CA20F500BF116D /* LoginScreen */,
 				D043A7DA18CA236F0095F581 /* BLAPaneController.h */,
@@ -367,11 +387,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				15D799EE18CA32AD00BF116D /* EDAMenuViewController.m in Sources */,
+				15D799FC18CA524200BF116D /* EDADirectoryCell.m in Sources */,
+				15D799F918CA4E3A00BF116D /* EDADirectoryCellViewModel.m in Sources */,
 				15D799E918CA2DFC00BF116D /* EDALoginModel.m in Sources */,
 				15D799EF18CA32AD00BF116D /* EDASidebarCell.m in Sources */,
+				15D799F318CA41E400BF116D /* EDADirectoryViewController.m in Sources */,
 				D043A7AC18CA1D870095F581 /* EDAViewController.m in Sources */,
 				15D799E518CA20D400BF116D /* EDALoginView.m in Sources */,
 				D043A7DC18CA236F0095F581 /* BLAPaneController.m in Sources */,
+				15D799F618CA476F00BF116D /* EDADirectoryViewModel.m in Sources */,
 				15D799E218CA20A500BF116D /* EDALoginViewController.m in Sources */,
 				D043A7A218CA1D870095F581 /* main.m in Sources */,
 				D043A7A618CA1D870095F581 /* EDAAppDelegate.m in Sources */,
