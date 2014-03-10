@@ -101,7 +101,8 @@ NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
     else if ([identifier isEqualToString:EDAMenuViewControllerIdentifierDirectory]) {
         title = @"Directory";
         EDADirectoryViewController *viewController = [[EDADirectoryViewController alloc] init];
-        [self.paneController presentNewRootViewController:viewController];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+        [self.paneController presentNewRootViewController:navigationController];
     }
     else if ([identifier isEqualToString:EDAMenuViewControllerIdentifierLogOut]) {
         title = @"Log Out";

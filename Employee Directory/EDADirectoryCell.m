@@ -18,11 +18,22 @@
 
 @implementation EDADirectoryCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-    }
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
+    if (self == nil) return nil;
+    
+    RAC(self.textLabel, text) = [[RACObserve(self, object)
+        map:^RACSignal *(EDADirectoryCellViewModel *viewModel){
+            return RACObserve(viewModel, fullName);
+        }]
+        switchToLatest];
+    
+    RAC(self.detailTextLabel, text) = [[RACObserve(self, object)
+        map:^RACSignal *(EDADirectoryCellViewModel *viewModel) {
+            return RACObserve(viewModel, title);
+        }]
+        switchToLatest];
+    
     return self;
 }
 
