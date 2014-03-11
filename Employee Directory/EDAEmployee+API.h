@@ -19,6 +19,10 @@ extern NSInteger const EDAEmployeeErrorCodeUserNotFound;
 /// @return A signal which sends an array of all employees.
 + (RACSignal *)allEmployees;
 
+/// @return A signal which sends an EDAEmployee object with the given username.
 + (RACSignal *)employeeWithUsername:(NSString *)username;
+
+/// @return A signal which sends the employee's avatar image
+- (RACSignal *)downloadAvatar;
 
 @end

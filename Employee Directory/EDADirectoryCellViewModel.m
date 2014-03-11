@@ -8,7 +8,7 @@
 
 #import "EDADirectoryCellViewModel.h"
 
-#import "EDAEmployee.h"
+#import "EDAEmployee+API.h"
 
 @interface EDADirectoryCellViewModel ()
 
@@ -22,11 +22,17 @@
     
     _employee = employee;
     
+    RAC(self, image) = [[employee downloadAvatar]
+        catch:^RACSignal *(NSError *error) {
+            return [RACSignal empty];
+        }];
+    
     RAC(self, fullName) = [RACSignal
        combineLatest:@[ RACObserve(employee, firstName), RACObserve(employee, lastName) ]
        reduce:^NSString *(NSString *firstName, NSString *lastName){
             return [NSString stringWithFormat:@"%@ %@", firstName, lastName];
        }];
+    
     RAC(self, title) = RACObserve(employee, title);
     
     return self;

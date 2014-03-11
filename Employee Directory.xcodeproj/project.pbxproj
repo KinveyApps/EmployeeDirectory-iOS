@@ -45,6 +45,7 @@
 		D043A7E918CA3B880095F581 /* KCSUser+RAC.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7E818CA3B880095F581 /* KCSUser+RAC.m */; };
 		D043A7EC18CA40D10095F581 /* EDAEmployee+API.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7EB18CA40D10095F581 /* EDAEmployee+API.m */; };
 		D043A7EF18CA41420095F581 /* KCSAppdataStore+RAC.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7EE18CA41420095F581 /* KCSAppdataStore+RAC.m */; };
+		D055CB4918CF636700B29407 /* KCSFileStore+RAC.m in Sources */ = {isa = PBXBuildFile; fileRef = D055CB4818CF636700B29407 /* KCSFileStore+RAC.m */; };
 		D09AFF9918CDFBE90015C400 /* EDALinkedInManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D09AFF9818CDFBE90015C400 /* EDALinkedInManager.m */; };
 		D09AFF9C18CDFF340015C400 /* EDAWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D09AFF9B18CDFF340015C400 /* EDAWebViewController.m */; };
 /* End PBXBuildFile section */
@@ -120,6 +121,8 @@
 		D043A7EB18CA40D10095F581 /* EDAEmployee+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EDAEmployee+API.m"; sourceTree = "<group>"; };
 		D043A7ED18CA41420095F581 /* KCSAppdataStore+RAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KCSAppdataStore+RAC.h"; sourceTree = "<group>"; };
 		D043A7EE18CA41420095F581 /* KCSAppdataStore+RAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KCSAppdataStore+RAC.m"; sourceTree = "<group>"; };
+		D055CB4718CF636700B29407 /* KCSFileStore+RAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KCSFileStore+RAC.h"; sourceTree = "<group>"; };
+		D055CB4818CF636700B29407 /* KCSFileStore+RAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KCSFileStore+RAC.m"; sourceTree = "<group>"; };
 		D09AFF9718CDFBE90015C400 /* EDALinkedInManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDALinkedInManager.h; sourceTree = "<group>"; };
 		D09AFF9818CDFBE90015C400 /* EDALinkedInManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDALinkedInManager.m; sourceTree = "<group>"; };
 		D09AFF9A18CDFF340015C400 /* EDAWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAWebViewController.h; sourceTree = "<group>"; };
@@ -313,6 +316,8 @@
 				D043A7E818CA3B880095F581 /* KCSUser+RAC.m */,
 				D043A7ED18CA41420095F581 /* KCSAppdataStore+RAC.h */,
 				D043A7EE18CA41420095F581 /* KCSAppdataStore+RAC.m */,
+				D055CB4718CF636700B29407 /* KCSFileStore+RAC.h */,
+				D055CB4818CF636700B29407 /* KCSFileStore+RAC.m */,
 			);
 			name = "Kinvey Categories";
 			sourceTree = "<group>";
@@ -320,9 +325,9 @@
 		D09AFF9F18CE28030015C400 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D09AFF9E18CE27F60015C400 /* Kinvey Categories */,
 				D09AFF9718CDFBE90015C400 /* EDALinkedInManager.h */,
 				D09AFF9818CDFBE90015C400 /* EDALinkedInManager.m */,
-				D09AFF9E18CE27F60015C400 /* Kinvey Categories */,
 				D043A7E418CA2BEB0095F581 /* EDAEmployee.h */,
 				D043A7E518CA2BEB0095F581 /* EDAEmployee.m */,
 				D043A7EA18CA40D10095F581 /* EDAEmployee+API.h */,
@@ -489,6 +494,7 @@
 				D043A7E918CA3B880095F581 /* KCSUser+RAC.m in Sources */,
 				1564D59718CE2C1E006D7A18 /* EDAEmployeeDetailView.m in Sources */,
 				1564D58E18CE09B5006D7A18 /* EDASidebarCell.m in Sources */,
+				D055CB4918CF636700B29407 /* KCSFileStore+RAC.m in Sources */,
 				D043A7DC18CA236F0095F581 /* BLAPaneController.m in Sources */,
 				15D799F618CA476F00BF116D /* EDADirectoryViewModel.m in Sources */,
 				D043A7EF18CA41420095F581 /* KCSAppdataStore+RAC.m in Sources */,

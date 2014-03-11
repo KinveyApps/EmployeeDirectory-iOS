@@ -37,4 +37,8 @@ NSInteger const EDAEmployeeErrorCodeUserNotFound = 1;
         }];
 }
 
+- (RACSignal *)downloadAvatar {
+    return [KCSFileStore rac_downloadImageNamed:[NSString stringWithFormat:@"%@.jpg", self.username]];
+}
+
 @end
