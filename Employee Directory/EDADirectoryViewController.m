@@ -30,19 +30,12 @@
         [self registerCellClass:[EDADirectoryCell class] forObjectsWithClass:[EDADirectoryCellViewModel class]];
         
         [self.didSelectRowSignal subscribeNext:^(RACTuple *tuple) {
-            RACTupleUnpack(EDADirectoryCellViewModel *object, NSIndexPath *indexPath, UITableView *tableView) = tuple;
+            EDADirectoryCellViewModel *object = tuple.first;
             EDAEmployeeDetailViewController *viewController = [[EDAEmployeeDetailViewController alloc] initWithEmployee:object.employee];
             [self.navigationController pushViewController:viewController animated:YES];
-            // Do something with `object`
         }];
     }
     return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
 }
 
 
