@@ -18,6 +18,15 @@
 /// Sends an EDAEmployee object whose username matches the supervisor property of employee.
 @property (nonatomic, readonly) RACCommand *showSupervisorCommand;
 
+/// Opens the employee's phone number in the phone app. Doesn't send anything.
+@property (nonatomic, readonly) RACCommand *callCommand;
+
+/// Sends the employee's phone number.
+@property (nonatomic, readonly) RACCommand *textCommand;
+
+/// Sends a tuple containing (recipients, subject, message).
+@property (nonatomic, readonly) RACCommand *emailCommand;
+
 - (id)initWithEmployee:(EDAEmployee *)employee;
 
 @end

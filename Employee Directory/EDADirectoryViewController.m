@@ -25,6 +25,8 @@
 {
     self = [super init];
     if (self) {
+        self.title = @"Directory";
+        
         _viewModel = [EDADirectoryViewModel new];
         self = [super initWithStyle:UITableViewStylePlain bindingToKeyPath:@keypath(_viewModel, employees) onObject:self.viewModel];
         [self registerCellClass:[EDADirectoryCell class] forObjectsWithClass:[EDADirectoryCellViewModel class]];

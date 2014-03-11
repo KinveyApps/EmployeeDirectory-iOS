@@ -94,7 +94,7 @@
     
     self.messageButton = [UIButton buttonWithType:UIButtonTypeSystem];
     self.messageButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.messageButton setTitle:@"Messsage" forState:UIControlStateNormal];
+    [self.messageButton setTitle:@"Message" forState:UIControlStateNormal];
     self.messageButton.backgroundColor = [UIColor redColor];
     [self.containerView addSubview:self.messageButton];
     
@@ -113,7 +113,7 @@
     self.reportsButton = [UIButton buttonWithType:UIButtonTypeSystem];
     self.reportsButton.translatesAutoresizingMaskIntoConstraints = NO;
     self.reportsButton.backgroundColor = [UIColor redColor];
-    [self.reportsButton setTitle:@"Supervisor" forState:UIControlStateNormal];
+    [self.reportsButton setTitle:@"Reports" forState:UIControlStateNormal];
     [self.containerView addSubview:self.reportsButton];
     
     NSDictionary *views = @{ @"nameLabel": self.nameLabel,

@@ -12,7 +12,7 @@
 #import "EDAEmployeeViewModel.h"
 #import "EDAEmployeeViewModel.h"
 
-@interface EDAEmployeeDetailViewController ()
+@interface EDAEmployeeDetailViewController () <MFMailComposeViewControllerDelegate>
 
 @property (nonatomic) EDAEmployeeDetailView *view;
 @property (nonatomic) EDAEmployeeViewModel *viewModel;
@@ -52,6 +52,43 @@
             
             EDAEmployeeDetailViewController *viewController = [[EDAEmployeeDetailViewController alloc] initWithEmployee:employee];
             [self.navigationController pushViewController:viewController animated:YES];
+        }];
+    
+    self.view.callButton.rac_command = self.viewModel.callCommand;
+    
+    self.view.textButton.rac_command = self.viewModel.textCommand;
+    [[self.view.textButton.rac_command.executionSignals
+        flatten]
+        subscribeNext:^(NSString *phoneNumber) {
+            @strongify(self);
+            
+            MFMessageComposeViewController *viewController = [[MFMessageComposeViewController alloc] init];
+            [viewController setRecipients:@[ phoneNumber ]];
+            
+            [self presentViewController:viewController animated:YES completion:NULL];
+        }];
+    
+    self.view.emailButton.rac_command = self.viewModel.emailCommand;
+    [[self.view.emailButton.rac_command.executionSignals flatten]
+        subscribeNext:^(RACTuple *tuple) {
+            @strongify(self);
+            
+            RACTupleUnpack(NSArray *recipients, NSString *subject, NSString *message) = tuple;
+            
+            MFMailComposeViewController *viewController = [[MFMailComposeViewController alloc] init];
+            [viewController setToRecipients:recipients];
+            [viewController setSubject:subject];
+            [viewController setMessageBody:message isHTML:NO];
+            [viewController setMailComposeDelegate:self];
+            
+            [self presentViewController:viewController animated:YES completion:NULL];
+        }];
+    
+    [[self rac_signalForSelector:@selector(mailComposeController:didFinishWithResult:error:) fromProtocol:@protocol(MFMailComposeViewControllerDelegate)]
+        subscribeNext:^(id x) {
+            @strongify(self);
+            
+            [self dismissViewControllerAnimated:YES completion:NULL];
         }];
 }
 
