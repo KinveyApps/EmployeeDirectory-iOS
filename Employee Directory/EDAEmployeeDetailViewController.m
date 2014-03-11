@@ -9,13 +9,13 @@
 #import "EDAEmployeeDetailViewController.h"
 
 #import "EDAEmployeeDetailView.h"
-#import "EDAEmployeeModel.h"
-#import "EDAEmployeeModel.h"
+#import "EDAEmployeeViewModel.h"
+#import "EDAEmployeeViewModel.h"
 
 @interface EDAEmployeeDetailViewController ()
 
 @property (nonatomic) EDAEmployeeDetailView *view;
-@property (nonatomic) EDAEmployeeModel *viewModel;
+@property (nonatomic) EDAEmployeeViewModel *viewModel;
 
 @end
 
@@ -24,7 +24,7 @@
 - (id)initWithEmployee:(EDAEmployee *)employee {
     self = [super init];
     if (self) {
-        _viewModel = [[EDAEmployeeModel alloc] initWithEmployee:employee];
+        _viewModel = [[EDAEmployeeViewModel alloc] initWithEmployee:employee];
     }
     return self;
 }
@@ -38,7 +38,19 @@
     [super viewDidLoad];
     
     RAC(self.view.nameLabel, text) = RACObserve(self.viewModel, fullName);
-    RAC(self.view.titleLabel, text) = RACObserve(self.viewModel, title);
+    RAC(self.view.titleLabel, text) = RACObserve(self.viewModel, titleAndGroup);
+    
+    @weakify(self);
+    
+    self.view.supervisorButton.rac_command = self.viewModel.showSupervisorCommand;
+    [[self.view.supervisorButton.rac_command.executionSignals
+        flatten]
+        subscribeNext:^(EDAEmployee *employee) {
+            @strongify(self);
+            
+            EDAEmployeeDetailViewController *viewController = [[EDAEmployeeDetailViewController alloc] initWithEmployee:employee];
+            [self.navigationController pushViewController:viewController animated:YES];
+        }];
 }
 
 @end

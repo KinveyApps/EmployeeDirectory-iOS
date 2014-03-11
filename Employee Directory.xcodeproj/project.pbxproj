@@ -11,7 +11,7 @@
 		1564D59118CE0A0B006D7A18 /* EDALoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1564D59018CE0A0B006D7A18 /* EDALoginViewModel.m */; };
 		1564D59418CE2B7E006D7A18 /* EDAEmployeeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1564D59318CE2B7E006D7A18 /* EDAEmployeeDetailViewController.m */; };
 		1564D59718CE2C1E006D7A18 /* EDAEmployeeDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1564D59618CE2C1E006D7A18 /* EDAEmployeeDetailView.m */; };
-		1564D59A18CE2CCF006D7A18 /* EDAEmployeeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1564D59918CE2CCF006D7A18 /* EDAEmployeeModel.m */; };
+		1564D59A18CE2CCF006D7A18 /* EDAEmployeeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1564D59918CE2CCF006D7A18 /* EDAEmployeeViewModel.m */; };
 		15D799E218CA20A500BF116D /* EDALoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799E118CA20A500BF116D /* EDALoginViewController.m */; };
 		15D799E518CA20D400BF116D /* EDALoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799E418CA20D400BF116D /* EDALoginView.m */; };
 		15D799EE18CA32AD00BF116D /* EDAMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799EA18CA32AD00BF116D /* EDAMenuViewController.m */; };
@@ -68,8 +68,8 @@
 		1564D59318CE2B7E006D7A18 /* EDAEmployeeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAEmployeeDetailViewController.m; sourceTree = "<group>"; };
 		1564D59518CE2C1E006D7A18 /* EDAEmployeeDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAEmployeeDetailView.h; sourceTree = "<group>"; };
 		1564D59618CE2C1E006D7A18 /* EDAEmployeeDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAEmployeeDetailView.m; sourceTree = "<group>"; };
-		1564D59818CE2CCF006D7A18 /* EDAEmployeeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAEmployeeModel.h; sourceTree = "<group>"; };
-		1564D59918CE2CCF006D7A18 /* EDAEmployeeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAEmployeeModel.m; sourceTree = "<group>"; };
+		1564D59818CE2CCF006D7A18 /* EDAEmployeeViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAEmployeeViewModel.h; sourceTree = "<group>"; };
+		1564D59918CE2CCF006D7A18 /* EDAEmployeeViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAEmployeeViewModel.m; sourceTree = "<group>"; };
 		15D799E018CA20A500BF116D /* EDALoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDALoginViewController.h; path = "Employee Directory/EDALoginViewController.h"; sourceTree = "<group>"; };
 		15D799E118CA20A500BF116D /* EDALoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDALoginViewController.m; path = "Employee Directory/EDALoginViewController.m"; sourceTree = "<group>"; };
 		15D799E318CA20D400BF116D /* EDALoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDALoginView.h; path = "Employee Directory/EDALoginView.h"; sourceTree = "<group>"; };
@@ -276,8 +276,8 @@
 				1564D59618CE2C1E006D7A18 /* EDAEmployeeDetailView.m */,
 				1564D59218CE2B7E006D7A18 /* EDAEmployeeDetailViewController.h */,
 				1564D59318CE2B7E006D7A18 /* EDAEmployeeDetailViewController.m */,
-				1564D59818CE2CCF006D7A18 /* EDAEmployeeModel.h */,
-				1564D59918CE2CCF006D7A18 /* EDAEmployeeModel.m */,
+				1564D59818CE2CCF006D7A18 /* EDAEmployeeViewModel.h */,
+				1564D59918CE2CCF006D7A18 /* EDAEmployeeViewModel.m */,
 			);
 			name = Detail;
 			sourceTree = "<group>";
@@ -493,7 +493,7 @@
 				15D799F618CA476F00BF116D /* EDADirectoryViewModel.m in Sources */,
 				D043A7EF18CA41420095F581 /* KCSAppdataStore+RAC.m in Sources */,
 				D09AFF9918CDFBE90015C400 /* EDALinkedInManager.m in Sources */,
-				1564D59A18CE2CCF006D7A18 /* EDAEmployeeModel.m in Sources */,
+				1564D59A18CE2CCF006D7A18 /* EDAEmployeeViewModel.m in Sources */,
 				15D799E218CA20A500BF116D /* EDALoginViewController.m in Sources */,
 				D043A7A218CA1D870095F581 /* main.m in Sources */,
 				D043A7A618CA1D870095F581 /* EDAAppDelegate.m in Sources */,

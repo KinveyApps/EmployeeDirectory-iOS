@@ -10,10 +10,13 @@
 
 @class EDAEmployee;
 
-@interface EDAEmployeeModel : NSObject
+@interface EDAEmployeeViewModel : NSObject
 
 @property (nonatomic, readonly) NSString *fullName;
-@property (nonatomic, readonly) NSString *title;
+@property (nonatomic, readonly) NSString *titleAndGroup;
+
+/// Sends an EDAEmployee object whose username matches the supervisor property of employee.
+@property (nonatomic, readonly) RACCommand *showSupervisorCommand;
 
 - (id)initWithEmployee:(EDAEmployee *)employee;
 
