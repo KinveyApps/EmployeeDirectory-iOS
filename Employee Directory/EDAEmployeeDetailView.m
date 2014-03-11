@@ -42,6 +42,7 @@
 - (void)setupScrollView {
     UIScrollView *scrollView = [UIScrollView new];
     scrollView.translatesAutoresizingMaskIntoConstraints = NO;
+    scrollView.scrollEnabled = YES;
     [self addSubview:scrollView];
     
     NSDictionary *scrollViews = @{ @"scrollView": scrollView };

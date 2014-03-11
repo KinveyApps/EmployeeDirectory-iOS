@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class EDAEmployeeModel, EDAEmployee;
+
 @interface EDAEmployeeDetailViewController : UIViewController
+
+- (id)initWithEmployee:(EDAEmployee *)employee;
 
 @end

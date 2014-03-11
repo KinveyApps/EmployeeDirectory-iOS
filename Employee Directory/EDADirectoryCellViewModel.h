@@ -14,6 +14,7 @@
 
 @property (nonatomic, readonly) NSString *fullName;
 @property (nonatomic, readonly) NSString *title;
+@property (nonatomic) EDAEmployee *employee;
 
 - (id)initWithEmployee:(EDAEmployee *)employee;
 

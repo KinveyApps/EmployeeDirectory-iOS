@@ -11,6 +11,7 @@
 #import "EDADirectoryViewModel.h"
 #import "EDADirectoryCellViewModel.h"
 #import "EDADirectoryCell.h"
+#import "EDAEmployeeDetailViewController.h"
 
 @interface EDADirectoryViewController ()
 
@@ -27,6 +28,13 @@
         _viewModel = [EDADirectoryViewModel new];
         self = [super initWithStyle:UITableViewStylePlain bindingToKeyPath:@keypath(_viewModel, employees) onObject:self.viewModel];
         [self registerCellClass:[EDADirectoryCell class] forObjectsWithClass:[EDADirectoryCellViewModel class]];
+        
+        [self.didSelectRowSignal subscribeNext:^(RACTuple *tuple) {
+            RACTupleUnpack(EDADirectoryCellViewModel *object, NSIndexPath *indexPath, UITableView *tableView) = tuple;
+            EDAEmployeeDetailViewController *viewController = [[EDAEmployeeDetailViewController alloc] initWithEmployee:object.employee];
+            [self.navigationController pushViewController:viewController animated:YES];
+            // Do something with `object`
+        }];
     }
     return self;
 }
@@ -36,5 +44,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
+
 
 @end

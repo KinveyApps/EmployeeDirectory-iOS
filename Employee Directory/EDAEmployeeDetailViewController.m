@@ -9,17 +9,22 @@
 #import "EDAEmployeeDetailViewController.h"
 
 #import "EDAEmployeeDetailView.h"
+#import "EDAEmployeeModel.h"
+#import "EDAEmployeeModel.h"
 
 @interface EDAEmployeeDetailViewController ()
+
+@property (nonatomic) EDAEmployeeDetailView *view;
+@property (nonatomic) EDAEmployeeModel *viewModel;
 
 @end
 
 @implementation EDAEmployeeDetailViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+- (id)initWithEmployee:(EDAEmployee *)employee {
+    self = [super init];
     if (self) {
+        _viewModel = [[EDAEmployeeModel alloc] initWithEmployee:employee];
     }
     return self;
 }
@@ -31,7 +36,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    RAC(self.view.nameLabel, text) = RACObserve(self.viewModel, fullName);
+    RAC(self.view.titleLabel, text) = RACObserve(self.viewModel, title);
 }
 
 - (void)didReceiveMemoryWarning

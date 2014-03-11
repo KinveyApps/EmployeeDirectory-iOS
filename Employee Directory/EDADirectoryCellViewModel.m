@@ -12,8 +12,6 @@
 
 @interface EDADirectoryCellViewModel ()
 
-@property (nonatomic) EDAEmployee *employee;
-
 @end
 
 @implementation EDADirectoryCellViewModel
