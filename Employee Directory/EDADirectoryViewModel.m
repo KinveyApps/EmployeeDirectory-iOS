@@ -26,18 +26,18 @@
 {
     self = [super init];
     if (self) {
-        RACSignal *employees = [[EDAEmployee allEmployees] map:^NSArray*(NSArray* employees) {
-            return [[employees.rac_sequence map:^EDADirectoryCellViewModel*(EDAEmployee* employee) {
+        RACSignal *employeesSignal = [[EDAEmployee allEmployees] map:^NSArray*(NSArray *employees) {
+            return [[employees.rac_sequence map:^EDADirectoryCellViewModel*(EDAEmployee *employee) {
                 return [[EDADirectoryCellViewModel alloc] initWithEmployee:employee];
             }] array];
         }];
         
-        RAC(self, employees) = [employees
+        RAC(self, employees) = [employeesSignal
             catch:^RACSignal *(NSError *error) {
                 return [RACSignal empty];
             }];
         
-        _errors = [[employees
+        _errors = [[employeesSignal
             ignoreValues]
             catch:^RACSignal *(NSError *error) {
                 return [RACSignal return:error];
