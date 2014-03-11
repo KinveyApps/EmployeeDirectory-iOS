@@ -8,8 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, EDADirectoryViewModelSortStyle) {
+    EDADirectoryViewModelSortStyleName,
+    EDADirectoryViewModelSortStyleGroup
+};
+
 @interface EDADirectoryViewModel : NSObject
 
-@property (nonatomic) NSArray *employees;
+@property (nonatomic) EDADirectoryViewModelSortStyle sortStyle;
+
+@property (readonly, nonatomic) NSArray *sections;
+@property (readonly, nonatomic) NSArray *sectionTitles;
+
+@property (readonly, nonatomic) RACSignal *errors;
 
 @end
