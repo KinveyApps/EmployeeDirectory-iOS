@@ -55,6 +55,19 @@ NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
         if ([identifier isEqualToString:EDAMenuViewControllerIdentifierLogOut]) {
             [self logOut];
         }
+        else {
+            UIViewController *newViewController;
+            
+            if ([identifier isEqualToString:EDAMenuViewControllerIdentifierDirectory]) {
+                newViewController = [[EDADirectoryViewController alloc] init];
+            }
+            else {
+                newViewController = [UIViewController new];
+            }
+            
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:newViewController];
+            [self.paneController presentNewRootViewController:navigationController];
+        }
     }];
 }
 
@@ -100,9 +113,6 @@ NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
     }
     else if ([identifier isEqualToString:EDAMenuViewControllerIdentifierDirectory]) {
         title = @"Directory";
-        EDADirectoryViewController *viewController = [[EDADirectoryViewController alloc] init];
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
-        [self.paneController presentNewRootViewController:navigationController];
     }
     else if ([identifier isEqualToString:EDAMenuViewControllerIdentifierLogOut]) {
         title = @"Log Out";

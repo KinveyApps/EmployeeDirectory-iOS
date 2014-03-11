@@ -23,20 +23,21 @@
 
 - (id)init
 {
-    self = [super init];
-    if (self) {
-        self.title = @"Directory";
-        
-        _viewModel = [EDADirectoryViewModel new];
-        self = [super initWithStyle:UITableViewStylePlain bindingToKeyPath:@keypath(_viewModel, employees) onObject:self.viewModel];
-        [self registerCellClass:[EDADirectoryCell class] forObjectsWithClass:[EDADirectoryCellViewModel class]];
-        
-        [self.didSelectRowSignal subscribeNext:^(RACTuple *tuple) {
-            EDADirectoryCellViewModel *object = tuple.first;
-            EDAEmployeeDetailViewController *viewController = [[EDAEmployeeDetailViewController alloc] initWithEmployee:object.employee];
-            [self.navigationController pushViewController:viewController animated:YES];
-        }];
-    }
+    _viewModel = [EDADirectoryViewModel new];
+    self = [super initWithStyle:UITableViewStylePlain bindingToKeyPath:@keypath(_viewModel, employees) onObject:self.viewModel];
+    if (self == nil) return nil;
+    
+    self.title = @"Directory";
+    self.animateChanges = NO;
+    
+    [self registerCellClass:[EDADirectoryCell class] forObjectsWithClass:[EDADirectoryCellViewModel class]];
+    
+    [self.didSelectRowSignal subscribeNext:^(RACTuple *tuple) {
+        EDADirectoryCellViewModel *object = tuple.first;
+        EDAEmployeeDetailViewController *viewController = [[EDAEmployeeDetailViewController alloc] initWithEmployee:object.employee];
+        [self.navigationController pushViewController:viewController animated:YES];
+    }];
+    
     return self;
 }
 

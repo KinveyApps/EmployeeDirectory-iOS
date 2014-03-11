@@ -43,7 +43,7 @@
     
     RAC(self.detailTextLabel, text) = [[RACObserve(self, object)
         map:^RACSignal *(EDADirectoryCellViewModel *viewModel) {
-            return RACObserve(viewModel, title);
+            return RACObserve(viewModel, titleAndGroup);
         }]
         switchToLatest];
     

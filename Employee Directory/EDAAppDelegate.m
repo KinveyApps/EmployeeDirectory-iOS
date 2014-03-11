@@ -24,7 +24,9 @@
     self.window.rootViewController = paneController;
     [paneController showSidebar:YES animated:NO];
     
-    [paneController presentViewController:[[UINavigationController alloc] initWithRootViewController:[EDALoginViewController new]] animated:NO completion:NULL];
+    if ([KCSUser hasSavedCredentials] == NO) {
+        [paneController presentViewController:[[UINavigationController alloc] initWithRootViewController:[EDALoginViewController new]] animated:NO completion:NULL];
+    }
     
     // Set up Kinvey
     (void) [[KCSClient sharedClient] initializeKinveyServiceForAppKey:@"kid_eTXG5Nytxq" withAppSecret:@"1512b102e63d4c44931f99d960685cdc" usingOptions:nil];

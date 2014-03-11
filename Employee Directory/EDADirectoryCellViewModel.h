@@ -14,7 +14,7 @@
 
 @property (nonatomic, readonly) UIImage *image;
 @property (nonatomic, readonly) NSString *fullName;
-@property (nonatomic, readonly) NSString *title;
+@property (nonatomic, readonly) NSString *titleAndGroup;
 
 @property (nonatomic, readonly) EDAEmployee *employee;
 

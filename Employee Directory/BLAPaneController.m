@@ -40,6 +40,8 @@ NSTimeInterval const kSidebarTransitionDuration = 0.25;
 - (id)initWithRootViewController:(UIViewController *)rootViewController sidebarViewController:(UIViewController *)sidebarViewController {
 	self = [super init];
 	if (self) {
+        rootViewController.navigationItem.leftBarButtonItem = [rootViewController sidebarItem];
+        
 		_rootViewController = rootViewController;
 		_sidebarViewController = sidebarViewController;
 		
@@ -140,6 +142,11 @@ NSTimeInterval const kSidebarTransitionDuration = 0.25;
 - (void)presentNewRootViewController:(UIViewController *)viewController {
 	[self.rootViewController willMoveToParentViewController:nil];
 	
+    if ([viewController isKindOfClass:[UINavigationController class]]) {
+        UIViewController *firstViewController = [[(UINavigationController *)viewController viewControllers] firstObject];
+        firstViewController.navigationItem.leftBarButtonItem = [viewController sidebarItem];
+    }
+    
 	[self addChildViewController:viewController];
 	
 	CGRect frame = self.rootViewController.view.frame;
@@ -172,10 +179,6 @@ NSTimeInterval const kSidebarTransitionDuration = 0.25;
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-	return UIStatusBarStyleLightContent;
 }
 
 #pragma mark -
@@ -342,7 +345,7 @@ NSTimeInterval const kSidebarTransitionDuration = 0.25;
 
 - (UIBarButtonItem *)sidebarItem {
     UIImage *sideBarImage = [UIImage imageNamed:@"SidebarButton"];
-    UIBarButtonItem *sidebarItem = [[UIBarButtonItem alloc] initWithImage:sideBarImage style:UIBarButtonItemStyleBordered target:self action:@selector(showSidebar:)];
+    UIBarButtonItem *sidebarItem = [[UIBarButtonItem alloc] initWithImage:sideBarImage style:UIBarButtonItemStylePlain target:self action:@selector(showSidebar:)];
 	return sidebarItem;
 }
 

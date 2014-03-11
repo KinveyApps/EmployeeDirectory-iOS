@@ -33,7 +33,11 @@
             return [NSString stringWithFormat:@"%@ %@", firstName, lastName];
        }];
     
-    RAC(self, title) = RACObserve(employee, title);
+    RAC(self, titleAndGroup) = [RACSignal
+        combineLatest:@[ RACObserve(employee, title), RACObserve(employee, group) ]
+        reduce:^NSString *(NSString *title, NSString *group){
+            return [NSString stringWithFormat:@"%@, %@", title, group];
+        }];
     
     return self;
 }
