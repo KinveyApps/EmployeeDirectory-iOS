@@ -69,8 +69,4 @@
     return loginItem;
 }
 
-- (void)handleError:(NSError *)error {
-    [[[UIAlertView alloc] initWithTitle:error.localizedDescription message:error.localizedFailureReason delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-}
-
 @end
