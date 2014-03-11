@@ -1,20 +1,22 @@
 //
-//  EDADirectoryCellViewModel.m
+//  EDAEmployeeModel.m
 //  Employee Directory
 //
-//  Created by Justin Stuart on 3/7/14.
+//  Created by Justin Stuart on 3/10/14.
 //  Copyright (c) 2014 Ballast Lane Applications. All rights reserved.
 //
 
-#import "EDADirectoryCellViewModel.h"
+#import "EDAEmployeeModel.h"
 
 #import "EDAEmployee.h"
 
-@interface EDADirectoryCellViewModel ()
+@interface EDAEmployeeModel ()
+
+@property (nonatomic) EDAEmployee *employee;
 
 @end
 
-@implementation EDADirectoryCellViewModel
+@implementation EDAEmployeeModel
 
 - (id)initWithEmployee:(EDAEmployee *)employee {
     self = [super init];
@@ -23,10 +25,10 @@
     _employee = employee;
     
     RAC(self, fullName) = [RACSignal
-       combineLatest:@[ RACObserve(employee, firstName), RACObserve(employee, lastName) ]
-       reduce:^NSString *(NSString *firstName, NSString *lastName){
+        combineLatest:@[ RACObserve(employee, firstName), RACObserve(employee, lastName) ]
+        reduce:^NSString *(NSString *firstName, NSString *lastName){
             return [NSString stringWithFormat:@"%@ %@", firstName, lastName];
-       }];
+        }];
     RAC(self, title) = RACObserve(employee, title);
     
     return self;

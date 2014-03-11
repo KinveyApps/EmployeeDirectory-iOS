@@ -1,8 +1,8 @@
 //
-//  EDADirectoryCellViewModel.h
+//  EDAEmployeeModel.h
 //  Employee Directory
 //
-//  Created by Justin Stuart on 3/7/14.
+//  Created by Justin Stuart on 3/10/14.
 //  Copyright (c) 2014 Ballast Lane Applications. All rights reserved.
 //
 
@@ -10,11 +10,10 @@
 
 @class EDAEmployee;
 
-@interface EDADirectoryCellViewModel : NSObject
+@interface EDAEmployeeModel : NSObject
 
 @property (nonatomic, readonly) NSString *fullName;
 @property (nonatomic, readonly) NSString *title;
-@property (nonatomic) EDAEmployee *employee;
 
 - (id)initWithEmployee:(EDAEmployee *)employee;
 

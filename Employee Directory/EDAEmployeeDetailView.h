@@ -1,0 +1,23 @@
+//
+//  EDAEmployDetailView.h
+//  Employee Directory
+//
+//  Created by Justin Stuart on 3/10/14.
+//  Copyright (c) 2014 Ballast Lane Applications. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface EDAEmployeeDetailView : UIView
+
+@property (nonatomic, readonly) UILabel *nameLabel;
+@property (nonatomic, readonly) UILabel *titleLabel;
+@property (nonatomic, readonly) UIButton *callButton;
+@property (nonatomic, readonly) UIButton *textButton;
+@property (nonatomic, readonly) UIButton *emailButton;
+@property (nonatomic, readonly) UIButton *messageButton;
+@property (nonatomic, readonly) UIButton *linkedinButton;
+@property (nonatomic, readonly) UIButton *supervisorButton;
+@property (nonatomic, readonly) UIButton *reportsButton;
+
+@end

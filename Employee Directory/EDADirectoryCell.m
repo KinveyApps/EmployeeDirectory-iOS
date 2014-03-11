@@ -12,8 +12,6 @@
 
 @interface EDADirectoryCell ()
 
-
-
 @end
 
 @implementation EDADirectoryCell
