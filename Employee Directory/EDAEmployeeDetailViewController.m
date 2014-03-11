@@ -41,10 +41,4 @@
     RAC(self.view.titleLabel, text) = RACObserve(self.viewModel, title);
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 @end
