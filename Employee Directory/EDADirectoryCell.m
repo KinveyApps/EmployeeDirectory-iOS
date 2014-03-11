@@ -20,6 +20,8 @@
     self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
     if (self == nil) return nil;
     
+    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
     RAC(self.textLabel, text) = [[RACObserve(self, object)
         map:^RACSignal *(EDADirectoryCellViewModel *viewModel){
             return RACObserve(viewModel, fullName);
@@ -33,13 +35,6 @@
         switchToLatest];
     
     return self;
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end
