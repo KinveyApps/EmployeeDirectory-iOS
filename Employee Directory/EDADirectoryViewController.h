@@ -8,6 +8,6 @@
 
 #import "EPSReactiveTableViewController.h"
 
-@interface EDADirectoryViewController : EPSReactiveTableViewController
+@interface EDADirectoryViewController : UITableViewController
 
 @end
