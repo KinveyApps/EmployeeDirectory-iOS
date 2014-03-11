@@ -64,12 +64,12 @@
 		1564D58D18CE09B5006D7A18 /* EDASidebarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDASidebarCell.m; sourceTree = "<group>"; };
 		1564D58F18CE0A0B006D7A18 /* EDALoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDALoginViewModel.h; path = "Employee Directory/EDALoginViewModel.h"; sourceTree = "<group>"; };
 		1564D59018CE0A0B006D7A18 /* EDALoginViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDALoginViewModel.m; path = "Employee Directory/EDALoginViewModel.m"; sourceTree = "<group>"; };
-		1564D59218CE2B7E006D7A18 /* EDAEmployeeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDAEmployeeDetailViewController.h; path = "Employee Directory/EDAEmployeeDetailViewController.h"; sourceTree = "<group>"; };
-		1564D59318CE2B7E006D7A18 /* EDAEmployeeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDAEmployeeDetailViewController.m; path = "Employee Directory/EDAEmployeeDetailViewController.m"; sourceTree = "<group>"; };
-		1564D59518CE2C1E006D7A18 /* EDAEmployeeDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDAEmployeeDetailView.h; path = "Employee Directory/EDAEmployeeDetailView.h"; sourceTree = "<group>"; };
-		1564D59618CE2C1E006D7A18 /* EDAEmployeeDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDAEmployeeDetailView.m; path = "Employee Directory/EDAEmployeeDetailView.m"; sourceTree = "<group>"; };
-		1564D59818CE2CCF006D7A18 /* EDAEmployeeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDAEmployeeModel.h; path = "Employee Directory/EDAEmployeeModel.h"; sourceTree = "<group>"; };
-		1564D59918CE2CCF006D7A18 /* EDAEmployeeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDAEmployeeModel.m; path = "Employee Directory/EDAEmployeeModel.m"; sourceTree = "<group>"; };
+		1564D59218CE2B7E006D7A18 /* EDAEmployeeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAEmployeeDetailViewController.h; sourceTree = "<group>"; };
+		1564D59318CE2B7E006D7A18 /* EDAEmployeeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAEmployeeDetailViewController.m; sourceTree = "<group>"; };
+		1564D59518CE2C1E006D7A18 /* EDAEmployeeDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAEmployeeDetailView.h; sourceTree = "<group>"; };
+		1564D59618CE2C1E006D7A18 /* EDAEmployeeDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAEmployeeDetailView.m; sourceTree = "<group>"; };
+		1564D59818CE2CCF006D7A18 /* EDAEmployeeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAEmployeeModel.h; sourceTree = "<group>"; };
+		1564D59918CE2CCF006D7A18 /* EDAEmployeeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAEmployeeModel.m; sourceTree = "<group>"; };
 		15D799E018CA20A500BF116D /* EDALoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDALoginViewController.h; path = "Employee Directory/EDALoginViewController.h"; sourceTree = "<group>"; };
 		15D799E118CA20A500BF116D /* EDALoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDALoginViewController.m; path = "Employee Directory/EDALoginViewController.m"; sourceTree = "<group>"; };
 		15D799E318CA20D400BF116D /* EDALoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDALoginView.h; path = "Employee Directory/EDALoginView.h"; sourceTree = "<group>"; };
@@ -187,12 +187,6 @@
 		D043A78918CA1D870095F581 = {
 			isa = PBXGroup;
 			children = (
-				1564D59518CE2C1E006D7A18 /* EDAEmployeeDetailView.h */,
-				1564D59618CE2C1E006D7A18 /* EDAEmployeeDetailView.m */,
-				1564D59818CE2CCF006D7A18 /* EDAEmployeeModel.h */,
-				1564D59918CE2CCF006D7A18 /* EDAEmployeeModel.m */,
-				1564D59218CE2B7E006D7A18 /* EDAEmployeeDetailViewController.h */,
-				1564D59318CE2B7E006D7A18 /* EDAEmployeeDetailViewController.m */,
 				D043A79B18CA1D870095F581 /* Employee Directory */,
 				D043A7BA18CA1D870095F581 /* Employee DirectoryTests */,
 				D043A79418CA1D870095F581 /* Frameworks */,
@@ -275,7 +269,20 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		D09AFF9D18CE27E60015C400 /* Directory */ = {
+		D055CB4518CF4F7F00B29407 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				1564D59518CE2C1E006D7A18 /* EDAEmployeeDetailView.h */,
+				1564D59618CE2C1E006D7A18 /* EDAEmployeeDetailView.m */,
+				1564D59218CE2B7E006D7A18 /* EDAEmployeeDetailViewController.h */,
+				1564D59318CE2B7E006D7A18 /* EDAEmployeeDetailViewController.m */,
+				1564D59818CE2CCF006D7A18 /* EDAEmployeeModel.h */,
+				1564D59918CE2CCF006D7A18 /* EDAEmployeeModel.m */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
+		D055CB4618CF4F8900B29407 /* Directory */ = {
 			isa = PBXGroup;
 			children = (
 				15D799FA18CA524200BF116D /* EDADirectoryCell.h */,
@@ -286,6 +293,15 @@
 				15D799F218CA41E400BF116D /* EDADirectoryViewController.m */,
 				15D799F418CA476F00BF116D /* EDADirectoryViewModel.h */,
 				15D799F518CA476F00BF116D /* EDADirectoryViewModel.m */,
+			);
+			name = Directory;
+			sourceTree = "<group>";
+		};
+		D09AFF9D18CE27E60015C400 /* Directory */ = {
+			isa = PBXGroup;
+			children = (
+				D055CB4618CF4F8900B29407 /* Directory */,
+				D055CB4518CF4F7F00B29407 /* Detail */,
 			);
 			name = Directory;
 			sourceTree = "<group>";
