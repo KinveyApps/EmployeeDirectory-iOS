@@ -24,7 +24,8 @@
     
     _employee = employee;
     
-    RAC(self, image) = [[employee downloadAvatar]
+    RAC(self, image) = [[[employee downloadAvatar]
+        startWith:[UIImage imageNamed:@"AvatarLoading"]]
         catch:^RACSignal *(NSError *error) {
             return [RACSignal empty];
         }];
