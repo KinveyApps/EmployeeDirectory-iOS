@@ -69,13 +69,13 @@
     
     self.nameLabel = [[UILabel alloc] init];
     self.nameLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    self.nameLabel.font = [UIFont systemFontOfSize:16];
+    self.nameLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     self.nameLabel.text = @"Test Name";
     [self.containerView addSubview:self.nameLabel];
     
     self.titleLabel = [[UILabel alloc] init];
     self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    self.titleLabel.font = [UIFont systemFontOfSize:14];
+    self.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
     self.titleLabel.text = @"Test Title";
     [self.containerView addSubview:self.titleLabel];
     

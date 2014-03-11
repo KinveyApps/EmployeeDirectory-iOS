@@ -22,4 +22,5 @@
     #import "KCSUser+RAC.h"
     #import "KCSAppdataStore+RAC.h"
     #import "KCSFileStore+RAC.h"
+    #import "UIViewController+ErrorHandling.h"
 #endif

@@ -46,6 +46,10 @@
 		D043A7EC18CA40D10095F581 /* EDAEmployee+API.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7EB18CA40D10095F581 /* EDAEmployee+API.m */; };
 		D043A7EF18CA41420095F581 /* KCSAppdataStore+RAC.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7EE18CA41420095F581 /* KCSAppdataStore+RAC.m */; };
 		D055CB4918CF636700B29407 /* KCSFileStore+RAC.m in Sources */ = {isa = PBXBuildFile; fileRef = D055CB4818CF636700B29407 /* KCSFileStore+RAC.m */; };
+		D055CB4C18CF7A1D00B29407 /* EDAYourInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D055CB4B18CF7A1D00B29407 /* EDAYourInfoViewController.m */; };
+		D055CB5018CF7A4C00B29407 /* EDAYourInfoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D055CB4F18CF7A4C00B29407 /* EDAYourInfoViewModel.m */; };
+		D055CB5318CF7A9100B29407 /* EDAYourInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = D055CB5218CF7A9100B29407 /* EDAYourInfoView.m */; };
+		D055CB5618CF7BBF00B29407 /* UIViewController+ErrorHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = D055CB5518CF7BBF00B29407 /* UIViewController+ErrorHandling.m */; };
 		D09AFF9918CDFBE90015C400 /* EDALinkedInManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D09AFF9818CDFBE90015C400 /* EDALinkedInManager.m */; };
 		D09AFF9C18CDFF340015C400 /* EDAWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D09AFF9B18CDFF340015C400 /* EDAWebViewController.m */; };
 /* End PBXBuildFile section */
@@ -123,6 +127,14 @@
 		D043A7EE18CA41420095F581 /* KCSAppdataStore+RAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KCSAppdataStore+RAC.m"; sourceTree = "<group>"; };
 		D055CB4718CF636700B29407 /* KCSFileStore+RAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KCSFileStore+RAC.h"; sourceTree = "<group>"; };
 		D055CB4818CF636700B29407 /* KCSFileStore+RAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KCSFileStore+RAC.m"; sourceTree = "<group>"; };
+		D055CB4A18CF7A1D00B29407 /* EDAYourInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAYourInfoViewController.h; sourceTree = "<group>"; };
+		D055CB4B18CF7A1D00B29407 /* EDAYourInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAYourInfoViewController.m; sourceTree = "<group>"; };
+		D055CB4E18CF7A4C00B29407 /* EDAYourInfoViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAYourInfoViewModel.h; sourceTree = "<group>"; };
+		D055CB4F18CF7A4C00B29407 /* EDAYourInfoViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAYourInfoViewModel.m; sourceTree = "<group>"; };
+		D055CB5118CF7A9100B29407 /* EDAYourInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAYourInfoView.h; sourceTree = "<group>"; };
+		D055CB5218CF7A9100B29407 /* EDAYourInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAYourInfoView.m; sourceTree = "<group>"; };
+		D055CB5418CF7BBF00B29407 /* UIViewController+ErrorHandling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ErrorHandling.h"; sourceTree = "<group>"; };
+		D055CB5518CF7BBF00B29407 /* UIViewController+ErrorHandling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ErrorHandling.m"; sourceTree = "<group>"; };
 		D09AFF9718CDFBE90015C400 /* EDALinkedInManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDALinkedInManager.h; sourceTree = "<group>"; };
 		D09AFF9818CDFBE90015C400 /* EDALinkedInManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDALinkedInManager.m; sourceTree = "<group>"; };
 		D09AFF9A18CDFF340015C400 /* EDAWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAWebViewController.h; sourceTree = "<group>"; };
@@ -300,6 +312,19 @@
 			name = Directory;
 			sourceTree = "<group>";
 		};
+		D055CB4D18CF7A2100B29407 /* Your Info */ = {
+			isa = PBXGroup;
+			children = (
+				D055CB5118CF7A9100B29407 /* EDAYourInfoView.h */,
+				D055CB5218CF7A9100B29407 /* EDAYourInfoView.m */,
+				D055CB4A18CF7A1D00B29407 /* EDAYourInfoViewController.h */,
+				D055CB4B18CF7A1D00B29407 /* EDAYourInfoViewController.m */,
+				D055CB4E18CF7A4C00B29407 /* EDAYourInfoViewModel.h */,
+				D055CB4F18CF7A4C00B29407 /* EDAYourInfoViewModel.m */,
+			);
+			name = "Your Info";
+			sourceTree = "<group>";
+		};
 		D09AFF9D18CE27E60015C400 /* Directory */ = {
 			isa = PBXGroup;
 			children = (
@@ -346,6 +371,9 @@
 				D043A7DB18CA236F0095F581 /* BLAPaneController.m */,
 				D09AFF9A18CDFF340015C400 /* EDAWebViewController.h */,
 				D09AFF9B18CDFF340015C400 /* EDAWebViewController.m */,
+				D055CB4D18CF7A2100B29407 /* Your Info */,
+				D055CB5418CF7BBF00B29407 /* UIViewController+ErrorHandling.h */,
+				D055CB5518CF7BBF00B29407 /* UIViewController+ErrorHandling.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -487,6 +515,7 @@
 				15D799FC18CA524200BF116D /* EDADirectoryCell.m in Sources */,
 				15D799F918CA4E3A00BF116D /* EDADirectoryCellViewModel.m in Sources */,
 				15D799F318CA41E400BF116D /* EDADirectoryViewController.m in Sources */,
+				D055CB4C18CF7A1D00B29407 /* EDAYourInfoViewController.m in Sources */,
 				D043A7EC18CA40D10095F581 /* EDAEmployee+API.m in Sources */,
 				D043A7E618CA2BEB0095F581 /* EDAEmployee.m in Sources */,
 				D09AFF9C18CDFF340015C400 /* EDAWebViewController.m in Sources */,
@@ -494,11 +523,14 @@
 				D043A7E918CA3B880095F581 /* KCSUser+RAC.m in Sources */,
 				1564D59718CE2C1E006D7A18 /* EDAEmployeeDetailView.m in Sources */,
 				1564D58E18CE09B5006D7A18 /* EDASidebarCell.m in Sources */,
+				D055CB5318CF7A9100B29407 /* EDAYourInfoView.m in Sources */,
 				D055CB4918CF636700B29407 /* KCSFileStore+RAC.m in Sources */,
 				D043A7DC18CA236F0095F581 /* BLAPaneController.m in Sources */,
 				15D799F618CA476F00BF116D /* EDADirectoryViewModel.m in Sources */,
 				D043A7EF18CA41420095F581 /* KCSAppdataStore+RAC.m in Sources */,
 				D09AFF9918CDFBE90015C400 /* EDALinkedInManager.m in Sources */,
+				D055CB5018CF7A4C00B29407 /* EDAYourInfoViewModel.m in Sources */,
+				D055CB5618CF7BBF00B29407 /* UIViewController+ErrorHandling.m in Sources */,
 				1564D59A18CE2CCF006D7A18 /* EDAEmployeeViewModel.m in Sources */,
 				15D799E218CA20A500BF116D /* EDALoginViewController.m in Sources */,
 				D043A7A218CA1D870095F581 /* main.m in Sources */,
