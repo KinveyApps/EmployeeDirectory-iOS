@@ -25,6 +25,8 @@
     self = [super init];
     if (self) {
         _viewModel = [[EDAEmployeeViewModel alloc] initWithEmployee:employee];
+        
+        RAC(self, title) = RACObserve(self.viewModel, fullName);
     }
     return self;
 }
