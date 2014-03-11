@@ -71,53 +71,48 @@
     self.nameLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.nameLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
     self.nameLabel.text = @"Test Name";
+    self.nameLabel.textColor = CVTDarkTextColor;
     [self.containerView addSubview:self.nameLabel];
     
     self.titleLabel = [[UILabel alloc] init];
     self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.titleLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleSubheadline];
     self.titleLabel.text = @"Test Title";
+    self.titleLabel.textColor = CVTDarkTextColor;
     [self.containerView addSubview:self.titleLabel];
     
-    self.callButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.callButton = [EDAAppearanceManager button];
     self.callButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self.callButton setTitle:@"Call" forState:UIControlStateNormal];
-    self.callButton.backgroundColor = [UIColor redColor];
     [self.containerView addSubview:self.callButton];
     
-    self.textButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.textButton = [EDAAppearanceManager button];
     self.textButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self.textButton setTitle:@"Text" forState:UIControlStateNormal];
-    self.textButton.backgroundColor = [UIColor redColor];
     [self.containerView addSubview:self.textButton];
     
-    self.emailButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.emailButton = [EDAAppearanceManager button];
     self.emailButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self.emailButton setTitle:@"Email" forState:UIControlStateNormal];
-    self.emailButton.backgroundColor = [UIColor redColor];
     [self.containerView addSubview:self.emailButton];
     
-    self.messageButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.messageButton = [EDAAppearanceManager button];
     self.messageButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self.messageButton setTitle:@"Message" forState:UIControlStateNormal];
-    self.messageButton.backgroundColor = [UIColor redColor];
     [self.containerView addSubview:self.messageButton];
     
-    self.linkedinButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.linkedinButton = [EDAAppearanceManager button];
     self.linkedinButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self.linkedinButton setTitle:@"View Linkedin" forState:UIControlStateNormal];
-    self.linkedinButton.backgroundColor = [UIColor redColor];
     [self.containerView addSubview:self.linkedinButton];
     
-    self.supervisorButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.supervisorButton = [EDAAppearanceManager button];
     self.supervisorButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self.supervisorButton setTitle:@"Supervisor" forState:UIControlStateNormal];
-    self.supervisorButton.backgroundColor = [UIColor redColor];
     [self.containerView addSubview:self.supervisorButton];
     
-    self.reportsButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.reportsButton = [EDAAppearanceManager button];
     self.reportsButton.translatesAutoresizingMaskIntoConstraints = NO;
-    self.reportsButton.backgroundColor = [UIColor redColor];
     [self.reportsButton setTitle:@"Reports" forState:UIControlStateNormal];
     [self.containerView addSubview:self.reportsButton];
     
@@ -136,24 +131,22 @@
 }
 
 - (void)setupConstraintsWithViews:(NSDictionary *)views {
-    NSDictionary *metrics = @{ @"buttonWidth": @80,
-                               @"insetSpacing": @40,
+    NSDictionary *metrics = @{ @"buttonWidth": @120,
+                               @"insetSpacing": @20,
                                @"imageSize": @60 };
     
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[imageView(imageSize)]-[nameLabel]-(insetSpacing)-|" options:NSLayoutFormatAlignAllTop metrics:metrics views:views]];
     [self.containerView addConstraints:[NSLayoutConstraint
                                         constraintsWithVisualFormat:@"V:[imageView(imageSize)]" options:0 metrics:metrics views:views]];
     [self.containerView addConstraint:[NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.nameLabel attribute:NSLayoutAttributeWidth multiplier:1 constant:0]];
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[callButton(buttonWidth)]-(>=20)-[textButton(buttonWidth)]-(insetSpacing)-|" options:NSLayoutFormatAlignAllBottom metrics:metrics views:views]];
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[emailButton(buttonWidth)]-(>=20)-[messageButton(buttonWidth)]-(insetSpacing)-|" options:NSLayoutFormatAlignAllBottom metrics:metrics views:views]];
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[linkedinButton]-(insetSpacing)-|" options:0 metrics:metrics views:views]];
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[supervisorButton(buttonWidth)]-(>=20)-[reportsButton(buttonWidth)]-(insetSpacing)-|" options:NSLayoutFormatAlignAllBottom metrics:metrics views:views]];
     
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[nameLabel]-[titleLabel]-(40)-[callButton(buttonWidth)]-[emailButton(buttonWidth)]-[linkedinButton(buttonWidth)]-[supervisorButton(buttonWidth)]-|" options:0 metrics:metrics views:views]];
+    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[callButton]-(insetSpacing)-[textButton(==callButton)]-(insetSpacing)-|" options:NSLayoutFormatAlignAllBottom metrics:metrics views:views]];
+    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[emailButton]-(insetSpacing)-[messageButton(==emailButton)]-(insetSpacing)-|" options:NSLayoutFormatAlignAllBottom metrics:metrics views:views]];
+    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[linkedinButton]-(insetSpacing)-|" options:0 metrics:metrics views:views]];
+    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[supervisorButton]-(insetSpacing)-[reportsButton(==supervisorButton)]-(insetSpacing)-|" options:NSLayoutFormatAlignAllBottom metrics:metrics views:views]];
+    
+    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[nameLabel]-[titleLabel]-(40)-[callButton]-(insetSpacing)-[emailButton]-(insetSpacing)-[linkedinButton]-(insetSpacing)-[supervisorButton]-(insetSpacing)-|" options:0 metrics:metrics views:views]];
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[nameLabel]-[titleLabel]" options:NSLayoutFormatAlignAllLeading | NSLayoutFormatAlignAllTrailing metrics:metrics views:views]];
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[textButton(buttonWidth)]" options:0 metrics:metrics views:views]];
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[messageButton(buttonWidth)]" options:0 metrics:metrics views:views]];
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[reportsButton(buttonWidth)]" options:0 metrics:metrics views:views]];
 }
 
 @end
