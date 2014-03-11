@@ -54,6 +54,10 @@ NSTimeInterval const kSidebarTransitionDuration = 0.25;
 	return self;
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 #pragma mark - Accessors
 
 - (NSArray *)viewControllers {

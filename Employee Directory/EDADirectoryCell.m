@@ -21,6 +21,8 @@
     if (self == nil) return nil;
     
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    self.textLabel.textColor = CVTDarkTextColor;
+    self.detailTextLabel.textColor = CVTDarkTextColor;
     
     @weakify(self);
     
