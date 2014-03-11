@@ -12,6 +12,7 @@
 
 @interface EDAEmployeeViewModel : NSObject
 
+@property (nonatomic, readonly) UIImage *image;
 @property (nonatomic, readonly) NSString *fullName;
 @property (nonatomic, readonly) NSString *titleAndGroup;
 

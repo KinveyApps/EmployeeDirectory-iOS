@@ -18,7 +18,8 @@
     #import <ReactiveCocoa/RACEXTScope.h>
     #import <ReactiveCocoa/RACEXTKeyPathCoding.h>
     #import <EPSStaticTableViewController/EPSStaticTableViewController.h>
-@import MessageUI;
+    @import MessageUI;
     #import "KCSUser+RAC.h"
     #import "KCSAppdataStore+RAC.h"
+    #import "KCSFileStore+RAC.h"
 #endif

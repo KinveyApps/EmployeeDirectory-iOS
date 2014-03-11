@@ -24,11 +24,17 @@
     
     _employee = employee;
     
+    RAC(self, image) = [[employee downloadAvatar]
+        catch:^RACSignal *(NSError *error) {
+            return [RACSignal empty];
+        }];
+    
     RAC(self, fullName) = [RACSignal
         combineLatest:@[ RACObserve(employee, firstName), RACObserve(employee, lastName) ]
         reduce:^NSString *(NSString *firstName, NSString *lastName){
             return [NSString stringWithFormat:@"%@ %@", firstName, lastName];
         }];
+    
     RAC(self, titleAndGroup) = [RACSignal
         combineLatest:@[ RACObserve(employee, title), RACObserve(employee, group) ]
         reduce:^NSString *(NSString *title, NSString *group){

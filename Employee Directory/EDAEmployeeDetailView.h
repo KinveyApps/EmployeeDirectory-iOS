@@ -10,6 +10,7 @@
 
 @interface EDAEmployeeDetailView : UIView
 
+@property (nonatomic, readonly) UIImageView *imageView;
 @property (nonatomic, readonly) UILabel *nameLabel;
 @property (nonatomic, readonly) UILabel *titleLabel;
 @property (nonatomic, readonly) UIButton *callButton;

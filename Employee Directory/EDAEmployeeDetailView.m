@@ -10,6 +10,7 @@
 
 @interface EDAEmployeeDetailView ()
 
+@property (nonatomic) UIImageView *imageView;
 @property (nonatomic) UILabel *nameLabel;
 @property (nonatomic) UILabel *titleLabel;
 @property (nonatomic) UIButton *callButton;
@@ -61,6 +62,10 @@
 
 - (NSDictionary *)setupViews {
     [self setupScrollView];
+    
+    self.imageView = [[UIImageView alloc] init];
+    self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.containerView addSubview:self.imageView];
     
     self.nameLabel = [[UILabel alloc] init];
     self.nameLabel.translatesAutoresizingMaskIntoConstraints = NO;
@@ -124,16 +129,20 @@
                              @"messageButton": self.messageButton,
                              @"linkedinButton": self.linkedinButton,
                              @"supervisorButton": self.supervisorButton,
-                             @"reportsButton": self.reportsButton };
+                             @"reportsButton": self.reportsButton,
+                             @"imageView": self.imageView };
     
     return views;
 }
 
 - (void)setupConstraintsWithViews:(NSDictionary *)views {
     NSDictionary *metrics = @{ @"buttonWidth": @80,
-                               @"insetSpacing": @40 };
+                               @"insetSpacing": @40,
+                               @"imageSize": @60 };
     
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[nameLabel]-(insetSpacing)-|" options:0 metrics:metrics views:views]];
+    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[imageView(imageSize)]-[nameLabel]-(insetSpacing)-|" options:NSLayoutFormatAlignAllTop metrics:metrics views:views]];
+    [self.containerView addConstraints:[NSLayoutConstraint
+                                        constraintsWithVisualFormat:@"V:[imageView(imageSize)]" options:0 metrics:metrics views:views]];
     [self.containerView addConstraint:[NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.nameLabel attribute:NSLayoutAttributeWidth multiplier:1 constant:0]];
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[callButton(buttonWidth)]-(>=20)-[textButton(buttonWidth)]-(insetSpacing)-|" options:NSLayoutFormatAlignAllBottom metrics:metrics views:views]];
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[emailButton(buttonWidth)]-(>=20)-[messageButton(buttonWidth)]-(insetSpacing)-|" options:NSLayoutFormatAlignAllBottom metrics:metrics views:views]];
@@ -141,7 +150,7 @@
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[supervisorButton(buttonWidth)]-(>=20)-[reportsButton(buttonWidth)]-(insetSpacing)-|" options:NSLayoutFormatAlignAllBottom metrics:metrics views:views]];
     
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[nameLabel]-[titleLabel]-(40)-[callButton(buttonWidth)]-[emailButton(buttonWidth)]-[linkedinButton(buttonWidth)]-[supervisorButton(buttonWidth)]-|" options:0 metrics:metrics views:views]];
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[nameLabel]-[titleLabel]" options:NSLayoutFormatAlignAllLeft metrics:metrics views:views]];
+    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[nameLabel]-[titleLabel]" options:NSLayoutFormatAlignAllLeading | NSLayoutFormatAlignAllTrailing metrics:metrics views:views]];
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[textButton(buttonWidth)]" options:0 metrics:metrics views:views]];
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[messageButton(buttonWidth)]" options:0 metrics:metrics views:views]];
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[reportsButton(buttonWidth)]" options:0 metrics:metrics views:views]];

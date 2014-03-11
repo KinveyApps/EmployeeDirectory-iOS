@@ -39,6 +39,7 @@
 {
     [super viewDidLoad];
     
+    RAC(self.view.imageView, image) = RACObserve(self.viewModel, image);
     RAC(self.view.nameLabel, text) = RACObserve(self.viewModel, fullName);
     RAC(self.view.titleLabel, text) = RACObserve(self.viewModel, titleAndGroup);
     

@@ -12,9 +12,11 @@
 
 @interface EDADirectoryCellViewModel : NSObject
 
+@property (nonatomic, readonly) UIImage *image;
 @property (nonatomic, readonly) NSString *fullName;
 @property (nonatomic, readonly) NSString *title;
-@property (nonatomic) EDAEmployee *employee;
+
+@property (nonatomic, readonly) EDAEmployee *employee;
 
 - (id)initWithEmployee:(EDAEmployee *)employee;
 

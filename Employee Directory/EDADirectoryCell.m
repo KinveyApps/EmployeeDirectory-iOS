@@ -22,6 +22,19 @@
     
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
+    @weakify(self);
+    
+    RAC(self.imageView, image) = [[[RACObserve(self, object)
+        map:^RACSignal *(EDADirectoryCellViewModel *viewModel) {
+            return RACObserve(viewModel, image);
+        }]
+        switchToLatest]
+        doNext:^(UIImage *image) {
+            @strongify(self);
+            
+            [self setNeedsLayout];
+        }];
+
     RAC(self.textLabel, text) = [[RACObserve(self, object)
         map:^RACSignal *(EDADirectoryCellViewModel *viewModel){
             return RACObserve(viewModel, fullName);
