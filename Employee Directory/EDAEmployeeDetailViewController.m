@@ -65,8 +65,16 @@
             
             MFMessageComposeViewController *viewController = [[MFMessageComposeViewController alloc] init];
             [viewController setRecipients:@[ phoneNumber ]];
+            viewController.messageComposeDelegate = (id <MFMessageComposeViewControllerDelegate>)self;
             
             [self presentViewController:viewController animated:YES completion:NULL];
+        }];
+    
+    [[self rac_signalForSelector:@selector(messageComposeViewController:didFinishWithResult:) fromProtocol:@protocol(MFMessageComposeViewControllerDelegate)]
+        subscribeNext:^(id x) {
+            @strongify(self);
+            
+            [self dismissViewControllerAnimated:YES completion:NULL];
         }];
     
     self.view.emailButton.rac_command = self.viewModel.emailCommand;
