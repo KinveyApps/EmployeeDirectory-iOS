@@ -15,7 +15,7 @@ NSString * const EDALinkedInManagerErrorDomain = @"com.ballastlane.employeedirec
 NSInteger const EDALinkedInManagerErrorCodeUserRejected = 1;
 NSInteger const EDALinkedInManagerErrorCodeInsecure = 2;
 
-NSString * const EDALinkedInManagerAPIKey = @"75vm3nprrd7st3";
+NSString * const EDALinkedInManagerAPIKey = @"759mgmrody1lwk";
 NSString * const EDALinkedInManagerRedirectURL = @"http://www.ballastlane.com/linkedin-auth";
 
 NSString * const EDALinkedInManagerUserDefaultsKey = @"LinkedInToken";
