@@ -8,6 +8,8 @@
 
 #import "EDAEmployee.h"
 
+@class EDAGroup;
+
 extern NSString * const EDAEmployeeErrorDomain;
 
 extern NSInteger const EDAEmployeeErrorCodeUserNotFound;
@@ -21,6 +23,12 @@ extern NSInteger const EDAEmployeeErrorCodeUserNotFound;
 
 /// @return A signal which sends an EDAEmployee object with the given username.
 + (RACSignal *)employeeWithUsername:(NSString *)username;
+
+/// @return A signal which sends an array of employees who are direct reports of the given employee
++ (RACSignal *)directReportsOfEmployee:(EDAEmployee *)employee;
+
+/// @return A signal which sends an array of employees in the given group
++ (RACSignal *)employeesInGroup:(EDAGroup *)group;
 
 /// @return A signal which sends the employee's avatar image
 - (RACSignal *)downloadAvatar;
