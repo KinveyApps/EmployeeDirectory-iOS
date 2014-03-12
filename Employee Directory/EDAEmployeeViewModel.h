@@ -28,6 +28,9 @@
 /// Sends a tuple containing (recipients, subject, message).
 @property (nonatomic, readonly) RACCommand *emailCommand;
 
+/// Opens the employee's LinkedIn profile in Safari
+@property (nonatomic, readonly) RACCommand *showLinkedInProfileCommand;
+
 - (id)initWithEmployee:(EDAEmployee *)employee;
 
 @end

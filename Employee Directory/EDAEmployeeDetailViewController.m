@@ -99,6 +99,9 @@
             
             [self dismissViewControllerAnimated:YES completion:NULL];
         }];
+    
+    self.view.linkedinButton.rac_command = self.viewModel.showLinkedInProfileCommand;
+    [self rac_liftSelector:@selector(handleError:) withSignals:self.view.linkedinButton.rac_command.errors, nil];
 }
 
 @end

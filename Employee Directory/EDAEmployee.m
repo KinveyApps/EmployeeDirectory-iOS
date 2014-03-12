@@ -13,8 +13,6 @@
 #pragma mark - Kinvey
 
 - (NSDictionary *)hostToKinveyPropertyMapping {
-    NSLog(@"%@", @keypath(self, username));
-    
     return @{ @keypath(self, username): @"username",
                @keypath(self, firstName): @"firstName",
                @keypath(self, lastName): @"lastName",
@@ -27,7 +25,11 @@
                @keypath(self, email): @"email",
                @keypath(self, supervisor): @"supervisor",
                @keypath(self, hierarchy): @"hierarchy",
-               @keypath(self, entityID): KCSEntityKeyId };
+               @keypath(self, entityID): KCSEntityKeyId,
+               @keypath(self, headline): @"headline",
+               @keypath(self, summary): @"summary",
+               @keypath(self, avatarURL): @"avatarURL",
+               @keypath(self, linkedInID): @"linkedInID" };
 }
 
 - (BOOL)isEqual:(id)object {

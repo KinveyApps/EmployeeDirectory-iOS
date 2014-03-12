@@ -9,6 +9,7 @@
 #import "EDAEmployeeViewModel.h"
 
 #import "EDAEmployee+API.h"
+#import "EDALinkedInManager.h"
 
 @interface EDAEmployeeViewModel ()
 
@@ -99,6 +100,20 @@
         
         RACTuple *tuple = RACTuplePack(@[ self.employee.email ], @"Subject", @"Message");
         return [RACSignal return:tuple];
+    }];
+    
+    // Show LinkedIn Profile
+    RACSignal *hasLinkedInID = [RACObserve(self.employee, linkedInID) map:^NSNumber *(NSString *ID) {
+        return @(ID.length > 0);
+    }];
+    
+    _showLinkedInProfileCommand = [[RACCommand alloc] initWithEnabled:hasLinkedInID signalBlock:^RACSignal *(id input) {
+        @strongify(self);
+        
+        return [[[EDALinkedInManager sharedManager] linkedInProfileURLForEmployee:self.employee]
+            doNext:^(NSURL *URL) {
+                [[UIApplication sharedApplication] openURL:URL];
+            }];
     }];
     
     return self;

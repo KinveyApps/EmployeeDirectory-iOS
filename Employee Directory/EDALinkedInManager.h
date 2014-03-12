@@ -12,6 +12,9 @@ extern NSString * const EDALinkedInManagerErrorDomain;
 
 extern NSInteger const EDALinkedInManagerErrorCodeUserRejected;
 extern NSInteger const EDALinkedInManagerErrorCodeInsecure;
+extern NSInteger const EDALinkedInManagerErrorCodeFailed;
+
+@class EDAEmployee;
 
 @interface EDALinkedInManager : NSObject
 
@@ -19,6 +22,14 @@ extern NSInteger const EDALinkedInManagerErrorCodeInsecure;
 
 + (instancetype)sharedManager;
 
+/// Start updated the logged in user's LinkedIn information at appropriate times
+- (void)startUpdating;
+
 - (RACSignal *)authorizeWithLinkedInWithRootViewController:(UIViewController *)viewController;
+
+- (RACSignal *)updateUserInfoWithLinkedInProfile;
+
+/// Sends an NSURL for the employee's LinkedId profile
+- (RACSignal *)linkedInProfileURLForEmployee:(EDAEmployee *)employee;
 
 @end

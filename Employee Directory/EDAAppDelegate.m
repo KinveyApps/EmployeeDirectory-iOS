@@ -12,6 +12,7 @@
 #import "EDAMenuViewController.h"
 #import "EDALoginViewController.h"
 #import "EDAAppearanceManager.h"
+#import "EDALinkedInManager.h"
 
 @implementation EDAAppDelegate
 
@@ -33,6 +34,8 @@
     
     // Set up Kinvey
     (void) [[KCSClient sharedClient] initializeKinveyServiceForAppKey:@"kid_eTXG5Nytxq" withAppSecret:@"1512b102e63d4c44931f99d960685cdc" usingOptions:nil];
+    
+    [[EDALinkedInManager sharedManager] startUpdating];
     
     return YES;
 }
