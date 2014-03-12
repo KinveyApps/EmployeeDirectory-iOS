@@ -42,7 +42,7 @@ NSInteger const EDAEmployeeErrorCodeUserNotFound = 1;
     
     if (avatarURL == nil) return [RACSignal return:nil];
     
-    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:avatarURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
             if (error) {
                 [subscriber sendError:error];
@@ -59,7 +59,8 @@ NSInteger const EDAEmployeeErrorCodeUserNotFound = 1;
         return [RACDisposable disposableWithBlock:^{
             [task cancel];
         }];
-    }];
+    }]
+    deliverOn:[RACScheduler currentScheduler]];
 }
 
 @end
