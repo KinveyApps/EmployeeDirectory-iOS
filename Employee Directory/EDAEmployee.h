@@ -24,4 +24,10 @@
 @property (nonatomic) NSString *hierarchy;
 @property (nonatomic) NSString *entityID;
 
+// LinkedIn
+@property (nonatomic) NSString *headline;
+@property (nonatomic) NSString *summary;
+@property (nonatomic) NSString *avatarURL;
+@property (nonatomic) NSString *linkedInID;
+
 @end

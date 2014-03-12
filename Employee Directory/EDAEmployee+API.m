@@ -38,7 +38,28 @@ NSInteger const EDAEmployeeErrorCodeUserNotFound = 1;
 }
 
 - (RACSignal *)downloadAvatar {
-    return [KCSFileStore rac_downloadImageNamed:[NSString stringWithFormat:@"%@.jpg", self.username]];
+    NSURL *avatarURL = [NSURL URLWithString:self.avatarURL];
+    
+    if (avatarURL == nil) return [RACSignal return:nil];
+    
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:avatarURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            if (error) {
+                [subscriber sendError:error];
+            }
+            else {
+                UIImage *image = [UIImage imageWithData:data];
+                [subscriber sendNext:image];
+                [subscriber sendCompleted];
+            }
+        }];
+        
+        [task resume];
+        
+        return [RACDisposable disposableWithBlock:^{
+            [task cancel];
+        }];
+    }];
 }
 
 @end
