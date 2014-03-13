@@ -15,6 +15,8 @@
 @property (nonatomic, readonly) UIImage *image;
 @property (nonatomic, readonly) NSString *fullName;
 @property (nonatomic, readonly) NSString *titleAndGroup;
+@property (nonatomic, readonly) NSString *linkedInHeadline;
+@property (nonatomic, readonly) NSString *linkedInSummary;
 
 /// Sends an EDAEmployee object whose username matches the supervisor property of employee.
 @property (nonatomic, readonly) RACCommand *showSupervisorCommand;

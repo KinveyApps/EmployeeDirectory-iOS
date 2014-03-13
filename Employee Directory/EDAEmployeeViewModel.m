@@ -47,6 +47,9 @@
             return [NSString stringWithFormat:@"%@, %@", title, group];
         }];
     
+    RAC(self, linkedInHeadline) = RACObserve(self.employee, headline);
+    RAC(self, linkedInSummary) = RACObserve(self.employee, summary);
+    
     @weakify(self);
     
     // Supervisor

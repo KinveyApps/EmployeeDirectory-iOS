@@ -43,6 +43,8 @@
     RAC(self.view.imageView, image) = RACObserve(self.viewModel, image);
     RAC(self.view.nameLabel, text) = RACObserve(self.viewModel, fullName);
     RAC(self.view.titleLabel, text) = RACObserve(self.viewModel, titleAndGroup);
+    RAC(self.view.linkedInHeadlineLabel, text) = RACObserve(self.viewModel, linkedInHeadline);
+    RAC(self.view.linkedInSummaryLabel, text) = RACObserve(self.viewModel, linkedInSummary);
     
     @weakify(self);
     
@@ -111,6 +113,10 @@
             EDADirectoryViewController *viewController = [[EDADirectoryViewController alloc] initWithDirectReportsOfEmployee:employee];
             [self.navigationController pushViewController:viewController animated:YES];
         }];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self.view.scrollView flashScrollIndicators];
 }
 
 @end

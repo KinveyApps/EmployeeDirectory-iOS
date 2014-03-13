@@ -10,9 +10,12 @@
 
 @interface EDAEmployeeDetailView ()
 
+@property (nonatomic) UIScrollView *scrollView;
 @property (nonatomic) UIImageView *imageView;
 @property (nonatomic) UILabel *nameLabel;
 @property (nonatomic) UILabel *titleLabel;
+@property (nonatomic) UILabel *linkedInHeadlineLabel;
+@property (nonatomic) UILabel *linkedInSummaryLabel;
 @property (nonatomic) UIButton *callButton;
 @property (nonatomic) UIButton *textButton;
 @property (nonatomic) UIButton *emailButton;
@@ -22,7 +25,6 @@
 @property (nonatomic) UIButton *reportsButton;
 
 @property (nonatomic) UIView *containerView;
-@property (nonatomic) UIScrollView *scrollView;
 
 @end
 
@@ -45,6 +47,7 @@
     scrollView.translatesAutoresizingMaskIntoConstraints = NO;
     scrollView.scrollEnabled = YES;
     [self addSubview:scrollView];
+    self.scrollView = scrollView;
     
     NSDictionary *scrollViews = @{ @"scrollView": scrollView };
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[scrollView]|" options:0 metrics:nil views:scrollViews]];
@@ -80,6 +83,20 @@
     self.titleLabel.text = @"Test Title";
     self.titleLabel.textColor = CVTDarkTextColor;
     [self.containerView addSubview:self.titleLabel];
+    
+    self.linkedInHeadlineLabel = [[UILabel alloc] init];
+    self.linkedInHeadlineLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.linkedInHeadlineLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
+    self.linkedInHeadlineLabel.textColor = CVTDarkTextColor;
+    self.linkedInHeadlineLabel.numberOfLines = 0;
+    [self.containerView addSubview:self.linkedInHeadlineLabel];
+    
+    self.linkedInSummaryLabel = [[UILabel alloc] init];
+    self.linkedInSummaryLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.linkedInSummaryLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCaption1];
+    self.linkedInSummaryLabel.textColor = CVTDarkTextColor;
+    self.linkedInSummaryLabel.numberOfLines = 0;
+    [self.containerView addSubview:self.linkedInSummaryLabel];
     
     self.callButton = [EDAAppearanceManager button];
     self.callButton.translatesAutoresizingMaskIntoConstraints = NO;
@@ -125,7 +142,9 @@
                              @"linkedinButton": self.linkedinButton,
                              @"supervisorButton": self.supervisorButton,
                              @"reportsButton": self.reportsButton,
-                             @"imageView": self.imageView };
+                             @"imageView": self.imageView,
+                             @"linkedInHeadlineLabel": self.linkedInHeadlineLabel,
+                             @"linkedInSummaryLabel": self.linkedInSummaryLabel };
     
     return views;
 }
@@ -145,8 +164,12 @@
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[linkedinButton]-(insetSpacing)-|" options:0 metrics:metrics views:views]];
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[supervisorButton]-(insetSpacing)-[reportsButton(==supervisorButton)]-(insetSpacing)-|" options:NSLayoutFormatAlignAllBottom metrics:metrics views:views]];
     
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[nameLabel]-[titleLabel]-(40)-[callButton]-(insetSpacing)-[emailButton]-(insetSpacing)-[linkedinButton]-(insetSpacing)-[supervisorButton]-(insetSpacing)-|" options:0 metrics:metrics views:views]];
+    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[nameLabel]-[titleLabel]" options:0 metrics:metrics views:views]];
+    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[imageView]-[linkedInHeadlineLabel]-[linkedInSummaryLabel]-(insetSpacing)-[callButton]-(insetSpacing)-[emailButton]-(insetSpacing)-[linkedinButton]-(insetSpacing)-[supervisorButton]-(insetSpacing)-|" options:0 metrics:metrics views:views]];
+
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[nameLabel]-[titleLabel]" options:NSLayoutFormatAlignAllLeading | NSLayoutFormatAlignAllTrailing metrics:metrics views:views]];
+    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[linkedInHeadlineLabel]-[linkedInSummaryLabel]" options:NSLayoutFormatAlignAllLeading | NSLayoutFormatAlignAllTrailing metrics:nil views:views]];
+    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[linkedInHeadlineLabel]-(insetSpacing)-|" options:0 metrics:metrics views:views]];
 }
 
 @end
