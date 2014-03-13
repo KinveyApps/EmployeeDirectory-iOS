@@ -134,6 +134,11 @@
         return [RACSignal return:employee];
     }];
     
+    // Message
+    _messageCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        return [RACSignal return:employee];
+    }];
+    
     return self;
 }
 
