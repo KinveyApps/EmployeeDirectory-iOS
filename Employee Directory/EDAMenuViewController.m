@@ -14,6 +14,7 @@
 #import "EDASidebarCell.h"
 #import "EDAYourInfoViewController.h"
 #import "EDAMessagingViewController.h"
+#import "EDAAboutViewController.h"
 
 NSString * const EDAMenuViewControllerIdentifierYourInfo = @"Your Info";
 NSString * const EDAMenuViewControllerIdentifierDirectory = @"Directory";
@@ -71,7 +72,7 @@ NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
                 newViewController = [EDAMessagingViewController new];
             }
             else {
-                newViewController = [UIViewController new];
+                newViewController = [EDAAboutViewController new];
             }
             
             UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:newViewController];

@@ -28,6 +28,7 @@
 		D00BA02718D20DF600AA14DC /* EDAMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA02618D20DF600AA14DC /* EDAMessage.m */; };
 		D00BA02A18D20E0100AA14DC /* EDAMessage+API.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA02918D20E0100AA14DC /* EDAMessage+API.m */; };
 		D00BA02D18D2339500AA14DC /* KCSReachability+RAC.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA02C18D2339500AA14DC /* KCSReachability+RAC.m */; };
+		D00BA03018D23EAB00AA14DC /* EDAAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA02F18D23EAB00AA14DC /* EDAAboutViewController.m */; };
 		D043A79618CA1D870095F581 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79518CA1D870095F581 /* Foundation.framework */; };
 		D043A79818CA1D870095F581 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79718CA1D870095F581 /* CoreGraphics.framework */; };
 		D043A79A18CA1D870095F581 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79918CA1D870095F581 /* UIKit.framework */; };
@@ -126,6 +127,8 @@
 		D00BA02918D20E0100AA14DC /* EDAMessage+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EDAMessage+API.m"; sourceTree = "<group>"; };
 		D00BA02B18D2339500AA14DC /* KCSReachability+RAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KCSReachability+RAC.h"; sourceTree = "<group>"; };
 		D00BA02C18D2339500AA14DC /* KCSReachability+RAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KCSReachability+RAC.m"; sourceTree = "<group>"; };
+		D00BA02E18D23EAB00AA14DC /* EDAAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAAboutViewController.h; sourceTree = "<group>"; };
+		D00BA02F18D23EAB00AA14DC /* EDAAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAAboutViewController.m; sourceTree = "<group>"; };
 		D043A79218CA1D870095F581 /* Employee Directory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Employee Directory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D043A79518CA1D870095F581 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D043A79718CA1D870095F581 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -267,6 +270,15 @@
 				D00BA02018D1E5AB00AA14DC /* EDANewMessageView.m */,
 			);
 			name = "New Message";
+			sourceTree = "<group>";
+		};
+		D00BA03118D23EB600AA14DC /* About */ = {
+			isa = PBXGroup;
+			children = (
+				D00BA02E18D23EAB00AA14DC /* EDAAboutViewController.h */,
+				D00BA02F18D23EAB00AA14DC /* EDAAboutViewController.m */,
+			);
+			name = About;
 			sourceTree = "<group>";
 		};
 		D043A78918CA1D870095F581 = {
@@ -502,11 +514,12 @@
 				15D799F018CA32BE00BF116D /* Menu */,
 				15D799E618CA20F500BF116D /* LoginScreen */,
 				D04E88DF18D0B6210071F421 /* Messaging */,
+				D055CB4D18CF7A2100B29407 /* Your Info */,
+				D00BA03118D23EB600AA14DC /* About */,
 				D043A7DA18CA236F0095F581 /* BLAPaneController.h */,
 				D043A7DB18CA236F0095F581 /* BLAPaneController.m */,
 				D09AFF9A18CDFF340015C400 /* EDAWebViewController.h */,
 				D09AFF9B18CDFF340015C400 /* EDAWebViewController.m */,
-				D055CB4D18CF7A2100B29407 /* Your Info */,
 				D055CB5418CF7BBF00B29407 /* UIViewController+ErrorHandling.h */,
 				D055CB5518CF7BBF00B29407 /* UIViewController+ErrorHandling.m */,
 			);
@@ -650,6 +663,7 @@
 				D00BA02D18D2339500AA14DC /* KCSReachability+RAC.m in Sources */,
 				15D799EE18CA32AD00BF116D /* EDAMenuViewController.m in Sources */,
 				15D799FC18CA524200BF116D /* EDADirectoryCell.m in Sources */,
+				D00BA03018D23EAB00AA14DC /* EDAAboutViewController.m in Sources */,
 				15D799F918CA4E3A00BF116D /* EDADirectoryCellViewModel.m in Sources */,
 				D04E88EE18D0C50A0071F421 /* EDAGroupCell.m in Sources */,
 				D04E88EB18D0B7220071F421 /* EDAGroup+API.m in Sources */,
