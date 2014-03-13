@@ -65,6 +65,10 @@
 
 - (void)viewDidLoad {
     RAC(self.viewModel, messageText) = self.view.textView.rac_textSignal;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     
     [self.view.textView becomeFirstResponder];
 }
