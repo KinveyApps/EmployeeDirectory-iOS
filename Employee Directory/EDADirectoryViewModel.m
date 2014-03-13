@@ -54,13 +54,23 @@ NSString * const EDADirectoryViewModelSortStyleKey = @"EDADirectoryViewModelSort
             skip:1]
             subscribe:userDefaultsChannel];
         
-        RACSignal *employeesSignal = [signal map:^NSArray*(NSArray *employees) {
-            NSArray *sortedEmployees = [employees sortedArrayUsingDescriptors:[EDAEmployee standardSortDescriptors]];
-            
-            return [[sortedEmployees.rac_sequence map:^EDADirectoryCellViewModel*(EDAEmployee *employee) {
-                return [[EDADirectoryCellViewModel alloc] initWithEmployee:employee];
-            }] array];
-        }];
+        RACSignal *employeesSignal = [[[[[NSNotificationCenter defaultCenter] rac_addObserverForName:KCSActiveUserChangedNotification object:nil]
+            startWith:nil]
+            flattenMap:^RACStream *(id value) {
+                if ([KCSUser activeUser]) {
+                    return signal;
+                }
+                else {
+                    return [RACSignal return:@[]];
+                }
+            }]
+            map:^NSArray*(NSArray *employees) {
+                NSArray *sortedEmployees = [employees sortedArrayUsingDescriptors:[EDAEmployee standardSortDescriptors]];
+                
+                return [[sortedEmployees.rac_sequence map:^EDADirectoryCellViewModel*(EDAEmployee *employee) {
+                    return [[EDADirectoryCellViewModel alloc] initWithEmployee:employee];
+                }] array];
+            }];
         
         RAC(self, employees) = [employeesSignal
             catch:^RACSignal *(NSError *error) {

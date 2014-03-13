@@ -49,6 +49,8 @@ NSTimeInterval const kSidebarTransitionDuration = 0.25;
 		[self addChildViewController:_sidebarViewController];
 
 		_sidebarWidthWhenVisible = 265;
+        
+        [self setupRootViewController:rootViewController];
 	}
 	
 	return self;
@@ -143,9 +145,7 @@ NSTimeInterval const kSidebarTransitionDuration = 0.25;
 	}
 }
 
-- (void)presentNewRootViewController:(UIViewController *)viewController {
-	[self.rootViewController willMoveToParentViewController:nil];
-	
+- (void)setupRootViewController:(UIViewController *)viewController {
     if ([viewController isKindOfClass:[UINavigationController class]]) {
         UINavigationController *navigationController = (UINavigationController *)viewController;
         navigationController.navigationBar.translucent = NO;
@@ -153,6 +153,12 @@ NSTimeInterval const kSidebarTransitionDuration = 0.25;
         UIViewController *firstViewController = [[navigationController viewControllers] firstObject];
         firstViewController.navigationItem.leftBarButtonItem = [viewController sidebarItem];
     }
+}
+
+- (void)presentNewRootViewController:(UIViewController *)viewController {
+	[self.rootViewController willMoveToParentViewController:nil];
+	
+    [self setupRootViewController:viewController];
     
 	[self addChildViewController:viewController];
 	
