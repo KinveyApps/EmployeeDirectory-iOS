@@ -147,7 +147,10 @@ NSTimeInterval const kSidebarTransitionDuration = 0.25;
 	[self.rootViewController willMoveToParentViewController:nil];
 	
     if ([viewController isKindOfClass:[UINavigationController class]]) {
-        UIViewController *firstViewController = [[(UINavigationController *)viewController viewControllers] firstObject];
+        UINavigationController *navigationController = (UINavigationController *)viewController;
+        navigationController.navigationBar.translucent = NO;
+        
+        UIViewController *firstViewController = [[navigationController viewControllers] firstObject];
         firstViewController.navigationItem.leftBarButtonItem = [viewController sidebarItem];
     }
     

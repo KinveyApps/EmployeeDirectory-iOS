@@ -8,15 +8,17 @@
 
 #import "EDAAppearanceManager.h"
 
+#import "BLAPaneController.h"
+
 @implementation EDAAppearanceManager
 
 + (void)customizeAppearanceWithWindow:(UIWindow *)window {
     window.tintColor = CVTAccentColor;
     
     // Nav bar
-    [[UINavigationBar appearance] setBarTintColor:CVTAccentColor];
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    [[UINavigationBar appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName: [UIColor colorWithWhite:1 alpha:0.65] }];
+    [[UINavigationBar appearanceWhenContainedIn:[BLAPaneController class], nil] setBarTintColor:CVTAccentColor];
+    [[UINavigationBar appearanceWhenContainedIn:[BLAPaneController class], nil] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearanceWhenContainedIn:[BLAPaneController class], nil] setTitleTextAttributes:@{ NSForegroundColorAttributeName: [UIColor colorWithWhite:1 alpha:0.65] }];
 }
 
 + (UIButton *)button {

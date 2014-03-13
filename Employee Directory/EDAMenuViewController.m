@@ -32,6 +32,7 @@ NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
     
     self.tableView.backgroundColor = [UIColor colorWithRed:0.129 green:0.145 blue:0.157 alpha:1.000];
 	self.tableView.separatorColor = [UIColor colorWithRed:0.196 green:0.200 blue:0.212 alpha:1.000];
+    self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
     
     @weakify(self);
     
