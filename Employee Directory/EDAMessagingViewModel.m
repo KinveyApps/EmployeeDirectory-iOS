@@ -9,6 +9,7 @@
 #import "EDAMessagingViewModel.h"
 
 #import "EDAGroup+API.h"
+#import "EDAGroup+Sorting.h"
 #import "EDAEmployee+API.h"
 #import "EDAGroupCellViewModel.h"
 
@@ -38,7 +39,7 @@
                     return [[EDAGroupCellViewModel alloc] initWithGroup:group];
                 }]
                 array];
-            NSArray *sortedGroups = [usedGroups sortedArrayUsingDescriptors:@[ [NSSortDescriptor sortDescriptorWithKey:@"displayName" ascending:YES selector:@selector(localizedStandardCompare:)] ]];
+            NSArray *sortedGroups = [usedGroups sortedArrayUsingDescriptors:[EDAGroup standardSortDescriptors]];
             return sortedGroups;
         }]
         catch:^RACSignal *(NSError *error) {

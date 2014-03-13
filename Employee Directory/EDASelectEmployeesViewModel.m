@@ -9,6 +9,7 @@
 #import "EDASelectEmployeesViewModel.h"
 
 #import "EDAEmployee+API.h"
+#import "EDAEmployee+Sorting.h"
 #import "EDASelectableEmployeeCellViewModel.h"
 
 @interface EDASelectEmployeesViewModel ()
@@ -40,7 +41,7 @@
                     return [[EDASelectableEmployeeCellViewModel alloc] initWithEmployee:employee selected:[selectedEmployees containsObject:employee]];
                 }]
                 array]
-                sortedArrayUsingDescriptors:@[ [NSSortDescriptor sortDescriptorWithKey:@"fullName" ascending:YES selector:@selector(localizedStandardCompare:)] ]];
+                sortedArrayUsingDescriptors:[EDAEmployee standardSortDescriptors]];
         }]
         catch:^RACSignal *(NSError *error) {
             return [RACSignal empty];

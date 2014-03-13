@@ -10,6 +10,7 @@
 
 #import "EDADirectoryCellViewModel.h"
 #import "EDAEmployee+API.h"
+#import "EDAEmployee+Sorting.h"
 
 @interface EDADirectoryViewModel ()
 
@@ -27,7 +28,9 @@
     self = [super init];
     if (self) {
         RACSignal *employeesSignal = [[EDAEmployee allEmployees] map:^NSArray*(NSArray *employees) {
-            return [[employees.rac_sequence map:^EDADirectoryCellViewModel*(EDAEmployee *employee) {
+            NSArray *sortedEmployees = [employees sortedArrayUsingDescriptors:[EDAEmployee standardSortDescriptors]];
+            
+            return [[sortedEmployees.rac_sequence map:^EDADirectoryCellViewModel*(EDAEmployee *employee) {
                 return [[EDADirectoryCellViewModel alloc] initWithEmployee:employee];
             }] array];
         }];
@@ -62,7 +65,7 @@
                     }
                     
                     NSArray *array = dictionary[key];
-                    array = [[array arrayByAddingObject:viewModel] sortedArrayUsingDescriptors:@[ [NSSortDescriptor sortDescriptorWithKey:@"employee.lastName" ascending:YES selector:@selector(localizedStandardCompare:)], [NSSortDescriptor sortDescriptorWithKey:@"employee.firstName" ascending:YES selector:@selector(localizedStandardCompare:)] ]];
+                    array = [array arrayByAddingObject:viewModel];
                     dictionary[key] = array;
                     
                     return dictionary;
