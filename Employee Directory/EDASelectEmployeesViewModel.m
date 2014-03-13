@@ -26,7 +26,13 @@
     
     @weakify(self);
     
-    RACSignal *employeesSignal = [[[EDAEmployee employeesInGroup:group] publish] autoconnect];
+    RACSignal *employeesSignal = [[[[EDAEmployee employeesInGroup:group]
+        map:^NSArray *(NSArray *employees) {
+            return [employees sortedArrayUsingDescriptors:[EDAEmployee standardSortDescriptors]];
+        }]
+        publish]
+        autoconnect];
+    
     [employeesSignal subscribeNext:^(NSArray *employees) {
         @strongify(self);
         
@@ -36,12 +42,11 @@
     RAC(self, employees) = [[RACSignal
         combineLatest:@[ employeesSignal, RACObserve(self, selectedEmployees) ]
         reduce:^NSArray *(NSArray *employees, NSArray *selectedEmployees){
-            return [[[employees.rac_sequence
+            return [[employees.rac_sequence
                 map:^EDASelectableEmployeeCellViewModel *(EDAEmployee *employee) {
                     return [[EDASelectableEmployeeCellViewModel alloc] initWithEmployee:employee selected:[selectedEmployees containsObject:employee]];
                 }]
-                array]
-                sortedArrayUsingDescriptors:[EDAEmployee standardSortDescriptors]];
+                array];
         }]
         catch:^RACSignal *(NSError *error) {
             return [RACSignal empty];
