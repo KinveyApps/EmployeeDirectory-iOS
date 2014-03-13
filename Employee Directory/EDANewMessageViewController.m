@@ -39,10 +39,16 @@
     
     @weakify(self);
     
-    [[[sendItem.rac_command.executionSignals
+    [[[[sendItem.rac_command.executionSignals
         flatten]
         filter:^BOOL(NSNumber *result) {
             return result.boolValue == YES;
+        }]
+        flattenMap:^RACStream *(id value) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message Sent" message:nil delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            
+            return [alert.rac_buttonClickedSignal take:1];
         }]
         subscribeNext:^(id x) {
             @strongify(self);
