@@ -13,6 +13,7 @@
 #import "EDALoginViewController.h"
 #import "EDASidebarCell.h"
 #import "EDAYourInfoViewController.h"
+#import "EDAMessagingViewController.h"
 
 NSString * const EDAMenuViewControllerIdentifierYourInfo = @"Your Info";
 NSString * const EDAMenuViewControllerIdentifierDirectory = @"Directory";
@@ -64,6 +65,9 @@ NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
             }
             else if ([identifier isEqualToString:EDAMenuViewControllerIdentifierYourInfo]) {
                 newViewController = [EDAYourInfoViewController new];
+            }
+            else if ([identifier isEqualToString:EDAMenuViewControllerIdentifierTeamMessaging]) {
+                newViewController = [EDAMessagingViewController new];
             }
             else {
                 newViewController = [UIViewController new];

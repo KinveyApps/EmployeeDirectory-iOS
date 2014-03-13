@@ -1,0 +1,57 @@
+//
+//  EDAMessagingViewController.m
+//  Employee Directory
+//
+//  Created by Peter Stuart on 3/12/14.
+//  Copyright (c) 2014 Ballast Lane Applications. All rights reserved.
+//
+
+#import "EDAMessagingViewController.h"
+
+#import "EDAMessagingViewModel.h"
+#import "EDAGroupCell.h"
+#import "EDAGroupCellViewModel.h"
+#import "EDASelectEmployeesViewController.h"
+
+@interface EDAMessagingViewController ()
+
+@property (nonatomic) EDAMessagingViewModel *viewModel;
+
+@end
+
+@implementation EDAMessagingViewController
+
+- (id)init
+{
+    EDAMessagingViewModel *viewModel = [EDAMessagingViewModel new];
+    
+    self = [super initWithStyle:UITableViewStylePlain bindingToKeyPath:@keypath(viewModel, groups) onObject:viewModel];
+    if (self == nil) return nil;
+    
+    _viewModel = viewModel;
+    
+    self.title = @"Messaging";
+    self.animateChanges = NO;
+    
+    [self registerCellClass:[EDAGroupCell class] forObjectsWithClass:[EDAGroupCellViewModel class]];
+    
+    @weakify(self);
+    
+    [self.didSelectRowSignal subscribeNext:^(RACTuple *tuple) {
+        @strongify(self);
+        
+        EDAGroupCellViewModel *aViewModel = tuple.first;
+        EDAGroup *group = aViewModel.group;
+        
+        EDASelectEmployeesViewController *viewController = [[EDASelectEmployeesViewController alloc] initWithGroup:group];
+        [self.navigationController pushViewController:viewController animated:YES];
+    }];
+    
+    return self;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @"Direct Reports";
+}
+
+@end

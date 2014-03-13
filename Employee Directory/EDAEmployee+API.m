@@ -8,6 +8,8 @@
 
 #import "EDAEmployee+API.h"
 
+#import "EDAGroup.h"
+
 NSString * const EDAEmployeeErrorDomain = @"com.ballastlane.employeedirectory.employee";
 
 NSInteger const EDAEmployeeErrorCodeUserNotFound = 1;
@@ -35,6 +37,16 @@ NSInteger const EDAEmployeeErrorCodeUserNotFound = 1;
                 return [RACSignal return:users.firstObject];
             }
         }];
+}
+
++ (RACSignal *)directReportsOfEmployee:(EDAEmployee *)employee {
+    KCSQuery *query = [KCSQuery queryOnField:@"hierarchy" withRegex:[NSString stringWithFormat:@"^%@", employee.hierarchy]];
+    return [[self appdataStore] rac_queryWithQuery:query];
+}
+
++ (RACSignal *)employeesInGroup:(EDAGroup *)group {
+    KCSQuery *query = [KCSQuery queryOnField:@"hierarchy" withRegex:[NSString stringWithFormat:@"^%@", group.identifier]];
+    return [[self appdataStore] rac_queryWithQuery:query];
 }
 
 - (RACSignal *)downloadAvatar {

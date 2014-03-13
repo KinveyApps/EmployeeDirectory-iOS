@@ -20,6 +20,11 @@
 		15D799F918CA4E3A00BF116D /* EDADirectoryCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799F818CA4E3A00BF116D /* EDADirectoryCellViewModel.m */; };
 		15D799FC18CA524200BF116D /* EDADirectoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799FB18CA524200BF116D /* EDADirectoryCell.m */; };
 		84AFBA2E64C449BA8D7C730F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4432DA4CC140E7ACE15E20 /* libPods.a */; };
+		D00BA01418D1DB5000AA14DC /* EDAEmployee+Sorting.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA01318D1DB5000AA14DC /* EDAEmployee+Sorting.m */; };
+		D00BA01718D1DC6A00AA14DC /* EDAGroup+Sorting.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA01618D1DC6A00AA14DC /* EDAGroup+Sorting.m */; };
+		D00BA01A18D1DE0300AA14DC /* EDANewMessageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA01918D1DE0300AA14DC /* EDANewMessageViewModel.m */; };
+		D00BA01E18D1E29200AA14DC /* EDANewMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA01D18D1E29200AA14DC /* EDANewMessageViewController.m */; };
+		D00BA02118D1E5AB00AA14DC /* EDANewMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA02018D1E5AB00AA14DC /* EDANewMessageView.m */; };
 		D043A79618CA1D870095F581 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79518CA1D870095F581 /* Foundation.framework */; };
 		D043A79818CA1D870095F581 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79718CA1D870095F581 /* CoreGraphics.framework */; };
 		D043A79A18CA1D870095F581 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79918CA1D870095F581 /* UIKit.framework */; };
@@ -45,6 +50,16 @@
 		D043A7E918CA3B880095F581 /* KCSUser+RAC.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7E818CA3B880095F581 /* KCSUser+RAC.m */; };
 		D043A7EC18CA40D10095F581 /* EDAEmployee+API.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7EB18CA40D10095F581 /* EDAEmployee+API.m */; };
 		D043A7EF18CA41420095F581 /* KCSAppdataStore+RAC.m in Sources */ = {isa = PBXBuildFile; fileRef = D043A7EE18CA41420095F581 /* KCSAppdataStore+RAC.m */; };
+		D04E88DE18D0B6080071F421 /* EDAMessagingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D04E88DD18D0B6080071F421 /* EDAMessagingViewController.m */; };
+		D04E88E218D0B6430071F421 /* EDAMessagingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D04E88E118D0B6430071F421 /* EDAMessagingViewModel.m */; };
+		D04E88E518D0B66C0071F421 /* EDAGroupCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D04E88E418D0B66C0071F421 /* EDAGroupCellViewModel.m */; };
+		D04E88E818D0B67A0071F421 /* EDAGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = D04E88E718D0B67A0071F421 /* EDAGroup.m */; };
+		D04E88EB18D0B7220071F421 /* EDAGroup+API.m in Sources */ = {isa = PBXBuildFile; fileRef = D04E88EA18D0B7220071F421 /* EDAGroup+API.m */; };
+		D04E88EE18D0C50A0071F421 /* EDAGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D04E88ED18D0C50A0071F421 /* EDAGroupCell.m */; };
+		D04E88F218D0C9AA0071F421 /* EDASelectEmployeesViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D04E88F118D0C9AA0071F421 /* EDASelectEmployeesViewModel.m */; };
+		D04E88F618D0CA310071F421 /* EDASelectableEmployeeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D04E88F518D0CA310071F421 /* EDASelectableEmployeeCell.m */; };
+		D04E88F918D0CA5C0071F421 /* EDASelectableEmployeeCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D04E88F818D0CA5C0071F421 /* EDASelectableEmployeeCellViewModel.m */; };
+		D04E88FC18D0CC3E0071F421 /* EDASelectEmployeesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D04E88FB18D0CC3E0071F421 /* EDASelectEmployeesViewController.m */; };
 		D055CB4918CF636700B29407 /* KCSFileStore+RAC.m in Sources */ = {isa = PBXBuildFile; fileRef = D055CB4818CF636700B29407 /* KCSFileStore+RAC.m */; };
 		D055CB4C18CF7A1D00B29407 /* EDAYourInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D055CB4B18CF7A1D00B29407 /* EDAYourInfoViewController.m */; };
 		D055CB5018CF7A4C00B29407 /* EDAYourInfoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D055CB4F18CF7A4C00B29407 /* EDAYourInfoViewModel.m */; };
@@ -92,6 +107,16 @@
 		15D799FB18CA524200BF116D /* EDADirectoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDADirectoryCell.m; sourceTree = "<group>"; };
 		4B4432DA4CC140E7ACE15E20 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		86DEC729436F499C87A944EF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		D00BA01218D1DB5000AA14DC /* EDAEmployee+Sorting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EDAEmployee+Sorting.h"; sourceTree = "<group>"; };
+		D00BA01318D1DB5000AA14DC /* EDAEmployee+Sorting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EDAEmployee+Sorting.m"; sourceTree = "<group>"; };
+		D00BA01518D1DC6A00AA14DC /* EDAGroup+Sorting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EDAGroup+Sorting.h"; sourceTree = "<group>"; };
+		D00BA01618D1DC6A00AA14DC /* EDAGroup+Sorting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EDAGroup+Sorting.m"; sourceTree = "<group>"; };
+		D00BA01818D1DE0300AA14DC /* EDANewMessageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDANewMessageViewModel.h; sourceTree = "<group>"; };
+		D00BA01918D1DE0300AA14DC /* EDANewMessageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDANewMessageViewModel.m; sourceTree = "<group>"; };
+		D00BA01C18D1E29200AA14DC /* EDANewMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDANewMessageViewController.h; sourceTree = "<group>"; };
+		D00BA01D18D1E29200AA14DC /* EDANewMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDANewMessageViewController.m; sourceTree = "<group>"; };
+		D00BA01F18D1E5AB00AA14DC /* EDANewMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDANewMessageView.h; sourceTree = "<group>"; };
+		D00BA02018D1E5AB00AA14DC /* EDANewMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDANewMessageView.m; sourceTree = "<group>"; };
 		D043A79218CA1D870095F581 /* Employee Directory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Employee Directory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D043A79518CA1D870095F581 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D043A79718CA1D870095F581 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -126,6 +151,26 @@
 		D043A7EB18CA40D10095F581 /* EDAEmployee+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EDAEmployee+API.m"; sourceTree = "<group>"; };
 		D043A7ED18CA41420095F581 /* KCSAppdataStore+RAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KCSAppdataStore+RAC.h"; sourceTree = "<group>"; };
 		D043A7EE18CA41420095F581 /* KCSAppdataStore+RAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KCSAppdataStore+RAC.m"; sourceTree = "<group>"; };
+		D04E88DC18D0B6080071F421 /* EDAMessagingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAMessagingViewController.h; sourceTree = "<group>"; };
+		D04E88DD18D0B6080071F421 /* EDAMessagingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAMessagingViewController.m; sourceTree = "<group>"; };
+		D04E88E018D0B6430071F421 /* EDAMessagingViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAMessagingViewModel.h; sourceTree = "<group>"; };
+		D04E88E118D0B6430071F421 /* EDAMessagingViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAMessagingViewModel.m; sourceTree = "<group>"; };
+		D04E88E318D0B66C0071F421 /* EDAGroupCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAGroupCellViewModel.h; sourceTree = "<group>"; };
+		D04E88E418D0B66C0071F421 /* EDAGroupCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAGroupCellViewModel.m; sourceTree = "<group>"; };
+		D04E88E618D0B67A0071F421 /* EDAGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAGroup.h; sourceTree = "<group>"; };
+		D04E88E718D0B67A0071F421 /* EDAGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAGroup.m; sourceTree = "<group>"; };
+		D04E88E918D0B7220071F421 /* EDAGroup+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EDAGroup+API.h"; sourceTree = "<group>"; };
+		D04E88EA18D0B7220071F421 /* EDAGroup+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EDAGroup+API.m"; sourceTree = "<group>"; };
+		D04E88EC18D0C50A0071F421 /* EDAGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAGroupCell.h; sourceTree = "<group>"; };
+		D04E88ED18D0C50A0071F421 /* EDAGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAGroupCell.m; sourceTree = "<group>"; };
+		D04E88F018D0C9AA0071F421 /* EDASelectEmployeesViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDASelectEmployeesViewModel.h; sourceTree = "<group>"; };
+		D04E88F118D0C9AA0071F421 /* EDASelectEmployeesViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDASelectEmployeesViewModel.m; sourceTree = "<group>"; };
+		D04E88F418D0CA310071F421 /* EDASelectableEmployeeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDASelectableEmployeeCell.h; sourceTree = "<group>"; };
+		D04E88F518D0CA310071F421 /* EDASelectableEmployeeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDASelectableEmployeeCell.m; sourceTree = "<group>"; };
+		D04E88F718D0CA5C0071F421 /* EDASelectableEmployeeCellViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDASelectableEmployeeCellViewModel.h; sourceTree = "<group>"; };
+		D04E88F818D0CA5C0071F421 /* EDASelectableEmployeeCellViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDASelectableEmployeeCellViewModel.m; sourceTree = "<group>"; };
+		D04E88FA18D0CC3E0071F421 /* EDASelectEmployeesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDASelectEmployeesViewController.h; sourceTree = "<group>"; };
+		D04E88FB18D0CC3E0071F421 /* EDASelectEmployeesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDASelectEmployeesViewController.m; sourceTree = "<group>"; };
 		D055CB4718CF636700B29407 /* KCSFileStore+RAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KCSFileStore+RAC.h"; sourceTree = "<group>"; };
 		D055CB4818CF636700B29407 /* KCSFileStore+RAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KCSFileStore+RAC.m"; sourceTree = "<group>"; };
 		D055CB4A18CF7A1D00B29407 /* EDAYourInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAYourInfoViewController.h; sourceTree = "<group>"; };
@@ -200,6 +245,19 @@
 				15D799EA18CA32AD00BF116D /* EDAMenuViewController.m */,
 			);
 			name = Menu;
+			sourceTree = "<group>";
+		};
+		D00BA01B18D1DE0E00AA14DC /* New Message */ = {
+			isa = PBXGroup;
+			children = (
+				D00BA01C18D1E29200AA14DC /* EDANewMessageViewController.h */,
+				D00BA01D18D1E29200AA14DC /* EDANewMessageViewController.m */,
+				D00BA01818D1DE0300AA14DC /* EDANewMessageViewModel.h */,
+				D00BA01918D1DE0300AA14DC /* EDANewMessageViewModel.m */,
+				D00BA01F18D1E5AB00AA14DC /* EDANewMessageView.h */,
+				D00BA02018D1E5AB00AA14DC /* EDANewMessageView.m */,
+			);
+			name = "New Message";
 			sourceTree = "<group>";
 		};
 		D043A78918CA1D870095F581 = {
@@ -288,6 +346,46 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D04E88DF18D0B6210071F421 /* Messaging */ = {
+			isa = PBXGroup;
+			children = (
+				D04E88EF18D0C9800071F421 /* Messaging */,
+				D04E88F318D0C9AE0071F421 /* Select Employees */,
+				D00BA01B18D1DE0E00AA14DC /* New Message */,
+			);
+			name = Messaging;
+			sourceTree = "<group>";
+		};
+		D04E88EF18D0C9800071F421 /* Messaging */ = {
+			isa = PBXGroup;
+			children = (
+				D04E88EC18D0C50A0071F421 /* EDAGroupCell.h */,
+				D04E88ED18D0C50A0071F421 /* EDAGroupCell.m */,
+				D04E88E318D0B66C0071F421 /* EDAGroupCellViewModel.h */,
+				D04E88E418D0B66C0071F421 /* EDAGroupCellViewModel.m */,
+				D04E88DC18D0B6080071F421 /* EDAMessagingViewController.h */,
+				D04E88DD18D0B6080071F421 /* EDAMessagingViewController.m */,
+				D04E88E018D0B6430071F421 /* EDAMessagingViewModel.h */,
+				D04E88E118D0B6430071F421 /* EDAMessagingViewModel.m */,
+			);
+			name = Messaging;
+			sourceTree = "<group>";
+		};
+		D04E88F318D0C9AE0071F421 /* Select Employees */ = {
+			isa = PBXGroup;
+			children = (
+				D04E88F418D0CA310071F421 /* EDASelectableEmployeeCell.h */,
+				D04E88F518D0CA310071F421 /* EDASelectableEmployeeCell.m */,
+				D04E88F718D0CA5C0071F421 /* EDASelectableEmployeeCellViewModel.h */,
+				D04E88F818D0CA5C0071F421 /* EDASelectableEmployeeCellViewModel.m */,
+				D04E88FA18D0CC3E0071F421 /* EDASelectEmployeesViewController.h */,
+				D04E88FB18D0CC3E0071F421 /* EDASelectEmployeesViewController.m */,
+				D04E88F018D0C9AA0071F421 /* EDASelectEmployeesViewModel.h */,
+				D04E88F118D0C9AA0071F421 /* EDASelectEmployeesViewModel.m */,
+			);
+			name = "Select Employees";
+			sourceTree = "<group>";
+		};
 		D055CB4518CF4F7F00B29407 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -364,12 +462,20 @@
 			isa = PBXGroup;
 			children = (
 				D09AFF9E18CE27F60015C400 /* Kinvey Categories */,
-				D09AFF9718CDFBE90015C400 /* EDALinkedInManager.h */,
-				D09AFF9818CDFBE90015C400 /* EDALinkedInManager.m */,
-				D043A7E418CA2BEB0095F581 /* EDAEmployee.h */,
-				D043A7E518CA2BEB0095F581 /* EDAEmployee.m */,
 				D043A7EA18CA40D10095F581 /* EDAEmployee+API.h */,
 				D043A7EB18CA40D10095F581 /* EDAEmployee+API.m */,
+				D00BA01218D1DB5000AA14DC /* EDAEmployee+Sorting.h */,
+				D00BA01318D1DB5000AA14DC /* EDAEmployee+Sorting.m */,
+				D043A7E418CA2BEB0095F581 /* EDAEmployee.h */,
+				D043A7E518CA2BEB0095F581 /* EDAEmployee.m */,
+				D04E88E918D0B7220071F421 /* EDAGroup+API.h */,
+				D04E88EA18D0B7220071F421 /* EDAGroup+API.m */,
+				D00BA01518D1DC6A00AA14DC /* EDAGroup+Sorting.h */,
+				D00BA01618D1DC6A00AA14DC /* EDAGroup+Sorting.m */,
+				D04E88E618D0B67A0071F421 /* EDAGroup.h */,
+				D04E88E718D0B67A0071F421 /* EDAGroup.m */,
+				D09AFF9718CDFBE90015C400 /* EDALinkedInManager.h */,
+				D09AFF9818CDFBE90015C400 /* EDALinkedInManager.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -380,6 +486,7 @@
 				D09AFF9D18CE27E60015C400 /* Directory */,
 				15D799F018CA32BE00BF116D /* Menu */,
 				15D799E618CA20F500BF116D /* LoginScreen */,
+				D04E88DF18D0B6210071F421 /* Messaging */,
 				D043A7DA18CA236F0095F581 /* BLAPaneController.h */,
 				D043A7DB18CA236F0095F581 /* BLAPaneController.m */,
 				D09AFF9A18CDFF340015C400 /* EDAWebViewController.h */,
@@ -523,10 +630,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D04E88E218D0B6430071F421 /* EDAMessagingViewModel.m in Sources */,
 				1564D59418CE2B7E006D7A18 /* EDAEmployeeDetailViewController.m in Sources */,
 				15D799EE18CA32AD00BF116D /* EDAMenuViewController.m in Sources */,
 				15D799FC18CA524200BF116D /* EDADirectoryCell.m in Sources */,
 				15D799F918CA4E3A00BF116D /* EDADirectoryCellViewModel.m in Sources */,
+				D04E88EE18D0C50A0071F421 /* EDAGroupCell.m in Sources */,
+				D04E88EB18D0B7220071F421 /* EDAGroup+API.m in Sources */,
 				15D799F318CA41E400BF116D /* EDADirectoryViewController.m in Sources */,
 				D055CB4C18CF7A1D00B29407 /* EDAYourInfoViewController.m in Sources */,
 				D043A7EC18CA40D10095F581 /* EDAEmployee+API.m in Sources */,
@@ -537,17 +647,29 @@
 				1564D59718CE2C1E006D7A18 /* EDAEmployeeDetailView.m in Sources */,
 				1564D58E18CE09B5006D7A18 /* EDASidebarCell.m in Sources */,
 				D055CB5318CF7A9100B29407 /* EDAYourInfoView.m in Sources */,
+				D04E88F618D0CA310071F421 /* EDASelectableEmployeeCell.m in Sources */,
+				D04E88DE18D0B6080071F421 /* EDAMessagingViewController.m in Sources */,
 				D055CB4918CF636700B29407 /* KCSFileStore+RAC.m in Sources */,
 				D043A7DC18CA236F0095F581 /* BLAPaneController.m in Sources */,
+				D00BA01E18D1E29200AA14DC /* EDANewMessageViewController.m in Sources */,
 				D055CB5918CF86D200B29407 /* EDAAppearanceManager.m in Sources */,
+				D04E88F218D0C9AA0071F421 /* EDASelectEmployeesViewModel.m in Sources */,
 				15D799F618CA476F00BF116D /* EDADirectoryViewModel.m in Sources */,
 				D043A7EF18CA41420095F581 /* KCSAppdataStore+RAC.m in Sources */,
+				D00BA01418D1DB5000AA14DC /* EDAEmployee+Sorting.m in Sources */,
 				D09AFF9918CDFBE90015C400 /* EDALinkedInManager.m in Sources */,
+				D04E88E818D0B67A0071F421 /* EDAGroup.m in Sources */,
 				D055CB5018CF7A4C00B29407 /* EDAYourInfoViewModel.m in Sources */,
 				D055CB5618CF7BBF00B29407 /* UIViewController+ErrorHandling.m in Sources */,
 				1564D59A18CE2CCF006D7A18 /* EDAEmployeeViewModel.m in Sources */,
 				15D799E218CA20A500BF116D /* EDALoginViewController.m in Sources */,
+				D00BA01A18D1DE0300AA14DC /* EDANewMessageViewModel.m in Sources */,
 				D043A7A218CA1D870095F581 /* main.m in Sources */,
+				D04E88E518D0B66C0071F421 /* EDAGroupCellViewModel.m in Sources */,
+				D00BA02118D1E5AB00AA14DC /* EDANewMessageView.m in Sources */,
+				D00BA01718D1DC6A00AA14DC /* EDAGroup+Sorting.m in Sources */,
+				D04E88FC18D0CC3E0071F421 /* EDASelectEmployeesViewController.m in Sources */,
+				D04E88F918D0CA5C0071F421 /* EDASelectableEmployeeCellViewModel.m in Sources */,
 				D043A7A618CA1D870095F581 /* EDAAppDelegate.m in Sources */,
 				1564D59118CE0A0B006D7A18 /* EDALoginViewModel.m in Sources */,
 			);
