@@ -8,6 +8,11 @@
 
 #import "EPSReactiveTableViewController.h"
 
+@class EDAEmployee;
+
 @interface EDADirectoryViewController : UITableViewController
+
+- (id)initWithAllEmployees;
+- (id)initWithDirectReportsOfEmployee:(EDAEmployee *)employee;
 
 @end

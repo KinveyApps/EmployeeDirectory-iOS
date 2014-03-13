@@ -31,6 +31,9 @@
 /// Opens the employee's LinkedIn profile in Safari
 @property (nonatomic, readonly) RACCommand *showLinkedInProfileCommand;
 
+/// Sends an EDAEmployee object whose direct report should be shown
+@property (nonatomic, readonly) RACCommand *showDirectReports;
+
 - (id)initWithEmployee:(EDAEmployee *)employee;
 
 @end

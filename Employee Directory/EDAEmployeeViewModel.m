@@ -120,6 +120,17 @@
             }];
     }];
     
+    // Show Direct Repots
+    RACSignal *directReportsEnabled = [[[EDAEmployee directReportsOfEmployee:employee]
+        map:^NSNumber *(NSArray *directReports) {
+            return @(directReports.count > 0);
+        }]
+        startWith:@NO];
+    
+    _showDirectReports = [[RACCommand alloc] initWithEnabled:directReportsEnabled signalBlock:^RACSignal *(id input) {
+        return [RACSignal return:employee];
+    }];
+    
     return self;
 }
 

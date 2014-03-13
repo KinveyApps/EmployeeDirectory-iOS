@@ -13,6 +13,8 @@ typedef NS_ENUM(NSInteger, EDADirectoryViewModelSortStyle) {
     EDADirectoryViewModelSortStyleGroup
 };
 
+@class EDAEmployee;
+
 @interface EDADirectoryViewModel : NSObject
 
 @property (nonatomic) EDADirectoryViewModelSortStyle sortStyle;
@@ -25,5 +27,8 @@ typedef NS_ENUM(NSInteger, EDADirectoryViewModelSortStyle) {
 @property (nonatomic) NSString *searchString;
 
 @property (readonly, nonatomic) RACSignal *errors;
+
+- (id)initWithAllEmployees;
+- (id)initWithDirectReportsOfEmployee:(EDAEmployee *)employee;
 
 @end

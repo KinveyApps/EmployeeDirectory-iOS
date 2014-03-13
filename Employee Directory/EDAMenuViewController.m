@@ -61,7 +61,7 @@ NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
             UIViewController *newViewController;
             
             if ([identifier isEqualToString:EDAMenuViewControllerIdentifierDirectory]) {
-                newViewController = [EDADirectoryViewController new];
+                newViewController = [[EDADirectoryViewController alloc] initWithAllEmployees];
             }
             else if ([identifier isEqualToString:EDAMenuViewControllerIdentifierYourInfo]) {
                 newViewController = [EDAYourInfoViewController new];

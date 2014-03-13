@@ -22,14 +22,24 @@
 
 @implementation EDADirectoryViewController
 
-- (id)init
+- (id)initWithAllEmployees {
+    self = [self initWithViewModel:[[EDADirectoryViewModel alloc] initWithAllEmployees]];
+    self.title = @"Directory";
+    return self;
+}
+
+- (id)initWithDirectReportsOfEmployee:(id)employee {
+    self = [self initWithViewModel:[[EDADirectoryViewModel alloc] initWithDirectReportsOfEmployee:employee]];
+    self.title = @"Reports";
+    return self;
+}
+
+- (id)initWithViewModel:(EDADirectoryViewModel *)viewModel
 {
     self = [super initWithStyle:UITableViewStylePlain];
     if (self == nil) return nil;
     
-    self.title = @"Directory";
-
-    _viewModel = [EDADirectoryViewModel new];
+    _viewModel = viewModel;
 
     UISegmentedControl *sortControl = [[UISegmentedControl alloc] initWithItems:@[ @"Name", @"Group" ]];
     RACChannelTerminal *controlTerminal = [sortControl rac_newSelectedSegmentIndexChannelWithNilValue:@0];
@@ -48,10 +58,10 @@
             
             return [self viewModelForIndexPath:indexPath searching:tableView != self.tableView];
         }]
-        subscribeNext:^(EDADirectoryCellViewModel *viewModel) {
+        subscribeNext:^(EDADirectoryCellViewModel *cellViewModel) {
             @strongify(self);
             
-            EDAEmployeeDetailViewController *viewController = [[EDAEmployeeDetailViewController alloc] initWithEmployee:viewModel.employee];
+            EDAEmployeeDetailViewController *viewController = [[EDAEmployeeDetailViewController alloc] initWithEmployee:cellViewModel.employee];
             [self.navigationController pushViewController:viewController animated:YES];
         }];
     

@@ -11,6 +11,7 @@
 #import "EDAEmployeeDetailView.h"
 #import "EDAEmployeeViewModel.h"
 #import "EDAEmployeeViewModel.h"
+#import "EDADirectoryViewController.h"
 
 @interface EDAEmployeeDetailViewController () <MFMailComposeViewControllerDelegate>
 
@@ -102,6 +103,14 @@
     
     self.view.linkedinButton.rac_command = self.viewModel.showLinkedInProfileCommand;
     [self rac_liftSelector:@selector(handleError:) withSignals:self.view.linkedinButton.rac_command.errors, nil];
+    
+    self.view.reportsButton.rac_command = self.viewModel.showDirectReports;
+    [[self.view.reportsButton.rac_command.executionSignals
+        flatten]
+        subscribeNext:^(EDAEmployee *employee) {
+            EDADirectoryViewController *viewController = [[EDADirectoryViewController alloc] initWithDirectReportsOfEmployee:employee];
+            [self.navigationController pushViewController:viewController animated:YES];
+        }];
 }
 
 @end

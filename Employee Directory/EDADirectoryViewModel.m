@@ -26,11 +26,21 @@
 
 @implementation EDADirectoryViewModel
 
-- (id)init
+- (id)initWithAllEmployees {
+    self = [self initWithEmployeeSignal:[EDAEmployee allEmployees]];
+    return self;
+}
+
+- (id)initWithDirectReportsOfEmployee:(EDAEmployee *)employee {
+    self = [self initWithEmployeeSignal:[EDAEmployee directReportsOfEmployee:employee]];
+    return self;
+}
+
+- (id)initWithEmployeeSignal:(RACSignal *)signal
 {
     self = [super init];
     if (self) {
-        RACSignal *employeesSignal = [[EDAEmployee allEmployees] map:^NSArray*(NSArray *employees) {
+        RACSignal *employeesSignal = [signal map:^NSArray*(NSArray *employees) {
             NSArray *sortedEmployees = [employees sortedArrayUsingDescriptors:[EDAEmployee standardSortDescriptors]];
             
             return [[sortedEmployees.rac_sequence map:^EDADirectoryCellViewModel*(EDAEmployee *employee) {
