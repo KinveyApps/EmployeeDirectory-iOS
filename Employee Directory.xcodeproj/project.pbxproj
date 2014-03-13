@@ -20,6 +20,7 @@
 		15D799F918CA4E3A00BF116D /* EDADirectoryCellViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799F818CA4E3A00BF116D /* EDADirectoryCellViewModel.m */; };
 		15D799FC18CA524200BF116D /* EDADirectoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15D799FB18CA524200BF116D /* EDADirectoryCell.m */; };
 		84AFBA2E64C449BA8D7C730F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4432DA4CC140E7ACE15E20 /* libPods.a */; };
+		A1B65E0518D248E600D58F57 /* Icon120.png in Resources */ = {isa = PBXBuildFile; fileRef = A1B65E0418D248E600D58F57 /* Icon120.png */; };
 		D00BA01418D1DB5000AA14DC /* EDAEmployee+Sorting.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA01318D1DB5000AA14DC /* EDAEmployee+Sorting.m */; };
 		D00BA01718D1DC6A00AA14DC /* EDAGroup+Sorting.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA01618D1DC6A00AA14DC /* EDAGroup+Sorting.m */; };
 		D00BA01A18D1DE0300AA14DC /* EDANewMessageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA01918D1DE0300AA14DC /* EDANewMessageViewModel.m */; };
@@ -111,6 +112,7 @@
 		15D799FB18CA524200BF116D /* EDADirectoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDADirectoryCell.m; sourceTree = "<group>"; };
 		4B4432DA4CC140E7ACE15E20 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		86DEC729436F499C87A944EF /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		A1B65E0418D248E600D58F57 /* Icon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon120.png; sourceTree = "<group>"; };
 		D00BA01218D1DB5000AA14DC /* EDAEmployee+Sorting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EDAEmployee+Sorting.h"; sourceTree = "<group>"; };
 		D00BA01318D1DB5000AA14DC /* EDAEmployee+Sorting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EDAEmployee+Sorting.m"; sourceTree = "<group>"; };
 		D00BA01518D1DC6A00AA14DC /* EDAGroup+Sorting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EDAGroup+Sorting.h"; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 		D043A78918CA1D870095F581 = {
 			isa = PBXGroup;
 			children = (
+				A1B65E0418D248E600D58F57 /* Icon120.png */,
 				D043A79B18CA1D870095F581 /* Employee Directory */,
 				D043A7BA18CA1D870095F581 /* Employee DirectoryTests */,
 				D043A79418CA1D870095F581 /* Frameworks */,
@@ -576,6 +579,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Ballast Lane Applications";
 				TargetAttributes = {
+					D043A79118CA1D870095F581 = {
+						DevelopmentTeam = 28JTWJHC43;
+					};
 					D043A7B218CA1D870095F581 = {
 						TestTargetID = D043A79118CA1D870095F581;
 					};
@@ -607,6 +613,7 @@
 			files = (
 				D043A7AE18CA1D870095F581 /* Images.xcassets in Resources */,
 				D043A7A018CA1D870095F581 /* InfoPlist.strings in Resources */,
+				A1B65E0518D248E600D58F57 /* Icon120.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -845,7 +852,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Laurence Ehrhardt (YU98PBTNF7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Laurence Ehrhardt (YU98PBTNF7)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/Frameworks",
@@ -854,7 +862,7 @@
 				GCC_PREFIX_HEADER = "Employee Directory/Employee Directory-Prefix.pch";
 				INFOPLIST_FILE = "Employee Directory/Employee Directory-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "83D62F16-C877-4A33-B253-27472CA54C98";
+				PROVISIONING_PROFILE = "79716D7D-EB91-46AF-855C-EB667FD95ABE";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -875,7 +883,7 @@
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "Employee Directory/Employee Directory-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "83D62F16-C877-4A33-B253-27472CA54C98";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
