@@ -20,6 +20,10 @@ typedef NS_ENUM(NSInteger, EDADirectoryViewModelSortStyle) {
 @property (readonly, nonatomic) NSArray *sections;
 @property (readonly, nonatomic) NSArray *sectionTitles;
 
+@property (readonly, nonatomic) NSArray *filteredSections;
+@property (readonly, nonatomic) NSArray *filteredSectionTitles;
+@property (nonatomic) NSString *searchString;
+
 @property (readonly, nonatomic) RACSignal *errors;
 
 @end

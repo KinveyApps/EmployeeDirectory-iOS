@@ -17,6 +17,9 @@
 @property (readwrite, nonatomic) NSArray *sections;
 @property (readwrite, nonatomic) NSArray *sectionTitles;
 
+@property (readwrite, nonatomic) NSArray *filteredSections;
+@property (readwrite, nonatomic) NSArray *filteredSectionTitles;
+
 @property (nonatomic) NSArray *employees;
 
 @end
@@ -81,6 +84,43 @@
         
         RAC(self, sections) = [RACSignal
             combineLatest:@[ sectionDictionary, RACObserve(self, sectionTitles) ]
+            reduce:^NSArray *(NSDictionary *sections, NSArray *titles){
+                return [[titles.rac_sequence
+                    map:^NSArray *(NSString *title) {
+                        return sections[title];
+                    }]
+                    array];
+            }];
+        
+        RACSignal *filteredSectionDictionary = [RACSignal
+            combineLatest:@[ sectionDictionary, RACObserve(self, searchString) ]
+            reduce:^NSDictionary *(NSDictionary *dictionary, NSString *searchString){
+                if (searchString.length == 0) return @{};
+                
+                NSMutableDictionary *filteredDictionary = [NSMutableDictionary new];
+                
+                for (id key in dictionary.allKeys) {
+                    NSArray *values = dictionary[key];
+                    NSArray *filteredValues = [[values.rac_sequence filter:^BOOL(EDADirectoryCellViewModel *viewModel) {
+                        NSInteger location = [viewModel.fullName rangeOfString:searchString options:NSCaseInsensitiveSearch].location;
+                        return location != NSNotFound;
+                    }] array];
+                    if (filteredValues.count > 0) {
+                        filteredDictionary[key] = filteredValues;
+                    }
+                }
+                
+                return filteredDictionary;
+            }];
+        
+        RAC(self, filteredSectionTitles) = [filteredSectionDictionary
+            map:^NSArray *(NSDictionary *dictionary) {
+                NSArray *keys = [dictionary.allKeys sortedArrayUsingSelector:@selector(localizedStandardCompare:)];
+            return keys;
+            }];
+        
+        RAC(self, filteredSections) = [RACSignal
+            combineLatest:@[ filteredSectionDictionary, RACObserve(self, filteredSectionTitles) ]
             reduce:^NSArray *(NSDictionary *sections, NSArray *titles){
                 return [[titles.rac_sequence
                     map:^NSArray *(NSString *title) {

@@ -13,9 +13,10 @@
 #import "EDADirectoryCell.h"
 #import "EDAEmployeeDetailViewController.h"
 
-@interface EDADirectoryViewController ()
+@interface EDADirectoryViewController () <UISearchDisplayDelegate>
 
 @property (nonatomic) EDADirectoryViewModel *viewModel;
+@property (nonatomic) UISearchDisplayController *searchController;
 
 @end
 
@@ -45,7 +46,7 @@
         reduceEach:^EDADirectoryCellViewModel *(UITableView *tableView, NSIndexPath *indexPath){
             @strongify(self);
             
-            return [self viewModelForIndexPath:indexPath];
+            return [self viewModelForIndexPath:indexPath searching:tableView != self.tableView];
         }]
         subscribeNext:^(EDADirectoryCellViewModel *viewModel) {
             @strongify(self);
@@ -54,11 +55,24 @@
             [self.navigationController pushViewController:viewController animated:YES];
         }];
     
+    RAC(self.viewModel, searchString) = [[self rac_signalForSelector:@selector(searchDisplayController:shouldReloadTableForSearchString:) fromProtocol:@protocol(UISearchDisplayDelegate)]
+        reduceEach:^NSString *(UISearchDisplayController *controller, NSString *searchString){
+            return searchString;
+        }];
+    
     return self;
 }
 
 - (void)viewDidLoad {
     [self.tableView registerClass:[EDADirectoryCell class] forCellReuseIdentifier:NSStringFromClass([EDADirectoryCell class])];
+    
+    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    self.tableView.tableHeaderView = searchBar;
+    
+    self.searchController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
+    self.searchController.delegate = self;
+    self.searchController.searchResultsDataSource = self;
+    self.searchController.searchResultsDelegate = self;
     
     @weakify(self);
     
@@ -71,28 +85,57 @@
 
 #pragma mark -
 
-- (EDADirectoryCellViewModel *)viewModelForIndexPath:(NSIndexPath *)indexPath {
-    return self.viewModel.sections[indexPath.section][indexPath.row];
+- (EDADirectoryCellViewModel *)viewModelForIndexPath:(NSIndexPath *)indexPath searching:(BOOL)searching {
+    if (searching == NO) {
+        return self.viewModel.sections[indexPath.section][indexPath.row];
+    }
+    else {
+        return self.viewModel.filteredSections[indexPath.section][indexPath.row];
+    }
 }
 
 #pragma mark - UITableViewDataSource Methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.viewModel.sections.count;
+    if (tableView == self.tableView) {
+        return self.viewModel.sections.count;
+    }
+    else {
+        return self.viewModel.filteredSections.count;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.viewModel.sections[section] count];
+    if (tableView == self.tableView) {
+        return [self.viewModel.sections[section] count];
+    }
+    else {
+        return [self.viewModel.filteredSections[section] count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     EDADirectoryCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([EDADirectoryCell class])];
-    cell.object = [self viewModelForIndexPath:indexPath];
+    if (!cell) {
+        cell = [[EDADirectoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:NSStringFromClass([EDADirectoryCell class])];
+    }
+    cell.object = [self viewModelForIndexPath:indexPath searching:tableView != self.tableView];
     return cell;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return self.viewModel.sectionTitles[section];
+    if (tableView == self.tableView) {
+        return self.viewModel.sectionTitles[section];
+    }
+    else {
+        return self.viewModel.filteredSectionTitles[section];
+    }
+}
+
+#pragma mark - UISearchDisplayControllerDelegate Methods
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    return YES;
 }
 
 @end
