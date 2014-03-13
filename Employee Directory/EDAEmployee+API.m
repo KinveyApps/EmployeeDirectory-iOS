@@ -40,7 +40,7 @@ NSInteger const EDAEmployeeErrorCodeUserNotFound = 1;
 }
 
 + (RACSignal *)directReportsOfEmployee:(EDAEmployee *)employee {
-    KCSQuery *query = [KCSQuery queryOnField:@"hierarchy" withRegex:[NSString stringWithFormat:@"^%@", employee.hierarchy]];
+    KCSQuery *query = [KCSQuery queryOnField:@"hierarchy" withRegex:[NSString stringWithFormat:@"^%@.", employee.hierarchy]];
     return [[self appdataStore] rac_queryWithQuery:query];
 }
 
