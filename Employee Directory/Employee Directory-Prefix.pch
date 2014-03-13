@@ -25,6 +25,7 @@
     #import "KCSUser+RAC.h"
     #import "KCSAppdataStore+RAC.h"
     #import "KCSFileStore+RAC.h"
+    #import "KCSReachability+RAC.h"
     #import "UIViewController+ErrorHandling.h"
     #import "EDAAppearanceManager.h"
 #endif

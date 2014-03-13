@@ -66,7 +66,7 @@ NSString * const EDADirectoryViewModelSortStyleKey = @"EDADirectoryViewModelSort
             catch:^RACSignal *(NSError *error) {
                 return [RACSignal empty];
             }];
-        
+
         _errors = [[employeesSignal
             ignoreValues]
             catch:^RACSignal *(NSError *error) {

@@ -48,9 +48,9 @@
     [controlTerminal subscribe:modelTerminal];
     self.navigationItem.titleView = sortControl;
     
-    @weakify(self);
-    
     [self rac_liftSelector:@selector(handleError:) withSignals:self.viewModel.errors, nil];
+    
+    @weakify(self);
     
     [[[self rac_signalForSelector:@selector(tableView:didSelectRowAtIndexPath:)]
         reduceEach:^EDADirectoryCellViewModel *(UITableView *tableView, NSIndexPath *indexPath){

@@ -17,8 +17,12 @@ NSInteger const EDAEmployeeErrorCodeUserNotFound = 1;
 @implementation EDAEmployee (API)
 
 + (KCSAppdataStore *)appdataStore {
-    return [KCSAppdataStore storeWithOptions:@{ KCSStoreKeyCollectionName: @"Employees",
-                                                KCSStoreKeyCollectionTemplateClass: [EDAEmployee class] }];
+    KCSCachedStore *cachedStore = [KCSCachedStore storeWithOptions:@{ KCSStoreKeyCollectionName: @"Employees",
+                                                                      KCSStoreKeyCollectionTemplateClass: [EDAEmployee class],
+                                                                      KCSStoreKeyCachePolicy: @(KCSCachePolicyBoth) }];
+    [cachedStore setCachePolicy:KCSCachePolicyBoth];
+    
+    return cachedStore;
 }
 
 + (RACSignal *)allEmployees {

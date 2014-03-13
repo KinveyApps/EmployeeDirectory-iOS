@@ -18,6 +18,7 @@ NSInteger const EDANewMessageViewModelEmailErrorCodeNotSetUp = 1;
 @interface EDANewMessageViewModel () <MFMailComposeViewControllerDelegate>
 
 @property (nonatomic) NSArray *employees;
+@property (nonatomic) KCSReachability *reachability;
 
 @end
 
@@ -28,14 +29,16 @@ NSInteger const EDANewMessageViewModelEmailErrorCodeNotSetUp = 1;
     if (self == nil) return nil;
 
     _employees = employees;
+    _reachability = [KCSReachability reachabilityForInternetConnection];
     
     return self;
 }
 
 - (RACCommand *)sendMessageCommandWithViewController:(UIViewController *)viewController {
-    RACSignal *enabled = [RACObserve(self, messageText)
-        map:^NSNumber *(NSString *text) {
-            return @(text.length > 0);
+    RACSignal *enabled = [RACSignal
+        combineLatest:@[ RACObserve(self, messageText), [self.reachability rac_reachability] ]
+        reduce:^NSNumber *(NSString *text, NSNumber *reachable){
+            return @(text.length > 0 && reachable.boolValue);
         }];
     
     @weakify(self);
@@ -155,7 +158,14 @@ NSInteger const EDANewMessageViewModelEmailErrorCodeNotSetUp = 1;
     
     NSArray *messageSignalsWithCaughtErrors = [[messageSignals.rac_sequence
         map:^RACSignal *(RACSignal *signal) {
-            return [signal catchTo:[RACSignal return:@YES]];
+            return [signal catch:^RACSignal *(NSError *error) {
+                if ([error.domain isEqualToString:KCSServerErrorDomain] && error.code == KCSBadRequestError) {
+                    return [RACSignal return:@YES];
+                }
+                else {
+                    return [RACSignal error:error];
+                }
+            }];
         }]
         array];
     

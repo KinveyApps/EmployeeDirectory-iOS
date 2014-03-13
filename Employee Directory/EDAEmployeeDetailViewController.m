@@ -12,6 +12,7 @@
 #import "EDAEmployeeViewModel.h"
 #import "EDAEmployeeViewModel.h"
 #import "EDADirectoryViewController.h"
+#import "EDANewMessageViewController.h"
 
 @interface EDAEmployeeDetailViewController () <MFMailComposeViewControllerDelegate>
 
@@ -111,6 +112,16 @@
         flatten]
         subscribeNext:^(EDAEmployee *employee) {
             EDADirectoryViewController *viewController = [[EDADirectoryViewController alloc] initWithDirectReportsOfEmployee:employee];
+            [self.navigationController pushViewController:viewController animated:YES];
+        }];
+    
+    self.view.messageButton.rac_command = self.viewModel.messageCommand;
+    [[self.view.messageButton.rac_command.executionSignals
+        flatten]
+        subscribeNext:^(EDAEmployee *employee) {
+            @strongify(self);
+            
+            EDANewMessageViewController *viewController = [[EDANewMessageViewController alloc] initWithEmployees:@[ employee ]];
             [self.navigationController pushViewController:viewController animated:YES];
         }];
 }

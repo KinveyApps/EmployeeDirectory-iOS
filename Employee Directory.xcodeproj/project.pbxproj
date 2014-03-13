@@ -27,6 +27,7 @@
 		D00BA02118D1E5AB00AA14DC /* EDANewMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA02018D1E5AB00AA14DC /* EDANewMessageView.m */; };
 		D00BA02718D20DF600AA14DC /* EDAMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA02618D20DF600AA14DC /* EDAMessage.m */; };
 		D00BA02A18D20E0100AA14DC /* EDAMessage+API.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA02918D20E0100AA14DC /* EDAMessage+API.m */; };
+		D00BA02D18D2339500AA14DC /* KCSReachability+RAC.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA02C18D2339500AA14DC /* KCSReachability+RAC.m */; };
 		D043A79618CA1D870095F581 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79518CA1D870095F581 /* Foundation.framework */; };
 		D043A79818CA1D870095F581 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79718CA1D870095F581 /* CoreGraphics.framework */; };
 		D043A79A18CA1D870095F581 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79918CA1D870095F581 /* UIKit.framework */; };
@@ -123,6 +124,8 @@
 		D00BA02618D20DF600AA14DC /* EDAMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAMessage.m; sourceTree = "<group>"; };
 		D00BA02818D20E0100AA14DC /* EDAMessage+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EDAMessage+API.h"; sourceTree = "<group>"; };
 		D00BA02918D20E0100AA14DC /* EDAMessage+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EDAMessage+API.m"; sourceTree = "<group>"; };
+		D00BA02B18D2339500AA14DC /* KCSReachability+RAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KCSReachability+RAC.h"; sourceTree = "<group>"; };
+		D00BA02C18D2339500AA14DC /* KCSReachability+RAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KCSReachability+RAC.m"; sourceTree = "<group>"; };
 		D043A79218CA1D870095F581 /* Employee Directory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Employee Directory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D043A79518CA1D870095F581 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D043A79718CA1D870095F581 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -460,6 +463,8 @@
 				D043A7EE18CA41420095F581 /* KCSAppdataStore+RAC.m */,
 				D055CB4718CF636700B29407 /* KCSFileStore+RAC.h */,
 				D055CB4818CF636700B29407 /* KCSFileStore+RAC.m */,
+				D00BA02B18D2339500AA14DC /* KCSReachability+RAC.h */,
+				D00BA02C18D2339500AA14DC /* KCSReachability+RAC.m */,
 			);
 			name = "Kinvey Categories";
 			sourceTree = "<group>";
@@ -642,6 +647,7 @@
 			files = (
 				D04E88E218D0B6430071F421 /* EDAMessagingViewModel.m in Sources */,
 				1564D59418CE2B7E006D7A18 /* EDAEmployeeDetailViewController.m in Sources */,
+				D00BA02D18D2339500AA14DC /* KCSReachability+RAC.m in Sources */,
 				15D799EE18CA32AD00BF116D /* EDAMenuViewController.m in Sources */,
 				15D799FC18CA524200BF116D /* EDADirectoryCell.m in Sources */,
 				15D799F918CA4E3A00BF116D /* EDADirectoryCellViewModel.m in Sources */,

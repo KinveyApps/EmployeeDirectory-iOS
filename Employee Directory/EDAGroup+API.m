@@ -11,8 +11,12 @@
 @implementation EDAGroup (API)
 
 + (KCSAppdataStore *)appdataStore {
-    return [KCSAppdataStore storeWithOptions:@{ KCSStoreKeyCollectionName: @"Groups",
-                                                KCSStoreKeyCollectionTemplateClass: [EDAGroup class] }];
+    KCSCachedStore *cachedStore = [KCSCachedStore storeWithOptions:@{ KCSStoreKeyCollectionName: @"Groups",
+                                                                      KCSStoreKeyCollectionTemplateClass: [EDAGroup class],
+                                                                      KCSStoreKeyCachePolicy: @(KCSCachePolicyBoth) }];
+    [cachedStore setCachePolicy:KCSCachePolicyBoth];
+    
+    return cachedStore;
 }
 
 + (RACSignal *)allGroups {

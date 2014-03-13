@@ -36,6 +36,9 @@
 /// Sends an EDAEmployee object whose direct report should be shown
 @property (nonatomic, readonly) RACCommand *showDirectReports;
 
+/// Sends an EDAEmployee object who should be the recipient of a message
+@property (nonatomic, readonly) RACCommand *messageCommand;
+
 - (id)initWithEmployee:(EDAEmployee *)employee;
 
 @end

@@ -54,14 +54,14 @@
     
     // Supervisor
     RACSignal *supervisorEnabled = [RACObserve(employee, supervisor)
-                                    map:^NSNumber *(NSString *supervisor) {
-                                        return @(supervisor.length > 0);
-                                    }];
+        map:^NSNumber *(NSString *supervisor) {
+            return @(supervisor.length > 0);
+        }];
 
     _showSupervisorCommand = [[RACCommand alloc] initWithEnabled:supervisorEnabled signalBlock:^RACSignal *(id input) {
         @strongify(self);
         
-        return [EDAEmployee employeeWithUsername:self.employee.supervisor];
+        return [[EDAEmployee employeeWithUsername:self.employee.supervisor] take:1];
     }];
     
     // Call
@@ -123,7 +123,7 @@
             }];
     }];
     
-    // Show Direct Repots
+    // Show Direct Reports
     RACSignal *directReportsEnabled = [[[EDAEmployee directReportsOfEmployee:employee]
         map:^NSNumber *(NSArray *directReports) {
             return @(directReports.count > 0);
@@ -131,6 +131,11 @@
         startWith:@NO];
     
     _showDirectReports = [[RACCommand alloc] initWithEnabled:directReportsEnabled signalBlock:^RACSignal *(id input) {
+        return [RACSignal return:employee];
+    }];
+    
+    // Message
+    _messageCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         return [RACSignal return:employee];
     }];
     
