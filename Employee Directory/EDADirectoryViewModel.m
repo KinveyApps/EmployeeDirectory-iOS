@@ -12,6 +12,8 @@
 #import "EDAEmployee+API.h"
 #import "EDAEmployee+Sorting.h"
 
+NSString * const EDADirectoryViewModelSortStyleKey = @"EDADirectoryViewModelSortStyle";
+
 @interface EDADirectoryViewModel ()
 
 @property (readwrite, nonatomic) NSArray *sections;
@@ -40,6 +42,18 @@
 {
     self = [super init];
     if (self) {
+        RACChannelTerminal *sortChannel = RACChannelTo(self, sortStyle);
+        RACChannelTerminal *userDefaultsChannel = [[NSUserDefaults standardUserDefaults] rac_channelTerminalForKey:EDADirectoryViewModelSortStyleKey];
+        [[userDefaultsChannel
+            map:^NSNumber *(NSNumber *style) {
+                if (style == nil) return @0;
+                else return style;
+            }]
+            subscribe:sortChannel];
+        [[sortChannel
+            skip:1]
+            subscribe:userDefaultsChannel];
+        
         RACSignal *employeesSignal = [signal map:^NSArray*(NSArray *employees) {
             NSArray *sortedEmployees = [employees sortedArrayUsingDescriptors:[EDAEmployee standardSortDescriptors]];
             
