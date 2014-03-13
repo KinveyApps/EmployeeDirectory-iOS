@@ -111,6 +111,8 @@
     [[self.view.reportsButton.rac_command.executionSignals
         flatten]
         subscribeNext:^(EDAEmployee *employee) {
+            @strongify(self);
+            
             EDADirectoryViewController *viewController = [[EDADirectoryViewController alloc] initWithDirectReportsOfEmployee:employee];
             [self.navigationController pushViewController:viewController animated:YES];
         }];
