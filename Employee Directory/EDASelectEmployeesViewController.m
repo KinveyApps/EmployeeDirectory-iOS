@@ -12,6 +12,7 @@
 #import "EDASelectableEmployeeCell.h"
 #import "EDASelectableEmployeeCellViewModel.h"
 #import "EDAGroup.h"
+#import "EDANewMessageViewController.h"
 
 @interface EDASelectEmployeesViewController ()
 
@@ -40,7 +41,11 @@
     [[nextItem.rac_command.executionSignals
         flatten]
         subscribeNext:^(NSSet *selectedEmployees) {
-            NSLog(@"%@", selectedEmployees);
+            @strongify(self);
+            
+            NSArray *employees = [self.viewModel.employees valueForKey:@"employee"];
+            EDANewMessageViewController *viewController = [[EDANewMessageViewController alloc] initWithEmployees:employees];
+            [self.navigationController pushViewController:viewController animated:YES];
         }];
     self.navigationItem.rightBarButtonItem = nextItem;
     

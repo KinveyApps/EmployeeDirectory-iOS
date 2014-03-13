@@ -60,6 +60,12 @@
 #define COCOAPODS_VERSION_MINOR_EPSStaticTableViewController 0
 #define COCOAPODS_VERSION_PATCH_EPSStaticTableViewController 1
 
+// PSAutolayout
+#define COCOAPODS_POD_AVAILABLE_PSAutolayout
+#define COCOAPODS_VERSION_MAJOR_PSAutolayout 1
+#define COCOAPODS_VERSION_MINOR_PSAutolayout 0
+#define COCOAPODS_VERSION_PATCH_PSAutolayout 0
+
 // ReactiveCocoa
 #define COCOAPODS_POD_AVAILABLE_ReactiveCocoa
 #define COCOAPODS_VERSION_MAJOR_ReactiveCocoa 2

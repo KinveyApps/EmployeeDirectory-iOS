@@ -20,6 +20,7 @@
     #import <EPSStaticTableViewController/EPSStaticTableViewController.h>
     #import <EPSReactiveTableViewController/EPSReactiveTableViewController.h>
     #import <AFNetworking/AFNetworking.h>
+    #import <PSAutolayout/YMKeyboardLayoutHelperView.h>
     @import MessageUI;
     #import "KCSUser+RAC.h"
     #import "KCSAppdataStore+RAC.h"

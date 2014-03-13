@@ -6,5 +6,6 @@ pod 'ReactiveCocoa', '~> 2.2'
 pod 'AFNetworking', '~> 2.2'
 pod 'EPSStaticTableViewController'
 pod 'EPSReactiveTableViewController'
+pod 'PSAutolayout', :git => 'https://github.com/shepting/PSAutolayout.git'
 
 # pod 'EPSReactiveCollectionViewController'
