@@ -9,6 +9,7 @@
 #import "EDANewMessageViewModel.h"
 
 #import "EDAEmployee.h"
+#import "EDAMessage+API.h"
 
 NSString * const EDANewMessageViewModelErrorDomain = @"com.ballastlane.employeedirectory.email";
 
@@ -67,7 +68,14 @@ NSInteger const EDANewMessageViewModelEmailErrorCodeNotSetUp = 1;
                 
                 RACSignal *textSignal;
                 if (text == YES) {
-                    textSignal = [RACSignal return:@YES];
+                    RACTuple *signals = [EDANewMessageViewModel sendTextMessage:self.messageText toEmployees:self.employees];
+                    textSignal = signals.first;
+                    
+                    RACSignal *errors = signals.second;
+                    [errors subscribeNext:^(RACTuple *tuple) {
+                        RACTupleUnpack(NSError *error, EDAEmployee *employee) = tuple;
+                        NSLog(@"Error sending message to %@: %@", employee.cellPhone, error.localizedDescription);
+                    }];
                 }
                 else {
                     textSignal = [RACSignal return:@YES];
@@ -112,7 +120,7 @@ NSInteger const EDANewMessageViewModelEmailErrorCodeNotSetUp = 1;
                     }
                 }
                 else {
-                    emailSignal = [RACSignal empty];
+                    emailSignal = [RACSignal return:@YES];
                 }
                 
                 if (text == YES && email == NO) return textSignal;
@@ -122,6 +130,55 @@ NSInteger const EDANewMessageViewModelEmailErrorCodeNotSetUp = 1;
                 }];
         }];
     }];
+}
+
+/// @return A RACTuple containing the message send signal, and an errors signal. The errors signal sends tuples containing the error and the corresponding employee object.
++ (RACTuple *)sendTextMessage:(NSString *)message toEmployees:(NSArray *)employees {
+    NSArray *employeesToSendTo = [[employees.rac_sequence
+        filter:^BOOL(EDAEmployee *employee) {
+            return employee.cellPhone.length > 0;
+        }]
+        array];
+    
+    NSArray *messageSignals = [[[employeesToSendTo.rac_sequence
+        map:^EDAMessage *(EDAEmployee *employee) {
+            EDAMessage *textMessage = [EDAMessage new];
+            textMessage.recipientPhoneNumber = employee.cellPhone;
+            textMessage.message = message;
+            
+            return textMessage;
+        }]
+        map:^RACSignal *(EDAMessage *textMessage) {
+            return [[[[EDAMessage appdataStore] rac_saveObject:textMessage] publish] autoconnect];
+        }]
+        array];
+    
+    NSArray *messageSignalsWithCaughtErrors = [[messageSignals.rac_sequence
+        map:^RACSignal *(RACSignal *signal) {
+            return [signal catchTo:[RACSignal return:@YES]];
+        }]
+        array];
+    
+    NSArray *errorsSignals = [[messageSignals.rac_sequence
+        map:^RACSignal *(RACSignal *signal) {
+            return [[signal
+                ignoreValues]
+                catch:^RACSignal *(NSError *error) {
+                    EDAEmployee *employee = employeesToSendTo[[messageSignals indexOfObject:signal]];
+                    return [RACSignal return:RACTuplePack(error, employee)];
+                }];
+        }]
+        array];
+    
+    RACSignal *sendSignal = [RACSignal
+        combineLatest:messageSignalsWithCaughtErrors
+        reduce:^id{
+            return @YES;
+        }];
+    
+    RACSignal *errors = [RACSignal merge:errorsSignals];
+
+    return RACTuplePack(sendSignal, errors);
 }
 
 @end

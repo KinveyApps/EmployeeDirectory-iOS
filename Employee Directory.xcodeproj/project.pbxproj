@@ -25,6 +25,8 @@
 		D00BA01A18D1DE0300AA14DC /* EDANewMessageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA01918D1DE0300AA14DC /* EDANewMessageViewModel.m */; };
 		D00BA01E18D1E29200AA14DC /* EDANewMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA01D18D1E29200AA14DC /* EDANewMessageViewController.m */; };
 		D00BA02118D1E5AB00AA14DC /* EDANewMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA02018D1E5AB00AA14DC /* EDANewMessageView.m */; };
+		D00BA02718D20DF600AA14DC /* EDAMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA02618D20DF600AA14DC /* EDAMessage.m */; };
+		D00BA02A18D20E0100AA14DC /* EDAMessage+API.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA02918D20E0100AA14DC /* EDAMessage+API.m */; };
 		D043A79618CA1D870095F581 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79518CA1D870095F581 /* Foundation.framework */; };
 		D043A79818CA1D870095F581 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79718CA1D870095F581 /* CoreGraphics.framework */; };
 		D043A79A18CA1D870095F581 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79918CA1D870095F581 /* UIKit.framework */; };
@@ -117,6 +119,10 @@
 		D00BA01D18D1E29200AA14DC /* EDANewMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDANewMessageViewController.m; sourceTree = "<group>"; };
 		D00BA01F18D1E5AB00AA14DC /* EDANewMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDANewMessageView.h; sourceTree = "<group>"; };
 		D00BA02018D1E5AB00AA14DC /* EDANewMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDANewMessageView.m; sourceTree = "<group>"; };
+		D00BA02518D20DF600AA14DC /* EDAMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAMessage.h; sourceTree = "<group>"; };
+		D00BA02618D20DF600AA14DC /* EDAMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAMessage.m; sourceTree = "<group>"; };
+		D00BA02818D20E0100AA14DC /* EDAMessage+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EDAMessage+API.h"; sourceTree = "<group>"; };
+		D00BA02918D20E0100AA14DC /* EDAMessage+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EDAMessage+API.m"; sourceTree = "<group>"; };
 		D043A79218CA1D870095F581 /* Employee Directory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Employee Directory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D043A79518CA1D870095F581 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D043A79718CA1D870095F581 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -476,6 +482,10 @@
 				D04E88E718D0B67A0071F421 /* EDAGroup.m */,
 				D09AFF9718CDFBE90015C400 /* EDALinkedInManager.h */,
 				D09AFF9818CDFBE90015C400 /* EDALinkedInManager.m */,
+				D00BA02818D20E0100AA14DC /* EDAMessage+API.h */,
+				D00BA02918D20E0100AA14DC /* EDAMessage+API.m */,
+				D00BA02518D20DF600AA14DC /* EDAMessage.h */,
+				D00BA02618D20DF600AA14DC /* EDAMessage.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -665,8 +675,10 @@
 				15D799E218CA20A500BF116D /* EDALoginViewController.m in Sources */,
 				D00BA01A18D1DE0300AA14DC /* EDANewMessageViewModel.m in Sources */,
 				D043A7A218CA1D870095F581 /* main.m in Sources */,
+				D00BA02A18D20E0100AA14DC /* EDAMessage+API.m in Sources */,
 				D04E88E518D0B66C0071F421 /* EDAGroupCellViewModel.m in Sources */,
 				D00BA02118D1E5AB00AA14DC /* EDANewMessageView.m in Sources */,
+				D00BA02718D20DF600AA14DC /* EDAMessage.m in Sources */,
 				D00BA01718D1DC6A00AA14DC /* EDAGroup+Sorting.m in Sources */,
 				D04E88FC18D0CC3E0071F421 /* EDASelectEmployeesViewController.m in Sources */,
 				D04E88F918D0CA5C0071F421 /* EDASelectableEmployeeCellViewModel.m in Sources */,
