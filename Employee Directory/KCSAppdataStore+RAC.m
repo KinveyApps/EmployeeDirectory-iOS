@@ -34,12 +34,28 @@
             }
             else {
                 [subscriber sendNext:objects];
-                [subscriber sendCompleted];
+                // Don't call `sendCompleted` here because completion block can be called more than once for cached data stores
             }
         } withProgressBlock:NULL];
         
         return nil;
     }];
+}
+
+@end
+
+@implementation KCSCachedStore (RAC)
+
+- (RACSignal *)rac_queryWithQuery:(KCSQuery *)query {
+    return [[super rac_queryWithQuery:query]
+        catch:^RACSignal *(NSError *error) {
+            if ([error.domain isEqualToString:NSURLErrorDomain] && error.code == NSURLErrorNotConnectedToInternet) {
+                return [RACSignal empty];
+            }
+            else {
+                return [RACSignal error:error];
+            }
+        }];
 }
 
 @end

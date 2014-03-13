@@ -155,7 +155,14 @@ NSInteger const EDANewMessageViewModelEmailErrorCodeNotSetUp = 1;
     
     NSArray *messageSignalsWithCaughtErrors = [[messageSignals.rac_sequence
         map:^RACSignal *(RACSignal *signal) {
-            return [signal catchTo:[RACSignal return:@YES]];
+            return [signal catch:^RACSignal *(NSError *error) {
+                if ([error.domain isEqualToString:KCSServerErrorDomain] && error.code == KCSBadRequestError) {
+                    return [RACSignal return:@YES];
+                }
+                else {
+                    return [RACSignal error:error];
+                }
+            }];
         }]
         array];
     

@@ -56,6 +56,8 @@
             [self.navigationController popToRootViewControllerAnimated:YES];
         }];
     
+    [self rac_liftSelector:@selector(handleError:) withSignals:sendItem.rac_command.errors, nil];
+    
     self.navigationItem.rightBarButtonItem = sendItem;
 
     RAC(self.view.textView, editable) = [sendItem.rac_command.executing not];
