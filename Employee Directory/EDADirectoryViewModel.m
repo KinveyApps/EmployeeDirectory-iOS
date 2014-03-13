@@ -102,7 +102,7 @@
                 for (id key in dictionary.allKeys) {
                     NSArray *values = dictionary[key];
                     NSArray *filteredValues = [[values.rac_sequence filter:^BOOL(EDADirectoryCellViewModel *viewModel) {
-                        NSInteger location = [viewModel.fullName rangeOfString:searchString options:NSCaseInsensitiveSearch].location;
+                        NSInteger location = [viewModel.fullName rangeOfString:searchString options:NSCaseInsensitiveSearch | NSDiacriticInsensitiveSearch].location;
                         return location != NSNotFound;
                     }] array];
                     if (filteredValues.count > 0) {
