@@ -10,6 +10,7 @@
 
 #import "EDAWebViewController.h"
 #import "EDAEmployee+API.h"
+#import "EDAAppearanceManager.h"
 
 NSString * const EDALinkedInManagerErrorDomain = @"com.ballastlane.employeedirectory.linkedinmanager";
 
@@ -72,7 +73,10 @@ NSString * const EDALinkedInManagerUserDefaultsKey = @"LinkedInToken";
     
     EDAWebViewController *webViewController = [[EDAWebViewController alloc] initWithURL:URL];
     webViewController.title = @"Authorize";
-    [viewController presentViewController:[[UINavigationController alloc] initWithRootViewController:webViewController] animated:YES completion:NULL];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:webViewController];
+    [EDAAppearanceManager customizeAppearanceOfNavigationBar:navigationController.navigationBar];
+    
+    [viewController presentViewController:navigationController animated:YES completion:NULL];
     
     return [[[[[[[webViewController.shouldLoadURLSignal
         filter:^BOOL(NSURL *aURL) {

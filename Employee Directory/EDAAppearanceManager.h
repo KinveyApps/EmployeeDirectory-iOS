@@ -11,6 +11,7 @@
 @interface EDAAppearanceManager : NSObject
 
 + (void)customizeAppearanceWithWindow:(UIWindow *)window;
++ (void)customizeAppearanceOfNavigationBar:(UINavigationBar *)navigationBar;
 
 + (UIButton *)button;
 

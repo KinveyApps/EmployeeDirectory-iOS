@@ -98,7 +98,9 @@ NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
             
             [[KCSUser activeUser] logout];
             
-            [self presentViewController:[[UINavigationController alloc] initWithRootViewController:[EDALoginViewController new]] animated:YES completion:NULL];
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[EDALoginViewController new]];
+            [EDAAppearanceManager customizeAppearanceOfNavigationBar:navigationController.navigationBar];
+            [self presentViewController:navigationController animated:NO completion:NULL];
         }];
 }
 

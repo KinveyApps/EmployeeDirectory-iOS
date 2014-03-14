@@ -33,7 +33,9 @@
     [paneController showSidebar:YES animated:NO];
     
     if ([KCSUser hasSavedCredentials] == NO) {
-        [paneController presentViewController:[[UINavigationController alloc] initWithRootViewController:[EDALoginViewController new]] animated:NO completion:NULL];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[EDALoginViewController new]];
+        [EDAAppearanceManager customizeAppearanceOfNavigationBar:navigationController.navigationBar];
+        [paneController presentViewController:navigationController animated:NO completion:NULL];
     }
     
     [[EDALinkedInManager sharedManager] startUpdating];

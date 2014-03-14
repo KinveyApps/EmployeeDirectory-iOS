@@ -15,10 +15,14 @@
 + (void)customizeAppearanceWithWindow:(UIWindow *)window {
     window.tintColor = CVTAccentColor;
     
-    // Nav bar
-    [[UINavigationBar appearanceWhenContainedIn:[BLAPaneController class], nil] setBarTintColor:CVTAccentColor];
-    [[UINavigationBar appearanceWhenContainedIn:[BLAPaneController class], nil] setTintColor:[UIColor whiteColor]];
-    [[UINavigationBar appearanceWhenContainedIn:[BLAPaneController class], nil] setTitleTextAttributes:@{ NSForegroundColorAttributeName: [UIColor colorWithWhite:1 alpha:0.65] }];
+    [self customizeAppearanceOfNavigationBar:[UINavigationBar appearanceWhenContainedIn:[BLAPaneController class], nil]];
+}
+
++ (void)customizeAppearanceOfNavigationBar:(UINavigationBar *)navigationBar {
+    [navigationBar setBarTintColor:CVTAccentColor];
+    [navigationBar setTintColor:[UIColor whiteColor]];
+    [navigationBar setTitleTextAttributes:@{ NSForegroundColorAttributeName: [UIColor colorWithWhite:1 alpha:0.65] }];
+    navigationBar.barStyle = UIBarStyleBlack;
 }
 
 + (UIButton *)button {
