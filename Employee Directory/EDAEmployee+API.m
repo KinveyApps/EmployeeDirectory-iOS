@@ -61,8 +61,10 @@ NSInteger const EDAEmployeeErrorCodeUserNotFound = 1;
 }
 
 + (RACSignal *)employeesMatchingSearchString:(NSString *)searchString {
-    KCSQuery *firstNameQuery = [KCSQuery queryOnField:@"firstName" withRegex:[NSString stringWithFormat:@"^%@", searchString]];
-    KCSQuery *lastNameQuery = [KCSQuery queryOnField:@"lastName" withRegex:[NSString stringWithFormat:@"^%@", searchString]];
+    NSString *standardizedString = [searchString lowercaseString];
+    
+    KCSQuery *firstNameQuery = [KCSQuery queryOnField:@"firstNameStandardized" withRegex:[NSString stringWithFormat:@"^%@", standardizedString]];
+    KCSQuery *lastNameQuery = [KCSQuery queryOnField:@"lastNameStandardized" withRegex:[NSString stringWithFormat:@"^%@", standardizedString]];
     KCSQuery *query = [KCSQuery queryForJoiningOperator:kKCSOr onQueries:firstNameQuery, lastNameQuery, nil];
     
     return [[self appdataStoreForSearching] rac_queryWithQuery:query];
