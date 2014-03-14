@@ -126,6 +126,20 @@
             EDANewMessageViewController *viewController = [[EDANewMessageViewController alloc] initWithEmployees:@[ employee ]];
             [self.navigationController pushViewController:viewController animated:YES];
         }];
+    
+    self.view.favoriteButton.rac_command = self.viewModel.favoriteCommand;
+    RACSignal *titleSignal = [RACObserve(self.viewModel, favorite)
+        map:^NSString *(NSNumber *favorite){
+            NSString *title;
+            if (favorite.boolValue) {
+                title = @"Un-Favorite";
+            }
+            else {
+                title = @"Favorite";
+            }
+            return title;
+        }];
+    [self.view.favoriteButton rac_liftSelector:@selector(setTitle:forState:) withSignals:titleSignal, [RACSignal return:@(UIControlStateNormal)], nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

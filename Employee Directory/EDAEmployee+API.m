@@ -53,6 +53,21 @@ NSInteger const EDAEmployeeErrorCodeUserNotFound = 1;
     return [[self appdataStore] rac_queryWithQuery:query];
 }
 
++ (RACSignal *)employeesWithUsernames:(NSArray *)usernames {
+    KCSQuery *query = [usernames.rac_sequence foldLeftWithStart:nil reduce:^KCSQuery *(KCSQuery *accumulator, NSString *username){
+        KCSQuery *queryForUsername = [KCSQuery queryOnField:@"username" withExactMatchForValue:username];
+        
+        if (accumulator == nil) {
+            return queryForUsername;
+        }
+        else {
+            return [accumulator queryByJoiningQuery:queryForUsername usingOperator:kKCSOr];
+        }
+    }];
+    
+    return [[self appdataStore] rac_queryWithQuery:query];
+}
+
 - (RACSignal *)downloadAvatar {
     NSURL *avatarURL = [NSURL URLWithString:self.avatarURL];
     

@@ -10,6 +10,7 @@
 
 #import "EDAEmployee+API.h"
 #import "EDALinkedInManager.h"
+#import "EDAFavorite+API.h"
 
 @interface EDAEmployeeViewModel ()
 
@@ -138,6 +139,23 @@
     _messageCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         return [RACSignal return:employee];
     }];
+    
+    // Favorite
+    _favoriteCommand = [[RACCommand alloc] initWithEnabled:[RACSignal return:@YES] signalBlock:^RACSignal *(id input) {
+        @strongify(self);
+        
+        if (self.favorite) {
+            return [EDAFavorite deleteFavoriteForEmployee:self.employee];
+        }
+        else {
+            return [EDAFavorite createFavoriteForEmployee:self.employee];
+        }
+    }];
+    
+    RAC(self, favorite) = [[RACSignal merge:@[ [_favoriteCommand.executionSignals flatten], [EDAFavorite favoriteForEmployee:employee] ]]
+        map:^NSNumber *(EDAFavorite *favorite) {
+            return @(favorite != nil);
+        }];
     
     return self;
 }

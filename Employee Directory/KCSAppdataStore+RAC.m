@@ -26,6 +26,22 @@
     }];
 }
 
+- (RACSignal *)rac_deleteObject:(id)object {
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [self removeObject:object withCompletionBlock:^(unsigned long count, NSError *error) {
+            if (error) {
+                [subscriber sendError:error];
+            }
+            else {
+                [subscriber sendNext:nil];
+                [subscriber sendCompleted];
+            }
+        } withProgressBlock:NULL];
+        
+        return nil;
+    }];
+}
+
 - (RACSignal *)rac_queryWithQuery:(KCSQuery *)query {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         [self queryWithQuery:query withCompletionBlock:^(NSArray *objects, NSError *error) {
