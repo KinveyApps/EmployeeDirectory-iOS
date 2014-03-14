@@ -15,7 +15,9 @@
 #import "EDAYourInfoViewController.h"
 #import "EDAMessagingViewController.h"
 #import "EDAAboutViewController.h"
+#import "EDASidebarHeaderCell.h"
 
+NSString * const EDAMenuViewControllerIdentifierHeader = @"Header";
 NSString * const EDAMenuViewControllerIdentifierYourInfo = @"Your Info";
 NSString * const EDAMenuViewControllerIdentifierDirectory = @"Directory";
 NSString * const EDAMenuViewControllerIdentifierTeamMessaging = @"Team Messaging";
@@ -30,7 +32,7 @@ NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
 
 - (void)viewDidLoad {
     [self.tableView registerClass:[EDASidebarCell class] forCellReuseIdentifier:NSStringFromClass([EDASidebarCell class])];
-    
+    [self.tableView registerClass:[EDASidebarHeaderCell class] forCellReuseIdentifier:NSStringFromClass([EDASidebarHeaderCell class])];
     self.tableView.backgroundColor = [UIColor colorWithRed:0.129 green:0.145 blue:0.157 alpha:1.000];
 	self.tableView.separatorColor = [UIColor colorWithRed:0.196 green:0.200 blue:0.212 alpha:1.000];
     self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
@@ -108,6 +110,7 @@ NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
 
 - (NSArray *)identifiers {
     return @[
+             @[ EDAMenuViewControllerIdentifierHeader ],
              @[ EDAMenuViewControllerIdentifierYourInfo,
                 EDAMenuViewControllerIdentifierDirectory,
                 EDAMenuViewControllerIdentifierTeamMessaging,
@@ -117,6 +120,11 @@ NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
 }
 
 - (UITableViewCell *)cellForIdentifier:(NSString *)identifier withTableView:(UITableView *)tableView {
+    if ([identifier isEqualToString:EDAMenuViewControllerIdentifierHeader]) {
+        EDASidebarHeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([EDASidebarHeaderCell class])];
+        return cell;
+    }
+    
     EDASidebarCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([EDASidebarCell class])];
     
     NSString *title;
@@ -139,6 +147,15 @@ NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
     cell.textLabel.text = title;
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) return 80;
+    else return 44;
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    return indexPath.section != 0;
 }
 
 @end
