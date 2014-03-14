@@ -78,7 +78,7 @@ NSString * const EDALinkedInManagerUserDefaultsKey = @"LinkedInToken";
     
     [viewController presentViewController:navigationController animated:YES completion:NULL];
     
-    return [[[[[[[webViewController.shouldLoadURLSignal
+    return [[[[[[[[webViewController.shouldLoadURLSignal
         filter:^BOOL(NSURL *aURL) {
             NSInteger location = [aURL.absoluteString rangeOfString:EDALinkedInManagerRedirectURL].location;
             return location == 0;
@@ -124,6 +124,14 @@ NSString * const EDALinkedInManagerUserDefaultsKey = @"LinkedInToken";
                 
                 return nil;
             }];
+        }]
+        catch:^RACSignal *(NSError *error) {
+            if ([error.domain isEqualToString:EDALinkedInManagerErrorDomain] && error.code == EDALinkedInManagerErrorCodeUserRejected) {
+                return [RACSignal return:nil];
+            }
+            else {
+                return [RACSignal error:error];
+            }
         }]
         flattenMap:^RACStream *(NSString *code) {
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {

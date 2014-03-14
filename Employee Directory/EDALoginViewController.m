@@ -53,7 +53,7 @@
     
     [[self.viewModel.loginCommand.executionSignals
         flatten]
-        subscribeNext:^(KCSUser *user) {
+        subscribeNext:^(id x) {
             @strongify(self);
             
             [self dismissViewControllerAnimated:YES completion:NULL];
