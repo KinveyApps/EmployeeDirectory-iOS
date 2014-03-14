@@ -31,6 +31,7 @@
 		D00BA02D18D2339500AA14DC /* KCSReachability+RAC.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA02C18D2339500AA14DC /* KCSReachability+RAC.m */; };
 		D00BA03018D23EAB00AA14DC /* EDAAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA02F18D23EAB00AA14DC /* EDAAboutViewController.m */; };
 		D00BA03418D3372300AA14DC /* EDAImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA03318D3372300AA14DC /* EDAImageManager.m */; };
+		D00BA03718D33DD200AA14DC /* EDASidebarHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA03618D33DD200AA14DC /* EDASidebarHeaderCell.m */; };
 		D043A79618CA1D870095F581 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79518CA1D870095F581 /* Foundation.framework */; };
 		D043A79818CA1D870095F581 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79718CA1D870095F581 /* CoreGraphics.framework */; };
 		D043A79A18CA1D870095F581 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79918CA1D870095F581 /* UIKit.framework */; };
@@ -134,6 +135,8 @@
 		D00BA02F18D23EAB00AA14DC /* EDAAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAAboutViewController.m; sourceTree = "<group>"; };
 		D00BA03218D3372300AA14DC /* EDAImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAImageManager.h; sourceTree = "<group>"; };
 		D00BA03318D3372300AA14DC /* EDAImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAImageManager.m; sourceTree = "<group>"; };
+		D00BA03518D33DD200AA14DC /* EDASidebarHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDASidebarHeaderCell.h; sourceTree = "<group>"; };
+		D00BA03618D33DD200AA14DC /* EDASidebarHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDASidebarHeaderCell.m; sourceTree = "<group>"; };
 		D043A79218CA1D870095F581 /* Employee Directory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Employee Directory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D043A79518CA1D870095F581 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D043A79718CA1D870095F581 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -260,6 +263,8 @@
 				1564D58D18CE09B5006D7A18 /* EDASidebarCell.m */,
 				15D799ED18CA32AD00BF116D /* EDAMenuViewController.h */,
 				15D799EA18CA32AD00BF116D /* EDAMenuViewController.m */,
+				D00BA03518D33DD200AA14DC /* EDASidebarHeaderCell.h */,
+				D00BA03618D33DD200AA14DC /* EDASidebarHeaderCell.m */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -697,6 +702,7 @@
 				D00BA01E18D1E29200AA14DC /* EDANewMessageViewController.m in Sources */,
 				D055CB5918CF86D200B29407 /* EDAAppearanceManager.m in Sources */,
 				D04E88F218D0C9AA0071F421 /* EDASelectEmployeesViewModel.m in Sources */,
+				D00BA03718D33DD200AA14DC /* EDASidebarHeaderCell.m in Sources */,
 				15D799F618CA476F00BF116D /* EDADirectoryViewModel.m in Sources */,
 				D043A7EF18CA41420095F581 /* KCSAppdataStore+RAC.m in Sources */,
 				D00BA01418D1DB5000AA14DC /* EDAEmployee+Sorting.m in Sources */,
