@@ -16,4 +16,6 @@
 
 - (RACSignal *)rac_queryWithQuery:(KCSQuery *)query;
 
+- (RACSignal *)rac_loadObjectWithID:(NSString *)identifier;
+
 @end

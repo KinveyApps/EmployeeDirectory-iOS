@@ -26,6 +26,10 @@
     
     _employee = employee;
     
+    [[employee update] subscribeError:^(NSError *error) {
+        NSLog(@"Error updating employee: %@", error);
+    }];
+    
     RAC(self, image) = [[[[employee downloadAvatar]
         startWith:[UIImage imageNamed:@"AvatarLoading"]]
         map:^UIImage *(UIImage *image) {

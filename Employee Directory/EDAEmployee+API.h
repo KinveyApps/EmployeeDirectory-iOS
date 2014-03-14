@@ -39,4 +39,7 @@ extern NSInteger const EDAEmployeeErrorCodeUserNotFound;
 /// @return A signal which sends the employee's avatar image.
 - (RACSignal *)downloadAvatar;
 
+/// @return A signal which sends the same object with update values
+- (RACSignal *)update;
+
 @end

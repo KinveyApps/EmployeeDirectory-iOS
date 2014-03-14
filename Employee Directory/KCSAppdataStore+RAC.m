@@ -58,6 +58,24 @@
     }];
 }
 
+- (RACSignal *)rac_loadObjectWithID:(NSString *)identifier {
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [self loadObjectWithID:identifier withCompletionBlock:^(NSArray *objects, NSError *error) {
+            if (error) {
+                [subscriber sendError:error];
+            }
+            else {
+                if (objects.count > 0) {
+                    [subscriber sendNext:objects.firstObject];
+                }
+                [subscriber sendCompleted];
+            }
+        } withProgressBlock:NULL];
+        
+        return nil;
+    }];
+}
+
 @end
 
 @implementation KCSCachedStore (RAC)
