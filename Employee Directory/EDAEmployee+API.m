@@ -26,6 +26,12 @@ NSInteger const EDAEmployeeErrorCodeUserNotFound = 1;
     return cachedStore;
 }
 
++ (KCSAppdataStore *)appdataStoreForSearching {
+    KCSAppdataStore *appdataStore = [KCSAppdataStore storeWithOptions:@{ KCSStoreKeyCollectionName: @"Employees",
+                                                                         KCSStoreKeyCollectionTemplateClass: [EDAEmployee class] }];
+    return appdataStore;
+}
+
 + (RACSignal *)allEmployees {
     return [[self appdataStore] rac_queryWithQuery:[KCSQuery query]];
 }
@@ -59,7 +65,7 @@ NSInteger const EDAEmployeeErrorCodeUserNotFound = 1;
     KCSQuery *lastNameQuery = [KCSQuery queryOnField:@"lastName" withRegex:[NSString stringWithFormat:@"^%@", searchString]];
     KCSQuery *query = [KCSQuery queryForJoiningOperator:kKCSOr onQueries:firstNameQuery, lastNameQuery, nil];
     
-    return [[self appdataStore] rac_queryWithQuery:query];
+    return [[self appdataStoreForSearching] rac_queryWithQuery:query];
 }
 
 - (RACSignal *)downloadAvatar {
