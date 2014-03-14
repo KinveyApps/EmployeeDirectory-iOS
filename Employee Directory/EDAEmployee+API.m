@@ -9,6 +9,7 @@
 #import "EDAEmployee+API.h"
 
 #import "EDAGroup.h"
+#import "EDAImageManager.h"
 
 NSString * const EDAEmployeeErrorDomain = @"com.ballastlane.employeedirectory.employee";
 
@@ -53,30 +54,20 @@ NSInteger const EDAEmployeeErrorCodeUserNotFound = 1;
     return [[self appdataStore] rac_queryWithQuery:query];
 }
 
++ (RACSignal *)employeesMatchingSearchString:(NSString *)searchString {
+    KCSQuery *firstNameQuery = [KCSQuery queryOnField:@"firstName" withRegex:[NSString stringWithFormat:@"^%@", searchString]];
+    KCSQuery *lastNameQuery = [KCSQuery queryOnField:@"lastName" withRegex:[NSString stringWithFormat:@"^%@", searchString]];
+    KCSQuery *query = [KCSQuery queryForJoiningOperator:kKCSOr onQueries:firstNameQuery, lastNameQuery, nil];
+    
+    return [[self appdataStore] rac_queryWithQuery:query];
+}
+
 - (RACSignal *)downloadAvatar {
     NSURL *avatarURL = [NSURL URLWithString:self.avatarURL];
     
     if (avatarURL == nil) return [RACSignal return:nil];
     
-    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:avatarURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-            if (error) {
-                [subscriber sendError:error];
-            }
-            else {
-                UIImage *image = [UIImage imageWithData:data];
-                [subscriber sendNext:image];
-                [subscriber sendCompleted];
-            }
-        }];
-        
-        [task resume];
-        
-        return [RACDisposable disposableWithBlock:^{
-            [task cancel];
-        }];
-    }]
-    deliverOn:[RACScheduler currentScheduler]];
+    return [[EDAImageManager sharedManager] imageFromURL:avatarURL];
 }
 
 @end

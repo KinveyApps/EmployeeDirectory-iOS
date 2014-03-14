@@ -30,5 +30,6 @@ typedef NS_ENUM(NSInteger, EDADirectoryViewModelSortStyle) {
 
 - (id)initWithAllEmployees;
 - (id)initWithDirectReportsOfEmployee:(EDAEmployee *)employee;
+- (id)initForSearching;
 
 @end

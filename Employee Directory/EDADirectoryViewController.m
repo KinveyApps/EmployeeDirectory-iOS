@@ -13,10 +13,11 @@
 #import "EDADirectoryCell.h"
 #import "EDAEmployeeDetailViewController.h"
 
-@interface EDADirectoryViewController () <UISearchDisplayDelegate>
+@interface EDADirectoryViewController () <UISearchDisplayDelegate, UISearchBarDelegate>
 
 @property (nonatomic) EDADirectoryViewModel *viewModel;
 @property (nonatomic) UISearchDisplayController *searchController;
+@property (nonatomic) BOOL forSearching;
 
 @end
 
@@ -31,6 +32,13 @@
 - (id)initWithDirectReportsOfEmployee:(id)employee {
     self = [self initWithViewModel:[[EDADirectoryViewModel alloc] initWithDirectReportsOfEmployee:employee]];
     self.title = @"Reports";
+    return self;
+}
+
+- (id)initForSearching {
+    self = [self initWithViewModel:[[EDADirectoryViewModel alloc] initForSearching]];
+    self.title = @"Directory";
+    _forSearching = YES;
     return self;
 }
 
@@ -65,11 +73,6 @@
             [self.navigationController pushViewController:viewController animated:YES];
         }];
     
-    RAC(self.viewModel, searchString) = [[self rac_signalForSelector:@selector(searchDisplayController:shouldReloadTableForSearchString:) fromProtocol:@protocol(UISearchDisplayDelegate)]
-        reduceEach:^NSString *(UISearchDisplayController *controller, NSString *searchString){
-            return searchString;
-        }];
-    
     return self;
 }
 
@@ -77,12 +80,28 @@
     [self.tableView registerClass:[EDADirectoryCell class] forCellReuseIdentifier:NSStringFromClass([EDADirectoryCell class])];
     
     UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    searchBar.placeholder = @"Search";
     self.tableView.tableHeaderView = searchBar;
     
-    self.searchController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
-    self.searchController.delegate = self;
-    self.searchController.searchResultsDataSource = self;
-    self.searchController.searchResultsDelegate = self;
+    if (self.forSearching) {
+        searchBar.delegate = self;
+        
+        RAC(self.viewModel, searchString) = [[self rac_signalForSelector:@selector(searchBar:textDidChange:) fromProtocol:@protocol(UISearchBarDelegate)]
+            reduceEach:^NSString *(UISearchBar *aSearchBar, NSString *text){
+                return text;
+            }];
+    }
+    else {
+        self.searchController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
+        self.searchController.delegate = self;
+        self.searchController.searchResultsDataSource = self;
+        self.searchController.searchResultsDelegate = self;
+        
+        RAC(self.viewModel, searchString) = [[self rac_signalForSelector:@selector(searchDisplayController:shouldReloadTableForSearchString:) fromProtocol:@protocol(UISearchDisplayDelegate)]
+            reduceEach:^NSString *(UISearchDisplayController *controller, NSString *searchString){
+                return searchString;
+            }];
+    }
     
     @weakify(self);
     

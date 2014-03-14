@@ -14,5 +14,6 @@
 
 - (id)initWithAllEmployees;
 - (id)initWithDirectReportsOfEmployee:(EDAEmployee *)employee;
+- (id)initForSearching;
 
 @end
