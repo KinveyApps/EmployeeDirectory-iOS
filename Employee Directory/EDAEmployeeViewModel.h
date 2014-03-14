@@ -17,6 +17,7 @@
 @property (nonatomic, readonly) NSString *titleAndGroup;
 @property (nonatomic, readonly) NSString *linkedInHeadline;
 @property (nonatomic, readonly) NSString *linkedInSummary;
+@property (nonatomic, readonly) BOOL favorite;
 
 /// Sends an EDAEmployee object whose username matches the supervisor property of employee.
 @property (nonatomic, readonly) RACCommand *showSupervisorCommand;
@@ -38,6 +39,9 @@
 
 /// Sends an EDAEmployee object who should be the recipient of a message
 @property (nonatomic, readonly) RACCommand *messageCommand;
+
+/// Sends an EDAFavorite object or nil
+@property (nonatomic, readonly) RACCommand *favoriteCommand;
 
 - (id)initWithEmployee:(EDAEmployee *)employee;
 

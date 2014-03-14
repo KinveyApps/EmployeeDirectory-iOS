@@ -11,6 +11,7 @@
 #import "EDADirectoryCellViewModel.h"
 #import "EDAEmployee+API.h"
 #import "EDAEmployee+Sorting.h"
+#import "EDAFavorite+API.h"
 
 NSString * const EDADirectoryViewModelSortStyleKey = @"EDADirectoryViewModelSortStyle";
 
@@ -55,6 +56,27 @@ NSString * const EDADirectoryViewModelSortStyleKey = @"EDADirectoryViewModelSort
         switchToLatest];
     
     [self setupWithEmployeeSignal:employeesSignal];
+    
+    return self;
+}
+
+- (id)initWithFavorites {
+    self = [self init];
+    
+    RACSignal *favoritesSignal = [[[[RACSignal merge:@[ [[NSNotificationCenter defaultCenter] rac_addObserverForName:EDAFavoriteFavoritesDidChangeNotification object:nil], [RACSignal return:nil] ]]
+        flattenMap:^RACStream *(id value) {
+            return [EDAFavorite allFavorites];
+        }]
+        map:^NSArray *(NSArray *favorites) {
+            return [[favorites.rac_sequence map:^NSString *(EDAFavorite *favorite) {
+                return favorite.favoriteUsername;
+            }] array];
+        }]
+        flattenMap:^RACStream *(NSArray *usernames) {
+            return [EDAEmployee employeesWithUsernames:usernames];
+        }];
+    
+    [self setupWithEmployeeSignal:favoritesSignal];
     
     return self;
 }

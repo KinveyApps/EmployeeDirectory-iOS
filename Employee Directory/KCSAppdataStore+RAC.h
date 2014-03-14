@@ -12,6 +12,8 @@
 
 - (RACSignal *)rac_saveObject:(id)object;
 
+- (RACSignal *)rac_deleteObject:(id)object;
+
 - (RACSignal *)rac_queryWithQuery:(KCSQuery *)query;
 
 @end

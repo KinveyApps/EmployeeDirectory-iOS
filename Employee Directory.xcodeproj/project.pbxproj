@@ -32,6 +32,8 @@
 		D00BA03018D23EAB00AA14DC /* EDAAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA02F18D23EAB00AA14DC /* EDAAboutViewController.m */; };
 		D00BA03418D3372300AA14DC /* EDAImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA03318D3372300AA14DC /* EDAImageManager.m */; };
 		D00BA03718D33DD200AA14DC /* EDASidebarHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA03618D33DD200AA14DC /* EDASidebarHeaderCell.m */; };
+		D00BA03A18D33FDF00AA14DC /* EDAFavorite.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA03918D33FDF00AA14DC /* EDAFavorite.m */; };
+		D00BA03D18D340D900AA14DC /* EDAFavorite+API.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA03C18D340D900AA14DC /* EDAFavorite+API.m */; };
 		D043A79618CA1D870095F581 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79518CA1D870095F581 /* Foundation.framework */; };
 		D043A79818CA1D870095F581 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79718CA1D870095F581 /* CoreGraphics.framework */; };
 		D043A79A18CA1D870095F581 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79918CA1D870095F581 /* UIKit.framework */; };
@@ -137,6 +139,10 @@
 		D00BA03318D3372300AA14DC /* EDAImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAImageManager.m; sourceTree = "<group>"; };
 		D00BA03518D33DD200AA14DC /* EDASidebarHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDASidebarHeaderCell.h; sourceTree = "<group>"; };
 		D00BA03618D33DD200AA14DC /* EDASidebarHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDASidebarHeaderCell.m; sourceTree = "<group>"; };
+		D00BA03818D33FDF00AA14DC /* EDAFavorite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAFavorite.h; sourceTree = "<group>"; };
+		D00BA03918D33FDF00AA14DC /* EDAFavorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAFavorite.m; sourceTree = "<group>"; };
+		D00BA03B18D340D900AA14DC /* EDAFavorite+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EDAFavorite+API.h"; sourceTree = "<group>"; };
+		D00BA03C18D340D900AA14DC /* EDAFavorite+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EDAFavorite+API.m"; sourceTree = "<group>"; };
 		D043A79218CA1D870095F581 /* Employee Directory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Employee Directory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D043A79518CA1D870095F581 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D043A79718CA1D870095F581 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -514,6 +520,10 @@
 				D00BA02918D20E0100AA14DC /* EDAMessage+API.m */,
 				D00BA02518D20DF600AA14DC /* EDAMessage.h */,
 				D00BA02618D20DF600AA14DC /* EDAMessage.m */,
+				D00BA03818D33FDF00AA14DC /* EDAFavorite.h */,
+				D00BA03918D33FDF00AA14DC /* EDAFavorite.m */,
+				D00BA03B18D340D900AA14DC /* EDAFavorite+API.h */,
+				D00BA03C18D340D900AA14DC /* EDAFavorite+API.m */,
 				D00BA03218D3372300AA14DC /* EDAImageManager.h */,
 				D00BA03318D3372300AA14DC /* EDAImageManager.m */,
 			);
@@ -688,6 +698,7 @@
 				D055CB4C18CF7A1D00B29407 /* EDAYourInfoViewController.m in Sources */,
 				D00BA03418D3372300AA14DC /* EDAImageManager.m in Sources */,
 				D043A7EC18CA40D10095F581 /* EDAEmployee+API.m in Sources */,
+				D00BA03D18D340D900AA14DC /* EDAFavorite+API.m in Sources */,
 				D043A7E618CA2BEB0095F581 /* EDAEmployee.m in Sources */,
 				D09AFF9C18CDFF340015C400 /* EDAWebViewController.m in Sources */,
 				15D799E518CA20D400BF116D /* EDALoginView.m in Sources */,
@@ -710,6 +721,7 @@
 				D04E88E818D0B67A0071F421 /* EDAGroup.m in Sources */,
 				D055CB5018CF7A4C00B29407 /* EDAYourInfoViewModel.m in Sources */,
 				D055CB5618CF7BBF00B29407 /* UIViewController+ErrorHandling.m in Sources */,
+				D00BA03A18D33FDF00AA14DC /* EDAFavorite.m in Sources */,
 				1564D59A18CE2CCF006D7A18 /* EDAEmployeeViewModel.m in Sources */,
 				15D799E218CA20A500BF116D /* EDALoginViewController.m in Sources */,
 				D00BA01A18D1DE0300AA14DC /* EDANewMessageViewModel.m in Sources */,
@@ -864,8 +876,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Laurence Ehrhardt (YU98PBTNF7)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Laurence Ehrhardt (YU98PBTNF7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/Frameworks",
@@ -874,7 +886,7 @@
 				GCC_PREFIX_HEADER = "Employee Directory/Employee Directory-Prefix.pch";
 				INFOPLIST_FILE = "Employee Directory/Employee Directory-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "79716D7D-EB91-46AF-855C-EB667FD95ABE";
+				PROVISIONING_PROFILE = "83D62F16-C877-4A33-B253-27472CA54C98";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;

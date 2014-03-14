@@ -60,9 +60,8 @@ NSInteger const EDAEmployeeErrorCodeUserNotFound = 1;
     return [[self appdataStore] rac_queryWithQuery:query];
 }
 
+<<<<<<< HEAD
 + (RACSignal *)employeesWithUsernames:(NSArray *)usernames {
-    if (usernames.count == 0) return [RACSignal return:@[]];
-    
     KCSQuery *query = [usernames.rac_sequence foldLeftWithStart:nil reduce:^KCSQuery *(KCSQuery *accumulator, NSString *username){
         KCSQuery *queryForUsername = [KCSQuery queryOnField:@"username" withExactMatchForValue:username];
         
@@ -75,8 +74,7 @@ NSInteger const EDAEmployeeErrorCodeUserNotFound = 1;
     }];
     
     return [[self appdataStore] rac_queryWithQuery:query];
-}
-
+=======
 + (RACSignal *)employeesMatchingSearchString:(NSString *)searchString {
     NSString *standardizedString = [searchString lowercaseString];
     
@@ -85,6 +83,7 @@ NSInteger const EDAEmployeeErrorCodeUserNotFound = 1;
     KCSQuery *query = [KCSQuery queryForJoiningOperator:kKCSOr onQueries:firstNameQuery, lastNameQuery, nil];
     
     return [[self appdataStoreForSearching] rac_queryWithQuery:query];
+>>>>>>> master
 }
 
 - (RACSignal *)downloadAvatar {

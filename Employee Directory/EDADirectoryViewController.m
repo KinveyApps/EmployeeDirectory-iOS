@@ -42,6 +42,12 @@
     return self;
 }
 
+- (id)initWithFavorites {
+    self = [self initWithViewModel:[[EDADirectoryViewModel alloc] initWithFavorites]];
+    self.title = @"Favorites";
+    return self;
+}
+
 - (id)initWithViewModel:(EDADirectoryViewModel *)viewModel
 {
     self = [super initWithStyle:UITableViewStylePlain];
