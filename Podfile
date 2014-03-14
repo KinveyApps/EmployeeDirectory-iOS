@@ -9,5 +9,6 @@ pod 'AFNetworking', '~> 2.2'
 pod 'EPSStaticTableViewController'
 pod 'EPSReactiveTableViewController'
 pod 'PSAutolayout', :git => 'https://github.com/shepting/PSAutolayout.git'
+pod 'SDWebImage', '~> 3.5'
 
 # pod 'EPSReactiveCollectionViewController'

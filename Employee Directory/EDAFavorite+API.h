@@ -8,6 +8,8 @@
 
 #import "EDAFavorite.h"
 
+extern NSString * const EDAFavoriteFavoritesDidChangeNotification;
+
 @class EDAEmployee;
 
 @interface EDAFavorite (API)

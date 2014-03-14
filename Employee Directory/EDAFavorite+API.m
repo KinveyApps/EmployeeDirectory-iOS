@@ -10,6 +10,8 @@
 
 #import "EDAEmployee.h"
 
+NSString * const EDAFavoriteFavoritesDidChangeNotification = @"EDAFavoriteFavoritesDidChangeNotification";
+
 @implementation EDAFavorite (API)
 
 + (KCSAppdataStore *)appdataStore {
@@ -31,7 +33,7 @@
 }
 
 + (RACSignal *)createFavoriteForEmployee:(EDAEmployee *)employee {
-    return [[self favoriteForEmployee:employee]
+    return [[[self favoriteForEmployee:employee]
         flattenMap:^RACStream *(EDAFavorite *favorite) {
             if (favorite) {
                 return [RACSignal return:favorite];
@@ -43,11 +45,14 @@
                 
                 return [[self appdataStore] rac_saveObject:newFavorite];
             }
+        }]
+        doNext:^(id x) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:EDAFavoriteFavoritesDidChangeNotification object:nil];
         }];
 }
 
 + (RACSignal *)deleteFavoriteForEmployee:(EDAEmployee *)employee {
-    return [[self favoriteForEmployee:employee]
+    return [[[self favoriteForEmployee:employee]
         flattenMap:^RACStream *(EDAFavorite *favorite) {
             if (favorite) {
                 return [[self appdataStore] rac_deleteObject:favorite];
@@ -55,6 +60,9 @@
             else {
                 return [RACSignal return:nil];
             }
+        }]
+        doNext:^(id x) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:EDAFavoriteFavoritesDidChangeNotification object:nil];
         }];
 }
 

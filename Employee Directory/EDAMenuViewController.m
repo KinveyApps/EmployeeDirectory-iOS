@@ -20,6 +20,7 @@
 NSString * const EDAMenuViewControllerIdentifierHeader = @"Header";
 NSString * const EDAMenuViewControllerIdentifierYourInfo = @"Your Info";
 NSString * const EDAMenuViewControllerIdentifierDirectory = @"Directory";
+NSString * const EDAMenuViewControllerIdentifierFavorites = @"Favorites";
 NSString * const EDAMenuViewControllerIdentifierTeamMessaging = @"Team Messaging";
 NSString * const EDAMenuViewControllerIdentifierAbout = @"About";
 NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
@@ -65,7 +66,10 @@ NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
             UIViewController *newViewController;
             
             if ([identifier isEqualToString:EDAMenuViewControllerIdentifierDirectory]) {
-                newViewController = [[EDADirectoryViewController alloc] initWithAllEmployees];
+                newViewController = [[EDADirectoryViewController alloc] initForSearching];
+            }
+            else if ([identifier isEqualToString:EDAMenuViewControllerIdentifierFavorites]) {
+                newViewController = [[EDADirectoryViewController alloc] initWithFavorites];
             }
             else if ([identifier isEqualToString:EDAMenuViewControllerIdentifierYourInfo]) {
                 newViewController = [EDAYourInfoViewController new];
@@ -112,6 +116,7 @@ NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
     return @[
              @[ EDAMenuViewControllerIdentifierHeader ],
              @[ EDAMenuViewControllerIdentifierYourInfo,
+                EDAMenuViewControllerIdentifierFavorites,
                 EDAMenuViewControllerIdentifierDirectory,
                 EDAMenuViewControllerIdentifierTeamMessaging,
                 EDAMenuViewControllerIdentifierAbout ],
@@ -142,6 +147,9 @@ NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
     }
     else if ([identifier isEqualToString:EDAMenuViewControllerIdentifierYourInfo]) {
         title = @"Your Info";
+    }
+    else if ([identifier isEqualToString:EDAMenuViewControllerIdentifierFavorites]) {
+        title = @"Favorites";
     }
     
     cell.textLabel.text = title;
