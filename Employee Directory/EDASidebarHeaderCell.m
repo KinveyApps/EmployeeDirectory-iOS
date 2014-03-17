@@ -15,6 +15,11 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.backgroundColor = CVTAccentColor;
+        self.textLabel.text = @"Directory App";
+        self.textLabel.textAlignment = NSTextAlignmentCenter;
+        self.textLabel.textColor = [UIColor whiteColor];
+        self.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleHeadline];
+        
     }
     return self;
 }

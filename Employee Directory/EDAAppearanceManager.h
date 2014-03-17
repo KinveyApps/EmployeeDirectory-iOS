@@ -17,7 +17,7 @@
 
 @end
 
-#define CVTAccentColor [UIColor colorWithRed:7.0/255.0 green:70.0/255.0 blue:128.0/255.0 alpha:1.0]
+#define CVTAccentColor [UIColor colorWithRed:218.0/255.0 green:80.0/255.0 blue:36.0/255.0 alpha:1.0]
 #define CVTBackgroundColor [UIColor whiteColor]
 #define CVTButtonColor [UIColor colorWithRed:38.0/255.0 green:70.0/255.0 blue:102.0/255.0 alpha:1.0]
 #define CVTLightButtonColor [UIColor colorWithRed:220.0/255.0 green:232.0/255.0 blue:242.0/255.0 alpha:1.0]
