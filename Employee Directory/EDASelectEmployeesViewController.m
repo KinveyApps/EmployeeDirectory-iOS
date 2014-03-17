@@ -43,8 +43,7 @@
         subscribeNext:^(NSSet *selectedEmployees) {
             @strongify(self);
             
-            NSArray *employees = [self.viewModel.employees valueForKey:@"employee"];
-            EDANewMessageViewController *viewController = [[EDANewMessageViewController alloc] initWithEmployees:employees];
+            EDANewMessageViewController *viewController = [[EDANewMessageViewController alloc] initWithEmployees:selectedEmployees.allObjects];
             [self.navigationController pushViewController:viewController animated:YES];
         }];
     self.navigationItem.rightBarButtonItem = nextItem;
