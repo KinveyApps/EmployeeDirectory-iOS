@@ -206,29 +206,6 @@ NSString * const EDALinkedInManagerUserDefaultsKey = @"LinkedInToken";
             
             return [[EDAEmployee appdataStore] rac_saveObject:employee];
         }];
-    
-    /*
-    KCSCollection* linkedInDLCollection = [KCSCollection collectionFromString:@"people" ofClass:[NSDictionary class]];
-    KCSAppdataStore* linkedInStore = [KCSAppdataStore storeWithCollection:linkedInDLCollection options:nil];
-    
-    KCSQuery *query = [KCSQuery queryOnField:@"oauth2_access_token" withExactMatchForValue:accessToken];
-    [query addQueryOnField:@"format" withExactMatchForValue:@"json"];
-    [query addQueryOnField:@"_id" withExactMatchForValue:@"~"];
-    
-    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        [linkedInStore queryWithQuery:query withCompletionBlock:^(NSArray *objects, NSError *error) {
-            if (error) {
-                [subscriber sendError:error];
-            }
-            else {
-                [subscriber sendNext:objects];
-                [subscriber sendCompleted];
-            }
-        } withProgressBlock:NULL];
-        
-        return nil;
-    }];
-     */
 }
 
 - (RACSignal *)linkedInProfileURLForEmployee:(EDAEmployee *)employee {

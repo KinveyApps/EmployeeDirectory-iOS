@@ -29,7 +29,9 @@
                @keypath(self, headline): @"headline",
                @keypath(self, summary): @"summary",
                @keypath(self, avatarURL): @"avatarURL",
-               @keypath(self, linkedInID): @"linkedInID" };
+               @keypath(self, linkedInID): @"linkedInID",
+               @keypath(self, firstNameStandardized): @"firstNameStandardized",
+               @keypath(self, lastNameStandardized): @"lastNameStandardized" };
 }
 
 - (BOOL)isEqual:(id)object {

@@ -30,4 +30,8 @@
 @property (nonatomic) NSString *avatarURL;
 @property (nonatomic) NSString *linkedInID;
 
+// For searching, don't use
+@property (nonatomic) NSString *firstNameStandardized;
+@property (nonatomic) NSString *lastNameStandardized;
+
 @end
