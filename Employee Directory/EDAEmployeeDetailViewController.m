@@ -60,8 +60,8 @@
             [self.navigationController pushViewController:viewController animated:YES];
         }];
     
-    self.view.callButton.rac_command = self.viewModel.callCommand;
-    
+    self.view.callButton.rac_command = self.viewModel.callOfficeCommand;
+    self.view.mobileCallButton.rac_command = self.viewModel.callMobileCommand;
     self.view.textButton.rac_command = self.viewModel.textCommand;
     [[self.view.textButton.rac_command.executionSignals
         flatten]

@@ -79,7 +79,18 @@
     BOOL canOpenTelURL = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tel://"]];
     RACSignal *callEnabled = [RACSignal return:@(canOpenTelURL)];
     
-    _callCommand = [[RACCommand alloc] initWithEnabled:callEnabled signalBlock:^RACSignal *(id input) {
+    _callOfficeCommand = [[RACCommand alloc] initWithEnabled:callEnabled signalBlock:^RACSignal *(id input) {
+        @strongify(self);
+        
+        NSString *URLString = [NSString stringWithFormat:@"tel://%@", [self.employee.workPhone stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+        NSURL *URL = [NSURL URLWithString:URLString];
+        [[UIApplication sharedApplication] openURL:URL];
+        
+        return [RACSignal empty];
+    }];
+    
+    // Mobile
+    _callMobileCommand = [[RACCommand alloc] initWithEnabled:callEnabled signalBlock:^RACSignal *(id input) {
         @strongify(self);
         
         NSString *URLString = [NSString stringWithFormat:@"tel://%@", [self.employee.cellPhone stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];

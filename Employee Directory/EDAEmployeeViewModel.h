@@ -24,7 +24,10 @@
 @property (nonatomic, readonly) RACCommand *showSupervisorCommand;
 
 /// Opens the employee's phone number in the phone app. Doesn't send anything.
-@property (nonatomic, readonly) RACCommand *callCommand;
+@property (nonatomic, readonly) RACCommand *callOfficeCommand;
+
+/// Opens the employee's phone number in the phone app. Doesn't send anything.
+@property (nonatomic, readonly) RACCommand *callMobileCommand;
 
 /// Sends the employee's phone number.
 @property (nonatomic, readonly) RACCommand *textCommand;

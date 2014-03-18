@@ -10,25 +10,25 @@
 
 @interface EDAEmployeeDetailView ()
 
-@property (nonatomic) UIScrollView *scrollView;
+@property (nonatomic) UIButton *callButton;
+@property (nonatomic) UIButton *emailButton;
+@property (nonatomic) UIButton *favoriteButton;
+@property (nonatomic) UIButton *linkedinButton;
+@property (nonatomic) UIButton *messageButton;
+@property (nonatomic) UIButton *mobileCallButton;
+@property (nonatomic) UIButton *reportsButton;
+@property (nonatomic) UIButton *supervisorButton;
+@property (nonatomic) UIButton *textButton;
 @property (nonatomic) UIImageView *imageView;
-@property (nonatomic) UILabel *nameLabel;
-@property (nonatomic) UILabel *titleLabel;
+@property (nonatomic) UILabel *addressLabel;
 @property (nonatomic) UILabel *linkedInHeadlineLabel;
 @property (nonatomic) UILabel *linkedInSummaryLabel;
-@property (nonatomic) UILabel *addressLabel;
-@property (nonatomic) UIButton *callButton;
-@property (nonatomic) UIButton *textButton;
-@property (nonatomic) UIButton *emailButton;
-@property (nonatomic) UIButton *messageButton;
-@property (nonatomic) UIButton *linkedinButton;
-@property (nonatomic) UIButton *supervisorButton;
-@property (nonatomic) UIButton *reportsButton;
-@property (nonatomic) UIButton *favoriteButton;
-@property (nonatomic) UILabel *officeNumberLabel;
 @property (nonatomic) UILabel *mobileNumberLabel;
-@property (nonatomic) UIButton *mobileCallButton;
+@property (nonatomic) UILabel *nameLabel;
+@property (nonatomic) UILabel *officeNumberLabel;
 @property (nonatomic) UILabel *textNumberLabel;
+@property (nonatomic) UILabel *titleLabel;
+@property (nonatomic) UIScrollView *scrollView;
 
 @property (nonatomic) UIView *containerView;
 
