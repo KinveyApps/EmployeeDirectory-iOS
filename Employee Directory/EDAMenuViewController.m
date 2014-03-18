@@ -22,7 +22,6 @@ NSString * const EDAMenuViewControllerIdentifierYourInfo = @"Your Info";
 NSString * const EDAMenuViewControllerIdentifierDirectory = @"Directory";
 NSString * const EDAMenuViewControllerIdentifierFavorites = @"Favorites";
 NSString * const EDAMenuViewControllerIdentifierTeamMessaging = @"Team Messaging";
-NSString * const EDAMenuViewControllerIdentifierAbout = @"About";
 NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
 
 @interface EDAMenuViewController ()
@@ -119,8 +118,7 @@ NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
              @[ EDAMenuViewControllerIdentifierYourInfo,
                 EDAMenuViewControllerIdentifierDirectory,
                 EDAMenuViewControllerIdentifierFavorites,
-                EDAMenuViewControllerIdentifierTeamMessaging,
-                EDAMenuViewControllerIdentifierAbout ],
+                EDAMenuViewControllerIdentifierTeamMessaging ],
              @[ EDAMenuViewControllerIdentifierLogOut ]
              ];
 }
@@ -134,10 +132,7 @@ NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
     EDASidebarCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([EDASidebarCell class])];
     
     NSString *title;
-    if ([identifier isEqualToString:EDAMenuViewControllerIdentifierAbout]) {
-        title = @"About";
-    }
-    else if ([identifier isEqualToString:EDAMenuViewControllerIdentifierDirectory]) {
+    if ([identifier isEqualToString:EDAMenuViewControllerIdentifierDirectory]) {
         title = @"Directory";
     }
     else if ([identifier isEqualToString:EDAMenuViewControllerIdentifierLogOut]) {
