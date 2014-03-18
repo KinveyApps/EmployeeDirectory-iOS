@@ -73,12 +73,19 @@ NSString * const EDALinkedInManagerUserDefaultsKey = @"LinkedInToken";
     
     EDAWebViewController *webViewController = [[EDAWebViewController alloc] initWithURL:URL];
     webViewController.title = @"Authorize";
+    
+    UIBarButtonItem *skipItem = [[UIBarButtonItem alloc] initWithTitle:@"Skip" style:UIBarButtonItemStylePlain target:nil action:nil];
+    skipItem.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        return [RACSignal return:nil];
+    }];
+    webViewController.navigationItem.leftBarButtonItem = skipItem;
+    
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:webViewController];
     [EDAAppearanceManager customizeAppearanceOfNavigationBar:navigationController.navigationBar];
     
     [viewController presentViewController:navigationController animated:YES completion:NULL];
     
-    return [[[[[[[[webViewController.shouldLoadURLSignal
+    RACSignal *webViewControllerSignal = [[[[[webViewController.shouldLoadURLSignal
         filter:^BOOL(NSURL *aURL) {
             NSInteger location = [aURL.absoluteString rangeOfString:EDALinkedInManagerRedirectURL].location;
             return location == 0;
@@ -132,7 +139,9 @@ NSString * const EDALinkedInManagerUserDefaultsKey = @"LinkedInToken";
             else {
                 return [RACSignal error:error];
             }
-        }]
+        }];
+    
+    return [[[[RACSignal merge:@[ webViewControllerSignal, [skipItem.rac_command.executionSignals flatten] ]]
         flattenMap:^RACStream *(NSString *code) {
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
                 [viewController dismissViewControllerAnimated:YES completion:^{
