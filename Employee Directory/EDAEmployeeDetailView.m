@@ -126,7 +126,7 @@
     
     self.supervisorButton = [EDAAppearanceManager button];
     self.supervisorButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.supervisorButton setTitle:@"Supervisor" forState:UIControlStateNormal];
+    [self.supervisorButton setTitle:@"Manager" forState:UIControlStateNormal];
     [self.containerView addSubview:self.supervisorButton];
     
     self.reportsButton = [EDAAppearanceManager button];
