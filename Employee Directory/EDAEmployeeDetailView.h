@@ -25,5 +25,6 @@
 @property (nonatomic, readonly) UIButton *supervisorButton;
 @property (nonatomic, readonly) UIButton *reportsButton;
 @property (nonatomic, readonly) UIButton *favoriteButton;
+@property (nonatomic, readonly) UIButton *tagButton;
 
 @end
