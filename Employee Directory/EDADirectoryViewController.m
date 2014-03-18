@@ -12,12 +12,16 @@
 #import "EDADirectoryCellViewModel.h"
 #import "EDADirectoryCell.h"
 #import "EDAEmployeeDetailViewController.h"
+#import "EDADirectoryView.h"
 
-@interface EDADirectoryViewController () <UISearchDisplayDelegate, UISearchBarDelegate>
+@interface EDADirectoryViewController () <UISearchDisplayDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic) EDADirectoryViewModel *viewModel;
 @property (nonatomic) UISearchDisplayController *searchController;
 @property (nonatomic) BOOL forSearching;
+@property (nonatomic) UIView *instructionsView;
+@property (weak, nonatomic) UITableView *tableView;
+@property (nonatomic) EDADirectoryView *view;
 
 @end
 
@@ -50,7 +54,7 @@
 
 - (id)initWithViewModel:(EDADirectoryViewModel *)viewModel
 {
-    self = [super initWithStyle:UITableViewStylePlain];
+    self = [super init];
     if (self == nil) return nil;
     
     _viewModel = viewModel;
@@ -80,6 +84,14 @@
         }];
     
     return self;
+}
+
+- (void)loadView {
+    EDADirectoryView *view = [[EDADirectoryView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.tableView = view.tableView;
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.view = view;
 }
 
 - (void)viewDidLoad {
@@ -116,6 +128,17 @@
         
         [self.tableView reloadData];
     }];
+    
+    RAC(self.view.instructionsView, hidden) = [RACObserve(self.viewModel, showInstructions) not];
+    RAC(self.view.tableView, separatorColor) = [RACObserve(self.viewModel, showInstructions)
+        map:^UIColor *(NSNumber *show) {
+            if (show.boolValue) {
+                return [UIColor clearColor];
+            }
+            else {
+                return nil;
+            }
+        }];
 }
 
 #pragma mark -

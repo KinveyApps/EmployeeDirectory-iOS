@@ -10,7 +10,7 @@
 
 @class EDAEmployee;
 
-@interface EDADirectoryViewController : UITableViewController
+@interface EDADirectoryViewController : UIViewController
 
 - (id)initWithAllEmployees;
 - (id)initWithDirectReportsOfEmployee:(EDAEmployee *)employee;

@@ -33,6 +33,7 @@
 		D00BA03718D33DD200AA14DC /* EDASidebarHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA03618D33DD200AA14DC /* EDASidebarHeaderCell.m */; };
 		D00BA03A18D33FDF00AA14DC /* EDAFavorite.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA03918D33FDF00AA14DC /* EDAFavorite.m */; };
 		D00BA03D18D340D900AA14DC /* EDAFavorite+API.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA03C18D340D900AA14DC /* EDAFavorite+API.m */; };
+		D02B52B218D89D67004D51F4 /* EDADirectoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = D02B52B118D89D67004D51F4 /* EDADirectoryView.m */; };
 		D043A79618CA1D870095F581 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79518CA1D870095F581 /* Foundation.framework */; };
 		D043A79818CA1D870095F581 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79718CA1D870095F581 /* CoreGraphics.framework */; };
 		D043A79A18CA1D870095F581 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79918CA1D870095F581 /* UIKit.framework */; };
@@ -141,6 +142,8 @@
 		D00BA03918D33FDF00AA14DC /* EDAFavorite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAFavorite.m; sourceTree = "<group>"; };
 		D00BA03B18D340D900AA14DC /* EDAFavorite+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EDAFavorite+API.h"; sourceTree = "<group>"; };
 		D00BA03C18D340D900AA14DC /* EDAFavorite+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EDAFavorite+API.m"; sourceTree = "<group>"; };
+		D02B52B018D89D67004D51F4 /* EDADirectoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDADirectoryView.h; sourceTree = "<group>"; };
+		D02B52B118D89D67004D51F4 /* EDADirectoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDADirectoryView.m; sourceTree = "<group>"; };
 		D043A79218CA1D870095F581 /* Employee Directory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Employee Directory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D043A79518CA1D870095F581 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D043A79718CA1D870095F581 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -445,6 +448,8 @@
 				15D799F218CA41E400BF116D /* EDADirectoryViewController.m */,
 				15D799F418CA476F00BF116D /* EDADirectoryViewModel.h */,
 				15D799F518CA476F00BF116D /* EDADirectoryViewModel.m */,
+				D02B52B018D89D67004D51F4 /* EDADirectoryView.h */,
+				D02B52B118D89D67004D51F4 /* EDADirectoryView.m */,
 			);
 			name = Directory;
 			sourceTree = "<group>";
@@ -692,6 +697,7 @@
 				D04E88EB18D0B7220071F421 /* EDAGroup+API.m in Sources */,
 				15D799F318CA41E400BF116D /* EDADirectoryViewController.m in Sources */,
 				D055CB4C18CF7A1D00B29407 /* EDAYourInfoViewController.m in Sources */,
+				D02B52B218D89D67004D51F4 /* EDADirectoryView.m in Sources */,
 				D00BA03418D3372300AA14DC /* EDAImageManager.m in Sources */,
 				D043A7EC18CA40D10095F581 /* EDAEmployee+API.m in Sources */,
 				D00BA03D18D340D900AA14DC /* EDAFavorite+API.m in Sources */,

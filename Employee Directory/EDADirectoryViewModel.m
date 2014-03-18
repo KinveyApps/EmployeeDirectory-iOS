@@ -23,6 +23,9 @@ NSString * const EDADirectoryViewModelSortStyleKey = @"EDADirectoryViewModelSort
 @property (readwrite, nonatomic) NSArray *filteredSections;
 @property (readwrite, nonatomic) NSArray *filteredSectionTitles;
 
+@property (readwrite, nonatomic) BOOL showInstructions;
+
+@property (nonatomic) BOOL searchMode;
 @property (nonatomic) NSArray *employees;
 
 @end
@@ -43,7 +46,9 @@ NSString * const EDADirectoryViewModelSortStyleKey = @"EDADirectoryViewModelSort
 
 - (id)initForSearching {
     self = [self init];
-
+    
+    self.searchMode = YES;
+    
     RACSignal *employeesSignal = [[RACObserve(self, searchString)
         map:^RACSignal *(NSString *string) {
             if (string.length == 0) {
@@ -96,6 +101,12 @@ NSString * const EDADirectoryViewModelSortStyleKey = @"EDADirectoryViewModelSort
     [[sortChannel
         skip:1]
         subscribe:userDefaultsChannel];
+    
+    RAC(self, showInstructions) = [RACSignal
+        combineLatest:@[ RACObserve(self, searchMode), RACObserve(self, searchString) ]
+        reduce:^NSNumber *(NSNumber *searchMode, NSString *searchString){
+            return @(searchMode.boolValue && searchString.length == 0);
+        }];
     
     return self;
 }
