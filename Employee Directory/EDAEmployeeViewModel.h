@@ -17,6 +17,7 @@
 @property (nonatomic, readonly) NSString *titleAndGroup;
 @property (nonatomic, readonly) NSString *linkedInHeadline;
 @property (nonatomic, readonly) NSString *linkedInSummary;
+@property (nonatomic, readonly) NSString *businessAddress;
 @property (nonatomic, readonly) BOOL favorite;
 
 /// Sends an EDAEmployee object whose username matches the supervisor property of employee.

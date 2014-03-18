@@ -55,6 +55,12 @@
     RAC(self, linkedInHeadline) = RACObserve(self.employee, headline);
     RAC(self, linkedInSummary) = RACObserve(self.employee, summary);
     
+    RAC(self, businessAddress) = [RACSignal
+        combineLatest:@[ RACObserve(self.employee, address), RACObserve(self.employee, city), RACObserve(self.employee, state), RACObserve(self.employee, zipCode) ]
+        reduce:^NSString *(NSString *address, NSString *city, NSString *state, NSString *zipCode){
+            return [NSString stringWithFormat:@"%@\n%@, %@ %@", address, city, state, zipCode];
+        }];
+    
     @weakify(self);
     
     // Supervisor

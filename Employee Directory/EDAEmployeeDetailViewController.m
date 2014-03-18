@@ -46,6 +46,7 @@
     RAC(self.view.titleLabel, text) = RACObserve(self.viewModel, titleAndGroup);
     RAC(self.view.linkedInHeadlineLabel, text) = RACObserve(self.viewModel, linkedInHeadline);
     RAC(self.view.linkedInSummaryLabel, text) = RACObserve(self.viewModel, linkedInSummary);
+    RAC(self.view.addressLabel, text) = RACObserve(self.viewModel, businessAddress);
     
     @weakify(self);
     

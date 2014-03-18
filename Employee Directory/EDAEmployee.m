@@ -31,7 +31,11 @@
                @keypath(self, avatarURL): @"avatarURL",
                @keypath(self, linkedInID): @"linkedInID",
                @keypath(self, firstNameStandardized): @"firstNameStandardized",
-               @keypath(self, lastNameStandardized): @"lastNameStandardized" };
+               @keypath(self, lastNameStandardized): @"lastNameStandardized",
+               @keypath(self, address): @"address",
+               @keypath(self, city): @"city",
+               @keypath(self, state): @"state",
+               @keypath(self, zipCode): @"zipCode" };
 }
 
 - (BOOL)isEqual:(id)object {

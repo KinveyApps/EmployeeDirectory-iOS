@@ -23,6 +23,10 @@
 @property (nonatomic) NSString *supervisor;
 @property (nonatomic) NSString *hierarchy;
 @property (nonatomic) NSString *entityID;
+@property (nonatomic) NSString *address;
+@property (nonatomic) NSString *city;
+@property (nonatomic) NSString *zipCode;
+@property (nonatomic) NSString *state;
 
 // LinkedIn
 @property (nonatomic) NSString *headline;

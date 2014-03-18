@@ -16,6 +16,7 @@
 @property (nonatomic, readonly) UILabel *titleLabel;
 @property (nonatomic, readonly) UILabel *linkedInHeadlineLabel;
 @property (nonatomic, readonly) UILabel *linkedInSummaryLabel;
+@property (nonatomic, readonly) UILabel *addressLabel;
 @property (nonatomic, readonly) UIButton *callButton;
 @property (nonatomic, readonly) UIButton *textButton;
 @property (nonatomic, readonly) UIButton *emailButton;
