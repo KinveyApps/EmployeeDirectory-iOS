@@ -48,7 +48,7 @@
 
 - (id)initWithFavorites {
     self = [self initWithViewModel:[[EDADirectoryViewModel alloc] initWithFavorites]];
-    self.title = @"Favorites";
+    self.title = @"My Directory";
     return self;
 }
 

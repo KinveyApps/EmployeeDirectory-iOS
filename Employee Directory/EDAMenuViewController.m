@@ -145,7 +145,7 @@ NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
         title = @"Your Info";
     }
     else if ([identifier isEqualToString:EDAMenuViewControllerIdentifierFavorites]) {
-        title = @"Favorites";
+        title = @"My Directory";
     }
     
     cell.textLabel.text = title;
