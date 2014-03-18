@@ -12,6 +12,7 @@
 #import "EDAEmployee+API.h"
 #import "EDAEmployee+Sorting.h"
 #import "EDAFavorite+API.h"
+#import "EDATag+API.h"
 
 NSString * const EDADirectoryViewModelSortStyleKey = @"EDADirectoryViewModelSortStyle";
 
@@ -27,6 +28,9 @@ NSString * const EDADirectoryViewModelSortStyleKey = @"EDADirectoryViewModelSort
 
 @property (nonatomic) BOOL searchMode;
 @property (nonatomic) NSArray *employees;
+
+@property (nonatomic) NSArray *tags;
+@property (nonatomic) NSArray *tagTypes;
 
 @end
 
@@ -131,20 +135,45 @@ NSString * const EDADirectoryViewModelSortStyleKey = @"EDADirectoryViewModelSort
             }] array];
         }];
     
-    RAC(self, employees) = [employeesSignal
+    RACSignal *tagsSignal = [[[[[[NSNotificationCenter defaultCenter] rac_addObserverForName:KCSActiveUserChangedNotification object:nil]
+        startWith:nil]
+        flattenMap:^RACStream *(id value) {
+            return [EDATag allTags];
+        }]
+        publish]
+        autoconnect];
+    
+    RAC(self, tags) = tagsSignal;
+    RAC(self, tagTypes) = [tagsSignal
+        map:^NSArray *(NSArray *tags) {
+            NSArray *sortedTags = [tags sortedArrayUsingDescriptors:@[ [NSSortDescriptor sortDescriptorWithKey:@"displayName" ascending:YES selector:@selector(localizedStandardCompare:)] ]];
+            NSSet *usedTagTypes = [sortedTags.rac_sequence foldLeftWithStart:[NSSet set] reduce:^NSSet *(NSSet *accumulator, EDATag *tag) {
+                return [accumulator setByAddingObject:@(tag.type)];
+            }];
+            return [usedTagTypes allObjects];
+        }];
+    
+    RACSignal *employeesAndTagsSignal = [[[RACSignal combineLatest:@[ employeesSignal, tagsSignal ]]
+        publish]
+        autoconnect];
+    
+    RAC(self, employees) = [[employeesAndTagsSignal
+        map:^NSArray *(RACTuple *tuple) {
+            return tuple.first;
+        }]
         catch:^RACSignal *(NSError *error) {
             return [RACSignal empty];
         }];
-
-    _errors = [[employeesSignal
+    
+    _errors = [[employeesAndTagsSignal
         ignoreValues]
         catch:^RACSignal *(NSError *error) {
             return [RACSignal return:error];
         }];
     
     RACSignal *sectionDictionary = [RACSignal
-        combineLatest:@[ RACObserve(self, employees), RACObserve(self, sortStyle) ]
-        reduce:^NSDictionary *(NSArray *employees, NSNumber *sortStyleNumber){
+        combineLatest:@[ RACObserve(self, employees), RACObserve(self, sortStyle), RACObserve(self, tagTypes), RACObserve(self, tags) ]
+        reduce:^NSDictionary *(NSArray *employees, NSNumber *sortStyleNumber, NSArray *tagTypes, NSArray *tags){
             EDADirectoryViewModelSortStyle sortStyle = sortStyleNumber.integerValue;
             
             NSDictionary *sections = [employees.rac_sequence foldLeftWithStart:[NSMutableDictionary new] reduce:^id(NSMutableDictionary *dictionary, EDADirectoryCellViewModel *viewModel) {
@@ -152,8 +181,17 @@ NSString * const EDADirectoryViewModelSortStyleKey = @"EDADirectoryViewModelSort
                 if (sortStyle == EDADirectoryViewModelSortStyleGroup) {
                     key = viewModel.employee.group;
                 }
-                else {
+                else if (sortStyle == EDADirectoryViewModelSortStyleName) {
                     key = [[viewModel.employee.lastName substringToIndex:1] uppercaseStringWithLocale:[NSLocale currentLocale]];
+                }
+                else {
+                    EDATag *tag = [[tags.rac_sequence
+                        filter:^BOOL(EDATag *aTag) {
+                            return [aTag.taggedUsername isEqualToString:viewModel.employee.username];
+                        }]
+                        head];
+                    if (tag == nil) key = [EDATag displayNameForType:EDATagTypeNone];
+                    else key = tag.displayName;
                 }
                 
                 if (dictionary[key] == nil) {

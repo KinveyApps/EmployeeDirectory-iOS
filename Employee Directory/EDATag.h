@@ -22,6 +22,8 @@ typedef NS_ENUM(NSInteger, EDATagType) {
 @property (nonatomic) EDATagType type;
 @property (nonatomic) NSString *entityID;
 
+@property (readonly) NSString *displayName;
+
 + (NSString *)displayNameForType:(EDATagType)type;
 
 @end

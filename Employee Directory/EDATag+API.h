@@ -8,6 +8,8 @@
 
 #import "EDATag.h"
 
+extern NSString * const EDATagTagsDidChangeNotification;
+
 @class EDAEmployee;
 
 @interface EDATag (API)
@@ -19,5 +21,9 @@
 
 /// @return A signal which sends all tags for the current user.
 + (RACSignal *)allTags;
+
++ (RACSignal *)deleteTag:(EDATag *)tag;
+
++ (RACSignal *)saveTag:(EDATag *)tag;
 
 @end

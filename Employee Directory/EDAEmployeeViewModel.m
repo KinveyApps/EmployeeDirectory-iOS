@@ -187,14 +187,14 @@
     _saveTagCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         @strongify(self);
         
-        return [[EDATag appdataStore] rac_saveObject:self.tag];
+        return [EDATag saveTag:self.tag];
     }];
     
     _deleteTagCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         @strongify(self);
         
         if (self.tag) {
-            return [[EDATag appdataStore] rac_deleteObject:self.tag];
+            return [EDATag deleteTag:self.tag];
         }
         else {
             return [RACSignal empty];

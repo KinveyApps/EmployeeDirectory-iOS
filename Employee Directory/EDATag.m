@@ -17,6 +17,10 @@
                @keypath(self, entityID): KCSEntityKeyId };
 }
 
+- (NSString *)displayName {
+    return [EDATag displayNameForType:self.type];
+}
+
 + (NSString *)displayNameForType:(EDATagType)type {
     switch (type) {
         case EDATagTypeTeam:
@@ -29,7 +33,7 @@
             return @"Colleague";
             break;
         default:
-            return nil;
+            return @"None";
     }
 }
 
