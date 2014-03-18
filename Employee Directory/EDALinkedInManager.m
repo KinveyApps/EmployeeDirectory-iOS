@@ -76,6 +76,7 @@ NSString * const EDALinkedInManagerUserDefaultsKey = @"LinkedInToken";
     
     UIBarButtonItem *skipItem = [[UIBarButtonItem alloc] initWithTitle:@"Skip" style:UIBarButtonItemStylePlain target:nil action:nil];
     skipItem.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        NSError *error = [NSError errorWithDomain:EDALinkedInManagerErrorDomain code:EDALinkedInManagerErrorCodeUserRejected userInfo:nil];
         return [RACSignal return:nil];
     }];
     webViewController.navigationItem.leftBarButtonItem = skipItem;

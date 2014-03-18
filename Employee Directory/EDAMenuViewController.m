@@ -16,12 +16,15 @@
 #import "EDAMessagingViewController.h"
 #import "EDAAboutViewController.h"
 #import "EDASidebarHeaderCell.h"
+#import "EDALinkedInManager.h"
 
 NSString * const EDAMenuViewControllerIdentifierHeader = @"Header";
 NSString * const EDAMenuViewControllerIdentifierYourInfo = @"Your Info";
 NSString * const EDAMenuViewControllerIdentifierDirectory = @"Directory";
 NSString * const EDAMenuViewControllerIdentifierFavorites = @"Favorites";
 NSString * const EDAMenuViewControllerIdentifierTeamMessaging = @"Team Messaging";
+NSString * const EDAMenuViewControllerIdentifierLinkedInAuth = @"LinkedIn";
+
 NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
 
 @interface EDAMenuViewController ()
@@ -61,6 +64,12 @@ NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
         
         if ([identifier isEqualToString:EDAMenuViewControllerIdentifierLogOut]) {
             [self logOut];
+        }
+        else if ([identifier isEqualToString:EDAMenuViewControllerIdentifierLinkedInAuth]) {
+            [[[EDALinkedInManager sharedManager] authorizeWithLinkedInWithRootViewController:self]
+                subscribeError:^(NSError *error) {
+                    NSLog(@"%@", error);
+                }];
         }
         else {
             UIViewController *newViewController;
@@ -119,7 +128,8 @@ NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
                 EDAMenuViewControllerIdentifierFavorites,
                 EDAMenuViewControllerIdentifierTeamMessaging,
                 EDAMenuViewControllerIdentifierYourInfo ],
-             @[ EDAMenuViewControllerIdentifierLogOut ]
+             @[ EDAMenuViewControllerIdentifierLinkedInAuth,
+                EDAMenuViewControllerIdentifierLogOut ]
              ];
 }
 
@@ -146,6 +156,9 @@ NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
     }
     else if ([identifier isEqualToString:EDAMenuViewControllerIdentifierFavorites]) {
         title = @"My Directory";
+    }
+    else if ([identifier isEqualToString:EDAMenuViewControllerIdentifierLinkedInAuth]) {
+        title = @"LinkedIn";
     }
     
     cell.textLabel.text = title;
