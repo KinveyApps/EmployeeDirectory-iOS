@@ -11,10 +11,14 @@
 #import "EDAEmployee+API.h"
 #import "EDALinkedInManager.h"
 #import "EDAFavorite+API.h"
+#import "EDATag+API.h"
 
 @interface EDAEmployeeViewModel ()
 
 @property (nonatomic) EDAEmployee *employee;
+@property (nonatomic) EDATag *tag;
+@property (nonatomic) RACCommand *saveTagCommand;
+@property (nonatomic) RACCommand *deleteTagCommand;
 
 @end
 
@@ -167,7 +171,71 @@
             return @(favorite != nil);
         }];
     
+    // Tag
+    RAC(self, tag) = [EDATag tagForEmployee:employee];
+    RAC(self, tagName) = [[[RACObserve(self, tag)
+        map:^RACSignal *(EDATag *tag) {
+            if (tag == nil) return [RACSignal return:nil];
+            return RACObserve(tag, tagType);
+        }]
+        switchToLatest]
+        map:^NSString *(NSNumber *type) {
+            if (type == nil) return @"None";
+            else return [EDATag displayNameForType:type.integerValue];
+        }];
+
+    _saveTagCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        @strongify(self);
+        
+        return [EDATag saveTag:self.tag];
+    }];
+    
+    _deleteTagCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        @strongify(self);
+        
+        if (self.tag) {
+            return [EDATag deleteTag:self.tag];
+        }
+        else {
+            return [RACSignal empty];
+        }
+    }];
+
+    RACSignal *hasTagSignal = [[RACObserve(self, tag)
+        skip:1]
+        mapReplace:@YES];
+    RACSignal *tagEnabledSignal = [RACSignal merge:@[ hasTagSignal, [_saveTagCommand.executing not], [_deleteTagCommand.executing not] ]];
+    
+    _tagCommand = [[RACCommand alloc] initWithEnabled:tagEnabledSignal signalBlock:^RACSignal *(id input) {
+        NSArray *types = @[ @(EDATagTypeColleague), @(EDATagTypeSupervisor), @(EDATagTypeTeam), @(EDATagTypeNone) ];
+        NSArray *names = [[types.rac_sequence map:^NSString *(NSNumber *type) {
+            if (type.integerValue == EDATagTypeNone) return @"None";
+            else return [EDATag displayNameForType:type.integerValue];
+        }] array];
+        
+        return [RACSignal return:RACTuplePack(names, types, @(types.count - 1))];
+    }];
+    
     return self;
+}
+
+- (void)tagWithType:(EDATagType)type {
+    if (type == EDATagTypeNone) {
+        [self.deleteTagCommand execute:nil];
+        self.tag = nil;
+        return;
+    }
+    
+    if (self.tag == nil) {
+        EDATag *tag = [EDATag new];
+        tag.username = [KCSUser activeUser].username;
+        tag.taggedUsername = self.employee.username;
+        self.tag = tag;
+    }
+    
+    self.tag.tagType = type;
+    
+    [self.saveTagCommand execute:nil];
 }
 
 @end

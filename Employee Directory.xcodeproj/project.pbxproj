@@ -34,6 +34,8 @@
 		D00BA03A18D33FDF00AA14DC /* EDAFavorite.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA03918D33FDF00AA14DC /* EDAFavorite.m */; };
 		D00BA03D18D340D900AA14DC /* EDAFavorite+API.m in Sources */ = {isa = PBXBuildFile; fileRef = D00BA03C18D340D900AA14DC /* EDAFavorite+API.m */; };
 		D02B52B218D89D67004D51F4 /* EDADirectoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = D02B52B118D89D67004D51F4 /* EDADirectoryView.m */; };
+		D02B52B518D8B345004D51F4 /* EDATag.m in Sources */ = {isa = PBXBuildFile; fileRef = D02B52B418D8B345004D51F4 /* EDATag.m */; };
+		D02B52B818D8B412004D51F4 /* EDATag+API.m in Sources */ = {isa = PBXBuildFile; fileRef = D02B52B718D8B412004D51F4 /* EDATag+API.m */; };
 		D043A79618CA1D870095F581 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79518CA1D870095F581 /* Foundation.framework */; };
 		D043A79818CA1D870095F581 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79718CA1D870095F581 /* CoreGraphics.framework */; };
 		D043A79A18CA1D870095F581 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D043A79918CA1D870095F581 /* UIKit.framework */; };
@@ -144,6 +146,10 @@
 		D00BA03C18D340D900AA14DC /* EDAFavorite+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EDAFavorite+API.m"; sourceTree = "<group>"; };
 		D02B52B018D89D67004D51F4 /* EDADirectoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDADirectoryView.h; sourceTree = "<group>"; };
 		D02B52B118D89D67004D51F4 /* EDADirectoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDADirectoryView.m; sourceTree = "<group>"; };
+		D02B52B318D8B345004D51F4 /* EDATag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDATag.h; sourceTree = "<group>"; };
+		D02B52B418D8B345004D51F4 /* EDATag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDATag.m; sourceTree = "<group>"; };
+		D02B52B618D8B412004D51F4 /* EDATag+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EDATag+API.h"; sourceTree = "<group>"; };
+		D02B52B718D8B412004D51F4 /* EDATag+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EDATag+API.m"; sourceTree = "<group>"; };
 		D043A79218CA1D870095F581 /* Employee Directory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Employee Directory.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D043A79518CA1D870095F581 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D043A79718CA1D870095F581 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -528,6 +534,10 @@
 				D00BA03C18D340D900AA14DC /* EDAFavorite+API.m */,
 				D00BA03218D3372300AA14DC /* EDAImageManager.h */,
 				D00BA03318D3372300AA14DC /* EDAImageManager.m */,
+				D02B52B318D8B345004D51F4 /* EDATag.h */,
+				D02B52B418D8B345004D51F4 /* EDATag.m */,
+				D02B52B618D8B412004D51F4 /* EDATag+API.h */,
+				D02B52B718D8B412004D51F4 /* EDATag+API.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -688,6 +698,7 @@
 			files = (
 				D04E88E218D0B6430071F421 /* EDAMessagingViewModel.m in Sources */,
 				1564D59418CE2B7E006D7A18 /* EDAEmployeeDetailViewController.m in Sources */,
+				D02B52B818D8B412004D51F4 /* EDATag+API.m in Sources */,
 				D00BA02D18D2339500AA14DC /* KCSReachability+RAC.m in Sources */,
 				15D799EE18CA32AD00BF116D /* EDAMenuViewController.m in Sources */,
 				15D799FC18CA524200BF116D /* EDADirectoryCell.m in Sources */,
@@ -707,6 +718,7 @@
 				D043A7E918CA3B880095F581 /* KCSUser+RAC.m in Sources */,
 				1564D59718CE2C1E006D7A18 /* EDAEmployeeDetailView.m in Sources */,
 				1564D58E18CE09B5006D7A18 /* EDASidebarCell.m in Sources */,
+				D02B52B518D8B345004D51F4 /* EDATag.m in Sources */,
 				D055CB5318CF7A9100B29407 /* EDAYourInfoView.m in Sources */,
 				D04E88F618D0CA310071F421 /* EDASelectableEmployeeCell.m in Sources */,
 				D04E88DE18D0B6080071F421 /* EDAMessagingViewController.m in Sources */,

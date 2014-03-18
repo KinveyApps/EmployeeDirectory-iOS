@@ -28,9 +28,27 @@
     self = [super initWithStyle:UITableViewStylePlain bindingToKeyPath:@keypath(viewModel, employees) onObject:viewModel];
     if (self == nil) return nil;
     
-    _viewModel = viewModel;
-    
     self.title = group.displayName;
+    _viewModel = viewModel;
+    [self setup];
+    
+    return self;
+}
+
+- (id)initWithTagType:(EDATagType)tagType {
+    EDASelectEmployeesViewModel *viewModel = [[EDASelectEmployeesViewModel alloc] initWithTagType:tagType];
+    
+    self = [super initWithStyle:UITableViewStylePlain bindingToKeyPath:@keypath(viewModel, employees) onObject:viewModel];
+    if (self == nil) return nil;
+    
+    self.title = [EDATag displayNameForType:tagType];;
+    _viewModel = viewModel;
+    [self setup];
+    
+    return self;
+}
+
+- (void)setup {
     self.animateChanges = NO;
     [self registerCellClass:[EDASelectableEmployeeCell class] forObjectsWithClass:[EDASelectableEmployeeCellViewModel class]];
     
@@ -60,8 +78,6 @@
             [self.viewModel selectEmployee:cellViewModel.employee];
         }
     }];
-    
-    return self;
 }
 
 @end

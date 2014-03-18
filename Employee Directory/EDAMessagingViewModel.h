@@ -8,9 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, EDAMessagingViewModelGroupType) {
+    EDAMessagingViewModelGroupTypeGroup,
+    EDAMessagingViewModelGroupTypeTag
+};
+
 @interface EDAMessagingViewModel : NSObject
 
 /// An array of EDAGroupCellViewModel objects.
-@property (nonatomic) NSArray *groups;
+@property (readonly, nonatomic) NSArray *groups;
+
+@property (nonatomic) EDAMessagingViewModelGroupType groupType;
 
 @end
