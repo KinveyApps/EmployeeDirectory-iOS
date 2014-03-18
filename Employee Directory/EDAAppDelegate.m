@@ -30,7 +30,6 @@
 
     BLAPaneController *paneController = [[BLAPaneController alloc] initWithRootViewController:[[UINavigationController alloc] initWithRootViewController:[[EDADirectoryViewController alloc] initWithFavorites]] sidebarViewController:[EDAMenuViewController new]];
     self.window.rootViewController = paneController;
-    [paneController showSidebar:YES animated:NO];
     
     if ([KCSUser hasSavedCredentials] == NO) {
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[EDALoginViewController new]];
