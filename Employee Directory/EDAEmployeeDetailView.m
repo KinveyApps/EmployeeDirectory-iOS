@@ -25,6 +25,10 @@
 @property (nonatomic) UIButton *supervisorButton;
 @property (nonatomic) UIButton *reportsButton;
 @property (nonatomic) UIButton *favoriteButton;
+@property (nonatomic) UILabel *officeNumberLabel;
+@property (nonatomic) UILabel *mobileNumberLabel;
+@property (nonatomic) UIButton *mobileCallButton;
+@property (nonatomic) UILabel *textNumberLabel;
 
 @property (nonatomic) UIView *containerView;
 
@@ -107,10 +111,36 @@
     self.addressLabel.numberOfLines = 0;
     [self.containerView addSubview:self.addressLabel];
     
+    self.officeNumberLabel = [[UILabel alloc] init];
+    self.officeNumberLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.officeNumberLabel.text = @"Office: 555-555-5555";
+    self.officeNumberLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    self.officeNumberLabel.textColor = CVTDarkTextColor;
+    [self.containerView addSubview:self.officeNumberLabel];
+    
     self.callButton = [EDAAppearanceManager button];
     self.callButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self.callButton setTitle:@"Call" forState:UIControlStateNormal];
     [self.containerView addSubview:self.callButton];
+    
+    self.mobileNumberLabel = [[UILabel alloc] init];
+    self.mobileNumberLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.mobileNumberLabel.text = @"Office: 555-555-5555";
+    self.mobileNumberLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    self.mobileNumberLabel.textColor = CVTDarkTextColor;
+    [self.containerView addSubview:self.mobileNumberLabel];
+    
+    self.mobileCallButton = [EDAAppearanceManager button];
+    self.mobileCallButton.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.mobileCallButton setTitle:@"Mobile" forState:UIControlStateNormal];
+    [self.containerView addSubview:self.mobileCallButton];
+    
+    self.textNumberLabel = [[UILabel alloc] init];
+    self.textNumberLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.textNumberLabel.text = @"Office: 555-555-5555";
+    self.textNumberLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    self.textNumberLabel.textColor = CVTDarkTextColor;
+    [self.containerView addSubview:self.textNumberLabel];
     
     self.textButton = [EDAAppearanceManager button];
     self.textButton.translatesAutoresizingMaskIntoConstraints = NO;
@@ -150,7 +180,6 @@
     NSDictionary *views = @{ @"nameLabel": self.nameLabel,
                              @"titleLabel": self.titleLabel,
                              @"callButton": self.callButton,
-                             @"textButton": self.textButton,
                              @"emailButton": self.emailButton,
                              @"messageButton": self.messageButton,
                              @"linkedinButton": self.linkedinButton,
@@ -160,7 +189,12 @@
                              @"linkedInHeadlineLabel": self.linkedInHeadlineLabel,
                              @"linkedInSummaryLabel": self.linkedInSummaryLabel,
                              @"favoriteButton": self.favoriteButton,
-                             @"addressLabel": self.addressLabel };
+                             @"addressLabel": self.addressLabel,
+                             @"officeNumberLabel": self.officeNumberLabel,
+                             @"mobileNumberLabel": self.mobileNumberLabel,
+                             @"mobileCallButton": self.mobileCallButton,
+                             @"textNumberLabel": self.textNumberLabel,
+                             @"textButton": self.textButton };
     
     return views;
 }
@@ -175,14 +209,16 @@
                                         constraintsWithVisualFormat:@"V:[imageView(imageSize)]" options:0 metrics:metrics views:views]];
     [self.containerView addConstraint:[NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.nameLabel attribute:NSLayoutAttributeWidth multiplier:1 constant:0]];
     
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[callButton]-(insetSpacing)-[textButton(==callButton)]-(insetSpacing)-|" options:NSLayoutFormatAlignAllBottom metrics:metrics views:views]];
+    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[officeNumberLabel]-[callButton]-(insetSpacing)-|" options:NSLayoutFormatAlignAllCenterY metrics:metrics views:views]];
+    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[mobileNumberLabel]-[mobileCallButton]-(insetSpacing)-|" options:NSLayoutFormatAlignAllCenterY metrics:metrics views:views]];
+    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[textNumberLabel]-[textButton]-(insetSpacing)-|" options:NSLayoutFormatAlignAllCenterY metrics:metrics views:views]];
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[emailButton]-(insetSpacing)-[messageButton(==emailButton)]-(insetSpacing)-|" options:NSLayoutFormatAlignAllBottom metrics:metrics views:views]];
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[linkedinButton]-(insetSpacing)-|" options:0 metrics:metrics views:views]];
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[supervisorButton]-(insetSpacing)-[reportsButton(==supervisorButton)]-(insetSpacing)-|" options:NSLayoutFormatAlignAllBottom metrics:metrics views:views]];
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[favoriteButton]-(insetSpacing)-|" options:0 metrics:metrics views:views]];
     
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[nameLabel]-[titleLabel]" options:0 metrics:metrics views:views]];
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[imageView]-[linkedInHeadlineLabel]-[linkedInSummaryLabel]-[addressLabel]-(insetSpacing)-[callButton]-(insetSpacing)-[emailButton]-(insetSpacing)-[linkedinButton]-(insetSpacing)-[supervisorButton]-(insetSpacing)-[favoriteButton]-(insetSpacing)-|" options:0 metrics:metrics views:views]];
+    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[imageView]-[linkedInHeadlineLabel]-[linkedInSummaryLabel]-[addressLabel]-(insetSpacing)-[callButton]-(insetSpacing)-[mobileCallButton]-(insetSpacing)-[textButton]-(insetSpacing)-[emailButton]-(insetSpacing)-[linkedinButton]-(insetSpacing)-[supervisorButton]-(insetSpacing)-[favoriteButton]-(insetSpacing)-|" options:0 metrics:metrics views:views]];
 
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[nameLabel]-[titleLabel]" options:NSLayoutFormatAlignAllLeading | NSLayoutFormatAlignAllTrailing metrics:metrics views:views]];
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[linkedInHeadlineLabel]-[linkedInSummaryLabel]-[addressLabel]" options:NSLayoutFormatAlignAllLeading | NSLayoutFormatAlignAllTrailing metrics:nil views:views]];

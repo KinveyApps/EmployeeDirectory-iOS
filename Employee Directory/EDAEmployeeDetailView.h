@@ -25,5 +25,9 @@
 @property (nonatomic, readonly) UIButton *supervisorButton;
 @property (nonatomic, readonly) UIButton *reportsButton;
 @property (nonatomic, readonly) UIButton *favoriteButton;
+@property (nonatomic, readonly) UILabel *officeNumberLabel;
+@property (nonatomic, readonly) UILabel *mobileNumberLabel;
+@property (nonatomic, readonly) UIButton *mobileCallButton;
+@property (nonatomic, readonly) UILabel *textNumberLabel;
 
 @end
