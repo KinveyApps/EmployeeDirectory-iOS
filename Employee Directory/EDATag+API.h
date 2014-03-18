@@ -22,6 +22,12 @@ extern NSString * const EDATagTagsDidChangeNotification;
 /// @return A signal which sends all tags for the current user.
 + (RACSignal *)allTags;
 
+/// @return A signal which sends an array of NSNumber objects representing all the used tag types.
++ (RACSignal *)usedTagTypes;
+
+/// @return A signal which sends an array of EDATag objects for the given tag type.
++ (RACSignal *)tagsOfType:(EDATagType)tagType;
+
 + (RACSignal *)deleteTag:(EDATag *)tag;
 
 + (RACSignal *)saveTag:(EDATag *)tag;

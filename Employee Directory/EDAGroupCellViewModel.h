@@ -8,13 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+#import "EDATag.h"
+
 @class EDAGroup;
 
 @interface EDAGroupCellViewModel : NSObject
 
 @property (readonly, nonatomic) EDAGroup *group;
+@property (readonly, nonatomic) EDATagType tagType;
 @property (readonly, nonatomic) NSString *displayName;
 
 - (id)initWithGroup:(EDAGroup *)group;
+- (id)initWithTagType:(EDATagType)tagType;
 
 @end

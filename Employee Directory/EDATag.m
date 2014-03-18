@@ -13,12 +13,12 @@
 - (NSDictionary *)hostToKinveyPropertyMapping {
     return @{ @keypath(self, taggedUsername): @"taggedUsername",
                @keypath(self, username): @"username",
-               @keypath(self, type): @"type",
+               @keypath(self, tagType): @"tagType",
                @keypath(self, entityID): KCSEntityKeyId };
 }
 
 - (NSString *)displayName {
-    return [EDATag displayNameForType:self.type];
+    return [EDATag displayNameForType:self.tagType];
 }
 
 + (NSString *)displayNameForType:(EDATagType)type {

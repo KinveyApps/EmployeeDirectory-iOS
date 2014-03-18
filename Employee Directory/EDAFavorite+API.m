@@ -67,11 +67,12 @@ NSString * const EDAFavoriteFavoritesDidChangeNotification = @"EDAFavoriteFavori
 }
 
 + (RACSignal *)allFavorites {
-    KCSQuery *query = [KCSQuery queryOnField:@"username" withExactMatchForValue:[KCSUser activeUser].username];
-    
     return [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:EDAFavoriteFavoritesDidChangeNotification object:nil]
         startWith:nil]
         flattenMap:^RACStream *(id value) {
+            if ([KCSUser activeUser] == nil) return [RACSignal empty];
+            
+            KCSQuery *query = [KCSQuery queryOnField:@"username" withExactMatchForValue:[KCSUser activeUser].username];
             return [[self appdataStore] rac_queryWithQuery:query];
         }];
 }

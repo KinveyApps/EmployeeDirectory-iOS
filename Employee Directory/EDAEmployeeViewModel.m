@@ -176,7 +176,7 @@
     RAC(self, tagName) = [[[RACObserve(self, tag)
         map:^RACSignal *(EDATag *tag) {
             if (tag == nil) return [RACSignal return:nil];
-            return RACObserve(tag, type);
+            return RACObserve(tag, tagType);
         }]
         switchToLatest]
         map:^NSString *(NSNumber *type) {
@@ -233,7 +233,7 @@
         self.tag = tag;
     }
     
-    self.tag.type = type;
+    self.tag.tagType = type;
     
     [self.saveTagCommand execute:nil];
 }

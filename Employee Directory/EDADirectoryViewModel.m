@@ -145,7 +145,7 @@ NSString * const EDADirectoryViewModelSortStyleKey = @"EDADirectoryViewModelSort
         map:^NSArray *(NSArray *tags) {
             NSArray *sortedTags = [tags sortedArrayUsingDescriptors:@[ [NSSortDescriptor sortDescriptorWithKey:@"displayName" ascending:YES selector:@selector(localizedStandardCompare:)] ]];
             NSSet *usedTagTypes = [sortedTags.rac_sequence foldLeftWithStart:[NSSet set] reduce:^NSSet *(NSSet *accumulator, EDATag *tag) {
-                return [accumulator setByAddingObject:@(tag.type)];
+                return [accumulator setByAddingObject:@(tag.tagType)];
             }];
             return [usedTagTypes allObjects];
         }];

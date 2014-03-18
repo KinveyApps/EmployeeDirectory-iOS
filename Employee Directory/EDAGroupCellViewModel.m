@@ -10,6 +10,12 @@
 
 #import "EDAGroup.h"
 
+@interface EDAGroupCellViewModel ()
+
+@property (readwrite, nonatomic) NSString *displayName;
+
+@end
+
 @implementation EDAGroupCellViewModel
 
 - (id)initWithGroup:(EDAGroup *)group {
@@ -19,6 +25,17 @@
     _group = group;
     
     RAC(self, displayName) = RACObserve(group, displayName);
+    
+    return self;
+}
+
+- (id)initWithTagType:(EDATagType)tagType {
+    self = [super init];
+    if (self == nil) return nil;
+    
+    _tagType = tagType;
+    
+    self.displayName = [EDATag displayNameForType:tagType];
     
     return self;
 }

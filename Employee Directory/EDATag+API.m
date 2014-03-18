@@ -37,12 +37,33 @@ NSString * const EDATagTagsDidChangeNotification = @"EDATagTagsDidChangeNotifica
 }
 
 + (RACSignal *)allTags {
-    KCSQuery *query = [KCSQuery queryOnField:@"username" withExactMatchForValue:[KCSUser activeUser].username];
-    
     return [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:EDATagTagsDidChangeNotification object:nil]
         startWith:nil]
         flattenMap:^RACStream *(id value) {
+            if ([KCSUser activeUser] == nil) return [RACSignal empty];
+            
+            KCSQuery *query = [KCSQuery queryOnField:@"username" withExactMatchForValue:[KCSUser activeUser].username];
             return [[self appdataStore] rac_queryWithQuery:query];
+        }];
+}
+
++ (RACSignal *)usedTagTypes {
+    return [[self allTags]
+        map:^NSArray *(NSArray *tags) {
+            NSArray *sortedTags = [tags sortedArrayUsingDescriptors:@[ [NSSortDescriptor sortDescriptorWithKey:@"displayName" ascending:YES selector:@selector(localizedStandardCompare:)] ]];
+            NSSet *usedTagTypes = [sortedTags.rac_sequence foldLeftWithStart:[NSSet set] reduce:^NSSet *(NSSet *accumulator, EDATag *tag) {
+                return [accumulator setByAddingObject:@(tag.tagType)];
+            }];
+            return [usedTagTypes allObjects];
+        }];
+}
+
++ (RACSignal *)tagsOfType:(EDATagType)tagType {
+    return [[self allTags]
+        map:^NSArray *(NSArray *tags) {
+            return [[tags.rac_sequence filter:^BOOL(EDATag *tag) {
+                return tag.tagType == tagType;
+            }] array];
         }];
 }
 

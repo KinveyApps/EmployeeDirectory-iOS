@@ -19,7 +19,7 @@ typedef NS_ENUM(NSInteger, EDATagType) {
 
 @property (nonatomic) NSString *taggedUsername;
 @property (nonatomic) NSString *username;
-@property (nonatomic) EDATagType type;
+@property (nonatomic) EDATagType tagType;
 @property (nonatomic) NSString *entityID;
 
 @property (readonly) NSString *displayName;
