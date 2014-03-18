@@ -72,10 +72,7 @@ NSString * const EDADirectoryViewModelSortStyleKey = @"EDADirectoryViewModelSort
 - (id)initWithFavorites {
     self = [self init];
     
-    RACSignal *favoritesSignal = [[[[RACSignal merge:@[ [[NSNotificationCenter defaultCenter] rac_addObserverForName:EDAFavoriteFavoritesDidChangeNotification object:nil], [RACSignal return:nil] ]]
-        flattenMap:^RACStream *(id value) {
-            return [EDAFavorite allFavorites];
-        }]
+    RACSignal *favoritesSignal = [[[EDAFavorite allFavorites]
         map:^NSArray *(NSArray *favorites) {
             return [[favorites.rac_sequence map:^NSString *(EDAFavorite *favorite) {
                 return favorite.favoriteUsername;

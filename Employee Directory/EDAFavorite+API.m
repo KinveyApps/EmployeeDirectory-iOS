@@ -68,7 +68,12 @@ NSString * const EDAFavoriteFavoritesDidChangeNotification = @"EDAFavoriteFavori
 
 + (RACSignal *)allFavorites {
     KCSQuery *query = [KCSQuery queryOnField:@"username" withExactMatchForValue:[KCSUser activeUser].username];
-    return [[self appdataStore] rac_queryWithQuery:query];
+    
+    return [[[[NSNotificationCenter defaultCenter] rac_addObserverForName:EDAFavoriteFavoritesDidChangeNotification object:nil]
+        startWith:nil]
+        flattenMap:^RACStream *(id value) {
+            return [[self appdataStore] rac_queryWithQuery:query];
+        }];
 }
 
 @end
