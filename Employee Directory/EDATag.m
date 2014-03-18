@@ -28,6 +28,8 @@
         case EDATagTypeColleague:
             return @"Colleague";
             break;
+        default:
+            return nil;
     }
 }
 
