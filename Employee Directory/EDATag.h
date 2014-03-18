@@ -11,7 +11,8 @@
 typedef NS_ENUM(NSInteger, EDATagType) {
     EDATagTypeSupervisor,
     EDATagTypeColleague,
-    EDATagTypeTeam
+    EDATagTypeTeam,
+    EDATagTypeNone = -1 // Tags shouldn't actually be saved with this
 };
 
 @interface EDATag : NSObject <KCSPersistable>

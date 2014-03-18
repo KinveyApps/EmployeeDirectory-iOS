@@ -207,9 +207,9 @@
     RACSignal *tagEnabledSignal = [RACSignal merge:@[ hasTagSignal, [_saveTagCommand.executing not], [_deleteTagCommand.executing not] ]];
     
     _tagCommand = [[RACCommand alloc] initWithEnabled:tagEnabledSignal signalBlock:^RACSignal *(id input) {
-        NSArray *types = @[ @(EDATagTypeColleague), @(EDATagTypeSupervisor), @(EDATagTypeTeam), @(-1) ];
+        NSArray *types = @[ @(EDATagTypeColleague), @(EDATagTypeSupervisor), @(EDATagTypeTeam), @(EDATagTypeNone) ];
         NSArray *names = [[types.rac_sequence map:^NSString *(NSNumber *type) {
-            if (type.integerValue == -1) return @"None";
+            if (type.integerValue == EDATagTypeNone) return @"None";
             else return [EDATag displayNameForType:type.integerValue];
         }] array];
         
@@ -220,7 +220,7 @@
 }
 
 - (void)tagWithType:(EDATagType)type {
-    if ((NSInteger)type == -1) {
+    if (type == EDATagTypeNone) {
         [self.deleteTagCommand execute:nil];
         self.tag = nil;
         return;
