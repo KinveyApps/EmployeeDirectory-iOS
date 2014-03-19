@@ -10,7 +10,8 @@
 
 typedef NS_ENUM(NSInteger, EDADirectoryViewModelSortStyle) {
     EDADirectoryViewModelSortStyleName,
-    EDADirectoryViewModelSortStyleGroup
+    EDADirectoryViewModelSortStyleGroup,
+    EDADirectoryViewModelSortStyleTag
 };
 
 @class EDAEmployee;

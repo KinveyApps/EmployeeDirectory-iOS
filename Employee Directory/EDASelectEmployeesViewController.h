@@ -8,10 +8,13 @@
 
 #import "EPSReactiveTableViewController.h"
 
+#import "EDATag.h"
+
 @class EDAGroup;
 
 @interface EDASelectEmployeesViewController : EPSReactiveTableViewController
 
 - (id)initWithGroup:(EDAGroup *)group;
+- (id)initWithTagType:(EDATagType)tagType;
 
 @end

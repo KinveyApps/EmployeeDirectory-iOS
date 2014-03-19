@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "EDATag.h"
+
 @class EDAEmployee;
 
 @interface EDAEmployeeViewModel : NSObject
@@ -18,6 +20,11 @@
 @property (nonatomic, readonly) NSString *linkedInHeadline;
 @property (nonatomic, readonly) NSString *linkedInSummary;
 @property (nonatomic, readonly) NSString *businessAddress;
+@property (nonatomic, readonly) NSString *tagName;
+@property (nonatomic, readonly) NSString *officePhone;
+@property (nonatomic, readonly) NSString *mobilePhone;
+@property (nonatomic, readonly) NSString *textPhone;
+
 @property (nonatomic, readonly) BOOL favorite;
 
 /// Sends an EDAEmployee object whose username matches the supervisor property of employee.
@@ -47,6 +54,12 @@
 /// Sends an EDAFavorite object or nil
 @property (nonatomic, readonly) RACCommand *favoriteCommand;
 
+/// Sends an tuple containing two arrays. The first array contains strings which should be used as the options in an action sheet. The second is numbers corresponding to the choices which should be passed to `tagWithType:`. The tuple also contains a number indicating the index of the "None" option in the array.
+@property (nonatomic, readonly) RACCommand *tagCommand;
+
 - (id)initWithEmployee:(EDAEmployee *)employee;
+
+/// Tags the current employee with the given type
+- (void)tagWithType:(EDATagType)type;
 
 @end

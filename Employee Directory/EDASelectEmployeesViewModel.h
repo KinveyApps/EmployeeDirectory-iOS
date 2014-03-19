@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "EDATag.h"
+
 @class EDAGroup;
 @class EDAEmployee;
 
@@ -23,6 +25,7 @@
 @property (readonly, nonatomic) RACCommand *nextCommand;
 
 - (id)initWithGroup:(EDAGroup *)group;
+- (id)initWithTagType:(EDATagType)tagType;
 
 - (void)selectEmployee:(EDAEmployee *)employee;
 - (void)deselectEmployee:(EDAEmployee *)employee;

@@ -47,6 +47,18 @@
     RAC(self.view.linkedInHeadlineLabel, text) = RACObserve(self.viewModel, linkedInHeadline);
     RAC(self.view.linkedInSummaryLabel, text) = RACObserve(self.viewModel, linkedInSummary);
     RAC(self.view.addressLabel, text) = RACObserve(self.viewModel, businessAddress);
+    RAC(self.view.officeNumberLabel, text) = [RACObserve(self.viewModel, officePhone)
+        map:^NSString *(NSString *phone) {
+            return [NSString stringWithFormat:@"Office: %@", phone];
+        }];
+    RAC(self.view.mobileNumberLabel, text) = [RACObserve(self.viewModel, mobilePhone)
+        map:^NSString *(NSString *phone) {
+            return [NSString stringWithFormat:@"Mobile: %@", phone];
+        }];
+    RAC(self.view.textNumberLabel, text) = [RACObserve(self.viewModel, textPhone)
+        map:^NSString *(NSString *phone) {
+            return [NSString stringWithFormat:@"Text: %@", phone];
+        }];
     
     @weakify(self);
     
@@ -141,6 +153,40 @@
             return title;
         }];
     [self.view.favoriteButton rac_liftSelector:@selector(setTitle:forState:) withSignals:titleSignal, [RACSignal return:@(UIControlStateNormal)], nil];
+    
+    self.view.tagButton.rac_command = self.viewModel.tagCommand;
+    RACSignal *newTagSignal = [[[[self.view.tagButton.rac_command.executionSignals
+        flatten]
+        flattenMap:^RACStream *(RACTuple *tuple) {
+            @strongify(self);
+            
+            RACTupleUnpack(NSArray *names, NSArray *types, NSNumber *destructiveIndex) = tuple;
+            
+            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Tag" delegate:nil cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+            for (NSString *name in names) {
+                [actionSheet addButtonWithTitle:name];
+            }
+            [actionSheet addButtonWithTitle:@"Cancel"];
+            [actionSheet setCancelButtonIndex:types.count];
+            [actionSheet setDestructiveButtonIndex:destructiveIndex.integerValue];
+            [actionSheet showInView:self.view];
+            
+            return [actionSheet.rac_buttonClickedSignal zipWith:[RACSignal return:types]];
+        }]
+        reduceEach:^NSNumber *(NSNumber *button, NSArray *types) {
+            if (button.unsignedIntegerValue == types.count) return nil;
+            else return types[button.integerValue];
+        }]
+        filter:^BOOL(NSNumber *type) {
+            return type != nil;
+        }];
+    
+    [self.viewModel rac_liftSelector:@selector(tagWithType:) withSignals:newTagSignal, nil];
+    
+    RACSignal *tagButtonTitleSignal = [RACObserve(self.viewModel, tagName) map:^NSString *(NSString *tagName) {
+        return [NSString stringWithFormat:@"Tag: %@", tagName];
+    }];
+    [self.view.tagButton rac_liftSelector:@selector(setTitle:forState:) withSignals:tagButtonTitleSignal, [RACSignal return:@(UIControlStateNormal)], nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

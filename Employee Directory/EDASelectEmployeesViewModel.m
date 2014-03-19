@@ -11,6 +11,7 @@
 #import "EDAEmployee+API.h"
 #import "EDAEmployee+Sorting.h"
 #import "EDASelectableEmployeeCellViewModel.h"
+#import "EDATag+API.h"
 
 @interface EDASelectEmployeesViewModel ()
 
@@ -21,12 +22,30 @@
 @implementation EDASelectEmployeesViewModel
 
 - (id)initWithGroup:(EDAGroup *)group {
+    self = [self initWithEmployeesSignal:[EDAEmployee employeesInGroup:group]];
+    return self;
+}
+
+- (id)initWithTagType:(EDATagType)tagType {
+    RACSignal *employeesSignal = [[EDATag tagsOfType:tagType]
+        flattenMap:^RACStream *(NSArray *tags) {
+            NSArray *usernames = [[tags.rac_sequence map:^NSString *(EDATag *tag) {
+                return tag.taggedUsername;
+            }] array];
+            
+            return [EDAEmployee employeesWithUsernames:usernames];
+        }];
+    self = [self initWithEmployeesSignal:employeesSignal];
+    return self;
+}
+
+- (id)initWithEmployeesSignal:(RACSignal *)anEmployeesSignal {
     self = [super init];
     if (self == nil) return nil;
     
     @weakify(self);
     
-    RACSignal *employeesSignal = [[[[EDAEmployee employeesInGroup:group]
+    RACSignal *employeesSignal = [[[anEmployeesSignal
         map:^NSArray *(NSArray *employees) {
             return [employees sortedArrayUsingDescriptors:[EDAEmployee standardSortDescriptors]];
         }]

@@ -39,19 +39,37 @@
     
     [self.didSelectRowSignal subscribeNext:^(RACTuple *tuple) {
         @strongify(self);
-        
         EDAGroupCellViewModel *aViewModel = tuple.first;
-        EDAGroup *group = aViewModel.group;
         
-        EDASelectEmployeesViewController *viewController = [[EDASelectEmployeesViewController alloc] initWithGroup:group];
+        EDASelectEmployeesViewController *viewController;
+        
+        if (aViewModel.group != nil) {
+            EDAGroup *group = aViewModel.group;
+            viewController = [[EDASelectEmployeesViewController alloc] initWithGroup:group];
+        }
+        else {
+            viewController = [[EDASelectEmployeesViewController alloc] initWithTagType:aViewModel.tagType];
+        }
         [self.navigationController pushViewController:viewController animated:YES];
     }];
+    
+    UISegmentedControl *sortControl = [[UISegmentedControl alloc] initWithItems:@[ @"Group", @"Tag" ]];
+    RACChannelTerminal *controlTerminal = [sortControl rac_newSelectedSegmentIndexChannelWithNilValue:@0];
+    RACChannelTerminal *modelTerminal = RACChannelTo(self.viewModel, groupType);
+    [modelTerminal subscribe:controlTerminal];
+    [controlTerminal subscribe:modelTerminal];
+    self.navigationItem.titleView = sortControl;
     
     return self;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"Direct Reports";
+    if (self.viewModel.groupType == EDAMessagingViewModelGroupTypeGroup) {
+        return @"Groups";
+    }
+    else {
+        return @"Tags";
+    }
 }
 
 @end
