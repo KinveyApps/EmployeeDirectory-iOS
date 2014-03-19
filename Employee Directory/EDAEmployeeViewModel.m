@@ -65,6 +65,10 @@
             return [NSString stringWithFormat:@"%@\n%@, %@ %@", address, city, state, zipCode];
         }];
     
+    RAC(self, officePhone) = RACObserve(self.employee, workPhone);
+    RAC(self, mobilePhone) = RACObserve(self.employee, cellPhone);
+    RAC(self, textPhone) = RACObserve(self.employee, cellPhone);
+    
     @weakify(self);
     
     // Supervisor
@@ -83,7 +87,18 @@
     BOOL canOpenTelURL = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"tel://"]];
     RACSignal *callEnabled = [RACSignal return:@(canOpenTelURL)];
     
-    _callCommand = [[RACCommand alloc] initWithEnabled:callEnabled signalBlock:^RACSignal *(id input) {
+    _callOfficeCommand = [[RACCommand alloc] initWithEnabled:callEnabled signalBlock:^RACSignal *(id input) {
+        @strongify(self);
+        
+        NSString *URLString = [NSString stringWithFormat:@"tel://%@", [self.employee.workPhone stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+        NSURL *URL = [NSURL URLWithString:URLString];
+        [[UIApplication sharedApplication] openURL:URL];
+        
+        return [RACSignal empty];
+    }];
+    
+    // Mobile
+    _callMobileCommand = [[RACCommand alloc] initWithEnabled:callEnabled signalBlock:^RACSignal *(id input) {
         @strongify(self);
         
         NSString *URLString = [NSString stringWithFormat:@"tel://%@", [self.employee.cellPhone stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];

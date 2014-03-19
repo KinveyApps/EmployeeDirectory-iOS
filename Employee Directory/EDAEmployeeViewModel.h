@@ -21,13 +21,20 @@
 @property (nonatomic, readonly) NSString *linkedInSummary;
 @property (nonatomic, readonly) NSString *businessAddress;
 @property (nonatomic, readonly) NSString *tagName;
+@property (nonatomic, readonly) NSString *officePhone;
+@property (nonatomic, readonly) NSString *mobilePhone;
+@property (nonatomic, readonly) NSString *textPhone;
+
 @property (nonatomic, readonly) BOOL favorite;
 
 /// Sends an EDAEmployee object whose username matches the supervisor property of employee.
 @property (nonatomic, readonly) RACCommand *showSupervisorCommand;
 
 /// Opens the employee's phone number in the phone app. Doesn't send anything.
-@property (nonatomic, readonly) RACCommand *callCommand;
+@property (nonatomic, readonly) RACCommand *callOfficeCommand;
+
+/// Opens the employee's phone number in the phone app. Doesn't send anything.
+@property (nonatomic, readonly) RACCommand *callMobileCommand;
 
 /// Sends the employee's phone number.
 @property (nonatomic, readonly) RACCommand *textCommand;

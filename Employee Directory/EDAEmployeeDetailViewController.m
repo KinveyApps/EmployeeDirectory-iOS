@@ -47,6 +47,18 @@
     RAC(self.view.linkedInHeadlineLabel, text) = RACObserve(self.viewModel, linkedInHeadline);
     RAC(self.view.linkedInSummaryLabel, text) = RACObserve(self.viewModel, linkedInSummary);
     RAC(self.view.addressLabel, text) = RACObserve(self.viewModel, businessAddress);
+    RAC(self.view.officeNumberLabel, text) = [RACObserve(self.viewModel, officePhone)
+        map:^NSString *(NSString *phone) {
+            return [NSString stringWithFormat:@"Office: %@", phone];
+        }];
+    RAC(self.view.mobileNumberLabel, text) = [RACObserve(self.viewModel, mobilePhone)
+        map:^NSString *(NSString *phone) {
+            return [NSString stringWithFormat:@"Mobile: %@", phone];
+        }];
+    RAC(self.view.textNumberLabel, text) = [RACObserve(self.viewModel, textPhone)
+        map:^NSString *(NSString *phone) {
+            return [NSString stringWithFormat:@"Text: %@", phone];
+        }];
     
     @weakify(self);
     
@@ -60,8 +72,8 @@
             [self.navigationController pushViewController:viewController animated:YES];
         }];
     
-    self.view.callButton.rac_command = self.viewModel.callCommand;
-    
+    self.view.callButton.rac_command = self.viewModel.callOfficeCommand;
+    self.view.mobileCallButton.rac_command = self.viewModel.callMobileCommand;
     self.view.textButton.rac_command = self.viewModel.textCommand;
     [[self.view.textButton.rac_command.executionSignals
         flatten]

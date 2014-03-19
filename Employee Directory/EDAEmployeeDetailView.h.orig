@@ -17,9 +17,9 @@
 @property (nonatomic, readonly) UIButton *messageButton;
 @property (nonatomic, readonly) UIButton *mobileCallButton;
 @property (nonatomic, readonly) UIButton *reportsButton;
+<<<<<<< HEAD
 @property (nonatomic, readonly) UIButton *supervisorButton;
 @property (nonatomic, readonly) UIButton *textButton;
-@property (nonatomic, readonly) UIButton *tagButton;
 @property (nonatomic, readonly) UIImageView *imageView;
 @property (nonatomic, readonly) UILabel *addressLabel;
 @property (nonatomic, readonly) UILabel *linkedInHeadlineLabel;
@@ -30,5 +30,9 @@
 @property (nonatomic, readonly) UILabel *textNumberLabel;
 @property (nonatomic, readonly) UILabel *titleLabel;
 @property (nonatomic, readonly) UIScrollView *scrollView;
+=======
+@property (nonatomic, readonly) UIButton *favoriteButton;
+@property (nonatomic, readonly) UIButton *tagButton;
+>>>>>>> master
 
 @end
