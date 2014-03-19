@@ -31,7 +31,7 @@
     BLAPaneController *paneController = [[BLAPaneController alloc] initWithRootViewController:[[UINavigationController alloc] initWithRootViewController:[[EDADirectoryViewController alloc] initWithFavorites]] sidebarViewController:[EDAMenuViewController new]];
     self.window.rootViewController = paneController;
     
-    if ([KCSUser hasSavedCredentials] == NO) {
+    if ([KCSUser hasSavedCredentials] == NO || [KCSUser activeUser] == nil) {
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[EDALoginViewController new]];
         [EDAAppearanceManager customizeAppearanceOfNavigationBar:navigationController.navigationBar];
         [paneController presentViewController:navigationController animated:NO completion:NULL];
