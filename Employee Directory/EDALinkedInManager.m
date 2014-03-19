@@ -24,6 +24,12 @@ NSString * const EDALinkedInManagerRedirectURL = @"http://www.ballastlane.com/li
 
 NSString * const EDALinkedInManagerUserDefaultsKey = @"LinkedInToken";
 
+@interface EDALinkedInManager ()
+
+@property (nonatomic) NSString *oauthToken;
+
+@end
+
 @implementation EDALinkedInManager
 
 + (instancetype)sharedManager {
@@ -41,6 +47,11 @@ NSString * const EDALinkedInManagerUserDefaultsKey = @"LinkedInToken";
     
     RACChannelTerminal *terminal = RACChannelTo(self, oauthToken);
     [[[NSUserDefaults standardUserDefaults] rac_channelTerminalForKey:EDALinkedInManagerUserDefaultsKey] subscribe:terminal];
+    
+    RAC(self, canMakeRequests) = [RACObserve(self, oauthToken)
+        map:^NSNumber *(NSString *token) {
+            return @(token.length > 0);
+        }];
     
     return self;
 }

@@ -18,7 +18,8 @@ extern NSInteger const EDALinkedInManagerErrorCodeFailed;
 
 @interface EDALinkedInManager : NSObject
 
-@property (nonatomic) NSString *oauthToken;
+/// YES if `authorizeWithLinkedInWithRootViewController:` has already been successfully called. NO if authorization hasn't happened yet.
+@property (readonly, nonatomic) BOOL canMakeRequests;
 
 + (instancetype)sharedManager;
 

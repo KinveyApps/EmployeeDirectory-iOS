@@ -143,8 +143,12 @@
     RACSignal *hasLinkedInID = [RACObserve(self.employee, linkedInID) map:^NSNumber *(NSString *ID) {
         return @(ID.length > 0);
     }];
+    RACSignal *canMakeRequests = RACObserve([EDALinkedInManager sharedManager], canMakeRequests);
+    RACSignal *profileEnabled = [[RACSignal
+        combineLatest:@[ hasLinkedInID, canMakeRequests ]]
+        and];
     
-    _showLinkedInProfileCommand = [[RACCommand alloc] initWithEnabled:hasLinkedInID signalBlock:^RACSignal *(id input) {
+    _showLinkedInProfileCommand = [[RACCommand alloc] initWithEnabled:profileEnabled signalBlock:^RACSignal *(id input) {
         @strongify(self);
         
         return [[[EDALinkedInManager sharedManager] linkedInProfileURLForEmployee:self.employee]
