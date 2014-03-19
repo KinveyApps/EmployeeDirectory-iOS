@@ -28,7 +28,7 @@
     // Set up Kinvey
     (void) [[KCSClient sharedClient] initializeKinveyServiceForAppKey:@"kid_eTXG5Nytxq" withAppSecret:@"1512b102e63d4c44931f99d960685cdc" usingOptions:nil];
 
-    BLAPaneController *paneController = [[BLAPaneController alloc] initWithRootViewController:[[UINavigationController alloc] initWithRootViewController:[[EDADirectoryViewController alloc] initWithFavorites]] sidebarViewController:[EDAMenuViewController new]];
+    BLAPaneController *paneController = [[BLAPaneController alloc] initWithRootViewController:[[UINavigationController alloc] initWithRootViewController:[[EDADirectoryViewController alloc] initForSearching]] sidebarViewController:[EDAMenuViewController new]];
     self.window.rootViewController = paneController;
     
     if ([KCSUser hasSavedCredentials] == NO || [KCSUser activeUser] == nil) {
