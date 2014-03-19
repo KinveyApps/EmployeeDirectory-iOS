@@ -173,19 +173,34 @@
         return [RACSignal return:employee];
     }];
     
+    
+    
     // Favorite
-    _favoriteCommand = [[RACCommand alloc] initWithEnabled:[RACSignal return:@YES] signalBlock:^RACSignal *(id input) {
+    RACCommand *deleteFavoriteCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        @strongify(self);
+        
+        return [EDAFavorite deleteFavoriteForEmployee:self.employee];
+    }];
+    
+    RACCommand *addFavoriteCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        @strongify(self);
+        
+        return [EDAFavorite createFavoriteForEmployee:self.employee];
+    }];
+    
+    RACSignal *favoriteEnabledSignal = [RACSignal merge:@[ [addFavoriteCommand.executing not], [deleteFavoriteCommand.executing not] ]];
+    _favoriteCommand = [[RACCommand alloc] initWithEnabled:favoriteEnabledSignal signalBlock:^RACSignal *(id input) {
         @strongify(self);
         
         if (self.favorite) {
-            return [EDAFavorite deleteFavoriteForEmployee:self.employee];
+            return [deleteFavoriteCommand execute:input];
         }
         else {
-            return [EDAFavorite createFavoriteForEmployee:self.employee];
+            return [addFavoriteCommand execute:input];
         }
     }];
     
-    RAC(self, favorite) = [[RACSignal merge:@[ [_favoriteCommand.executionSignals flatten], [EDAFavorite favoriteForEmployee:employee] ]]
+    RAC(self, favorite) = [[RACSignal merge:@[ [addFavoriteCommand.executionSignals flatten], [deleteFavoriteCommand.executionSignals flatten], [EDAFavorite favoriteForEmployee:employee] ]]
         map:^NSNumber *(EDAFavorite *favorite) {
             return @(favorite != nil);
         }];
@@ -206,17 +221,17 @@
     _saveTagCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         @strongify(self);
         
-        return [[EDATag saveTag:self.tag] zipWith:[self.favoriteCommand execute:nil]];
+        return [[EDATag saveTag:self.tag] zipWith:[addFavoriteCommand execute:nil]];
     }];
     
     _deleteTagCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         @strongify(self);
         
         if (self.tag) {
-            return [EDATag deleteTag:self.tag];
+            return [[EDATag deleteTag:self.tag] zipWith:[deleteFavoriteCommand execute:nil]];
         }
         else {
-            return [RACSignal empty];
+            return [deleteFavoriteCommand execute:nil];
         }
     }];
 
