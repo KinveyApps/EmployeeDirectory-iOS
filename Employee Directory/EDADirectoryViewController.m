@@ -102,8 +102,6 @@
     self.tableView.tableHeaderView = searchBar;
     
     if (self.forSearching) {
-        searchBar.delegate = self;
-        
         RAC(self.viewModel, searchString) = [[self rac_signalForSelector:@selector(searchBar:textDidChange:) fromProtocol:@protocol(UISearchBarDelegate)]
             reduceEach:^NSString *(UISearchBar *aSearchBar, NSString *text){
                 return text;
@@ -121,7 +119,13 @@
             }];
     }
     
+    searchBar.delegate = self;
+
     @weakify(self);
+
+    [[self rac_signalForSelector:@selector(searchBarSearchButtonClicked:) fromProtocol:@protocol(UISearchBarDelegate)] subscribeNext:^(id x) {
+        [self.view endEditing:YES];
+    }];
     
     [RACObserve(self.viewModel, sections) subscribeNext:^(id x) {
         @strongify(self);
@@ -193,6 +197,12 @@
 #pragma mark - UISearchDisplayControllerDelegate Methods
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    return YES;
+}
+
+#pragma mark - UISearchBarDelegate Methods
+
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar {
     return YES;
 }
 
