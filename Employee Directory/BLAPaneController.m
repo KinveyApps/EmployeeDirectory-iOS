@@ -353,6 +353,7 @@ NSTimeInterval const kSidebarTransitionDuration = 0.25;
 }
 
 - (void)showSidebar:(id)sender {
+    [self.view endEditing:YES];
     [self.paneController showSidebar:YES animated:YES];
 }
 
