@@ -12,7 +12,7 @@
 #import "EDALoginView.h"
 #import "EDALinkedInManager.h"
 
-@interface EDALoginViewController ()
+@interface EDALoginViewController () <UITextFieldDelegate>
 
 @property (nonatomic) EDALoginViewModel *viewModel;
 @property (nonatomic) EDALoginView *view;
@@ -60,6 +60,23 @@
         }];
     
     [self rac_liftSelector:@selector(handleError:) withSignals:self.viewModel.loginCommand.errors, nil];
+    
+    
+    self.view.usernameTextField.delegate = self;
+    self.view.passwordTextField.delegate = self;
+    
+    [[self rac_signalForSelector:@selector(textFieldShouldReturn:) fromProtocol:@protocol(UITextFieldDelegate)] subscribeNext:^(RACTuple *arguments) {
+        @strongify(self);
+        
+        UITextField *textField = arguments.first;
+        
+        if (textField == self.view.usernameTextField) {
+            [self.view.passwordTextField becomeFirstResponder];
+        }
+        else {
+            [self.viewModel.loginCommand execute:nil];
+        }
+    }];
 }
 
 - (UIBarButtonItem *)loginBarButtonItem {
@@ -67,6 +84,12 @@
     loginItem.rac_command = self.viewModel.loginCommand;
     
     return loginItem;
+}
+
+#pragma mark - UITextFieldDelegate Methods
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    return YES;
 }
 
 @end

@@ -36,6 +36,7 @@
     self.usernameTextField.placeholder = @"username";
     self.usernameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
     self.usernameTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    self.usernameTextField.returnKeyType = UIReturnKeyNext;
     [self addSubview:self.usernameTextField];
     
     self.passwordTextField = [UITextField new];
@@ -45,6 +46,7 @@
     self.passwordTextField.autocorrectionType = UITextAutocorrectionTypeNo;
     self.passwordTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     self.passwordTextField.secureTextEntry = YES;
+    self.passwordTextField.returnKeyType = UIReturnKeyDone;
     [self addSubview:self.passwordTextField];
     
     NSDictionary *views = @{ @"usernameTextField": self.usernameTextField,
