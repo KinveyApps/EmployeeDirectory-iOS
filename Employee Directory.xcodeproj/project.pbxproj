@@ -350,12 +350,11 @@
 		D043A79B18CA1D870095F581 /* Employee Directory */ = {
 			isa = PBXGroup;
 			children = (
-				D043A7A418CA1D870095F581 /* EDAAppDelegate.h */,
-				D043A7A518CA1D870095F581 /* EDAAppDelegate.m */,
 				D09AFF9F18CE28030015C400 /* Model */,
 				D09AFFA018CE28180015C400 /* View Controllers */,
 				D055CB5A18CF8BAF00B29407 /* Appearance */,
-				D043A7AD18CA1D870095F581 /* Images.xcassets */,
+				D043A7A418CA1D870095F581 /* EDAAppDelegate.h */,
+				D043A7A518CA1D870095F581 /* EDAAppDelegate.m */,
 				D043A79C18CA1D870095F581 /* Supporting Files */,
 			);
 			path = "Employee Directory";
@@ -364,6 +363,7 @@
 		D043A79C18CA1D870095F581 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D043A7AD18CA1D870095F581 /* Images.xcassets */,
 				D043A79D18CA1D870095F581 /* Employee Directory-Info.plist */,
 				D043A79E18CA1D870095F581 /* InfoPlist.strings */,
 				D043A7A118CA1D870095F581 /* main.m */,
