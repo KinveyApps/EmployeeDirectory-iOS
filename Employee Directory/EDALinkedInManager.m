@@ -59,7 +59,8 @@ NSString * const EDALinkedInManagerUserDefaultsKey = @"LinkedInToken";
 - (void)startUpdating {
     @weakify(self);
     
-    [[[[[NSNotificationCenter defaultCenter] rac_addObserverForName:UIApplicationDidBecomeActiveNotification object:nil]
+    RACSignal *notifications = [RACSignal merge:@[ [[NSNotificationCenter defaultCenter] rac_addObserverForName:UIApplicationDidBecomeActiveNotification object:nil], [[NSNotificationCenter defaultCenter] rac_addObserverForName:KCSActiveUserChangedNotification object:nil], RACObserve(self, oauthToken) ]];
+    [[[notifications
         flattenMap:^RACStream *(id value) {
             @strongify(self);
             
