@@ -272,10 +272,10 @@
 		15D799F018CA32BE00BF116D /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				1564D58C18CE09B5006D7A18 /* EDASidebarCell.h */,
-				1564D58D18CE09B5006D7A18 /* EDASidebarCell.m */,
 				15D799ED18CA32AD00BF116D /* EDAMenuViewController.h */,
 				15D799EA18CA32AD00BF116D /* EDAMenuViewController.m */,
+				1564D58C18CE09B5006D7A18 /* EDASidebarCell.h */,
+				1564D58D18CE09B5006D7A18 /* EDASidebarCell.m */,
 				D00BA03518D33DD200AA14DC /* EDASidebarHeaderCell.h */,
 				D00BA03618D33DD200AA14DC /* EDASidebarHeaderCell.m */,
 			);
@@ -285,12 +285,12 @@
 		D00BA01B18D1DE0E00AA14DC /* New Message */ = {
 			isa = PBXGroup;
 			children = (
+				D00BA01F18D1E5AB00AA14DC /* EDANewMessageView.h */,
+				D00BA02018D1E5AB00AA14DC /* EDANewMessageView.m */,
 				D00BA01C18D1E29200AA14DC /* EDANewMessageViewController.h */,
 				D00BA01D18D1E29200AA14DC /* EDANewMessageViewController.m */,
 				D00BA01818D1DE0300AA14DC /* EDANewMessageViewModel.h */,
 				D00BA01918D1DE0300AA14DC /* EDANewMessageViewModel.m */,
-				D00BA01F18D1E5AB00AA14DC /* EDANewMessageView.h */,
-				D00BA02018D1E5AB00AA14DC /* EDANewMessageView.m */,
 			);
 			name = "New Message";
 			sourceTree = "<group>";
@@ -450,12 +450,12 @@
 				15D799FB18CA524200BF116D /* EDADirectoryCell.m */,
 				15D799F718CA4E3A00BF116D /* EDADirectoryCellViewModel.h */,
 				15D799F818CA4E3A00BF116D /* EDADirectoryCellViewModel.m */,
+				D02B52B018D89D67004D51F4 /* EDADirectoryView.h */,
+				D02B52B118D89D67004D51F4 /* EDADirectoryView.m */,
 				15D799F118CA41E400BF116D /* EDADirectoryViewController.h */,
 				15D799F218CA41E400BF116D /* EDADirectoryViewController.m */,
 				15D799F418CA476F00BF116D /* EDADirectoryViewModel.h */,
 				15D799F518CA476F00BF116D /* EDADirectoryViewModel.m */,
-				D02B52B018D89D67004D51F4 /* EDADirectoryView.h */,
-				D02B52B118D89D67004D51F4 /* EDADirectoryView.m */,
 			);
 			name = Directory;
 			sourceTree = "<group>";
@@ -494,14 +494,14 @@
 		D09AFF9E18CE27F60015C400 /* Kinvey Categories */ = {
 			isa = PBXGroup;
 			children = (
-				D043A7E718CA3B880095F581 /* KCSUser+RAC.h */,
-				D043A7E818CA3B880095F581 /* KCSUser+RAC.m */,
 				D043A7ED18CA41420095F581 /* KCSAppdataStore+RAC.h */,
 				D043A7EE18CA41420095F581 /* KCSAppdataStore+RAC.m */,
 				D055CB4718CF636700B29407 /* KCSFileStore+RAC.h */,
 				D055CB4818CF636700B29407 /* KCSFileStore+RAC.m */,
 				D00BA02B18D2339500AA14DC /* KCSReachability+RAC.h */,
 				D00BA02C18D2339500AA14DC /* KCSReachability+RAC.m */,
+				D043A7E718CA3B880095F581 /* KCSUser+RAC.h */,
+				D043A7E818CA3B880095F581 /* KCSUser+RAC.m */,
 			);
 			name = "Kinvey Categories";
 			sourceTree = "<group>";
@@ -516,28 +516,28 @@
 				D00BA01318D1DB5000AA14DC /* EDAEmployee+Sorting.m */,
 				D043A7E418CA2BEB0095F581 /* EDAEmployee.h */,
 				D043A7E518CA2BEB0095F581 /* EDAEmployee.m */,
+				D00BA03B18D340D900AA14DC /* EDAFavorite+API.h */,
+				D00BA03C18D340D900AA14DC /* EDAFavorite+API.m */,
+				D00BA03818D33FDF00AA14DC /* EDAFavorite.h */,
+				D00BA03918D33FDF00AA14DC /* EDAFavorite.m */,
 				D04E88E918D0B7220071F421 /* EDAGroup+API.h */,
 				D04E88EA18D0B7220071F421 /* EDAGroup+API.m */,
 				D00BA01518D1DC6A00AA14DC /* EDAGroup+Sorting.h */,
 				D00BA01618D1DC6A00AA14DC /* EDAGroup+Sorting.m */,
 				D04E88E618D0B67A0071F421 /* EDAGroup.h */,
 				D04E88E718D0B67A0071F421 /* EDAGroup.m */,
+				D00BA03218D3372300AA14DC /* EDAImageManager.h */,
+				D00BA03318D3372300AA14DC /* EDAImageManager.m */,
 				D09AFF9718CDFBE90015C400 /* EDALinkedInManager.h */,
 				D09AFF9818CDFBE90015C400 /* EDALinkedInManager.m */,
 				D00BA02818D20E0100AA14DC /* EDAMessage+API.h */,
 				D00BA02918D20E0100AA14DC /* EDAMessage+API.m */,
 				D00BA02518D20DF600AA14DC /* EDAMessage.h */,
 				D00BA02618D20DF600AA14DC /* EDAMessage.m */,
-				D00BA03818D33FDF00AA14DC /* EDAFavorite.h */,
-				D00BA03918D33FDF00AA14DC /* EDAFavorite.m */,
-				D00BA03B18D340D900AA14DC /* EDAFavorite+API.h */,
-				D00BA03C18D340D900AA14DC /* EDAFavorite+API.m */,
-				D00BA03218D3372300AA14DC /* EDAImageManager.h */,
-				D00BA03318D3372300AA14DC /* EDAImageManager.m */,
-				D02B52B318D8B345004D51F4 /* EDATag.h */,
-				D02B52B418D8B345004D51F4 /* EDATag.m */,
 				D02B52B618D8B412004D51F4 /* EDATag+API.h */,
 				D02B52B718D8B412004D51F4 /* EDATag+API.m */,
+				D02B52B318D8B345004D51F4 /* EDATag.h */,
+				D02B52B418D8B345004D51F4 /* EDATag.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -545,12 +545,20 @@
 		D09AFFA018CE28180015C400 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D09AFF9D18CE27E60015C400 /* Directory */,
-				15D799F018CA32BE00BF116D /* Menu */,
-				15D799E618CA20F500BF116D /* LoginScreen */,
-				D04E88DF18D0B6210071F421 /* Messaging */,
-				D055CB4D18CF7A2100B29407 /* Your Info */,
 				D00BA03118D23EB600AA14DC /* About */,
+				D09AFF9D18CE27E60015C400 /* Directory */,
+				15D799E618CA20F500BF116D /* LoginScreen */,
+				15D799F018CA32BE00BF116D /* Menu */,
+				D04E88DF18D0B6210071F421 /* Messaging */,
+				D0B0147618D9CB2E00EF58B4 /* Misc */,
+				D055CB4D18CF7A2100B29407 /* Your Info */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		D0B0147618D9CB2E00EF58B4 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
 				D043A7DA18CA236F0095F581 /* BLAPaneController.h */,
 				D043A7DB18CA236F0095F581 /* BLAPaneController.m */,
 				D09AFF9A18CDFF340015C400 /* EDAWebViewController.h */,
@@ -558,7 +566,7 @@
 				D055CB5418CF7BBF00B29407 /* UIViewController+ErrorHandling.h */,
 				D055CB5518CF7BBF00B29407 /* UIViewController+ErrorHandling.m */,
 			);
-			name = "View Controllers";
+			name = Misc;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
