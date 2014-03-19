@@ -206,7 +206,7 @@
     _saveTagCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
         @strongify(self);
         
-        return [EDATag saveTag:self.tag];
+        return [[EDATag saveTag:self.tag] zipWith:[self.favoriteCommand execute:nil]];
     }];
     
     _deleteTagCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
