@@ -16,8 +16,6 @@
 @property (nonatomic, readonly) UIButton *linkedinButton;
 @property (nonatomic, readonly) UIButton *messageButton;
 @property (nonatomic, readonly) UIButton *mobileCallButton;
-@property (nonatomic, readonly) UIButton *reportsButton;
-@property (nonatomic, readonly) UIButton *supervisorButton;
 @property (nonatomic, readonly) UIButton *textButton;
 @property (nonatomic, readonly) UIButton *tagButton;
 @property (nonatomic, readonly) UIImageView *imageView;

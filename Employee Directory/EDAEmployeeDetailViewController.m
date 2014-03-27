@@ -61,17 +61,7 @@
         }];
     
     @weakify(self);
-    
-    self.view.supervisorButton.rac_command = self.viewModel.showSupervisorCommand;
-    [[self.view.supervisorButton.rac_command.executionSignals
-        flatten]
-        subscribeNext:^(EDAEmployee *employee) {
-            @strongify(self);
-            
-            EDAEmployeeDetailViewController *viewController = [[EDAEmployeeDetailViewController alloc] initWithEmployee:employee];
-            [self.navigationController pushViewController:viewController animated:YES];
-        }];
-    
+        
     self.view.callButton.rac_command = self.viewModel.callOfficeCommand;
     self.view.mobileCallButton.rac_command = self.viewModel.callMobileCommand;
     self.view.textButton.rac_command = self.viewModel.textCommand;

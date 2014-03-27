@@ -16,8 +16,6 @@
 @property (nonatomic) UIButton *linkedinButton;
 @property (nonatomic) UIButton *messageButton;
 @property (nonatomic) UIButton *mobileCallButton;
-@property (nonatomic) UIButton *reportsButton;
-@property (nonatomic) UIButton *supervisorButton;
 @property (nonatomic) UIButton *textButton;
 @property (nonatomic) UIButton *tagButton;
 @property (nonatomic) UIImageView *imageView;
@@ -162,18 +160,7 @@
     self.linkedinButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self.linkedinButton setTitle:@"View Linkedin" forState:UIControlStateNormal];
     [self.containerView addSubview:self.linkedinButton];
-    
-    self.supervisorButton = [EDAAppearanceManager button];
-    self.supervisorButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.supervisorButton setTitle:@"Manager" forState:UIControlStateNormal];
-    [self.containerView addSubview:self.supervisorButton];
-    
-    self.reportsButton = [EDAAppearanceManager button];
-    self.reportsButton.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.reportsButton setTitle:@"Reports" forState:UIControlStateNormal];
-    [self.containerView addSubview:self.reportsButton];
-    
-    self.favoriteButton = [EDAAppearanceManager button];
+        self.favoriteButton = [EDAAppearanceManager button];
     self.favoriteButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self.favoriteButton setTitle:@"Favorite" forState:UIControlStateNormal];
     [self.containerView addSubview:self.favoriteButton];
@@ -189,8 +176,6 @@
                              @"emailButton": self.emailButton,
                              @"messageButton": self.messageButton,
                              @"linkedinButton": self.linkedinButton,
-                             @"supervisorButton": self.supervisorButton,
-                             @"reportsButton": self.reportsButton,
                              @"imageView": self.imageView,
                              @"linkedInHeadlineLabel": self.linkedInHeadlineLabel,
                              @"linkedInSummaryLabel": self.linkedInSummaryLabel,
@@ -221,12 +206,11 @@
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[textNumberLabel]-[textButton(buttonWidth)]-(insetSpacing)-|" options:NSLayoutFormatAlignAllCenterY metrics:metrics views:views]];
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[emailButton]-(insetSpacing)-[messageButton(==emailButton)]-(insetSpacing)-|" options:NSLayoutFormatAlignAllBottom metrics:metrics views:views]];
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[linkedinButton]-(insetSpacing)-|" options:0 metrics:metrics views:views]];
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[supervisorButton]-(insetSpacing)-[reportsButton(==supervisorButton)]-(insetSpacing)-|" options:NSLayoutFormatAlignAllBottom metrics:metrics views:views]];
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[favoriteButton]-(insetSpacing)-|" options:0 metrics:metrics views:views]];
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[tagButton]-(insetSpacing)-|" options:0 metrics:metrics views:views]];
     
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[nameLabel]-[titleLabel]" options:0 metrics:metrics views:views]];
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[imageView]-[linkedInHeadlineLabel]-[linkedInSummaryLabel]-[addressLabel]-(insetSpacing)-[callButton]-(insetSpacing)-[mobileCallButton]-(insetSpacing)-[textButton]-(insetSpacing)-[emailButton]-(insetSpacing)-[linkedinButton]-(insetSpacing)-[supervisorButton]-(insetSpacing)-[favoriteButton]-(insetSpacing)-[tagButton]-(insetSpacing)-|" options:0 metrics:metrics views:views]];
+    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[imageView]-[linkedInHeadlineLabel]-[linkedInSummaryLabel]-[addressLabel]-(insetSpacing)-[callButton]-(insetSpacing)-[mobileCallButton]-(insetSpacing)-[textButton]-(insetSpacing)-[emailButton]-(insetSpacing)-[linkedinButton]-(insetSpacing)-(insetSpacing)-[favoriteButton]-(insetSpacing)-[tagButton]-(insetSpacing)-|" options:0 metrics:metrics views:views]];
 
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[nameLabel]-[titleLabel]" options:NSLayoutFormatAlignAllLeading | NSLayoutFormatAlignAllTrailing metrics:metrics views:views]];
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[linkedInHeadlineLabel]-[linkedInSummaryLabel]-[addressLabel]" options:NSLayoutFormatAlignAllLeading | NSLayoutFormatAlignAllTrailing metrics:nil views:views]];
