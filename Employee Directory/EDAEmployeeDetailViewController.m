@@ -110,16 +110,6 @@
     self.view.linkedinButton.rac_command = self.viewModel.showLinkedInProfileCommand;
     [self rac_liftSelector:@selector(handleError:) withSignals:self.view.linkedinButton.rac_command.errors, nil];
     
-    self.view.reportsButton.rac_command = self.viewModel.showDirectReports;
-    [[self.view.reportsButton.rac_command.executionSignals
-        flatten]
-        subscribeNext:^(EDAEmployee *employee) {
-            @strongify(self);
-            
-            EDADirectoryViewController *viewController = [[EDADirectoryViewController alloc] initWithDirectReportsOfEmployee:employee];
-            [self.navigationController pushViewController:viewController animated:YES];
-        }];
-    
     self.view.messageButton.rac_command = self.viewModel.messageCommand;
     [[self.view.messageButton.rac_command.executionSignals
         flatten]
@@ -129,7 +119,7 @@
             EDANewMessageViewController *viewController = [[EDANewMessageViewController alloc] initWithEmployees:@[ employee ]];
             [self.navigationController pushViewController:viewController animated:YES];
         }];
-    
+    /*
     self.view.favoriteButton.rac_command = self.viewModel.favoriteCommand;
     RACSignal *titleSignal = [RACObserve(self.viewModel, favorite)
         map:^NSString *(NSNumber *favorite){
@@ -143,7 +133,7 @@
             return title;
         }];
     [self.view.favoriteButton rac_liftSelector:@selector(setTitle:forState:) withSignals:titleSignal, [RACSignal return:@(UIControlStateNormal)], nil];
-    
+    */
     self.view.tagButton.rac_command = self.viewModel.tagCommand;
     RACSignal *newTagSignal = [[[[self.view.tagButton.rac_command.executionSignals
         flatten]
@@ -174,7 +164,14 @@
     [self.viewModel rac_liftSelector:@selector(tagWithType:) withSignals:newTagSignal, nil];
     
     RACSignal *tagButtonTitleSignal = [RACObserve(self.viewModel, tagName) map:^NSString *(NSString *tagName) {
-        return [NSString stringWithFormat:@"Tag: %@", tagName];
+        
+        if ([tagName isEqualToString:@"None"]) {
+            return @"Add to My Directory";
+        } else {
+            return [NSString stringWithFormat:@"Tag: %@", tagName];
+        }
+        
+        
     }];
     [self.view.tagButton rac_liftSelector:@selector(setTitle:forState:) withSignals:tagButtonTitleSignal, [RACSignal return:@(UIControlStateNormal)], nil];
 }

@@ -22,7 +22,7 @@ NSString * const EDAMenuViewControllerIdentifierHeader = @"Header";
 NSString * const EDAMenuViewControllerIdentifierYourInfo = @"Your Info";
 NSString * const EDAMenuViewControllerIdentifierDirectory = @"Directory";
 NSString * const EDAMenuViewControllerIdentifierFavorites = @"Favorites";
-NSString * const EDAMenuViewControllerIdentifierTeamMessaging = @"Team Messaging";
+NSString * const EDAMenuViewControllerIdentifierTeamMessaging = @"Group Messaging";
 NSString * const EDAMenuViewControllerIdentifierLinkedInAuth = @"LinkedIn";
 
 NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
@@ -149,7 +149,7 @@ NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
         title = @"Log Out";
     }
     else if ([identifier isEqualToString:EDAMenuViewControllerIdentifierTeamMessaging]) {
-        title = @"Team Messaging";
+        title = @"Group Messaging";
     }
     else if ([identifier isEqualToString:EDAMenuViewControllerIdentifierYourInfo]) {
         title = @"Your Info";
