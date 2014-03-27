@@ -94,6 +94,8 @@ NSInteger const EDAEmployeeErrorCodeUserNotFound = 1;
 }
 
 - (RACSignal *)update {
+    return [RACSignal return:self];
+    
     @weakify(self);
     
     return [[[[EDAEmployee appdataStoreForSearching] rac_loadObjectWithID:self.entityID]
