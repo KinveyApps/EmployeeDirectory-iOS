@@ -23,6 +23,7 @@
     if (self == nil) return nil;
     
     RAC(self, username) = RACObserve(self, entityID);
+    RAC(self, email) = RACObserve(self, entityID);
     
     RACSignal *addressSignal = [RACObserve(self, addressDictionary)
         map:^NSDictionary *(id value) {
