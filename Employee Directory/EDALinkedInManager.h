@@ -28,7 +28,7 @@ extern NSInteger const EDALinkedInManagerErrorCodeFailed;
 
 - (RACSignal *)authorizeWithLinkedInWithRootViewController:(UIViewController *)viewController;
 
-- (RACSignal *)updateUserInfoWithLinkedInProfile;
+- (RACSignal *)updateUserInfoWithLinkedInProfile:(EDAEmployee *)employee;
 
 /// Sends an NSURL for the employee's LinkedId profile
 - (RACSignal *)linkedInProfileURLForEmployee:(EDAEmployee *)employee;

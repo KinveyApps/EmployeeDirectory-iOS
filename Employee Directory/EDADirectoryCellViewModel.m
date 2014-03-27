@@ -9,6 +9,7 @@
 #import "EDADirectoryCellViewModel.h"
 
 #import "EDAEmployee+API.h"
+#import "EDAEmployeeInfo+API.h"
 
 @interface EDADirectoryCellViewModel ()
 
@@ -22,7 +23,11 @@
     
     _employee = employee;
     
-    RAC(self, image) = [[[[employee downloadAvatar]
+    RAC(self, image) = [[[[[EDAEmployeeInfo infoForEmployeeWithID:employee.username]
+        flattenMap:^RACStream *(EDAEmployeeInfo *info) {
+            if (info) return [info downloadAvatar];
+            else return [RACSignal return:nil];
+        }]
         startWith:[UIImage imageNamed:@"AvatarLoading"]]
         map:^UIImage *(UIImage *image) {
             if (image == nil) return [UIImage imageNamed:@"NoAvatar"];

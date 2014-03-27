@@ -82,6 +82,9 @@
 		D0B3D18118E204880034C0C4 /* EDACitrixManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B3D18018E204880034C0C4 /* EDACitrixManager.m */; };
 		D0B3D18418E20BE30034C0C4 /* NSString+URL.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B3D18318E20BE30034C0C4 /* NSString+URL.m */; };
 		D0B3D18818E20E210034C0C4 /* UIViewController+RAC.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B3D18718E20E210034C0C4 /* UIViewController+RAC.m */; };
+		D0E55A7618E466AC00DA2CCB /* EDACurrentUserPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E55A7518E466AC00DA2CCB /* EDACurrentUserPicker.m */; };
+		D0E55A7918E46A4000DA2CCB /* EDAEmployeeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E55A7818E46A4000DA2CCB /* EDAEmployeeInfo.m */; };
+		D0E55A7C18E46B0E00DA2CCB /* EDAEmployeeInfo+API.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E55A7B18E46B0E00DA2CCB /* EDAEmployeeInfo+API.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -229,6 +232,12 @@
 		D0B3D18318E20BE30034C0C4 /* NSString+URL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URL.m"; sourceTree = "<group>"; };
 		D0B3D18618E20E210034C0C4 /* UIViewController+RAC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RAC.h"; sourceTree = "<group>"; };
 		D0B3D18718E20E210034C0C4 /* UIViewController+RAC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RAC.m"; sourceTree = "<group>"; };
+		D0E55A7418E466AC00DA2CCB /* EDACurrentUserPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDACurrentUserPicker.h; sourceTree = "<group>"; };
+		D0E55A7518E466AC00DA2CCB /* EDACurrentUserPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDACurrentUserPicker.m; sourceTree = "<group>"; };
+		D0E55A7718E46A4000DA2CCB /* EDAEmployeeInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDAEmployeeInfo.h; sourceTree = "<group>"; };
+		D0E55A7818E46A4000DA2CCB /* EDAEmployeeInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDAEmployeeInfo.m; sourceTree = "<group>"; };
+		D0E55A7A18E46B0E00DA2CCB /* EDAEmployeeInfo+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EDAEmployeeInfo+API.h"; sourceTree = "<group>"; };
+		D0E55A7B18E46B0E00DA2CCB /* EDAEmployeeInfo+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EDAEmployeeInfo+API.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -520,12 +529,18 @@
 			children = (
 				D0B3D17F18E204880034C0C4 /* EDACitrixManager.h */,
 				D0B3D18018E204880034C0C4 /* EDACitrixManager.m */,
+				D0E55A7418E466AC00DA2CCB /* EDACurrentUserPicker.h */,
+				D0E55A7518E466AC00DA2CCB /* EDACurrentUserPicker.m */,
 				D043A7EA18CA40D10095F581 /* EDAEmployee+API.h */,
 				D043A7EB18CA40D10095F581 /* EDAEmployee+API.m */,
 				D00BA01218D1DB5000AA14DC /* EDAEmployee+Sorting.h */,
 				D00BA01318D1DB5000AA14DC /* EDAEmployee+Sorting.m */,
 				D043A7E418CA2BEB0095F581 /* EDAEmployee.h */,
 				D043A7E518CA2BEB0095F581 /* EDAEmployee.m */,
+				D0E55A7A18E46B0E00DA2CCB /* EDAEmployeeInfo+API.h */,
+				D0E55A7B18E46B0E00DA2CCB /* EDAEmployeeInfo+API.m */,
+				D0E55A7718E46A4000DA2CCB /* EDAEmployeeInfo.h */,
+				D0E55A7818E46A4000DA2CCB /* EDAEmployeeInfo.m */,
 				D00BA03B18D340D900AA14DC /* EDAFavorite+API.h */,
 				D00BA03C18D340D900AA14DC /* EDAFavorite+API.m */,
 				D00BA03818D33FDF00AA14DC /* EDAFavorite.h */,
@@ -729,6 +744,7 @@
 			files = (
 				D04E88E218D0B6430071F421 /* EDAMessagingViewModel.m in Sources */,
 				1564D59418CE2B7E006D7A18 /* EDAEmployeeDetailViewController.m in Sources */,
+				D0E55A7C18E46B0E00DA2CCB /* EDAEmployeeInfo+API.m in Sources */,
 				D02B52B818D8B412004D51F4 /* EDATag+API.m in Sources */,
 				D00BA02D18D2339500AA14DC /* KCSReachability+RAC.m in Sources */,
 				15D799EE18CA32AD00BF116D /* EDAMenuViewController.m in Sources */,
@@ -769,6 +785,7 @@
 				D055CB5018CF7A4C00B29407 /* EDAYourInfoViewModel.m in Sources */,
 				D055CB5618CF7BBF00B29407 /* UIViewController+ErrorHandling.m in Sources */,
 				D00BA03A18D33FDF00AA14DC /* EDAFavorite.m in Sources */,
+				D0E55A7618E466AC00DA2CCB /* EDACurrentUserPicker.m in Sources */,
 				1564D59A18CE2CCF006D7A18 /* EDAEmployeeViewModel.m in Sources */,
 				15D799E218CA20A500BF116D /* EDALoginViewController.m in Sources */,
 				D00BA01A18D1DE0300AA14DC /* EDANewMessageViewModel.m in Sources */,
@@ -776,6 +793,7 @@
 				D00BA02A18D20E0100AA14DC /* EDAMessage+API.m in Sources */,
 				D04E88E518D0B66C0071F421 /* EDAGroupCellViewModel.m in Sources */,
 				D00BA02118D1E5AB00AA14DC /* EDANewMessageView.m in Sources */,
+				D0E55A7918E46A4000DA2CCB /* EDAEmployeeInfo.m in Sources */,
 				D00BA02718D20DF600AA14DC /* EDAMessage.m in Sources */,
 				D00BA01718D1DC6A00AA14DC /* EDAGroup+Sorting.m in Sources */,
 				D04E88FC18D0CC3E0071F421 /* EDASelectEmployeesViewController.m in Sources */,

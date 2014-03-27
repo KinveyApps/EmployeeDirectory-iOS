@@ -12,6 +12,7 @@
 #import "EDAEmployee+API.h"
 #import "EDAAppearanceManager.h"
 #import "NSString+URL.h"
+#import "EDAEmployeeInfo+API.h"
 
 NSString * const EDALinkedInManagerErrorDomain = @"com.ballastlane.employeedirectory.linkedinmanager";
 
@@ -58,6 +59,7 @@ NSString * const EDALinkedInManagerUserDefaultsKey = @"LinkedInToken";
 }
 
 - (void)startUpdating {
+    /*
     @weakify(self);
     
     RACSignal *notifications = [RACSignal merge:@[ [[NSNotificationCenter defaultCenter] rac_addObserverForName:UIApplicationDidBecomeActiveNotification object:nil], [[NSNotificationCenter defaultCenter] rac_addObserverForName:KCSActiveUserChangedNotification object:nil], RACObserve(self, oauthToken) ]];
@@ -76,6 +78,7 @@ NSString * const EDALinkedInManagerUserDefaultsKey = @"LinkedInToken";
         error:^(NSError *error) {
             NSLog(@"Error updating employee with info from LinkenIn: %@", error);
         }];
+     */
 }
 
 - (RACSignal *)authorizeWithLinkedInWithRootViewController:(UIViewController *)viewController {
@@ -170,7 +173,7 @@ NSString * const EDALinkedInManagerUserDefaultsKey = @"LinkedInToken";
     return [NSURL parametersFromAuthURL:URL ignoringString:EDALinkedInManagerRedirectURL];
 }
 
-- (RACSignal *)updateUserInfoWithLinkedInProfile {
+- (RACSignal *)updateUserInfoWithLinkedInProfile:(EDAEmployee *)employee {
     NSString *accessToken = [[NSUserDefaults standardUserDefaults] stringForKey:EDALinkedInManagerUserDefaultsKey];
     
     if (accessToken.length == 0 || [KCSUser activeUser] == nil) return [RACSignal empty];
@@ -191,52 +194,60 @@ NSString * const EDALinkedInManagerUserDefaultsKey = @"LinkedInToken";
             
             return nil;
         }]
-        zipWith:[EDAEmployee employeeWithUsername:[[KCSUser activeUser] username]]]
+        zipWith:[EDAEmployeeInfo infoForEmployeeWithID:employee.username]]
         flattenMap:^RACStream *(RACTuple *tuple) {
-            RACTupleUnpack(NSDictionary *dictionary, EDAEmployee *employee) = tuple;
+            RACTupleUnpack(NSDictionary *dictionary, EDAEmployeeInfo *employeeInfo) = tuple;
+            
+            if (employeeInfo == nil) {
+                employeeInfo = [EDAEmployeeInfo new];
+                employeeInfo.userID = employee.username;
+            }
             
             NSString *headline = dictionary[@"headline"];
             NSString *summary = dictionary[@"summary"];
             NSString *avatarURL = dictionary[@"pictureUrl"];
             NSString *ID = dictionary[@"id"];
             
-            if (headline.length > 0) employee.headline = headline;
-            if (summary.length > 0) employee.summary = summary;
-            if (avatarURL.length > 0) employee.avatarURL = avatarURL;
-            if (ID.length > 0) employee.linkedInID = ID;
+            if (headline.length > 0) employeeInfo.headline = headline;
+            if (summary.length > 0) employeeInfo.summary = summary;
+            if (avatarURL.length > 0) employeeInfo.avatarURL = avatarURL;
+            if (ID.length > 0) employeeInfo.linkedInID = ID;
             
-            return [[EDAEmployee appdataStore] rac_saveObject:employee];
+            return [[EDAEmployeeInfo appdataStore] rac_saveObject:employeeInfo];
         }];
 }
 
 - (RACSignal *)linkedInProfileURLForEmployee:(EDAEmployee *)employee {
-    if (employee.linkedInID.length == 0) return [RACSignal empty];
-    
-    NSString *accessToken = [[NSUserDefaults standardUserDefaults] stringForKey:EDALinkedInManagerUserDefaultsKey];
-    NSString *URLString = [NSString stringWithFormat:@"https://api.linkedin.com/v1/people/id=%@", employee.linkedInID];
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
-    NSDictionary *parameters = @{ @"format": @"json",
-                                  @"oauth2_access_token": accessToken };
-    
-    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        [manager GET:URLString parameters:parameters success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
-            NSString *profileURLString = responseObject[@"siteStandardProfileRequest"][@"url"];
-            if (profileURLString.length == 0) {
-                NSError *error = [NSError errorWithDomain:EDAEmployeeErrorDomain code:EDALinkedInManagerErrorCodeFailed userInfo:nil];
-                [subscriber sendError:error];
-            }
-            else {
-                NSURL *URL = [NSURL URLWithString:profileURLString];
-                [subscriber sendNext:URL];
-                [subscriber sendCompleted];
-            }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            [subscriber sendError:error];
+    return [[EDAEmployeeInfo infoForEmployeeWithID:employee.username]
+        flattenMap:^RACStream *(EDAEmployeeInfo *info) {
+            if (info.linkedInID.length == 0) return [RACSignal empty];
+            
+            NSString *accessToken = [[NSUserDefaults standardUserDefaults] stringForKey:EDALinkedInManagerUserDefaultsKey];
+            NSString *URLString = [NSString stringWithFormat:@"https://api.linkedin.com/v1/people/id=%@", info.linkedInID];
+            AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+            
+            NSDictionary *parameters = @{ @"format": @"json",
+                                          @"oauth2_access_token": accessToken };
+
+            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+                [manager GET:URLString parameters:parameters success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+                    NSString *profileURLString = responseObject[@"siteStandardProfileRequest"][@"url"];
+                    if (profileURLString.length == 0) {
+                        NSError *error = [NSError errorWithDomain:EDAEmployeeErrorDomain code:EDALinkedInManagerErrorCodeFailed userInfo:nil];
+                        [subscriber sendError:error];
+                    }
+                    else {
+                        NSURL *URL = [NSURL URLWithString:profileURLString];
+                        [subscriber sendNext:URL];
+                        [subscriber sendCompleted];
+                    }
+                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                    [subscriber sendError:error];
+                }];
+                
+                return nil;
+            }];;
         }];
-        
-        return nil;
-    }];
 }
 
 @end

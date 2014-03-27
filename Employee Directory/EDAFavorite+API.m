@@ -21,6 +21,8 @@ NSString * const EDAFavoriteFavoritesDidChangeNotification = @"EDAFavoriteFavori
 }
 
 + (RACSignal *)favoriteForEmployee:(EDAEmployee *)employee {
+    if (employee.username.length == 0) return [RACSignal return:nil];
+    
     KCSQuery *query = [KCSQuery queryOnField:@"favoriteUsername" withExactMatchForValue:employee.username];
     [query addQuery:[KCSQuery queryOnField:@"username" withExactMatchForValue:[KCSUser activeUser].username]];
     

@@ -16,9 +16,11 @@
 
 @interface EDADirectoryViewController () <UISearchDisplayDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 
+@property (readwrite, nonatomic) RACSignal *userSelected;
 @property (nonatomic) EDADirectoryViewModel *viewModel;
 @property (nonatomic) UISearchDisplayController *searchController;
 @property (nonatomic) BOOL forSearching;
+@property (nonatomic) BOOL forChoosingSelf;
 @property (nonatomic) UIView *instructionsView;
 @property (weak, nonatomic) UITableView *tableView;
 @property (nonatomic) EDADirectoryView *view;
@@ -52,8 +54,15 @@
     return self;
 }
 
-- (id)initWithViewModel:(EDADirectoryViewModel *)viewModel
-{
+- (id)initForChoosingCurrentUser {
+    self = [self initForSearching];
+    self.title = @"Who Are You?";
+    self.navigationItem.titleView = nil;
+    _forChoosingSelf = YES;
+    return self;
+}
+
+- (id)initWithViewModel:(EDADirectoryViewModel *)viewModel {
     self = [super init];
     if (self == nil) return nil;
     
@@ -70,17 +79,24 @@
     
     @weakify(self);
     
-    [[[self rac_signalForSelector:@selector(tableView:didSelectRowAtIndexPath:)]
+    RACSignal *viewModelSelected = [[self rac_signalForSelector:@selector(tableView:didSelectRowAtIndexPath:)]
         reduceEach:^EDADirectoryCellViewModel *(UITableView *tableView, NSIndexPath *indexPath){
             @strongify(self);
             
             return [self viewModelForIndexPath:indexPath searching:tableView != self.tableView];
-        }]
+        }];
+    
+    [viewModelSelected
         subscribeNext:^(EDADirectoryCellViewModel *cellViewModel) {
             @strongify(self);
             
             EDAEmployeeDetailViewController *viewController = [[EDAEmployeeDetailViewController alloc] initWithEmployee:cellViewModel.employee];
             [self.navigationController pushViewController:viewController animated:YES];
+        }];
+    
+    _userSelected = [viewModelSelected
+        map:^EDAEmployee *(EDADirectoryCellViewModel *cellViewModel) {
+            return cellViewModel.employee;
         }];
     
     return self;

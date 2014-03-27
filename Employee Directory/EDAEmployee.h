@@ -28,10 +28,4 @@
 @property (nonatomic) NSString *zipCode;
 @property (nonatomic) NSString *state;
 
-// LinkedIn
-@property (nonatomic) NSString *headline;
-@property (nonatomic) NSString *summary;
-@property (nonatomic) NSString *avatarURL;
-@property (nonatomic) NSString *linkedInID;
-
 @end

@@ -10,6 +10,7 @@
 
 #import "EDALinkedInManager.h"
 #import "EDACitrixManager.h"
+#import "EDACurrentUserPicker.h"
 
 @interface EDALoginViewModel ()
 
@@ -30,13 +31,24 @@
     
     _loginCommand = [[RACCommand alloc] initWithEnabled:[RACSignal return:@YES] signalBlock:^RACSignal *(id input) {
         @strongify(self);
-        return [[[[EDACitrixManager sharedManager] authorizeWithCitrixWithRootViewController:self.viewController]
+        return [[[[[[EDACitrixManager sharedManager] authorizeWithCitrixWithRootViewController:self.viewController]
             flattenMap:^RACStream *(RACTuple *tuple) {
                 NSDictionary *accessDictionary = @{ @"_socialIdentity": @{ @"citrix": @{ @"access_token": tuple.first } } };
                 return [KCSUser rac_loginWithSocialIdentity:KCSSocialIDOther accessDictionary:accessDictionary];
             }]
             flattenMap:^RACStream *(KCSUser *user) {
-                return [[EDALinkedInManager sharedManager] authorizeWithLinkedInWithRootViewController:self.viewController];
+                return [[[EDACurrentUserPicker sharedPicker] chooseCurrentUserWithRootViewController:self.viewController]
+                    map:^RACTuple *(EDAEmployee *employee) {
+                        RACTuple *tuple = [RACTuple tupleWithObjects:user, employee, nil];
+                        return tuple;
+                    }];
+            }]
+            flattenMap:^RACStream *(RACTuple *tuple) {
+                EDAEmployee *employee = tuple.second;
+                return [[[EDALinkedInManager sharedManager] authorizeWithLinkedInWithRootViewController:self.viewController] mapReplace:employee];
+            }]
+            flattenMap:^RACStream *(EDAEmployee *employee) {
+                return [[EDALinkedInManager sharedManager] updateUserInfoWithLinkedInProfile:employee];
             }];
     }];
     

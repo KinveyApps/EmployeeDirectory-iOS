@@ -9,6 +9,7 @@
 #import "EDAEmployeeViewModel.h"
 
 #import "EDAEmployee+API.h"
+#import "EDAEmployeeInfo+API.h"
 #import "EDALinkedInManager.h"
 #import "EDAFavorite+API.h"
 #import "EDATag+API.h"
@@ -16,6 +17,7 @@
 @interface EDAEmployeeViewModel ()
 
 @property (nonatomic) EDAEmployee *employee;
+@property (nonatomic) EDAEmployeeInfo *employeeInfo;
 @property (nonatomic) EDATag *tag;
 @property (nonatomic) RACCommand *saveTagCommand;
 @property (nonatomic) RACCommand *deleteTagCommand;
@@ -30,11 +32,13 @@
     
     _employee = employee;
     
-    [[employee update] subscribeError:^(NSError *error) {
-        NSLog(@"Error updating employee: %@", error);
-    }];
+    RAC(self, employeeInfo) = [EDAEmployeeInfo infoForEmployeeWithID:employee.username];
     
-    RAC(self, image) = [[[[employee downloadAvatar]
+    RAC(self, image) = [[[[RACObserve(self, employeeInfo)
+        flattenMap:^RACStream *(EDAEmployeeInfo *info) {
+            if (info) return [info downloadAvatar];
+            else return [RACSignal return:nil];
+        }]
         startWith:[UIImage imageNamed:@"AvatarLoading"]]
         map:^UIImage *(UIImage *image) {
             if (image == nil) return [UIImage imageNamed:@"NoAvatar"];
@@ -56,8 +60,8 @@
             return [NSString stringWithFormat:@"%@", title];
         }];
     
-    RAC(self, linkedInHeadline) = RACObserve(self.employee, headline);
-    RAC(self, linkedInSummary) = RACObserve(self.employee, summary);
+    RAC(self, linkedInHeadline) = RACObserve(self, employeeInfo.headline);
+    RAC(self, linkedInSummary) = RACObserve(self, employeeInfo.summary);
     
     RAC(self, businessAddress) = [RACSignal
         combineLatest:@[ RACObserve(self.employee, address), RACObserve(self.employee, city), RACObserve(self.employee, state), RACObserve(self.employee, zipCode) ]
@@ -141,7 +145,7 @@
     }];
     
     // Show LinkedIn Profile
-    RACSignal *hasLinkedInID = [RACObserve(self.employee, linkedInID) map:^NSNumber *(NSString *ID) {
+    RACSignal *hasLinkedInID = [RACObserve(self, employeeInfo.linkedInID) map:^NSNumber *(NSString *ID) {
         return @(ID.length > 0);
     }];
     RACSignal *canMakeRequests = RACObserve([EDALinkedInManager sharedManager], canMakeRequests);

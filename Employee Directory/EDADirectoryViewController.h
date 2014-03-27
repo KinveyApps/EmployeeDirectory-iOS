@@ -12,9 +12,12 @@
 
 @interface EDADirectoryViewController : UIViewController
 
+@property (readonly, nonatomic) RACSignal *userSelected;
+
 - (id)initWithAllEmployees;
 - (id)initWithDirectReportsOfEmployee:(EDAEmployee *)employee;
 - (id)initForSearching;
 - (id)initWithFavorites;
+- (id)initForChoosingCurrentUser;
 
 @end

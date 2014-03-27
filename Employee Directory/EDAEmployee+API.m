@@ -85,44 +85,4 @@ NSInteger const EDAEmployeeErrorCodeUserNotFound = 1;
     return [[self appdataStoreForSearching] rac_queryWithQuery:[KCSQuery queryOnField:@"name" withExactMatchForValue:searchString]];
 }
 
-- (RACSignal *)downloadAvatar {
-    NSURL *avatarURL = [NSURL URLWithString:self.avatarURL];
-    
-    if (avatarURL == nil) return [RACSignal return:nil];
-    
-    return [[EDAImageManager sharedManager] imageFromURL:avatarURL];
-}
-
-- (RACSignal *)update {
-    return [RACSignal return:self];
-    
-    @weakify(self);
-    
-    return [[[[EDAEmployee appdataStoreForSearching] rac_loadObjectWithID:self.entityID]
-        doNext:^(EDAEmployee *employee) {
-            @strongify(self);
-
-            self.firstName = employee.firstName;
-            self.lastName = employee.lastName;
-            self.title = employee.title;
-            self.division = employee.division;
-            self.department = employee.department;
-            self.group = employee.group;
-            self.workPhone = employee.workPhone;
-            self.cellPhone = employee.cellPhone;
-            self.email = employee.email;
-            self.supervisor = employee.supervisor;
-            self.hierarchy = employee.hierarchy;
-            self.headline = employee.headline;
-            self.summary = employee.summary;
-            self.avatarURL = employee.avatarURL;
-            self.linkedInID = employee.linkedInID;
-        }]
-        map:^EDAEmployee *(EDAEmployee *employee) {
-            @strongify(self);
-            
-            return self;
-        }];
-}
-
 @end

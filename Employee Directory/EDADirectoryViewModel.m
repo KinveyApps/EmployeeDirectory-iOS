@@ -179,7 +179,9 @@ NSString * const EDADirectoryViewModelSortStyleKey = @"EDADirectoryViewModelSort
                     key = viewModel.employee.department;
                 }
                 else if (sortStyle == EDADirectoryViewModelSortStyleName) {
-                    key = [[viewModel.employee.lastName substringToIndex:1] uppercaseStringWithLocale:[NSLocale currentLocale]];
+                    if (viewModel.employee.lastName.length > 0) {
+                        key = [[viewModel.employee.lastName substringToIndex:1] uppercaseStringWithLocale:[NSLocale currentLocale]];
+                    }
                 }
                 else {
                     EDATag *tag = [[tags.rac_sequence
