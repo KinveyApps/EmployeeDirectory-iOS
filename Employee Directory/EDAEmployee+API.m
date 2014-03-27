@@ -18,16 +18,16 @@ NSInteger const EDAEmployeeErrorCodeUserNotFound = 1;
 @implementation EDAEmployee (API)
 
 + (KCSAppdataStore *)appdataStore {
-    KCSCachedStore *cachedStore = [KCSCachedStore storeWithOptions:@{ KCSStoreKeyCollectionName: @"Employees",
+    KCSCachedStore *cachedStore = [KCSCachedStore storeWithOptions:@{ KCSStoreKeyCollectionName: @"contacts",
                                                                       KCSStoreKeyCollectionTemplateClass: [EDAEmployee class],
-                                                                      KCSStoreKeyCachePolicy: @(KCSCachePolicyBoth) }];
+                                                                      KCSStoreKeyCachePolicy: @(KCSCachePolicyNetworkFirst) }];
     [cachedStore setCachePolicy:KCSCachePolicyBoth];
     
     return cachedStore;
 }
 
 + (KCSAppdataStore *)appdataStoreForSearching {
-    KCSAppdataStore *appdataStore = [KCSAppdataStore storeWithOptions:@{ KCSStoreKeyCollectionName: @"Employees",
+    KCSAppdataStore *appdataStore = [KCSAppdataStore storeWithOptions:@{ KCSStoreKeyCollectionName: @"contacts",
                                                                          KCSStoreKeyCollectionTemplateClass: [EDAEmployee class] }];
     return appdataStore;
 }
@@ -37,7 +37,7 @@ NSInteger const EDAEmployeeErrorCodeUserNotFound = 1;
 }
 
 + (RACSignal *)employeeWithUsername:(NSString *)username {
-    KCSQuery *query = [KCSQuery queryOnField:@"username" withExactMatchForValue:username];
+    KCSQuery *query = [KCSQuery queryOnField:@"_id" withExactMatchForValue:username];
     return [[[self appdataStore] rac_queryWithQuery:query]
         flattenMap:^RACStream *(NSArray *users) {
             if (users.count == 0) {
@@ -51,11 +51,15 @@ NSInteger const EDAEmployeeErrorCodeUserNotFound = 1;
 }
 
 + (RACSignal *)directReportsOfEmployee:(EDAEmployee *)employee {
+    return [RACSignal return:nil];
+    
     KCSQuery *query = [KCSQuery queryOnField:@"hierarchy" withRegex:[NSString stringWithFormat:@"^%@.", employee.hierarchy]];
     return [[self appdataStore] rac_queryWithQuery:query];
 }
 
 + (RACSignal *)employeesInGroup:(EDAGroup *)group {
+    return [RACSignal return:nil];
+    
     KCSQuery *query = [KCSQuery queryOnField:@"hierarchy" withRegex:[NSString stringWithFormat:@"^%@", group.identifier]];
     return [[self appdataStore] rac_queryWithQuery:query];
 }
@@ -64,7 +68,7 @@ NSInteger const EDAEmployeeErrorCodeUserNotFound = 1;
     if (usernames.count == 0) return [RACSignal return:@[]];
     
     KCSQuery *query = [usernames.rac_sequence foldLeftWithStart:nil reduce:^KCSQuery *(KCSQuery *accumulator, NSString *username){
-        KCSQuery *queryForUsername = [KCSQuery queryOnField:@"username" withExactMatchForValue:username];
+        KCSQuery *queryForUsername = [KCSQuery queryOnField:@"_id" withExactMatchForValue:username];
         
         if (accumulator == nil) {
             return queryForUsername;
@@ -78,13 +82,7 @@ NSInteger const EDAEmployeeErrorCodeUserNotFound = 1;
 }
 
 + (RACSignal *)employeesMatchingSearchString:(NSString *)searchString {
-    NSString *standardizedString = [searchString lowercaseString];
-    
-    KCSQuery *firstNameQuery = [KCSQuery queryOnField:@"firstNameStandardized" withRegex:[NSString stringWithFormat:@"^%@", standardizedString]];
-    KCSQuery *lastNameQuery = [KCSQuery queryOnField:@"lastNameStandardized" withRegex:[NSString stringWithFormat:@"^%@", standardizedString]];
-    KCSQuery *query = [KCSQuery queryForJoiningOperator:kKCSOr onQueries:firstNameQuery, lastNameQuery, nil];
-    
-    return [[self appdataStoreForSearching] rac_queryWithQuery:query];
+    return [[self appdataStoreForSearching] rac_queryWithQuery:[KCSQuery queryOnField:@"name" withExactMatchForValue:searchString]];
 }
 
 - (RACSignal *)downloadAvatar {

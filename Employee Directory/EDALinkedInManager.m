@@ -11,6 +11,7 @@
 #import "EDAWebViewController.h"
 #import "EDAEmployee+API.h"
 #import "EDAAppearanceManager.h"
+#import "NSString+URL.h"
 
 NSString * const EDALinkedInManagerErrorDomain = @"com.ballastlane.employeedirectory.linkedinmanager";
 
@@ -155,14 +156,7 @@ NSString * const EDALinkedInManagerUserDefaultsKey = @"LinkedInToken";
     
     return [[[[RACSignal merge:@[ webViewControllerSignal, [skipItem.rac_command.executionSignals flatten] ]]
         flattenMap:^RACStream *(NSString *code) {
-            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                [viewController dismissViewControllerAnimated:YES completion:^{
-                    [subscriber sendNext:code];
-                    [subscriber sendCompleted];
-                }];
-                
-                return nil;
-            }];
+            return [[viewController rac_dismissViewControllerAnimated:YES] mapReplace:code];
         }]
         doNext:^(NSString *code) {
             [[NSUserDefaults standardUserDefaults] setObject:code forKey:EDALinkedInManagerUserDefaultsKey];
@@ -173,21 +167,7 @@ NSString * const EDALinkedInManagerUserDefaultsKey = @"LinkedInToken";
 }
 
 + (NSDictionary *)parametersFromAuthURL:(NSURL *)URL {
-    NSString *string = URL.absoluteString;
-    string = [string stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@?", EDALinkedInManagerRedirectURL] withString:@""];
-    
-    NSArray *components = [string componentsSeparatedByString:@"&"];
-    NSDictionary *parameters = [components.rac_sequence foldLeftWithStart:[NSMutableDictionary new] reduce:^id(NSMutableDictionary *dictionary, NSString *component) {
-        NSArray *subcomponents = [component componentsSeparatedByString:@"="];
-        if (subcomponents.count != 2) return dictionary;
-        NSString *parameter = subcomponents.firstObject;
-        NSString *value = subcomponents.lastObject;
-        
-        dictionary[parameter] = value;
-        return dictionary;
-    }];
-    
-    return parameters;
+    return [NSURL parametersFromAuthURL:URL ignoringString:EDALinkedInManagerRedirectURL];
 }
 
 - (RACSignal *)updateUserInfoWithLinkedInProfile {

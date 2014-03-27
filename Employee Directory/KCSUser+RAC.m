@@ -26,4 +26,20 @@
     }];
 }
 
++ (RACSignal *)rac_loginWithSocialIdentity:(KCSUserSocialIdentifyProvider)provider accessDictionary:(NSDictionary *)accessDictionary {
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [KCSUser loginWithSocialIdentity:provider accessDictionary:accessDictionary withCompletionBlock:^(KCSUser *user, NSError *error, KCSUserActionResult result) {
+            if (error) {
+                [subscriber sendError:error];
+            }
+            else {
+                [subscriber sendNext:user];
+                [subscriber sendCompleted];
+            }
+        }];
+        
+        return nil;
+    }];
+}
+
 @end

@@ -159,7 +159,7 @@ NSString * const EDADirectoryViewModelSortStyleKey = @"EDADirectoryViewModelSort
             return tuple.first;
         }]
         catch:^RACSignal *(NSError *error) {
-            return [RACSignal empty];
+            return [RACSignal return:nil];
         }];
     
     _errors = [[employeesAndTagsSignal

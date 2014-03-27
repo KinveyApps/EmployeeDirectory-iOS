@@ -9,6 +9,7 @@
 #import "EDALoginViewModel.h"
 
 #import "EDALinkedInManager.h"
+#import "EDACitrixManager.h"
 
 @interface EDALoginViewModel ()
 
@@ -27,15 +28,13 @@
     
     @weakify(self);
     
-    RACSignal *enabled = [RACSignal
-        combineLatest:@[ RACObserve(self, username), RACObserve(self, password) ]
-        reduce:^NSNumber *(NSString *username, NSString *password){
-            return @(username.length > 0 && password.length > 0);
-        }];
-    _loginCommand = [[RACCommand alloc] initWithEnabled:enabled signalBlock:^RACSignal *(id input) {
+    _loginCommand = [[RACCommand alloc] initWithEnabled:[RACSignal return:@YES] signalBlock:^RACSignal *(id input) {
         @strongify(self);
-        
-        return [[KCSUser rac_loginWithUsername:self.username password:self.password]
+        return [[[[EDACitrixManager sharedManager] authorizeWithCitrixWithRootViewController:self.viewController]
+            flattenMap:^RACStream *(RACTuple *tuple) {
+                NSDictionary *accessDictionary = @{ @"_socialIdentity": @{ @"citrix": @{ @"access_token": tuple.first } } };
+                return [KCSUser rac_loginWithSocialIdentity:KCSSocialIDOther accessDictionary:accessDictionary];
+            }]
             flattenMap:^RACStream *(KCSUser *user) {
                 return [[EDALinkedInManager sharedManager] authorizeWithLinkedInWithRootViewController:self.viewController];
             }];

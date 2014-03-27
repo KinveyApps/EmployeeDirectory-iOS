@@ -98,14 +98,16 @@
     [self.tableView registerClass:[EDADirectoryCell class] forCellReuseIdentifier:NSStringFromClass([EDADirectoryCell class])];
     
     UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    searchBar.delegate = self;
     searchBar.placeholder = @"Search";
     self.tableView.tableHeaderView = searchBar;
     
     if (self.forSearching) {
-        RAC(self.viewModel, searchString) = [[self rac_signalForSelector:@selector(searchBar:textDidChange:) fromProtocol:@protocol(UISearchBarDelegate)]
+        RACSignal *searchStringSignal = [[self rac_signalForSelector:@selector(searchBar:textDidChange:) fromProtocol:@protocol(UISearchBarDelegate)]
             reduceEach:^NSString *(UISearchBar *aSearchBar, NSString *text){
                 return text;
             }];
+        RAC(self.viewModel, searchString) = [[searchStringSignal sample:[self rac_signalForSelector:@selector(searchBarSearchButtonClicked:) fromProtocol:@protocol(UISearchBarDelegate)]] logNext];
     }
     else {
         self.searchController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];

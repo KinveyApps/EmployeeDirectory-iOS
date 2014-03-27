@@ -28,4 +28,5 @@
     #import "KCSReachability+RAC.h"
     #import "UIViewController+ErrorHandling.h"
     #import "EDAAppearanceManager.h"
+    #import "UIViewController+RAC.h"
 #endif

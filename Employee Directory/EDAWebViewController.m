@@ -38,7 +38,7 @@
                 return [RACSignal error:error];
             }];
         
-        _shouldLoadURLSignal = [RACSignal merge:@[ shouldLoadSignal, errorSignal ]];
+        _shouldLoadURLSignal = [RACSignal merge:@[ shouldLoadSignal ]];
     }
     return self;
 }

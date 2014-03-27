@@ -13,4 +13,7 @@
 /// @return A signal which sends a `KCSUser` object when login is successful.
 + (RACSignal *)rac_loginWithUsername:(NSString *)username password:(NSString *)password;
 
+/// @return A signal which sends a `KCSUser` object when login is successful.
++ (RACSignal *)rac_loginWithSocialIdentity:(KCSUserSocialIdentifyProvider)provider accessDictionary:(NSDictionary *)accessDictionary;
+
 @end
