@@ -59,7 +59,7 @@
     
     _viewModel = viewModel;
 
-    UISegmentedControl *sortControl = [[UISegmentedControl alloc] initWithItems:@[ @"Name", @"Dept."]];
+    UISegmentedControl *sortControl = [[UISegmentedControl alloc] initWithItems:@[ @"Name", @"Dept.", @"Tag"]];
     RACChannelTerminal *controlTerminal = [sortControl rac_newSelectedSegmentIndexChannelWithNilValue:@0];
     RACChannelTerminal *modelTerminal = RACChannelTo(self.viewModel, sortStyle);
     [modelTerminal subscribe:controlTerminal];

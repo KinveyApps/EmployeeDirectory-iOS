@@ -59,7 +59,7 @@ NSString * const EDADirectoryViewModelSortStyleKey = @"EDADirectoryViewModelSort
                 return [RACSignal return:@[]];
             }
             else {
-                return [EDAEmployee employeesMatchingSearchString:string];
+                return [[EDAEmployee employeesMatchingSearchString:string] catchTo:[RACSignal return:nil]];
             }
         }]
         switchToLatest];
@@ -176,7 +176,7 @@ NSString * const EDADirectoryViewModelSortStyleKey = @"EDADirectoryViewModelSort
             NSDictionary *sections = [employees.rac_sequence foldLeftWithStart:[NSMutableDictionary new] reduce:^id(NSMutableDictionary *dictionary, EDADirectoryCellViewModel *viewModel) {
                 NSString *key;
                 if (sortStyle == EDADirectoryViewModelSortStyleGroup) {
-                    key = viewModel.employee.group;
+                    key = viewModel.employee.department;
                 }
                 else if (sortStyle == EDADirectoryViewModelSortStyleName) {
                     key = [[viewModel.employee.lastName substringToIndex:1] uppercaseStringWithLocale:[NSLocale currentLocale]];
@@ -191,13 +191,15 @@ NSString * const EDADirectoryViewModelSortStyleKey = @"EDADirectoryViewModelSort
                     else key = tag.displayName;
                 }
                 
-                if (dictionary[key] == nil) {
-                    dictionary[key] = @[];
+                if (key != nil) {
+                    if (dictionary[key] == nil) {
+                        dictionary[key] = @[];
+                    }
+                    
+                    NSArray *array = dictionary[key];
+                    array = [array arrayByAddingObject:viewModel];
+                    dictionary[key] = array;
                 }
-                
-                NSArray *array = dictionary[key];
-                array = [array arrayByAddingObject:viewModel];
-                dictionary[key] = array;
                 
                 return dictionary;
             }];
