@@ -43,7 +43,7 @@ NSString * const EDACitrixManagerUserDefaultsKey = @"EDACitrixManagerUserDefault
     NSURL *URL = [NSURL URLWithString:URLString];
     
     EDAWebViewController *webViewController = [[EDAWebViewController alloc] initWithURL:URL];
-    webViewController.title = @"Citrix";
+    webViewController.title = @"Logon";
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:webViewController];
     [EDAAppearanceManager customizeAppearanceOfNavigationBar:navigationController.navigationBar];

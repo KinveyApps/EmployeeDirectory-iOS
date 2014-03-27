@@ -29,9 +29,10 @@
 - (NSDictionary *)setupViews {
     UILabel *label = [UILabel new];
     label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    label.text = @"Welcome to the Employee Directory app. Tap “Next” to sign in with Citrix.";
+    label.text = @"Employee Directory\n\nTap “Next” to sign in with your credentials.\n\nFor Authorirized Use Only!";
     label.numberOfLines = 0;
     label.translatesAutoresizingMaskIntoConstraints = NO;
+    label.textAlignment = NSTextAlignmentCenter;
     [self addSubview:label];
     
     NSDictionary *views = @{ @"label": label };
