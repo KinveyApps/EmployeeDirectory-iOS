@@ -21,17 +21,20 @@ NSString * const EDAFavoriteFavoritesDidChangeNotification = @"EDAFavoriteFavori
 }
 
 + (RACSignal *)favoriteForEmployee:(EDAEmployee *)employee {
-    if (employee.username.length == 0) return [RACSignal return:nil];
+    return [self favoriteForUsername:employee.username];
+}
+
++ (RACSignal *)favoriteForUsername:(NSString *)username {
+    if (username.length == 0) return [RACSignal empty];
     
-    KCSQuery *query = [KCSQuery queryOnField:@"favoriteUsername" withExactMatchForValue:employee.username];
+    KCSQuery *query = [KCSQuery queryOnField:@"favoriteUsername" withExactMatchForValue:username];
     [query addQuery:[KCSQuery queryOnField:@"username" withExactMatchForValue:[KCSUser activeUser].username]];
     
-    return [[[[self appdataStore] rac_queryWithQuery:query]
-        map:^EDAFavorite *(NSArray *favorites) {
-            if (favorites.count == 0) return nil;
-            else return favorites.firstObject;
-        }]
-        take:1];
+    return [[[self appdataStore] rac_queryWithQuery:query]
+        flattenMap:^RACSignal *(NSArray *favorites) {
+            if (favorites.count == 0) return [RACSignal return:nil];
+            else return [RACSignal return:favorites.firstObject];
+        }];
 }
 
 + (RACSignal *)createFavoriteForEmployee:(EDAEmployee *)employee {

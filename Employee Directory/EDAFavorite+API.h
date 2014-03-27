@@ -19,6 +19,8 @@ extern NSString * const EDAFavoriteFavoritesDidChangeNotification;
 /// @return A signal which sends an EDAFavorite object for the given employee, if one exists.
 + (RACSignal *)favoriteForEmployee:(EDAEmployee *)employee;
 
++ (RACSignal *)favoriteForUsername:(NSString *)username;
+
 /// @return A signal which sends a new EDAFavorite object for the given employee.
 + (RACSignal *)createFavoriteForEmployee:(EDAEmployee *)employee;
 

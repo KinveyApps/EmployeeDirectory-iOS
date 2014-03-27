@@ -53,23 +53,11 @@
         [self.navigationController pushViewController:viewController animated:YES];
     }];
     
-    UISegmentedControl *sortControl = [[UISegmentedControl alloc] initWithItems:@[ @"Group", @"Tag" ]];
-    RACChannelTerminal *controlTerminal = [sortControl rac_newSelectedSegmentIndexChannelWithNilValue:@0];
-    RACChannelTerminal *modelTerminal = RACChannelTo(self.viewModel, groupType);
-    [modelTerminal subscribe:controlTerminal];
-    [controlTerminal subscribe:modelTerminal];
-    //self.navigationItem.titleView = sortControl;
-    
     return self;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (self.viewModel.groupType == EDAMessagingViewModelGroupTypeGroup) {
-        return @"Groups";
-    }
-    else {
-        return @"Tags";
-    }
+    return @"Tags";
 }
 
 @end

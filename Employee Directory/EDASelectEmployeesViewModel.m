@@ -12,6 +12,7 @@
 #import "EDAEmployee+Sorting.h"
 #import "EDASelectableEmployeeCellViewModel.h"
 #import "EDATag+API.h"
+#import "EDAFavorite+API.h"
 
 @interface EDASelectEmployeesViewModel ()
 
@@ -27,14 +28,24 @@
 }
 
 - (id)initWithTagType:(EDATagType)tagType {
-    RACSignal *employeesSignal = [[EDATag tagsOfType:tagType]
+    RACSignal *employeesSignal = [[[EDATag tagsOfType:tagType]
         flattenMap:^RACStream *(NSArray *tags) {
-            NSArray *usernames = [[tags.rac_sequence map:^NSString *(EDATag *tag) {
-                return tag.taggedUsername;
+            NSArray *favoriteSignals = [[tags.rac_sequence map:^RACSignal *(EDATag *tag) {
+                return [[[EDAFavorite favoriteForUsername:tag.taggedUsername]
+                    filter:^BOOL(EDAFavorite *favorite) {
+                        return favorite != nil;
+                    }]
+                    take:1];
             }] array];
             
-            return [EDAEmployee employeesWithUsernames:usernames];
+            return [[[[RACSignal
+                merge:favoriteSignals] logAll]
+                collect] logAll];
+        }]
+        flattenMap:^RACStream *(NSArray *favorites) {
+            return [EDAEmployee employeesMatchingFavorites:favorites];
         }];
+    
     self = [self initWithEmployeesSignal:employeesSignal];
     return self;
 }

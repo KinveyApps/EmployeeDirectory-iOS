@@ -18,6 +18,4 @@ typedef NS_ENUM(NSInteger, EDAMessagingViewModelGroupType) {
 /// An array of EDAGroupCellViewModel objects.
 @property (readonly, nonatomic) NSArray *groups;
 
-@property (nonatomic) EDAMessagingViewModelGroupType groupType;
-
 @end
