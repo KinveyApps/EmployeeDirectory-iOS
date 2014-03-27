@@ -68,6 +68,7 @@
     RAC(self, officePhone) = RACObserve(self.employee, workPhone);
     RAC(self, mobilePhone) = RACObserve(self.employee, cellPhone);
     RAC(self, textPhone) = RACObserve(self.employee, cellPhone);
+    RAC(self, email) = RACObserve(self.employee, email);
     
     @weakify(self);
     

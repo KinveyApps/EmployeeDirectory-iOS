@@ -24,6 +24,7 @@
 @property (nonatomic, readonly) NSString *officePhone;
 @property (nonatomic, readonly) NSString *mobilePhone;
 @property (nonatomic, readonly) NSString *textPhone;
+@property (nonatomic, readonly) NSString *email;
 
 @property (nonatomic, readonly) BOOL favorite;
 

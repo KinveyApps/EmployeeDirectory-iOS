@@ -24,6 +24,7 @@
 @property (nonatomic, readonly) UILabel *linkedInSummaryLabel;
 @property (nonatomic, readonly) UILabel *mobileNumberLabel;
 @property (nonatomic, readonly) UILabel *nameLabel;
+@property (nonatomic, readonly) UILabel *emailLabel;
 @property (nonatomic, readonly) UILabel *officeNumberLabel;
 @property (nonatomic, readonly) UILabel *textNumberLabel;
 @property (nonatomic, readonly) UILabel *titleLabel;
