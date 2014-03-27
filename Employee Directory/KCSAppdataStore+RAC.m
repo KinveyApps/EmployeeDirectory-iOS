@@ -43,9 +43,10 @@
 }
 
 - (RACSignal *)rac_queryWithQuery:(KCSQuery *)query {
-    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+    return [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         [self queryWithQuery:query withCompletionBlock:^(NSArray *objects, NSError *error) {
             if (error) {
+                NSLog(@"Error with query: %@", query);
                 [subscriber sendError:error];
             }
             else {
@@ -55,7 +56,8 @@
         } withProgressBlock:NULL];
         
         return nil;
-    }];
+    }]
+    retry:5];
 }
 
 - (RACSignal *)rac_loadObjectWithID:(NSString *)identifier {
