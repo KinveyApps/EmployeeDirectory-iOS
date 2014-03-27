@@ -107,7 +107,7 @@
             reduceEach:^NSString *(UISearchBar *aSearchBar, NSString *text){
                 return text;
             }];
-        RAC(self.viewModel, searchString) = [[searchStringSignal sample:[self rac_signalForSelector:@selector(searchBarSearchButtonClicked:) fromProtocol:@protocol(UISearchBarDelegate)]] logNext];
+        RAC(self.viewModel, searchString) = [searchStringSignal sample:[self rac_signalForSelector:@selector(searchBarSearchButtonClicked:) fromProtocol:@protocol(UISearchBarDelegate)]];
     }
     else {
         self.searchController = [[UISearchDisplayController alloc] initWithSearchBar:searchBar contentsController:self];
