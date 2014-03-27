@@ -38,9 +38,9 @@
                     take:1];
             }] array];
             
-            return [[[[RACSignal
-                merge:favoriteSignals] logAll]
-                collect] logAll];
+            return [[RACSignal
+                merge:favoriteSignals]
+                collect];
         }]
         flattenMap:^RACStream *(NSArray *favorites) {
             return [EDAEmployee employeesMatchingFavorites:favorites];
