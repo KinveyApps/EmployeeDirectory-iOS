@@ -126,8 +126,7 @@ NSString * const EDAMenuViewControllerIdentifierLogOut = @"Log Out";
              @[ EDAMenuViewControllerIdentifierHeader ],
              @[ EDAMenuViewControllerIdentifierDirectory,
                 EDAMenuViewControllerIdentifierFavorites,
-                EDAMenuViewControllerIdentifierTeamMessaging,
-                EDAMenuViewControllerIdentifierYourInfo ],
+                EDAMenuViewControllerIdentifierTeamMessaging ],
              @[ EDAMenuViewControllerIdentifierLinkedInAuth,
                 EDAMenuViewControllerIdentifierLogOut ]
              ];
