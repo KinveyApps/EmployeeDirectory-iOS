@@ -56,7 +56,7 @@
 
 - (id)initForChoosingCurrentUser {
     self = [self initForSearching];
-    self.title = @"Who Are You?";
+    self.title = @"Select Your Profile?";
     self.navigationItem.titleView = nil;
     _forChoosingSelf = YES;
     return self;

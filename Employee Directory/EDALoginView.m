@@ -29,7 +29,7 @@
 - (NSDictionary *)setupViews {
     UILabel *label = [UILabel new];
     label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-    label.text = @"Employee Directory\n\nTap “Next” to sign in with your credentials.\n\nFor Authorirized Use Only!";
+    label.text = @"Employee Directory\n\nTap “Next” to sign in with your credentials.\n\nAuthorized Use Only!";
     label.numberOfLines = 0;
     label.translatesAutoresizingMaskIntoConstraints = NO;
     label.textAlignment = NSTextAlignmentCenter;

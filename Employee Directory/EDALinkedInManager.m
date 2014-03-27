@@ -88,7 +88,7 @@ NSString * const EDALinkedInManagerUserDefaultsKey = @"LinkedInToken";
     NSURL *URL = [NSURL URLWithString:URLString];
     
     EDAWebViewController *webViewController = [[EDAWebViewController alloc] initWithURL:URL];
-    webViewController.title = @"Authorize";
+    webViewController.title = @"Authorize LinkedIn";
     
     UIBarButtonItem *skipItem = [[UIBarButtonItem alloc] initWithTitle:@"Skip" style:UIBarButtonItemStylePlain target:nil action:nil];
     skipItem.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {

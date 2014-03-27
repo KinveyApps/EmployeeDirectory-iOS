@@ -29,7 +29,7 @@
         instructionsView.translatesAutoresizingMaskIntoConstraints = NO;
         instructionsView.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
         instructionsView.numberOfLines = 0;
-        instructionsView.text = @"Search for employees";
+        instructionsView.text = @"Enter name and press \"Search\"";
         instructionsView.textAlignment = NSTextAlignmentCenter;
         instructionsView.textColor = [UIColor grayColor];
         [self addSubview:instructionsView];
