@@ -139,7 +139,7 @@
             EDANewMessageViewController *viewController = [[EDANewMessageViewController alloc] initWithEmployees:@[ employee ]];
             [self.navigationController pushViewController:viewController animated:YES];
         }];
-    
+    /*
     self.view.favoriteButton.rac_command = self.viewModel.favoriteCommand;
     RACSignal *titleSignal = [RACObserve(self.viewModel, favorite)
         map:^NSString *(NSNumber *favorite){
@@ -153,7 +153,7 @@
             return title;
         }];
     [self.view.favoriteButton rac_liftSelector:@selector(setTitle:forState:) withSignals:titleSignal, [RACSignal return:@(UIControlStateNormal)], nil];
-    
+    */
     self.view.tagButton.rac_command = self.viewModel.tagCommand;
     RACSignal *newTagSignal = [[[[self.view.tagButton.rac_command.executionSignals
         flatten]
@@ -184,7 +184,14 @@
     [self.viewModel rac_liftSelector:@selector(tagWithType:) withSignals:newTagSignal, nil];
     
     RACSignal *tagButtonTitleSignal = [RACObserve(self.viewModel, tagName) map:^NSString *(NSString *tagName) {
-        return [NSString stringWithFormat:@"Tag: %@", tagName];
+        
+        if ([tagName isEqualToString:@"None"]) {
+            return @"Add to My Directory";
+        } else {
+            return [NSString stringWithFormat:@"Tag: %@", tagName];
+        }
+        
+        
     }];
     [self.view.tagButton rac_liftSelector:@selector(setTitle:forState:) withSignals:tagButtonTitleSignal, [RACSignal return:@(UIControlStateNormal)], nil];
 }

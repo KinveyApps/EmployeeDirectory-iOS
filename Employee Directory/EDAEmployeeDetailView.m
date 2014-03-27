@@ -172,12 +172,12 @@
     self.reportsButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self.reportsButton setTitle:@"Reports" forState:UIControlStateNormal];
     [self.containerView addSubview:self.reportsButton];
-    
+/*
     self.favoriteButton = [EDAAppearanceManager button];
     self.favoriteButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self.favoriteButton setTitle:@"Favorite" forState:UIControlStateNormal];
     [self.containerView addSubview:self.favoriteButton];
-    
+ */
     self.tagButton = [EDAAppearanceManager button];
     self.tagButton.translatesAutoresizingMaskIntoConstraints = NO;
     [self.tagButton setTitle:@"Tag" forState:UIControlStateNormal];
@@ -194,7 +194,7 @@
                              @"imageView": self.imageView,
                              @"linkedInHeadlineLabel": self.linkedInHeadlineLabel,
                              @"linkedInSummaryLabel": self.linkedInSummaryLabel,
-                             @"favoriteButton": self.favoriteButton,
+                  //           @"favoriteButton": self.favoriteButton,
                              @"addressLabel": self.addressLabel,
                              @"tagButton": self.tagButton,
                              @"officeNumberLabel": self.officeNumberLabel,
@@ -222,11 +222,11 @@
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[emailButton]-(insetSpacing)-[messageButton(==emailButton)]-(insetSpacing)-|" options:NSLayoutFormatAlignAllBottom metrics:metrics views:views]];
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[linkedinButton]-(insetSpacing)-|" options:0 metrics:metrics views:views]];
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[supervisorButton]-(insetSpacing)-[reportsButton(==supervisorButton)]-(insetSpacing)-|" options:NSLayoutFormatAlignAllBottom metrics:metrics views:views]];
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[favoriteButton]-(insetSpacing)-|" options:0 metrics:metrics views:views]];
+   // [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[favoriteButton]-(insetSpacing)-|" options:0 metrics:metrics views:views]];
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-(insetSpacing)-[tagButton]-(insetSpacing)-|" options:0 metrics:metrics views:views]];
     
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[nameLabel]-[titleLabel]" options:0 metrics:metrics views:views]];
-    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[imageView]-[linkedInHeadlineLabel]-[linkedInSummaryLabel]-[addressLabel]-(insetSpacing)-[callButton]-(insetSpacing)-[mobileCallButton]-(insetSpacing)-[textButton]-(insetSpacing)-[emailButton]-(insetSpacing)-[linkedinButton]-(insetSpacing)-[supervisorButton]-(insetSpacing)-[favoriteButton]-(insetSpacing)-[tagButton]-(insetSpacing)-|" options:0 metrics:metrics views:views]];
+    [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[imageView]-[linkedInHeadlineLabel]-[linkedInSummaryLabel]-[addressLabel]-(insetSpacing)-[callButton]-(insetSpacing)-[mobileCallButton]-(insetSpacing)-[textButton]-(insetSpacing)-[emailButton]-(insetSpacing)-[linkedinButton]-(insetSpacing)-[supervisorButton]-(insetSpacing)-[tagButton]-(insetSpacing)-|" options:0 metrics:metrics views:views]];
 
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[nameLabel]-[titleLabel]" options:NSLayoutFormatAlignAllLeading | NSLayoutFormatAlignAllTrailing metrics:metrics views:views]];
     [self.containerView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[linkedInHeadlineLabel]-[linkedInSummaryLabel]-[addressLabel]" options:NSLayoutFormatAlignAllLeading | NSLayoutFormatAlignAllTrailing metrics:nil views:views]];

@@ -58,7 +58,7 @@
     RACChannelTerminal *modelTerminal = RACChannelTo(self.viewModel, groupType);
     [modelTerminal subscribe:controlTerminal];
     [controlTerminal subscribe:modelTerminal];
-    self.navigationItem.titleView = sortControl;
+    //self.navigationItem.titleView = sortControl;
     
     return self;
 }
