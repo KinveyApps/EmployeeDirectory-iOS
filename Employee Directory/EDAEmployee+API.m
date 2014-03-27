@@ -10,6 +10,7 @@
 
 #import "EDAGroup.h"
 #import "EDAImageManager.h"
+#import "EDAFavorite.h"
 
 NSString * const EDAEmployeeErrorDomain = @"com.ballastlane.employeedirectory.employee";
 
@@ -83,6 +84,35 @@ NSInteger const EDAEmployeeErrorCodeUserNotFound = 1;
 
 + (RACSignal *)employeesMatchingSearchString:(NSString *)searchString {
     return [[self appdataStoreForSearching] rac_queryWithQuery:[KCSQuery queryOnField:@"name" withExactMatchForValue:searchString]];
+}
+
++ (RACSignal *)employeeMatchingFavorite:(EDAFavorite *)favorite {
+    return [[[self employeesMatchingSearchString:favorite.favoriteUserSearchName]
+        flattenMap:^RACStream *(NSArray *employees) {
+            EDAEmployee *employee = [[employees.rac_sequence
+                filter:^BOOL(EDAEmployee *anEmployee) {
+                    return [anEmployee.username isEqualToString:favorite.favoriteUsername];
+                }]
+                head];
+            if (employee) {
+                return [RACSignal return:employee];
+            }
+            else {
+                return [RACSignal empty];
+            }
+        }]
+        take:1];
+}
+
++ (RACSignal *)employeesMatchingFavorites:(NSArray *)favorites {
+    NSArray *signals = [[favorites.rac_sequence
+        map:^RACSignal *(EDAFavorite *favorite) {
+            return [self employeeMatchingFavorite:favorite];
+        }]
+        array];
+    return [[RACSignal
+        merge:signals]
+        collect];
 }
 
 @end

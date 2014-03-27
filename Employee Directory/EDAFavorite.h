@@ -11,6 +11,7 @@
 @interface EDAFavorite : NSObject <KCSPersistable>
 
 @property (nonatomic) NSString *favoriteUsername;
+@property (nonatomic) NSString *favoriteUserSearchName;
 @property (nonatomic) NSString *username;
 @property (nonatomic) NSString *entityID;
 

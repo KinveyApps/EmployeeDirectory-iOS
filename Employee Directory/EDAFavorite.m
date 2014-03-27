@@ -12,6 +12,7 @@
 
 - (NSDictionary *)hostToKinveyPropertyMapping {
     return @{ @keypath(self, favoriteUsername): @"favoriteUsername",
+               @keypath(self, favoriteUserSearchName): @"favoriteUserSearchName",
                @keypath(self, username): @"username",
                @keypath(self, entityID): KCSEntityKeyId };
 }

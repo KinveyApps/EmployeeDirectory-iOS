@@ -43,6 +43,7 @@ NSString * const EDAFavoriteFavoritesDidChangeNotification = @"EDAFavoriteFavori
             else {
                 EDAFavorite *newFavorite = [EDAFavorite new];
                 newFavorite.favoriteUsername = employee.username;
+                newFavorite.favoriteUserSearchName = employee.lastName;
                 newFavorite.username = [KCSUser activeUser].username;
                 
                 return [[self appdataStore] rac_saveObject:newFavorite];

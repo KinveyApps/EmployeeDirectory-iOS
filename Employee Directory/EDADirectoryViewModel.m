@@ -72,14 +72,9 @@ NSString * const EDADirectoryViewModelSortStyleKey = @"EDADirectoryViewModelSort
 - (id)initWithFavorites {
     self = [self init];
     
-    RACSignal *favoritesSignal = [[[EDAFavorite allFavorites]
-        map:^NSArray *(NSArray *favorites) {
-            return [[favorites.rac_sequence map:^NSString *(EDAFavorite *favorite) {
-                return favorite.favoriteUsername;
-            }] array];
-        }]
-        flattenMap:^RACStream *(NSArray *usernames) {
-            return [EDAEmployee employeesWithUsernames:usernames];
+    RACSignal *favoritesSignal = [[EDAFavorite allFavorites]
+        flattenMap:^RACStream *(NSArray *favorites) {
+            return [EDAEmployee employeesMatchingFavorites:favorites];
         }];
     
     [self setupWithEmployeeSignal:favoritesSignal];

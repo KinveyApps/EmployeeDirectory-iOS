@@ -9,6 +9,7 @@
 #import "EDAEmployee.h"
 
 @class EDAGroup;
+@class EDAFavorite;
 
 extern NSString * const EDAEmployeeErrorDomain;
 
@@ -35,5 +36,9 @@ extern NSInteger const EDAEmployeeErrorCodeUserNotFound;
 
 /// @return A signal which sends an array of employee objects for the given usernames
 + (RACSignal *)employeesWithUsernames:(NSArray *)usernames;
+
++ (RACSignal *)employeeMatchingFavorite:(EDAFavorite *)favorite;
+
++ (RACSignal *)employeesMatchingFavorites:(NSArray *)favorites;
 
 @end
