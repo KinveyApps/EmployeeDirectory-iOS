@@ -176,7 +176,7 @@ NSString * const EDALinkedInManagerUserDefaultsKey = @"LinkedInToken";
 - (RACSignal *)updateUserInfoWithLinkedInProfile:(EDAEmployee *)employee {
     NSString *accessToken = [[NSUserDefaults standardUserDefaults] stringForKey:EDALinkedInManagerUserDefaultsKey];
     
-    if (accessToken.length == 0 || [KCSUser activeUser] == nil) return [RACSignal empty];
+    if (accessToken.length == 0 || [KCSUser activeUser] == nil) return [RACSignal return:nil];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
