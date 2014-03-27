@@ -10,6 +10,7 @@
 
 #import "EDADirectoryViewController.h"
 #import "EDAEmployee.h"
+#import "EDAAppearanceManager.h"
 
 @implementation EDACurrentUserPicker
 
@@ -25,6 +26,7 @@
 - (RACSignal *)chooseCurrentUserWithRootViewController:(UIViewController *)viewController {
     EDADirectoryViewController *directoryViewController = [[EDADirectoryViewController alloc] initForChoosingCurrentUser];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:directoryViewController];
+    [EDAAppearanceManager customizeAppearanceOfNavigationBar:navigationController.navigationBar];
     
     [viewController presentViewController:navigationController animated:YES completion:NULL];
     

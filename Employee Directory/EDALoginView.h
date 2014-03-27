@@ -10,7 +10,4 @@
 
 @interface EDALoginView : UIView
 
-@property (nonatomic, readonly) UITextField *passwordTextField;
-@property (nonatomic, readonly) UITextField *usernameTextField;
-
 @end

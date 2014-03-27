@@ -10,9 +10,6 @@
 
 @interface EDALoginView ()
 
-@property (nonatomic, readwrite) UITextField *passwordTextField;
-@property (nonatomic, readwrite) UITextField *usernameTextField;
-
 @end
 
 @implementation EDALoginView
@@ -30,36 +27,21 @@
 }
 
 - (NSDictionary *)setupViews {
-    self.usernameTextField = [UITextField new];
-    self.usernameTextField.translatesAutoresizingMaskIntoConstraints = NO;
-    self.usernameTextField.borderStyle = UITextBorderStyleRoundedRect;
-    self.usernameTextField.placeholder = @"username";
-    self.usernameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.usernameTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    self.usernameTextField.returnKeyType = UIReturnKeyNext;
-    [self addSubview:self.usernameTextField];
+    UILabel *label = [UILabel new];
+    label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+    label.text = @"Welcome to the Employee Directory app. Tap “Next” to sign in with Citrix.";
+    label.numberOfLines = 0;
+    label.translatesAutoresizingMaskIntoConstraints = NO;
+    [self addSubview:label];
     
-    self.passwordTextField = [UITextField new];
-    self.passwordTextField.translatesAutoresizingMaskIntoConstraints = NO;
-    self.passwordTextField.borderStyle = UITextBorderStyleRoundedRect;
-    self.passwordTextField.placeholder = @"password";
-    self.passwordTextField.autocorrectionType = UITextAutocorrectionTypeNo;
-    self.passwordTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    self.passwordTextField.secureTextEntry = YES;
-    self.passwordTextField.returnKeyType = UIReturnKeyDone;
-    [self addSubview:self.passwordTextField];
-    
-    NSDictionary *views = @{ @"usernameTextField": self.usernameTextField,
-                             @"passwordTextField": self.passwordTextField };
+    NSDictionary *views = @{ @"label": label };
     
     return views;
 }
 
 - (void)setupConstraintsWithViews:(NSDictionary *)views {
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-[usernameTextField]-|" options:0 metrics:0 views:views]];
-    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.passwordTextField attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.usernameTextField attribute:NSLayoutAttributeWidth multiplier:1 constant:0]];
-    
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[usernameTextField]-[passwordTextField]" options:NSLayoutFormatAlignAllCenterX metrics:0 views:views]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-[label]-|" options:0 metrics:0 views:views]];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(100)-[label]" options:NSLayoutFormatAlignAllCenterX metrics:0 views:views]];
 }
 
 @end
