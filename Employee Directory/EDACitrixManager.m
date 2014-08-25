@@ -11,10 +11,10 @@
 #import "EDAWebViewController.h"
 #import "NSString+URL.h"
 
-NSString * const EDACitrixManagerClientID = @"EmployeeDirectory";
-NSString * const EDACitrixManagerScope = @"http://citrix-oauth.elasticbeanstalk.com/";
+NSString * const EDACitrixManagerClientID = @"kid_PTOd12xcS9";
+NSString * const EDACitrixManagerScope = @"http://localhost:8081/";
 NSString * const EDACitrixManagerRedirect = @"blemployeedirectory://";
-NSString * const EDACitrixManagerSecret = @"!kinvey";
+NSString * const EDACitrixManagerSecret = @"ed7b5090ecd442a3a1dd917ee540cf76";
 NSString * const EDACitrixManagerUserDefaultsKey = @"EDACitrixManagerUserDefaultsKey";
 
 @implementation EDACitrixManager
@@ -39,7 +39,7 @@ NSString * const EDACitrixManagerUserDefaultsKey = @"EDACitrixManagerUserDefault
 }
 
 - (RACSignal *)authorizeWithCitrixWithRootViewController:(UIViewController *)viewController {
-    NSString *URLString = [NSString stringWithFormat:@"http://citrix-oauth.elasticbeanstalk.com/OAuth/auth?client_id=%@&redirect_uri=%@&scope=%@&response_type=code", EDACitrixManagerClientID, [EDACitrixManagerRedirect stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding], [EDACitrixManagerScope stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
+    NSString *URLString = [NSString stringWithFormat:@"https://auth.kinvey.com/oauth/auth?client_id=%@&redirect_uri=%@&scope=%@&response_type=code", EDACitrixManagerClientID, [EDACitrixManagerRedirect stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding], [EDACitrixManagerScope stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
     NSURL *URL = [NSURL URLWithString:URLString];
     
     EDAWebViewController *webViewController = [[EDAWebViewController alloc] initWithURL:URL];
@@ -58,8 +58,8 @@ NSString * const EDACitrixManagerUserDefaultsKey = @"EDACitrixManagerUserDefault
         }]
         flattenMap:^RACStream *(NSURL *aURL) {
             NSDictionary *parameters = [EDACitrixManager parametersFromAuthURL:aURL];
-            NSString *code = parameters[@"code"];
-            
+            NSString *code = parameters[@"blemployeedirectory://?code"];
+
             if (code != nil) {
                 return [RACSignal return:code];
             }
@@ -79,7 +79,7 @@ NSString * const EDACitrixManagerUserDefaultsKey = @"EDACitrixManagerUserDefault
             [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
             
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                [manager POST:@"http://citrix-oauth.elasticbeanstalk.com/OAuth/token" parameters:parameters success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
+                [manager POST:@"https://auth.kinvey.com/oauth/token" parameters:parameters success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
                     NSString *token = responseObject[@"access_token"];
                     [subscriber sendNext:token];
                     [subscriber sendCompleted];

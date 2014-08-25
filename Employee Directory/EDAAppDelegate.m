@@ -25,8 +25,13 @@
 
     [EDAAppearanceManager customizeAppearanceWithWindow:self.window];
 
-    // Set up Kinvey
-    (void) [[KCSClient sharedClient] initializeKinveyServiceForAppKey:@"kid_eTXG5Nytxq" withAppSecret:@"1512b102e63d4c44931f99d960685cdc" usingOptions:nil];
+#pragma mark --
+#pragma mark Set up Kinvey
+
+    (void) [[KCSClient sharedClient] initializeKinveyServiceForAppKey:@"kid_PTOd12xcS9" withAppSecret:@"ed7b5090ecd442a3a1dd917ee540cf76" usingOptions:@{}];
+    
+//    [[KCSClient sharedClient].configuration setServiceHostname:@"v3yk1n"];
+
 
     BLAPaneController *paneController = [[BLAPaneController alloc] initWithRootViewController:[[UINavigationController alloc] initWithRootViewController:[[EDADirectoryViewController alloc] initForSearching]] sidebarViewController:[EDAMenuViewController new]];
     self.window.rootViewController = paneController;
